@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dukt3ykblby48"]
 
 [ext_resource type="PackedScene" uid="uid://blvniqmv0cixc" path="res://Scenes/Components/Kereta/kepala.tscn" id="1_2wmvs"]
-[ext_resource type="Script" uid="uid://hopwy0agpns4" path="res://Script/kereta.gd" id="1_l81m1"]
+[ext_resource type="Script" uid="uid://hopwy0agpns4" path="res://Script/Kereta/kereta.gd" id="1_l81m1"]
 [ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_k3j8q"]
 
 [node name="Kereta" type="Node2D" unique_id=1640051749]

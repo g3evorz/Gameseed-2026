@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dukt3ykblby48" path="res://Scenes/Components/kereta.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://cuyokbbea850y" path="res://Scenes/Components/Worldborder.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://ciej1ht535fuo" path="res://Scenes/Components/platform.tscn" id="3_8gbba"]
 
 [node name="Main" type="Node2D" unique_id=1169577489]
 
@@ -9,4 +10,13 @@
 position = Vector2(2, -41)
 
 [node name="World" parent="." unique_id=1368948942 instance=ExtResource("2_8gbba")]
-position = Vector2(0, 65)
+position = Vector2(3, 222)
+
+[node name="Platform" parent="." unique_id=702469548 instance=ExtResource("3_8gbba")]
+position = Vector2(2763, -52)
+
+[node name="Platform2" parent="." unique_id=1914942858 instance=ExtResource("3_8gbba")]
+position = Vector2(1522, 68)
+
+[node name="Platform3" parent="." unique_id=1957348218 instance=ExtResource("3_8gbba")]
+position = Vector2(1930, -230)

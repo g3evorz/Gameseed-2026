@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://blvniqmv0cixc"]
 
-[ext_resource type="Script" uid="uid://b6wxh3yelr5j6" path="res://Script/kepala.gd" id="1_kiorl"]
+[ext_resource type="Script" uid="uid://b6wxh3yelr5j6" path="res://Script/Kereta/kepala.gd" id="1_kiorl"]
 [ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="2_pvioj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eu8wk"]
@@ -9,6 +9,7 @@ size = Vector2(261, 77)
 [node name="Kepala" type="Node2D" unique_id=1780252134]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1215859441]
+collision_mask = 2
 script = ExtResource("1_kiorl")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1829586725]
