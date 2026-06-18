@@ -38,7 +38,8 @@ func _physics_process(delta):
 	if not is_on_floor():
 		# Kita jadikan rasio kecepatan saat ini dibandingkan kekuatan lompat awal
 		# Hasilnya berkisar sekitar -1.0 (naik mentok) hingga 1.0 atau lebih (jatuh cepat)
-		var fall_ratio = velocity.y / abs(JUMP_VELOCITY)
+		var jump_kekuatan = max(abs(JUMP_VELOCITY), 1.0)
+		var fall_ratio = velocity.y / jump_kekuatan
 		
 		if fall_ratio < 0:
 			# Sedang naik (velocity.y negatif)

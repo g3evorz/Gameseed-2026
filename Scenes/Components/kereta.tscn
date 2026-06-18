@@ -20,3 +20,14 @@ script = ExtResource("1_l81m1")
 [node name="Gerbong4" parent="KumpulanGerbong" unique_id=295298761 instance=ExtResource("3_k3j8q")]
 
 [node name="Gerbong5" parent="KumpulanGerbong" unique_id=534880205 instance=ExtResource("3_k3j8q")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=291053721]
+
+[node name="LabelJumlahGerbong" type="Label" parent="CanvasLayer" unique_id=723256573]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_vertical = 2
