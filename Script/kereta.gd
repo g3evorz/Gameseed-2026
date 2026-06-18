@@ -11,6 +11,8 @@ extends Node2D
 # - Semakin besar (misal 20.0), gerbong akan bereaksi sangat cepat (kaku).
 # - Semakin kecil (misal 5.0), gerbong akan melar dan lambat ditarik.
 @export var KEKAKUAN_RANTAI = 15.0 
+@export var FAKTOR_AWAL = 0.9
+@export var FAKTOR_PELURUHAN = 0.8
 
 func _physics_process(delta):
 	var daftar_gerbong = kumpulan_gerbong.get_children()
@@ -38,7 +40,13 @@ func _physics_process(delta):
 			target_y = gerbong_depan.global_position.y
 			target_rot = gerbong_depan.rotation
 			
-		# 3. INTERPOLASI (Lerp): Bergerak menuju target secara berangsur-angsur
-		# Inilah yang menciptakan efek "Semi-Rigid" dan merambat dari depan ke belakang
-		gerbong.global_position.y = lerp(gerbong.global_position.y, target_y, KEKAKUAN_RANTAI * delta)
-		gerbong.rotation = lerp_angle(gerbong.rotation, target_rot, KEKAKUAN_RANTAI * delta)
+		# --- REVISI: KALKULASI KEKAKUAN DINAMIS ---
+		# Menggunakan fungsi matematika pow (pangkat) untuk menciptakan penurunan kurva yang halus.
+		# i=0 -> pow(0.8, 0) = 1.0  (Kekuatan 100%)
+		# i=1 -> pow(0.8, 1) = 0.8  (Kekuatan 80%)
+		# i=2 -> pow(0.8, 2) = 0.64 (Kekuatan 64%)
+		# i=3 -> pow(0.8, 3) = 0.51 (Kekuatan 51%)
+		var kekakuan_dinamis = KEKAKUAN_RANTAI * FAKTOR_AWAL * pow(FAKTOR_PELURUHAN, i)
+		
+		gerbong.global_position.y = lerp(gerbong.global_position.y, target_y, kekakuan_dinamis * delta)
+		gerbong.rotation = lerp_angle(gerbong.rotation, target_rot, kekakuan_dinamis * delta)

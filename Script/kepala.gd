@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
 # --- Konfigurasi Pergerakan ---
-@export var SPEED = 300.0
 @export var JUMP_VELOCITY = -500.0
+@export var BASE_SPEED = 300.0 
+@export var MAX_SPEED = 1000.0 
+@export var ACCELERATION = 15.0 
+var current_speed = 0.0
 
 # --- Konfigurasi Efek Tilting Parabola ---
 @export var MAX_TILT_UP = -20.0   # Derajat maksimal saat naik (hidung ke atas)
@@ -10,7 +13,11 @@ extends CharacterBody2D
 @export var TILT_SMOOTHNESS = 10.0 # Seberapa mulus transisi rotasinya
 
 @onready var sprite = $Sprite2D
+@onready var label_speed = $CanvasLayer/LabelSpeed
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+func _ready():
+	current_speed = BASE_SPEED
 
 func _physics_process(delta):
 	# 1. Terapkan Gravitasi
@@ -21,8 +28,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# 3. Gerakan Otomatis ke Depan
-	velocity.x = SPEED
+	# 3. Gerakan Otomatis ke Depan Gradually
+	current_speed = move_toward(current_speed, MAX_SPEED, ACCELERATION * delta)
+	velocity.x = current_speed
 
 	# 4. Efek Tilting Parabola Berdasarkan Kecepatan Vertikal
 	var target_rotation = 0.0
@@ -47,6 +55,7 @@ func _physics_process(delta):
 
 	# Gunakan fungsi lerp_angle untuk menggerakkan rotasi secara mulus ke targetnya
 	sprite.rotation = lerp_angle(sprite.rotation, target_rotation, TILT_SMOOTHNESS * delta)
+	label_speed.text = "Speed: " + str(round(current_speed))
 
 	# 5. Eksekusi pergerakan fisika
 	move_and_slide()

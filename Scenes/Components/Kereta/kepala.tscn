@@ -22,3 +22,9 @@ offset = Vector2(0, -126)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1440733009]
 shape = SubResource("RectangleShape2D_eu8wk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody2D" unique_id=1870364125]
+
+[node name="LabelSpeed" type="Label" parent="CharacterBody2D/CanvasLayer" unique_id=448355568]
+offset_right = 40.0
+offset_bottom = 23.0

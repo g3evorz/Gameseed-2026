@@ -20,13 +20,3 @@ script = ExtResource("1_l81m1")
 [node name="Gerbong4" parent="KumpulanGerbong" unique_id=295298761 instance=ExtResource("3_k3j8q")]
 
 [node name="Gerbong5" parent="KumpulanGerbong" unique_id=534880205 instance=ExtResource("3_k3j8q")]
-
-[node name="Gerbong6" parent="KumpulanGerbong" unique_id=1304780013 instance=ExtResource("3_k3j8q")]
-
-[node name="Gerbong7" parent="KumpulanGerbong" unique_id=1884892492 instance=ExtResource("3_k3j8q")]
-
-[node name="Gerbong8" parent="KumpulanGerbong" unique_id=1870618193 instance=ExtResource("3_k3j8q")]
-
-[node name="Gerbong9" parent="KumpulanGerbong" unique_id=918187978 instance=ExtResource("3_k3j8q")]
-
-[node name="Gerbong10" parent="KumpulanGerbong" unique_id=1287362163 instance=ExtResource("3_k3j8q")]
