@@ -1,24 +1,32 @@
 [gd_scene format=3 uid="uid://dukt3ykblby48"]
 
-[ext_resource type="Script" uid="uid://b6wxh3yelr5j6" path="res://Script/kereta.gd" id="1_l81m1"]
-[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_qepfn"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l81m1"]
-size = Vector2(261, 77)
+[ext_resource type="PackedScene" uid="uid://blvniqmv0cixc" path="res://Scenes/Components/Kereta/kepala.tscn" id="1_2wmvs"]
+[ext_resource type="Script" uid="uid://hopwy0agpns4" path="res://Script/kereta.gd" id="1_l81m1"]
+[ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_k3j8q"]
 
 [node name="Kereta" type="Node2D" unique_id=1640051749]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1867387395]
 script = ExtResource("1_l81m1")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=746979853]
-position = Vector2(-129, 38)
-scale = Vector2(2.0234377, 0.59375)
-texture = ExtResource("1_qepfn")
-centered = false
-offset = Vector2(0, -126)
+[node name="Kepala" parent="." unique_id=1780252134 instance=ExtResource("1_2wmvs")]
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1859086690]
+[node name="KumpulanGerbong" type="Node2D" parent="." unique_id=399389016]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=590275025]
-shape = SubResource("RectangleShape2D_l81m1")
+[node name="Gerbong1" parent="KumpulanGerbong" unique_id=2090834745 instance=ExtResource("3_k3j8q")]
+
+[node name="Gerbong2" parent="KumpulanGerbong" unique_id=1715528047 instance=ExtResource("3_k3j8q")]
+
+[node name="Gerbong3" parent="KumpulanGerbong" unique_id=1309238907 instance=ExtResource("3_k3j8q")]
+
+[node name="Gerbong4" parent="KumpulanGerbong" unique_id=295298761 instance=ExtResource("3_k3j8q")]
+
+[node name="Gerbong5" parent="KumpulanGerbong" unique_id=534880205 instance=ExtResource("3_k3j8q")]
+
+[node name="Gerbong6" parent="KumpulanGerbong" unique_id=1304780013 instance=ExtResource("3_k3j8q")]
+
+[node name="Gerbong7" parent="KumpulanGerbong" unique_id=1884892492 instance=ExtResource("3_k3j8q")]
+
+[node name="Gerbong8" parent="KumpulanGerbong" unique_id=1870618193 instance=ExtResource("3_k3j8q")]
+
+[node name="Gerbong9" parent="KumpulanGerbong" unique_id=918187978 instance=ExtResource("3_k3j8q")]
+
+[node name="Gerbong10" parent="KumpulanGerbong" unique_id=1287362163 instance=ExtResource("3_k3j8q")]
