@@ -13,6 +13,7 @@ collision_mask = 2
 script = ExtResource("1_kiorl")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=18270038]
+zoom = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1829586725]
 position = Vector2(-129, 38)
