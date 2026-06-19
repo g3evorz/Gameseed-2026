@@ -17,8 +17,8 @@ var posisi_y_kepala_absolut = 0.0
 var was_on_floor = false
 
 @export var MAX_SPRING_VELOCITY = 1000.0 
-@export var BATAS_MAKSIMUM_COUPLER = 150.0
-@export var BATAS_MINIMUM_COUPLER = 75
+@export var BATAS_MAKSIMUM_COUPLER = 35.0
+@export var BATAS_MINIMUM_COUPLER = 12.5
 @export var LEBAR_ASLI_GAMBAR_HIDROLIK = 46.0 
 
 # --- REVISI PRIORITAS SEDANG: Pembersihan Magic Numbers ---
