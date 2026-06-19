@@ -19,14 +19,14 @@ var was_on_floor = false
 @export var MAX_SPRING_VELOCITY = 1000.0 
 @export var BATAS_MAKSIMUM_COUPLER = 35.0
 @export var BATAS_MINIMUM_COUPLER = 12.5
-@export var LEBAR_ASLI_GAMBAR_HIDROLIK = 46.0 
+@export var LEBAR_ASLI_GAMBAR_HIDROLIK = 110.0 
 
 # --- REVISI PRIORITAS SEDANG: Pembersihan Magic Numbers ---
 @export var BATAS_HANCUR = 1500.0
 # Nilai ini adalah fallback ekstrem pasca-collision, jika sistem tug 
 # gagal menyelamatkan gerbong (misal karena terjepit rintangan)
 @export var BATAS_EKSTRIM_X = 200.0 
-@export var BATAS_EKSTRIM_Y = 500.0 
+@export var BATAS_EKSTRIM_Y = 100.0 
 
 func putus_sambungan():
 	tersambung = false
@@ -135,7 +135,6 @@ func _physics_process(delta):
 		
 		coupler_sensor.target_position = coupler_sensor.to_local(titik_target)
 		coupler_sensor.force_raycast_update()
-		
 		
 		# DETEKSI PUTUS EKSTREM TERAKHIR
 		if coupler_sensor.is_colliding():

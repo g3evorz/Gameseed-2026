@@ -3,7 +3,7 @@ extends CharacterBody2D
 # --- Konfigurasi Pergerakan ---
 @export var JUMP_VELOCITY = -1000.0
 @export var BASE_SPEED = 300.0 
-@export var MAX_SPEED = 500.0 
+@export var MAX_SPEED = 1000.0 
 @export var ACCELERATION = 15.0 
 var current_speed = 0.0
 
