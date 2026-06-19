@@ -27,17 +27,12 @@ func _ready():
 func _physics_process(_delta):
 	var kecepatan_sekarang = kepala_kereta.velocity.x
 	var sambungan_utuh = true 
-	
 	var jumlah_aktif = 0
 	
 	for i in range(rantai_permanen.size()):
 		var gerbong = rantai_permanen[i]
 		
-		if not is_instance_valid(gerbong):
-			sambungan_utuh = false
-			continue
-			
-		if not gerbong.tersambung:
+		if not is_instance_valid(gerbong) or not gerbong.tersambung:
 			sambungan_utuh = false
 			continue
 			
@@ -46,33 +41,24 @@ func _physics_process(_delta):
 			continue 
 		
 		jumlah_aktif += 1
+		
 		gerbong.target_x_velocity = kecepatan_sekarang
 		gerbong.posisi_y_kepala_absolut = kepala_kereta.global_position.y
-
+		
 		if i == 0:
-			gerbong.target_y = kepala_kereta.global_position.y
+			# Gerbong 1 menargetkan Kepala Kereta
+			gerbong.node_target = kepala_kereta
 			gerbong.target_rot = sprite_kepala.rotation
-			gerbong.target_vel_y = kepala_kereta.velocity.y
-			gerbong.target_di_tanah = kepala_kereta.is_on_floor()
-			
-			gerbong.posisi_x_depan = kepala_kereta.global_position.x
-			gerbong.posisi_y_depan = kepala_kereta.global_position.y
 		else:
+			# Gerbong 2+ menargetkan Gerbong di depannya
 			var gerbong_depan = rantai_permanen[i - 1]
-			gerbong.target_y = gerbong_depan.global_position.y
+			gerbong.node_target = gerbong_depan
 			
-			# Mengambil rotasi sprite milik gerbong di depannya untuk diteruskan
 			if gerbong_depan.has_node("Sprite2D"):
 				gerbong.target_rot = gerbong_depan.get_node("Sprite2D").rotation
 			else:
 				gerbong.target_rot = gerbong_depan.rotation
-				
-			gerbong.target_vel_y = gerbong_depan.velocity.y
-			gerbong.target_di_tanah = gerbong_depan.is_on_floor()
-			
-			gerbong.posisi_x_depan = gerbong_depan.global_position.x
-			gerbong.posisi_y_depan = gerbong_depan.global_position.y
-			
+
 		var kalkulasi_kekakuan = KEKAKUAN_DASAR * FAKTOR_AWAL * pow(FAKTOR_PELURUHAN, i)
 		gerbong.kekakuan_rantai = max(kalkulasi_kekakuan, 5.0)
 		
