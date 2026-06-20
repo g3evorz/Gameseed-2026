@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://blvniqmv0cixc"]
 
 [ext_resource type="Script" uid="uid://b6wxh3yelr5j6" path="res://Script/Kereta/kepala.gd" id="1_kiorl"]
+[ext_resource type="PackedScene" uid="uid://mggdmmjq4q5n" path="res://Scenes/Components/Weapon/Pulse/pulseBody.tscn" id="2_eu8wk"]
 [ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="2_pvioj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eu8wk"]
-size = Vector2(261, 77)
+size = Vector2(233.5, 62.5)
 
 [node name="Kepala" type="Node2D" unique_id=1780252134]
 
@@ -22,6 +23,10 @@ texture = ExtResource("2_pvioj")
 centered = false
 offset = Vector2(0, -126)
 
+[node name="PulseBody" parent="CharacterBody2D/Sprite2D" unique_id=862216815 instance=ExtResource("2_eu8wk")]
+position = Vector2(63.75289, -122.94738)
+scale = Vector2(0.8017096, 2.7321424)
+
 [node name="TitikSambungBelakang" type="Marker2D" parent="CharacterBody2D/Sprite2D" unique_id=1181210845]
 position = Vector2(-0.28664398, -64.00001)
 scale = Vector2(0.49420846, 1.6842107)
@@ -31,6 +36,8 @@ position = Vector2(128, -64)
 scale = Vector2(0.244242, 2.8365655)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1440733009]
+position = Vector2(-4.7683716e-07, 0)
+scale = Vector2(0.9615588, 0.9438583)
 shape = SubResource("RectangleShape2D_eu8wk")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody2D" unique_id=1870364125]
