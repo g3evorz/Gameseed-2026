@@ -6,6 +6,7 @@
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1489105571]
 rotation = -1.5707964
+target_position = Vector2(-9.616506e-07, 22)
 collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1987148400]

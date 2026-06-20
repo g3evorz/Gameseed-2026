@@ -15,10 +15,16 @@ var is_dead: bool = false
 
 @onready var sprite = $Sprite2D
 @onready var label_speed = $CanvasLayer/LabelSpeed
+@onready var gun = $Sprite2D/PulseBody
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	current_speed = BASE_SPEED
+
+func _process(delta):
+	if Input.is_action_pressed("shoot"):
+		gun.shoot()
 
 func _physics_process(delta):
 	# 1. Terapkan Gravitasi

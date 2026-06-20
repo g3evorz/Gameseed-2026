@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://qn82weha1dnc"]
+
+[ext_resource type="Script" uid="uid://lf3x2jbh43df" path="res://Script/Weapon/Pulse/pulseBullet.gd" id="1_sdcfi"]
+[ext_resource type="Texture2D" uid="uid://bjqmutlvg887t" path="res://Assets/Laser/Warped shooting fx files/Assets/Pixelart/charged/sprites/charged5.png" id="5_a6xg0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5w2sr"]
+
+[node name="PulseBullet" type="Node2D" unique_id=1458278529]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1893027402]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_sdcfi")
+
+[node name="RayCast2D" type="RayCast2D" parent="Area2D" unique_id=1537096549]
+target_position = Vector2(2000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1401197467]
+position = Vector2(0, 23.975)
+texture = ExtResource("5_a6xg0")
+centered = false
+offset = Vector2(0, -48.125)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=456755171]
+position = Vector2(3.9999998, 0.99999994)
+rotation = 1.5707964
+scale = Vector2(1e-05, 1e-05)
+shape = SubResource("RectangleShape2D_5w2sr")
