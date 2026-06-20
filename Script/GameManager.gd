@@ -54,7 +54,7 @@ func _on_game_over():
 	
 	# Update text UI di layar Game Over
 	Score.text = "Score: " + str(int(ScoreManager.current_score))
-	Coins.text = "Total Koin: " + str(ScoreManager.total_coin)
+	Coins.text = "Total Koin: " + str(ScoreManager.accumulated_coin_this_run)
 	
 	ui_game_over.show()
 
