@@ -2,19 +2,38 @@
 
 [ext_resource type="Script" uid="uid://w360yirgsaq0" path="res://Script/Weapon/Pulse/pulseBody.gd" id="1_lgxuk"]
 [ext_resource type="Texture2D" uid="uid://nnh6nwg2khm5" path="res://Assets/Turret/Turret (15).png" id="1_w7a4c"]
-[ext_resource type="PackedScene" uid="uid://qn82weha1dnc" path="res://Scenes/Components/Weapon/Pulse/pulseBullet.tscn" id="2_5dexo"]
+[ext_resource type="PackedScene" uid="uid://b2434knylnpe6" path="res://Scenes/Components/Weapon/Pulse/pulse_bullet.tscn" id="2_1ll14"]
+[ext_resource type="PackedScene" uid="uid://bsgk5fq18supq" path="res://Scenes/Components/radarArea.tscn" id="4_1ll14"]
 
 [node name="PulseBody" type="Node2D" unique_id=1654954871]
 script = ExtResource("1_lgxuk")
-bullet_scene = ExtResource("2_5dexo")
+bullet_scene = ExtResource("2_1ll14")
+fire_rate = 1.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=757923511]
+[node name="BaseSprite" type="Sprite2D" parent="." unique_id=757923511]
+texture = ExtResource("1_w7a4c")
+centered = false
+offset = Vector2(-13.605, -10.775)
+region_enabled = true
+region_rect = Rect2(0, 14.078209, 40, 10.921791)
+
+[node name="Head" type="Node2D" parent="." unique_id=1992742557]
+
+[node name="HeadSprite" type="Sprite2D" parent="Head" unique_id=1406440824]
 texture = ExtResource("1_w7a4c")
 centered = false
 offset = Vector2(-13.605, -25.055)
+region_enabled = true
+region_rect = Rect2(0, 0, 40, 14.870859)
 
-[node name="Muzzle" type="Marker2D" parent="." unique_id=782497331]
+[node name="Muzzle" type="Marker2D" parent="Head" unique_id=782497331]
 position = Vector2(23.91, -18.44)
 gizmo_extents = 0.0
 
 [node name="Timer" type="Timer" parent="." unique_id=1883995126]
+
+[node name="RadarArea" parent="." unique_id=363232625 instance=ExtResource("4_1ll14")]
+position = Vector2(24, -18)
+
+[connection signal="body_entered" from="RadarArea" to="." method="_on_radar_area_body_entered"]
+[connection signal="body_exited" from="RadarArea" to="." method="_on_radar_area_body_exited"]
