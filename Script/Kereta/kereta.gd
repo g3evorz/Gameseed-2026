@@ -7,7 +7,7 @@ signal kereta_hancur
 @onready var kumpulan_gerbong = $KumpulanGerbong
 @onready var label_jumlah_gerbong = $CanvasLayer/LabelJumlahGerbong
 
-@export var JARAK_PIKSEL_ANTAR_GERBONG = 270.0 
+@export var JARAK_PIKSEL_ANTAR_GERBONG = 350.0 
 @export var KEKAKUAN_DASAR = 15.0 
 @export var FAKTOR_AWAL = 0.95 
 @export var FAKTOR_PELURUHAN = 0.8 

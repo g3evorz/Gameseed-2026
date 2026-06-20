@@ -9,9 +9,8 @@ rotation = -1.5707964
 collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1987148400]
-visible = false
-position = Vector2(-1.1920929e-07, 4.5474735e-13)
-scale = Vector2(0.3596749, 0.13281249)
+position = Vector2(-1.1920929e-07, 0.027421713)
+scale = Vector2(0.171875, 0.046874996)
 texture = ExtResource("1_5kep0")
 centered = false
 offset = Vector2(0, -64.585)
