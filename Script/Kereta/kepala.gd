@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var MAX_SPEED = 1000.0 
 @export var ACCELERATION = 15.0 
 var current_speed = 0.0
+var is_dead: bool = false
 
 # --- Konfigurasi Efek Tilting Parabola ---
 @export var MAX_TILT_UP = -20.0   # Derajat maksimal saat naik (hidung ke atas)
@@ -29,6 +30,9 @@ func _physics_process(delta):
 	# 1. Terapkan Gravitasi
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	if is_dead:
+		move_and_slide()
+		return
 
 	# 2. Fitur Lompat
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -66,3 +70,10 @@ func _physics_process(delta):
 
 	# 5. Eksekusi pergerakan fisika
 	move_and_slide()
+	
+# Fungsi untuk menghentikan laju kereta saat Game Over
+func mati():
+	is_dead = true
+	current_speed = 0.0
+	velocity.x = 0.0
+	# Mematikan proses fisika agar kepala kereta tidak lagi bergerak ke depan atau melompat

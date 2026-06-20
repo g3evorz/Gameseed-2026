@@ -15,6 +15,10 @@ run/main_scene="uid://dcol80whnldwb"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ScoreManager="*uid://dagykubtbwaw2"
+
 [display]
 
 window/size/viewport_width=1920
