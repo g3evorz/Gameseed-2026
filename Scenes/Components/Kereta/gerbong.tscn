@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dcnle0rgkvqcg"]
 
 [ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_fp0vm"]
-[ext_resource type="Script" uid="uid://dsguloiapf5sg" path="res://Script/Kereta/gerbong.gd" id="1_ibxl1"]
+[ext_resource type="Script" uid="uid://dsguloiapf5sg" path="res://Script/Kereta/Gerbong.gd" id="1_ibxl1"]
 [ext_resource type="PackedScene" uid="uid://8nceytgwwcui" path="res://Scenes/Components/Kereta/coupler.tscn" id="3_2jg16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibxl1"]
