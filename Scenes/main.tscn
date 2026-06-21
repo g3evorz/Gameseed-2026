@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dcol80whnldwb"]
 
 [ext_resource type="PackedScene" uid="uid://dukt3ykblby48" path="res://Scenes/Components/kereta.tscn" id="1_bo1nx"]
-[ext_resource type="Script" uid="uid://c43l2tgw5vtty" path="res://Script/GameManager.gd" id="1_jjvhh"]
+[ext_resource type="Script" path="res://Script/GameManager.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cuyokbbea850y" path="res://Scenes/Components/Worldborder.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://ciej1ht535fuo" path="res://Scenes/Components/Obstacle/platform.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://b2h0fb26gx8ox" path="res://Scenes/Components/Obstacle/wall.tscn" id="4_jjvhh"]
@@ -30,7 +30,8 @@ scale = Vector2(6.5655885, 1)
 [node name="Wall" parent="." unique_id=335254042 instance=ExtResource("4_jjvhh")]
 position = Vector2(10844.999, 105)
 scale = Vector2(-1.2030928, -3.9479203)
-[node name="Platform3" parent="." unique_id=1957348218 instance=ExtResource("3_8gbba")]
+
+[node name="Platform5" parent="." unique_id=1957348218 instance=ExtResource("3_8gbba")]
 position = Vector2(1930, -230)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2120541488]
@@ -88,7 +89,6 @@ theme_override_font_sizes/font_size = 30
 text = "RETRY"
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=1041411612]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
