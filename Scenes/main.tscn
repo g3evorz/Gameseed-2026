@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cuyokbbea850y" path="res://Scenes/Components/Worldborder.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://ciej1ht535fuo" path="res://Scenes/Components/Obstacle/platform.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://b2h0fb26gx8ox" path="res://Scenes/Components/Obstacle/wall.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://cpcua8add3i0a" path="res://Scenes/Components/Obstacle/object.tscn" id="6_21xkr"]
 
 [node name="Main" type="Node2D" unique_id=1169577489]
 script = ExtResource("1_jjvhh")
@@ -133,6 +134,21 @@ text = "RETRY"
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "EXIT"
+
+[node name="Object" parent="." unique_id=1192487518 instance=ExtResource("6_21xkr")]
+position = Vector2(1952, -284)
+
+[node name="Object2" parent="." unique_id=830675962 instance=ExtResource("6_21xkr")]
+position = Vector2(2216, -29)
+
+[node name="Object3" parent="." unique_id=378405500 instance=ExtResource("6_21xkr")]
+position = Vector2(2841, -26)
+
+[node name="Object4" parent="." unique_id=971647449 instance=ExtResource("6_21xkr")]
+position = Vector2(4517, -431)
+
+[node name="Object5" parent="." unique_id=1553031107 instance=ExtResource("6_21xkr")]
+position = Vector2(5156.9995, -430)
 
 [connection signal="pressed" from="CanvasLayer/GameOver/Retry" to="." method="_on_btn_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PauseLabel/VBoxContainer/Retry" to="." method="_on_btn_restart_pressed"]
