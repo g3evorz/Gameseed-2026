@@ -51,6 +51,10 @@ func _physics_process(delta):
 	
 	if is_instance_valid(node_target):
 		var jarak_y = node_target.global_position.y - global_position.y
+		
+		if is_on_floor() and jarak_y > 40.0:
+			global_position.y += 2.0
+			
 		if node_target.is_class("CharacterBody2D") and node_target.is_on_floor():
 			if is_on_floor():
 				velocity.y = clamp(jarak_y * kekakuan_rantai, -MAX_SPRING_VELOCITY, MAX_SPRING_VELOCITY)
@@ -138,7 +142,9 @@ func _physics_process(delta):
 		
 		# DETEKSI PUTUS EKSTREM TERAKHIR
 		if coupler_sensor.is_colliding():
-			putus_sambungan()
+			var hit_normal = coupler_sensor.get_collision_normal()
+			if abs(hit_normal.x) > abs(hit_normal.y):
+				putus_sambungan()
 		if jarak_sekarang > BATAS_MAKSIMUM_COUPLER + BATAS_EKSTRIM_X:
 			putus_sambungan()
 		if global_position.y - node_target.global_position.y > BATAS_EKSTRIM_Y:
