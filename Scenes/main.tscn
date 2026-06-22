@@ -1,12 +1,157 @@
 [gd_scene format=3 uid="uid://dcol80whnldwb"]
 
 [ext_resource type="PackedScene" uid="uid://dukt3ykblby48" path="res://Scenes/Components/kereta.tscn" id="1_bo1nx"]
+[ext_resource type="Script" path="res://Script/GameManager.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cuyokbbea850y" path="res://Scenes/Components/Worldborder.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://ciej1ht535fuo" path="res://Scenes/Components/Obstacle/platform.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://b2h0fb26gx8ox" path="res://Scenes/Components/Obstacle/wall.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://cpcua8add3i0a" path="res://Scenes/Components/Obstacle/object.tscn" id="6_21xkr"]
 
 [node name="Main" type="Node2D" unique_id=1169577489]
+script = ExtResource("1_jjvhh")
 
 [node name="Kereta" parent="." unique_id=1640051749 instance=ExtResource("1_bo1nx")]
-position = Vector2(2, -41)
+position = Vector2(-55, 185)
 
 [node name="World" parent="." unique_id=1368948942 instance=ExtResource("2_8gbba")]
-position = Vector2(0, 65)
+position = Vector2(3, 222)
+
+[node name="Platform2" parent="." unique_id=1914942858 instance=ExtResource("3_8gbba")]
+position = Vector2(2543, 25)
+scale = Vector2(6.5655885, 1)
+
+[node name="Platform3" parent="." unique_id=702469548 instance=ExtResource("3_8gbba")]
+position = Vector2(5516, -379)
+scale = Vector2(6.5655885, 1)
+
+[node name="Platform4" parent="." unique_id=2058346174 instance=ExtResource("3_8gbba")]
+position = Vector2(8808, -113)
+scale = Vector2(6.5655885, 1)
+
+[node name="Wall" parent="." unique_id=335254042 instance=ExtResource("4_jjvhh")]
+position = Vector2(10844.999, 105)
+scale = Vector2(-1.2030928, -3.9479203)
+
+[node name="Platform5" parent="." unique_id=1957348218 instance=ExtResource("3_8gbba")]
+position = Vector2(1930, -230)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2120541488]
+process_mode = 3
+
+[node name="GameOver" type="Control" parent="CanvasLayer" unique_id=134540017]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameOver" unique_id=1223796345]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 1919.0
+offset_bottom = 1081.0
+color = Color(0, 0, 0, 0.32156864)
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/GameOver" unique_id=673501981]
+layout_mode = 0
+offset_left = 762.0
+offset_top = 146.0
+offset_right = 1170.0
+offset_bottom = 243.0
+theme_override_font_sizes/font_size = 71
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOver" unique_id=1004787786]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 0
+offset_left = 824.0
+offset_top = 344.0
+offset_right = 1124.0
+offset_bottom = 744.0
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=1575947529]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+
+[node name="TotalCoin" type="Label" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=2118115816]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+
+[node name="Retry" type="Button" parent="CanvasLayer/GameOver" unique_id=1608156125]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 801.0
+offset_right = 1124.0
+offset_bottom = 851.0
+theme_override_font_sizes/font_size = 30
+text = "RETRY"
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=1041411612]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu" unique_id=1895378571]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.32156864)
+
+[node name="PauseLabel" type="Label" parent="CanvasLayer/PauseMenu" unique_id=1518707505]
+layout_mode = 0
+offset_left = 772.0
+offset_top = 176.0
+offset_right = 1172.0
+offset_bottom = 259.0
+theme_override_font_sizes/font_size = 60
+text = "PAUSE MENU "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/PauseLabel" unique_id=1448723986]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 0
+offset_left = 52.0
+offset_top = 242.0
+offset_right = 352.0
+offset_bottom = 642.0
+theme_override_constants/separation = 30
+
+[node name="Resume" type="Button" parent="CanvasLayer/PauseMenu/PauseLabel/VBoxContainer" unique_id=712932605]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "RESUME"
+
+[node name="Retry" type="Button" parent="CanvasLayer/PauseMenu/PauseLabel/VBoxContainer" unique_id=477364473]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "RETRY"
+
+[node name="Exit" type="Button" parent="CanvasLayer/PauseMenu/PauseLabel/VBoxContainer" unique_id=2064784973]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "EXIT"
+
+[node name="Object" parent="." unique_id=1192487518 instance=ExtResource("6_21xkr")]
+position = Vector2(1952, -284)
+
+[node name="Object2" parent="." unique_id=830675962 instance=ExtResource("6_21xkr")]
+position = Vector2(2216, -29)
+
+[node name="Object3" parent="." unique_id=378405500 instance=ExtResource("6_21xkr")]
+position = Vector2(2841, -26)
+
+[node name="Object4" parent="." unique_id=971647449 instance=ExtResource("6_21xkr")]
+position = Vector2(4517, -431)
+
+[node name="Object5" parent="." unique_id=1553031107 instance=ExtResource("6_21xkr")]
+position = Vector2(5156.9995, -430)
+
+[connection signal="pressed" from="CanvasLayer/GameOver/Retry" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/PauseLabel/VBoxContainer/Retry" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/PauseLabel/VBoxContainer/Exit" to="." method="_on_btn_quit_pressed"]
