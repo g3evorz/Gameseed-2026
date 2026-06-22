@@ -1,0 +1,95 @@
+extends CanvasLayer # Atau Node2D, sesuaikan dengan tipe node 'Main' Anda
+
+# --- REFERENSI NODE BERDASARKAN HIRARKI BARU ---
+@onready var label_dompet = $MarginUang/HBoxUang/LabelDompet
+
+# Node Item Laser
+@onready var label_lvl_laser = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemLaser/Label
+@onready var btn_beli_laser = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemLaser/Button
+
+# Node Item Defense
+@onready var label_lvl_defense = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Label
+@onready var btn_beli_defense = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Button
+
+# Node Item Mesin
+@onready var label_lvl_mesin = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemMesin/Label
+@onready var btn_beli_mesin = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemMesin/Button
+
+# --- KONFIGURASI HARGA (Harga Dasar & Kelipatan per Level) ---
+var harga_dasar_laser = 200
+var kelipatan_harga_laser = 100 
+
+var harga_dasar_defense = 150
+var kelipatan_harga_defense = 75
+
+var harga_dasar_mesin = 100
+var kelipatan_harga_mesin = 50
+
+func _ready():
+	# Muat data dari save file saat menu dibuka
+	ScoreManager.load_game_data()
+	update_semua_ui()
+
+# --- FUNGSI UPDATE TAMPILAN UI ---
+func update_semua_ui():
+	# Update Teks Dompet
+	label_dompet.text = "Saldo Koin: " + str(ScoreManager.dompet_koin)
+	
+	# 1. Update UI Laser
+	var level_l = ScoreManager.level_upgrade_laser
+	var harga_l = hitung_harga(harga_dasar_laser, kelipatan_harga_laser, level_l)
+	label_lvl_laser.text = "Laser (Lvl " + str(level_l) + ")"
+	btn_beli_laser.text = "Beli: " + str(harga_l)
+	btn_beli_laser.disabled = ScoreManager.dompet_koin < harga_l # Matikan tombol jika uang kurang
+	
+	# 2. Update UI Defense
+	var level_d = ScoreManager.level_upgrade_defense
+	var harga_d = hitung_harga(harga_dasar_defense, kelipatan_harga_defense, level_d)
+	label_lvl_defense.text = "Defense (Lvl " + str(level_d) + ")"
+	btn_beli_defense.text = "Beli: " + str(harga_d)
+	btn_beli_defense.disabled = ScoreManager.dompet_koin < harga_d
+	
+	# 3. Update UI Mesin
+	var level_m = ScoreManager.level_upgrade_mesin
+	var harga_m = hitung_harga(harga_dasar_mesin, kelipatan_harga_mesin, level_m)
+	label_lvl_mesin.text = "Mesin (Lvl " + str(level_m) + ")"
+	btn_beli_mesin.text = "Beli: " + str(harga_m)
+	btn_beli_mesin.disabled = ScoreManager.dompet_koin < harga_m
+
+# Fungsi bantuan untuk menghitung harga dinamis
+func hitung_harga(dasar: int, kelipatan: int, level_saat_ini: int) -> int:
+	return dasar + (kelipatan * level_saat_ini)
+
+
+# --- FUNGSI KLIK TOMBOL BELI (Hubungkan via Inspector ke masing-masing Button) ---
+
+func _on_btn_beli_laser_pressed():
+	var harga = hitung_harga(harga_dasar_laser, kelipatan_harga_laser, ScoreManager.level_upgrade_laser)
+	if ScoreManager.beli_upgrade(harga, "laser"):
+		update_semua_ui()
+
+func _on_btn_beli_defense_pressed():
+	var harga = hitung_harga(harga_dasar_defense, kelipatan_harga_defense, ScoreManager.level_upgrade_defense)
+	if ScoreManager.beli_upgrade(harga, "defense"):
+		update_semua_ui()
+
+func _on_btn_beli_mesin_pressed():
+	var harga = hitung_harga(harga_dasar_mesin, kelipatan_harga_mesin, ScoreManager.level_upgrade_mesin)
+	if ScoreManager.beli_upgrade(harga, "mesin"):
+		update_semua_ui()
+
+
+# --- FUNGSI NAVIGASI ---
+
+func _on_button_back_pressed():
+	# Contoh kembali ke Main Menu
+	# get_tree().change_scene_to_file("res://MainMenu.tscn")
+	pass
+
+func _on_button_home_pressed():
+	pass
+
+func _on_button_start_pressed():
+	# Pindah ke scene gameplay
+	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	pass

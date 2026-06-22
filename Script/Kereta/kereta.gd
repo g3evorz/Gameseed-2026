@@ -38,10 +38,16 @@ func _ready():
 			gerbong.global_position.x = kepala_kereta.global_position.x - ((i + 1) * JARAK_PIKSEL_ANTAR_GERBONG)
 			gerbong.global_position.y = kepala_kereta.global_position.y
 	
-	# Inisialisasi Health Point
+	# --- APLIKASI UPGRADE DEFENSE ---
+	# Misal: Tiap 1 level defense menambah 250 HP pada batas maksimal
+	var bonus_hp = ScoreManager.level_upgrade_defense * 250
+	max_health = 1000 + bonus_hp
 	current_health = max_health
+	print("Defense Level ", ScoreManager.level_upgrade_defense, " | HP Total: ", current_health)
+	
 	# Catat jumlah awal gerbong saat mulai
 	jumlah_gerbong_sebelumnya = rantai_permanen.size()
+
 
 func _physics_process(delta):
 	if is_game_over:
