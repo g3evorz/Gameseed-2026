@@ -22,10 +22,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	current_speed = BASE_SPEED
 
-func _process(delta):
-	if Input.is_action_pressed("shoot"):
-		gun.shoot()
-
 func _physics_process(delta):
 	# 1. Terapkan Gravitasi
 	if not is_on_floor():
@@ -34,9 +30,12 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 
-	# 2. Fitur Lompat
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	# 2. Fitur Lompat & Turun
+	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		
+	if Input.is_action_just_pressed("ui_down") and is_on_floor():
+		global_position.y += 2.0
 
 	# 3. Gerakan Otomatis ke Depan Gradually
 	current_speed = move_toward(current_speed, MAX_SPEED, ACCELERATION * delta)

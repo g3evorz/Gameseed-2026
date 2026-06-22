@@ -14,11 +14,19 @@ func _ready():
 	_sesuaikan_ukuran_radar()
 
 func _sesuaikan_ukuran_radar():
-	var ukuran_layar = get_viewport_rect().size
 	
-	# Menentukan jarak dan lebar pandangan berdasarkan layar
-	var jarak_pandang = ukuran_layar.x # Sejauh batas kanan layar
+	var ukuran_layar = get_viewport_rect().size
+	#var kamera = get_viewport().get_camera_2d()
+	#
+	#if kamera:
+		#ukuran_layar = ukuran_layar / kamera.zoom
+	
+	# Menentukan jarak dan lebar pandangan berdasarkan kamera yang sudah disesuaikan
+	var jarak_pandang = ukuran_layar.x / 2 # Sejauh batas kanan layar
 	var lebar_pandang = ukuran_layar.y # Selebar atas-bawah layar
+	
+	print("UKURAN JARAK RADAR: ", jarak_pandang)
+	print("UKURAN LEBAR RADAR: ", lebar_pandang)
 	
 	# Membuat wadah untuk titik-titik poligon
 	var titik_kerucut = PackedVector2Array()
