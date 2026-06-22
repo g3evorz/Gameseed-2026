@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var coupler_sensor = $Coupler/RayCast2D
 @onready var coupler_visual = $Coupler/Sprite2D
 
+@export var game_manager: Node2D
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var sedang_aktif = true
 var tersambung = true
@@ -31,6 +33,9 @@ var was_on_floor = false
 func putus_sambungan():
 	tersambung = false
 	sedang_aktif = false
+	
+	set_as_top_level(true)
+	
 	if is_instance_valid(coupler_visual):
 		coupler_visual.visible = false
 
@@ -38,7 +43,10 @@ func _physics_process(delta):
 	# --- 1. JIKA PUTUS SAMBUNGAN ---
 	if not tersambung or not sedang_aktif:
 		if is_on_floor():
-			velocity.x = move_toward(velocity.x, 0, 600 * delta)
+			if game_manager != null:
+				velocity.x = move_toward(velocity.x, -game_manager.current_world_speed, 600 * delta)
+			else:
+				velocity.x = move_toward(velocity.x, 0, 600 * delta)
 		velocity.y += gravity * delta
 		move_and_slide()
 		
@@ -151,4 +159,4 @@ func _physics_process(delta):
 			putus_sambungan()
 
 func hancur():
-	get_parent().queue_free()
+	queue_free()

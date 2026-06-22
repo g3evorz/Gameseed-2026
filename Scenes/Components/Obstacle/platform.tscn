@@ -1,16 +1,29 @@
 [gd_scene format=3 uid="uid://ciej1ht535fuo"]
 
+[ext_resource type="Script" uid="uid://bbu4urqab8mo1" path="res://Script/Obstacle/platform.gd" id="1_kqigm"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j08xn"]
 size = Vector2(381.5, 20)
 
-[node name="Platform" type="Node2D" unique_id=702469548]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=792758832]
+[node name="platform" type="StaticBody2D" unique_id=2120483876]
 collision_layer = 2
 collision_mask = 3
+script = ExtResource("1_kqigm")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=668076494]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=668076494]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=748666245]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=748666245]
 shape = SubResource("RectangleShape2D_j08xn")
 one_way_collision = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=86310258]
+
+[node name="LabelSpeed" type="Label" parent="CanvasLayer" unique_id=1387601163]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Platform" type="Node2D" parent="." unique_id=702469548]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Platform" unique_id=1778073639]
+
+[connection signal="screen_exited" from="Platform/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -2,8 +2,8 @@ extends Node2D
 
 signal kereta_hancur
 
-@onready var kepala_kereta = $Kepala/CharacterBody2D
-@onready var sprite_kepala = $Kepala/CharacterBody2D/Sprite2D
+@onready var kepala_kereta = $Kepala
+@onready var sprite_kepala = $Kepala/Sprite2D
 @onready var kumpulan_gerbong = $KumpulanGerbong
 @onready var label_jumlah_gerbong = $CanvasLayer/LabelJumlahGerbong
 
@@ -26,7 +26,7 @@ func _ready():
 
 	var daftar_wadah = kumpulan_gerbong.get_children()
 	for i in range(daftar_wadah.size()):
-		var gerbong = daftar_wadah[i].get_node_or_null("CharacterBody2D")
+		var gerbong = daftar_wadah[i]
 		if gerbong:
 			rantai_permanen.append(gerbong) 
 			gerbong.global_position.x = kepala_kereta.global_position.x - ((i + 1) * JARAK_PIKSEL_ANTAR_GERBONG)

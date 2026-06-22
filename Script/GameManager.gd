@@ -1,16 +1,28 @@
 extends Node2D
 
+# Kecepatan Platform
+
+@export var BASE_SPEED: float = 300.0 
+@export var MAX_SPEED: float = 1000.0 
+@export var ACCELERATION: float = 15.0 
+
+var current_world_speed: float = 0.0
+
 # Referensi Node
 @onready var node_kereta = $Kereta # Ini adalah node yang memakai kereta.gd
 @onready var ui_game_over = $CanvasLayer/GameOver
 @onready var ui_pause = $CanvasLayer/PauseMenu
 @onready var Score = $CanvasLayer/GameOver/VBoxContainer/ScoreLabel
 @onready var Coins = $CanvasLayer/GameOver/VBoxContainer/TotalCoin
+
 # Status Permainan
 enum GameState { MULAI, BERMAIN, PAUSED, GAME_OVER }
 var status_sekarang = GameState.MULAI
 
 func _ready():
+	# Inisialisasi Kecepatan Awal
+	current_world_speed = BASE_SPEED
+	
 	# 1. Pastikan UI tertutup saat game mulai
 	ui_game_over.hide()
 	ui_pause.hide()
@@ -30,6 +42,12 @@ func _process(delta):
 	# Fitur Pause menggunakan tombol Esc
 	if Input.is_action_just_pressed("ui_cancel"):
 		toggle_pause()
+		
+
+func _physics_process(delta):
+	# LOGIKA AKSELERASI DUNIA
+	if status_sekarang == GameState.BERMAIN:
+		current_world_speed = move_toward(current_world_speed, MAX_SPEED, ACCELERATION * delta)
 
 # --- LOGIKA PAUSE ---
 func toggle_pause():
