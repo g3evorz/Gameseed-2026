@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://bsgk5fq18supq"]
-
-[node name="RadarArea" type="Area2D" unique_id=363232625]
-collision_layer = 16
-collision_mask = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1825691972]
-polygon = PackedVector2Array(0, -1, 223, -99, 224, 83)

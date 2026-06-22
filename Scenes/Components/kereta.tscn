@@ -1,32 +1,23 @@
 [gd_scene format=3 uid="uid://dukt3ykblby48"]
 
-[ext_resource type="PackedScene" uid="uid://blvniqmv0cixc" path="res://Scenes/Components/Kereta/kepala.tscn" id="1_2wmvs"]
-[ext_resource type="Script" uid="uid://hopwy0agpns4" path="res://Script/Kereta/kereta.gd" id="1_l81m1"]
-[ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_k3j8q"]
+[ext_resource type="Script" uid="uid://b6wxh3yelr5j6" path="res://Script/kereta.gd" id="1_l81m1"]
+[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_qepfn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l81m1"]
+size = Vector2(261, 77)
 
 [node name="Kereta" type="Node2D" unique_id=1640051749]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1867387395]
 script = ExtResource("1_l81m1")
 
-[node name="Kepala" parent="." unique_id=1780252134 instance=ExtResource("1_2wmvs")]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1859086690]
 
-[node name="KumpulanGerbong" type="Node2D" parent="." unique_id=399389016]
-position = Vector2(-280, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=590275025]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_l81m1")
 
-[node name="Gerbong1" parent="KumpulanGerbong" unique_id=2090834745 instance=ExtResource("3_k3j8q")]
-
-[node name="Gerbong2" parent="KumpulanGerbong" unique_id=286542621 instance=ExtResource("3_k3j8q")]
-
-[node name="Gerbong3" parent="KumpulanGerbong" unique_id=422210554 instance=ExtResource("3_k3j8q")]
-
-[node name="Gerbong4" parent="KumpulanGerbong" unique_id=434939152 instance=ExtResource("3_k3j8q")]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=291053721]
-
-[node name="LabelJumlahGerbong" type="Label" parent="CanvasLayer" unique_id=723256573]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 40.0
-offset_bottom = 11.5
-grow_vertical = 2
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=746979853]
+position = Vector2(2.4999924, -1)
+scale = Vector2(2.0234377, 0.59375)
+texture = ExtResource("1_qepfn")
