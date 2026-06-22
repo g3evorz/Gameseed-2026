@@ -12,17 +12,17 @@
 script = ExtResource("1_jjvhh")
 
 [node name="Kereta" parent="." unique_id=1640051749 instance=ExtResource("1_bo1nx")]
-position = Vector2(0, 185)
+position = Vector2(0, -100)
 
 [node name="World" parent="." unique_id=1368948942 instance=ExtResource("2_8gbba")]
-position = Vector2(3, 222)
+position = Vector2(3, 0)
 
 [node name="PlatfromSpawner" type="Node2D" parent="." unique_id=1110252347 node_paths=PackedStringArray("player", "game_manager")]
-position = Vector2(1000, -10)
+position = Vector2(1000, 0)
 script = ExtResource("4_21xkr")
 item_to_spawn = ExtResource("3_8gbba")
 player = NodePath("../Kereta")
-spawn_interval = 10.0
+spawn_interval = 5.0
 game_manager = NodePath("..")
 
 [node name="Object4" parent="." unique_id=971647449 instance=ExtResource("6_21xkr")]

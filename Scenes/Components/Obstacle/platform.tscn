@@ -25,5 +25,7 @@ offset_bottom = 23.0
 [node name="Platform" type="Node2D" parent="." unique_id=702469548]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Platform" unique_id=1778073639]
+position = Vector2(321, 0)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="screen_exited" from="Platform/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
