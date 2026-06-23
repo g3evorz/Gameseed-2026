@@ -10,9 +10,15 @@ extends Node2D
 var can_shoot: bool = true 
 var daftar_target: Array[Node2D] = [] 
 
-func _ready():
-	_sesuaikan_ukuran_radar()
+# --- VARIABEL POWER UP ---
+var is_double_laser: bool = false
+var timer_double_laser: float = 0.0
+@export var jarak_antar_laser: float = 15.0 # Jarak piksel antar 2 laser
 
+func _ready():
+	add_to_group("TurretGroup")
+	_sesuaikan_ukuran_radar()
+	
 func _sesuaikan_ukuran_radar():
 	
 	var ukuran_layar = get_viewport_rect().size
@@ -45,6 +51,12 @@ func _sesuaikan_ukuran_radar():
 
 func _process(_delta):
 	_proses_auto_aim()
+	
+	if is_double_laser:
+		timer_double_laser -= _delta
+		if timer_double_laser <= 0:
+			is_double_laser = false
+			print("Power up habis, kembali ke 1 laser.")
 
 func _proses_auto_aim():
 	daftar_target = daftar_target.filter(func(target): return is_instance_valid(target))
@@ -66,18 +78,48 @@ func shoot():
 		
 	can_shoot = false 
 		
-	var bullet = bullet_scene.instantiate()
-	get_tree().current_scene.add_child(bullet) 
+	if is_double_laser and daftar_target.size() >= 2:
+		# --- MODE MULTI-TARGET: Tembak 2 musuh yang berbeda ---
+		var musuh_1 = daftar_target[0]
+		var musuh_2 = daftar_target[1]
+		
+		# Tembakkan laser ke koordinat masing-masing musuh
+		_spawn_laser_ke_target(muzzle.global_position, musuh_1.global_position)
+		_spawn_laser_ke_target(muzzle.global_position, musuh_2.global_position)
+		
+	elif is_double_laser and daftar_target.size() == 1:
+		# --- MODE DOUBLE LASER NORMAL: 2 Laser fokus ke 1 musuh ---
+		var offset_vektor = muzzle.global_transform.y * (jarak_antar_laser / 2.0)
+		var musuh = daftar_target[0]
+		
+		# Tembak paralel seperti biasa tapi arahkan ke musuh yang sama
+		_spawn_laser_ke_target(muzzle.global_position - offset_vektor, musuh.global_position)
+		_spawn_laser_ke_target(muzzle.global_position + offset_vektor, musuh.global_position)
+		
+	elif daftar_target.size() > 0:
+		# --- MODE 1 LASER (Normal / Power-up tidak aktif) ---
+		_spawn_laser_ke_target(muzzle.global_position, daftar_target[0].global_position)
 
-	# 1. Posisikan dan putar peluru TERLEBIH DAHULU
-	bullet.global_position = muzzle.global_position
-	bullet.global_rotation = muzzle.global_rotation
-	
-	# 2. BARU SURUH PELURU MENEMBAK/MENGKALKULASI
-	bullet.fire()
-
+	# Cooldown tembakan
 	await get_tree().create_timer(fire_rate).timeout
 	can_shoot = true
+
+# Fungsi bantuan yang diperbarui agar peluru memutar dirinya sendiri ke arah target
+func _spawn_laser_ke_target(posisi_spawn: Vector2, posisi_target: Vector2):
+	var bullet = bullet_scene.instantiate()
+	get_tree().current_scene.add_child(bullet) 
+	
+	bullet.global_position = posisi_spawn
+	
+	# PENTING: Gunakan look_at agar peluru langsung mengarah tepat ke koordinat target
+	bullet.look_at(posisi_target)
+	
+	bullet.fire()
+	
+func aktifkan_power_up_laser(durasi: float):
+	is_double_laser = true
+	timer_double_laser = durasi
+	print("Turret masuk ke mode Double Laser selama ", durasi, " detik!")
 
 # --- SINYAL DARI RADAR AREA ---
 func _on_radar_area_body_entered(body):
