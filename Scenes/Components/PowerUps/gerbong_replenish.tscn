@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cpbjju48r073"]
+
+[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_beoey"]
+[ext_resource type="Script" uid="uid://duwxwccoo6yw0" path="res://Script/PowerUps/GerbongReplenish.gd" id="1_wa1qd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wa1qd"]
+
+[node name="GerbongReplenish" type="Area2D" unique_id=226808037]
+collision_layer = 2
+script = ExtResource("1_wa1qd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1140138066]
+texture = ExtResource("1_beoey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1488865203]
+scale = Vector2(-6.9171505, -6.9171505)
+shape = SubResource("CircleShape2D_wa1qd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

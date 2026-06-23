@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dukt3ykblby48" path="res://Scenes/Components/kereta.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://c43l2tgw5vtty" path="res://Script/System/GameManager.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cuyokbbea850y" path="res://Scenes/Components/Worldborder.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://do7otuteiauu" path="res://Scenes/Components/levelsSpawner.tscn" id="4_jjvhh"]
 
 [node name="Main" type="Node2D" unique_id=1169577489]
@@ -11,6 +12,7 @@ script = ExtResource("1_jjvhh")
 [node name="Kereta" parent="." unique_id=1640051749 node_paths=PackedStringArray("game_manager") groups=["Player"] instance=ExtResource("1_bo1nx")]
 position = Vector2(0, -50)
 game_manager = NodePath("..")
+scene_gerbong = ExtResource("3_kry3j")
 
 [node name="World" parent="." unique_id=1368948942 instance=ExtResource("2_8gbba")]
 position = Vector2(3, 0)
