@@ -19,7 +19,7 @@ func fire():
 		var musuh = ray_cast.get_collider()
 		
 		if musuh.has_method("take_damage"):
-			musuh.take_damage(10)
+			musuh.take_damage(ScoreManager.level_upgrade_laser * 10)
 		else:
 			print("Nabrak tembok/benda mati, abaikan.")
 	else:
