@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dukt3ykblby48" path="res://Scenes/Components/kereta.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://c43l2tgw5vtty" path="res://Script/System/GameManager.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cuyokbbea850y" path="res://Scenes/Components/Worldborder.tscn" id="2_8gbba"]
-[ext_resource type="Script" uid="uid://dcsbhlflouiv0" path="res://Script/System/LevelSpawner.gd" id="4_21xkr"]
-[ext_resource type="PackedScene" uid="uid://70puepcgsjlx" path="res://Scenes/Levels/basicLandscapes.tscn" id="5_6bp64"]
+[ext_resource type="PackedScene" uid="uid://do7otuteiauu" path="res://Scenes/Components/levelsSpawner.tscn" id="4_jjvhh"]
 
 [node name="Main" type="Node2D" unique_id=1169577489]
 script = ExtResource("1_jjvhh")
@@ -16,12 +15,9 @@ game_manager = NodePath("..")
 [node name="World" parent="." unique_id=1368948942 instance=ExtResource("2_8gbba")]
 position = Vector2(3, 0)
 
-[node name="LevelsSpawner" type="Node2D" parent="." unique_id=1110252347 node_paths=PackedStringArray("player", "game_manager")]
-position = Vector2(1013, 0)
-script = ExtResource("4_21xkr")
-item_to_spawn = ExtResource("5_6bp64")
+[node name="LevelsSpawner" parent="." unique_id=429419869 node_paths=PackedStringArray("player", "game_manager") instance=ExtResource("4_jjvhh")]
+position = Vector2(1013, -1)
 player = NodePath("../Kereta")
-spawn_interval = 10.0
 game_manager = NodePath("..")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2120541488]
