@@ -39,7 +39,7 @@ func mulai_game():
 	status_sekarang = GameState.BERMAIN
 	# Bisa tambahkan logika lain seperti hitung mundur 3..2..1 di sini
 
-func _process(delta):
+func _process(_delta):
 	# Fitur Pause menggunakan tombol Esc
 	if Input.is_action_just_pressed("ui_cancel"):
 		toggle_pause()

@@ -10,7 +10,10 @@ signal kereta_hancur
 @export var JARAK_PIKSEL_ANTAR_GERBONG = 350.0 
 @export var KEKAKUAN_DASAR = 15.0 
 @export var FAKTOR_AWAL = 0.95 
-@export var FAKTOR_PELURUHAN = 0.8 
+@export var FAKTOR_PELURUHAN = 0.8
+@export var DAMAGE_GERBONG_PUTUS = 200
+
+@export var game_manager = Node2D
 
 var rantai_permanen = [] 
 
