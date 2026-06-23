@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ObstacleData" format=3 uid="uid://bw6wnloibyrcs"]
+
+[ext_resource type="PackedScene" uid="uid://dcoj4jkya8od8" path="res://Scenes/Components/Obstacle/bigAsteroid.tscn" id="1_70nic"]
+[ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/System/ObstacleData.gd" id="2_csmlr"]
+
+[resource]
+script = ExtResource("2_csmlr")
+obstacle_scene = ExtResource("1_70nic")
+obstacle_type = 1
+metadata/_custom_type_script = "uid://brhx3skaebmcy"

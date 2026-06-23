@@ -1,11 +1,12 @@
 extends StaticBody2D
 
-@export var max_hp: int = 30
+@export var data: ObstacleData
+
 var game_manager: Node2D = null
 var current_hp: int
 
 func _ready():
-	current_hp = max_hp
+	current_hp = data.max_hp
 
 func _physics_process(delta):
 	# Object berjalan sendiri berdasarkan kecepatan global
