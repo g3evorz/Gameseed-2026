@@ -12,15 +12,16 @@ signal kereta_hancur
 @export var FAKTOR_AWAL = 0.95 
 @export var FAKTOR_PELURUHAN = 0.8 
 
-@export var game_manager: Node2D
-
 var rantai_permanen = [] 
 
-# --- Variabel Tambahan untuk Sistem Health & Lose State ---
-var max_health: int = 0
+# --- Variabel Sistem Health & Lose State ---
+var max_health: int = 1000
 var current_health: int = 0
 var is_game_over: bool = false
 var posisi_x_terakhir: float = 0.0
+
+# Variabel baru untuk melacak jumlah gerbong frame lalu
+var jumlah_gerbong_sebelumnya: int = 0 
 
 func _ready():
 	ScoreManager.reset_current_run()
@@ -36,11 +37,19 @@ func _ready():
 		if game_manager != null:
 				gerbong.game_manager = self.game_manager
 	
-	# Inisialisasi Health berdasarkan jumlah gerbong awal
-	max_health = rantai_permanen.size()
+	# --- APLIKASI UPGRADE DEFENSE ---
+	# Misal: Tiap 1 level defense menambah 250 HP pada batas maksimal
+	var bonus_hp = ScoreManager.level_upgrade_defense * 250
+	max_health = 1000 + bonus_hp
 	current_health = max_health
+	print("Defense Level ", ScoreManager.level_upgrade_defense, " | HP Total: ", current_health)
+	
+	# Catat jumlah awal gerbong saat mulai
+	jumlah_gerbong_sebelumnya = rantai_permanen.size()
 
-func _physics_process(_delta):
+
+func _physics_process(delta):
+	# Jika game over, hentikan seluruh proses kalkulasi rantai
 	if is_game_over:
 		return
 		
@@ -90,35 +99,42 @@ func _physics_process(_delta):
 		var kalkulasi_kekakuan = KEKAKUAN_DASAR * FAKTOR_AWAL * pow(FAKTOR_PELURUHAN, i)
 		gerbong.kekakuan_rantai = max(kalkulasi_kekakuan, 5.0)
 
-	# --- LOGIKA HEALTH & LOSE STATE ---
-	# Jika jumlah aktif kurang dari health saat ini, berarti ada gerbong yang putus di frame ini
-	if current_health > jumlah_aktif:
-		var gerbong_hilang = current_health - jumlah_aktif
-		terima_damage(gerbong_hilang)
+	# --- LOGIKA HEALTH ---
+	# Cek jika jumlah gerbong aktif sekarang LEBIH SEDIKIT dari frame sebelumnya
+	if jumlah_gerbong_sebelumnya > jumlah_aktif:
+		var gerbong_hilang = jumlah_gerbong_sebelumnya - jumlah_aktif
+		var total_damage = gerbong_hilang * DAMAGE_GERBONG_PUTUS
+		
+		print("Gerbong putus! Jumlah: ", gerbong_hilang)
+		terima_damage(total_damage)
 	
-	# Perbarui status health ke jumlah gerbong aktif saat ini
-	current_health = jumlah_aktif
+	# Update variabel referensi untuk dicek di frame berikutnya
+	jumlah_gerbong_sebelumnya = jumlah_aktif
 		
 	if label_jumlah_gerbong:
-		label_jumlah_gerbong.text = "Gerbong/Health: " + str(current_health)
+		label_jumlah_gerbong.text = "HP: " + str(current_health) + " | Gerbong: " + str(jumlah_aktif)
 
-	# Jika tidak ada gerbong tersisa, picu Game Over
+
+# --- FUNGSI DAMAGE UMUM ---
+# Fungsi ini dibuat fleksibel sehingga bisa dipanggil dari objek apa saja
+func terima_damage(jumlah_damage: int):
+	if is_game_over:
+		return
+		
+	current_health -= jumlah_damage
+	print("Terkena Damage: ", jumlah_damage, " | Sisa HP: ", current_health)
+	
+	# Opsional: Tambahkan efek visual berkedip merah atau screen shake di sini
+	
 	if current_health <= 0:
+		current_health = 0 # Cegah HP menjadi minus
 		trigger_game_over()
 
 
-# Fungsi saat gerbong putus (Bisa untuk menambah efek visual)
-func terima_damage(jumlah_hilang: int):
-	print("Damage diterima! Kehilangan ", jumlah_hilang, " gerbong.")
-	# Anda bisa memanggil efek Camera Shake atau merubah warna sprite kereta menjadi merah sesaat di sini
-
-
-# Fungsi eksekusi kekalahan
 func trigger_game_over():
 	is_game_over = true
 	
 	if is_instance_valid(kepala_kereta) and kepala_kereta.has_method("mati"):
 		kepala_kereta.mati()
 		
-	# Pancarkan sinyal agar Game Manager yang mengurus sisa pekerjaannya (UI & Save)
 	emit_signal("kereta_hancur")
