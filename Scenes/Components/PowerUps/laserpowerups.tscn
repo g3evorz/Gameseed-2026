@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cgtiocmpfpswc"]
+
+[ext_resource type="Script" uid="uid://1m46ivr4vptt" path="res://Script/PowerUps/LaserPowerUps.gd" id="1_ajccb"]
+[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_t1qtg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vvybm"]
+
+[node name="Node2D" type="Area2D" unique_id=1037329452]
+scale = Vector2(5.947415, 5.947415)
+collision_layer = 2
+script = ExtResource("1_ajccb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=9474301]
+scale = Vector2(0.112629265, 0.11119741)
+texture = ExtResource("1_t1qtg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1962185304]
+shape = SubResource("CircleShape2D_vvybm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
