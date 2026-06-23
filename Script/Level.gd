@@ -1,13 +1,31 @@
 extends Node2D
 
+# [Opsional] Biarkan jika Anda menggunakan metode Dependency Injection
 var game_manager: Node2D = null
 
-func _process(delta):
+# Referensi ke wadah semua spawner rintangan
+@onready var spawners_container: Node2D = $Spawners
+
+func _ready() -> void:
+	# Memicu semua spawner rintangan saat chunk baru saja dimuat ke arena
+	trigger_all_spawners()
+
+func _process(delta: float) -> void:
 	# Posisi x berkurang berdasarkan kecepatan global
 	if game_manager != null:
 		position.x -= game_manager.current_world_speed * delta
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	print("Level Terhapus !")
-	queue_free()	
-	
+	# Membersihkan memori saat chunk sudah tidak terlihat
+	print("Level Chunk [", name, "] Terhapus!")
+	queue_free()
+
+func trigger_all_spawners() -> void:
+	# Keamanan: Pastikan container spawner ada
+	if not spawners_container:
+		return
+		
+	# Looping ke semua spawner dan panggil fungsinya
+	for spawner in spawners_container.get_children():
+		if spawner.has_method("spawn_obstacle"):
+			spawner.spawn_obstacle()
