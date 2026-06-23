@@ -2,8 +2,8 @@ extends Node2D
 
 signal kereta_hancur
 
-@onready var kepala_kereta = $Kepala/CharacterBody2D
-@onready var sprite_kepala = $Kepala/CharacterBody2D/Sprite2D
+@onready var kepala_kereta = $Kepala
+@onready var sprite_kepala = $Kepala/Sprite2D
 @onready var kumpulan_gerbong = $KumpulanGerbong
 @onready var label_jumlah_gerbong = $CanvasLayer/LabelJumlahGerbong
 
@@ -11,9 +11,6 @@ signal kereta_hancur
 @export var KEKAKUAN_DASAR = 15.0 
 @export var FAKTOR_AWAL = 0.95 
 @export var FAKTOR_PELURUHAN = 0.8 
-
-# --- TAMBAHAN: Export Damage agar mudah diubah di Inspector ---
-@export var DAMAGE_GERBONG_PUTUS: int = 200 
 
 var rantai_permanen = [] 
 
@@ -32,11 +29,13 @@ func _ready():
 
 	var daftar_wadah = kumpulan_gerbong.get_children()
 	for i in range(daftar_wadah.size()):
-		var gerbong = daftar_wadah[i].get_node_or_null("CharacterBody2D")
+		var gerbong = daftar_wadah[i]
 		if gerbong:
 			rantai_permanen.append(gerbong) 
 			gerbong.global_position.x = kepala_kereta.global_position.x - ((i + 1) * JARAK_PIKSEL_ANTAR_GERBONG)
 			gerbong.global_position.y = kepala_kereta.global_position.y
+		if game_manager != null:
+				gerbong.game_manager = self.game_manager
 	
 	# --- APLIKASI UPGRADE DEFENSE ---
 	# Misal: Tiap 1 level defense menambah 250 HP pada batas maksimal
@@ -50,6 +49,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	# Jika game over, hentikan seluruh proses kalkulasi rantai
 	if is_game_over:
 		return
 		
