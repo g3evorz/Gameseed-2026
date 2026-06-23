@@ -4,8 +4,6 @@
 [ext_resource type="Script" uid="uid://bbu4urqab8mo1" path="res://Script/Level.gd" id="1_thjbd"]
 [ext_resource type="PackedScene" uid="uid://dfoomfadjrnm4" path="res://Scenes/Components/obstacleSpawner.tscn" id="3_l4xcd"]
 [ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/System/ObstacleData.gd" id="4_vnr04"]
-[ext_resource type="Resource" uid="uid://bw6wnloibyrcs" path="res://Script/Data/big_asteroid.tres" id="5_toyg1"]
-[ext_resource type="Resource" uid="uid://b3eb6mfvn044l" path="res://Script/Data/small_asteroid.tres" id="6_fka3a"]
 
 [node name="BasicLandscapes" type="Node2D" unique_id=799622499]
 script = ExtResource("1_thjbd")
@@ -29,50 +27,50 @@ position = Vector2(3938, -331)
 
 [node name="ObstacleSpawner" parent="Spawners" unique_id=837773415 instance=ExtResource("3_l4xcd")]
 position = Vector2(254, -248)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fka3a"), ExtResource("5_toyg1")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([])
 
 [node name="ObstacleSpawner2" parent="Spawners" unique_id=1764472550 instance=ExtResource("3_l4xcd")]
 position = Vector2(498, -248)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fka3a"), ExtResource("5_toyg1")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([])
 
 [node name="ObstacleSpawner3" parent="Spawners" unique_id=1164452393 instance=ExtResource("3_l4xcd")]
 position = Vector2(787, -248)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fka3a"), ExtResource("5_toyg1")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([])
 
 [node name="ObstacleSpawner4" parent="Spawners" unique_id=380828871 instance=ExtResource("3_l4xcd")]
 position = Vector2(1539, -654)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fka3a"), ExtResource("5_toyg1")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([])
 
 [node name="ObstacleSpawner5" parent="Spawners" unique_id=1913099008 instance=ExtResource("3_l4xcd")]
 position = Vector2(1783, -654)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fka3a"), ExtResource("5_toyg1")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([])
 
 [node name="ObstacleSpawner6" parent="Spawners" unique_id=441410122 instance=ExtResource("3_l4xcd")]
 position = Vector2(2072, -654)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fka3a"), ExtResource("5_toyg1")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([])
 
 [node name="ObstacleSpawner7" parent="Spawners" unique_id=1990665921 instance=ExtResource("3_l4xcd")]
 position = Vector2(2805, -384)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fka3a"), ExtResource("5_toyg1")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([])
 
 [node name="ObstacleSpawner8" parent="Spawners" unique_id=1775246808 instance=ExtResource("3_l4xcd")]
 position = Vector2(3049, -384)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fka3a"), ExtResource("5_toyg1")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([])
 
 [node name="ObstacleSpawner9" parent="Spawners" unique_id=1976000251 instance=ExtResource("3_l4xcd")]
 position = Vector2(3338, -384)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fka3a"), ExtResource("5_toyg1")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([])
 
 [node name="ObstacleSpawner10" parent="Spawners" unique_id=1803498278 instance=ExtResource("3_l4xcd")]
 position = Vector2(1539, -55)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fka3a"), ExtResource("5_toyg1")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([])
 
 [node name="ObstacleSpawner11" parent="Spawners" unique_id=64424452 instance=ExtResource("3_l4xcd")]
 position = Vector2(1783, -55)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fka3a"), ExtResource("5_toyg1")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([])
 
 [node name="ObstacleSpawner12" parent="Spawners" unique_id=382322877 instance=ExtResource("3_l4xcd")]
 position = Vector2(2072, -55)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fka3a"), ExtResource("5_toyg1")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([])
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
