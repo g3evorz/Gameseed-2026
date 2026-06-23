@@ -51,13 +51,10 @@ func putus_sambungan():
 func _physics_process(delta):
 	# --- 1. JIKA PUTUS SAMBUNGAN ---
 	if not tersambung or not sedang_aktif:
-		if is_on_floor():
-			if game_manager != null:
-				print("Ada game manager")
-				velocity.x = move_toward(velocity.x, -game_manager.current_world_speed, 600 * delta)
-			else:
-				velocity.x = move_toward(velocity.x, 0, 600 * delta)
-				
+		if game_manager != null:
+			position.x -= game_manager.current_world_speed * delta
+		else:
+			velocity.x = move_toward(velocity.x, 0, 600 * delta)
 		velocity.y += gravity * delta
 		move_and_slide()
 		
