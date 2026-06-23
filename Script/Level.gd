@@ -8,6 +8,6 @@ func _process(delta):
 		position.x -= game_manager.current_world_speed * delta
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	print("Platform Terhapus !")
+	print("Level Terhapus !")
 	queue_free()	
 	

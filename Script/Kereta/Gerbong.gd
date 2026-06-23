@@ -32,7 +32,18 @@ func putus_sambungan():
 	tersambung = false
 	sedang_aktif = false
 	
+	var pos_global_lama = global_position
+	var rot_global_lama = global_rotation
+	
 	set_as_top_level(true)
+	
+	global_position = pos_global_lama
+	global_rotation = rot_global_lama
+
+	
+	# Sentakan kehilangan momentum saat coupler putus, agar gerbong langsung
+	# terasa "ketinggalan" dari rangkaian, bukan terus melaju sekecepatan kereta.
+	velocity.x *= 0.4
 	
 	if is_instance_valid(coupler_visual):
 		coupler_visual.visible = false
@@ -41,10 +52,10 @@ func _physics_process(delta):
 	# --- 1. JIKA PUTUS SAMBUNGAN ---
 	if not tersambung or not sedang_aktif:
 		if is_on_floor():
-			#if game_manager != null:
-				#velocity.x = move_toward(velocity.x, -game_manager.current_world_speed, 600 * delta)
-			#else:
-			velocity.x = move_toward(velocity.x, 0, 600 * delta)
+			if game_manager != null:
+				velocity.x = move_toward(velocity.x, -game_manager.current_world_speed, 600 * delta)
+			else:
+				velocity.x = move_toward(velocity.x, 0, 600 * delta)
 				
 		velocity.y += gravity * delta
 		move_and_slide()
@@ -114,19 +125,30 @@ func _physics_process(delta):
 				arah_x = 1.0
 		
 		# --- KINEMATIC TUG (PRIORITAS TINGGI: Jarak Sumbu X) ---
-		var benturan_tug: KinematicCollision2D = null
+		var akan_macet = false
 		var jarak_x_absolut = abs(vektor_jarak.x) # Isolasi perhitungan dari sumbu Y
 		
 		if jarak_x_absolut > BATAS_MAKSIMUM_COUPLER:
 			var overstretch = jarak_x_absolut - BATAS_MAKSIMUM_COUPLER
-			benturan_tug = move_and_collide(Vector2(arah_x * overstretch, 0))
+			var KOREKSI_MAX_PER_FRAME = 6.0  # batasi agar tidak "snap" sekali jalan
+			var koreksi = min(overstretch, KOREKSI_MAX_PER_FRAME)
+			var gerak_tug = Vector2(arah_x * koreksi, 0)
+			var posisi_sebelum_dbg = global_position
+			if test_move(global_transform, gerak_tug):
+				akan_macet = true
+			else:
+				move_and_collide(gerak_tug)
 			
 		elif jarak_x_absolut < BATAS_MINIMUM_COUPLER:
 			var overcompression = BATAS_MINIMUM_COUPLER - jarak_x_absolut
-			benturan_tug = move_and_collide(Vector2(-arah_x * overcompression, 0))
+			var gerak_tug2 = Vector2(-arah_x * overcompression, 0)
+			if test_move(global_transform, gerak_tug2):
+				akan_macet = true
+			else:
+				move_and_collide(gerak_tug2)
 
 		# --- PRIORITAS SEDANG: Penanganan Macet ---
-		if benturan_tug:
+		if akan_macet:
 			putus_sambungan()
 
 		# Hitung Ulang Titik Awal JIKA Kinematic Tug menggeser posisi gerbong

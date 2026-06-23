@@ -11,11 +11,14 @@ position = Vector2(499, -202)
 scale = Vector2(1.8031046, 0.7511063)
 
 [node name="platform2" parent="." unique_id=1039624759 instance=ExtResource("1_5wop5")]
-position = Vector2(994, -630)
+position = Vector2(1782, -600)
+scale = Vector2(2.2800012, 1)
 
 [node name="platform3" parent="." unique_id=832513540 instance=ExtResource("1_5wop5")]
-position = Vector2(1669.9999, -370)
+position = Vector2(3049, -325)
 scale = Vector2(1.8764838, 0.7656396)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=60705751]
-position = Vector2(2559, -376)
+position = Vector2(3938, -331)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
