@@ -28,7 +28,6 @@ func _spawn_item() -> void:
 	
 	if game_manager != null:
 		print("Level Spawned !")
-		
 		spawned_instance.game_manager = self.game_manager
 
 	spawned_instance.position = Vector2(self.global_position.x, self.global_position.y)

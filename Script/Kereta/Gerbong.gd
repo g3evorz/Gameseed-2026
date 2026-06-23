@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var coupler_sensor = $Coupler/RayCast2D
 @onready var coupler_visual = $Coupler/Sprite2D
 
-@export var game_manager: Node2D
+@export var game_manager: Node2D = null	
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var sedang_aktif = true
@@ -53,6 +53,7 @@ func _physics_process(delta):
 	if not tersambung or not sedang_aktif:
 		if is_on_floor():
 			if game_manager != null:
+				print("Ada game manager")
 				velocity.x = move_toward(velocity.x, -game_manager.current_world_speed, 600 * delta)
 			else:
 				velocity.x = move_toward(velocity.x, 0, 600 * delta)

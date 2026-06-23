@@ -12,6 +12,8 @@ signal kereta_hancur
 @export var FAKTOR_AWAL = 0.95 
 @export var FAKTOR_PELURUHAN = 0.8 
 
+@export var game_manager: Node2D
+
 var rantai_permanen = [] 
 
 # --- Variabel Tambahan untuk Sistem Health & Lose State ---
@@ -31,13 +33,14 @@ func _ready():
 			rantai_permanen.append(gerbong) 
 			gerbong.global_position.x = kepala_kereta.global_position.x - ((i + 1) * JARAK_PIKSEL_ANTAR_GERBONG)
 			gerbong.global_position.y = kepala_kereta.global_position.y
+		if game_manager != null:
+				gerbong.game_manager = self.game_manager
 	
 	# Inisialisasi Health berdasarkan jumlah gerbong awal
 	max_health = rantai_permanen.size()
 	current_health = max_health
 
-func _physics_process(delta):
-	# Jika game over, hentikan seluruh proses kalkulasi rantai
+func _physics_process(_delta):
 	if is_game_over:
 		return
 		
