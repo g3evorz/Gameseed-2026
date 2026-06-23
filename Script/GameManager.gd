@@ -21,6 +21,7 @@ func _ready():
 		node_kereta.connect("kereta_hancur", Callable(self, "_on_game_over"))
 		
 	mulai_game()
+	
 
 func mulai_game():
 	status_sekarang = GameState.BERMAIN

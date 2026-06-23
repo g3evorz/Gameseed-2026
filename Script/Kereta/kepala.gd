@@ -20,7 +20,14 @@ var is_dead: bool = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	current_speed = BASE_SPEED
+	# Membaca level upgrade mesin dari autoload. 
+	# Misal: Tiap 1 level menambah Base Speed dan Max Speed sebesar 50
+	var bonus_kecepatan = ScoreManager.level_upgrade_mesin * 50.0
+	
+	current_speed = BASE_SPEED + bonus_kecepatan
+	MAX_SPEED = MAX_SPEED + bonus_kecepatan
+	
+	print("Mesin Level ", ScoreManager.level_upgrade_mesin, " | Speed Awal: ", current_speed)
 
 func _process(delta):
 	if Input.is_action_pressed("shoot"):
