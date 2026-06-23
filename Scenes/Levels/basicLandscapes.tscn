@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://70puepcgsjlx"]
+
+[ext_resource type="PackedScene" uid="uid://ciej1ht535fuo" path="res://Scenes/Components/Obstacle/platform.tscn" id="1_5wop5"]
+[ext_resource type="Script" uid="uid://bbu4urqab8mo1" path="res://Script/Level.gd" id="1_thjbd"]
+
+[node name="BasicLandscapes" type="Node2D" unique_id=799622499]
+script = ExtResource("1_thjbd")
+
+[node name="platform" parent="." unique_id=2120483876 instance=ExtResource("1_5wop5")]
+position = Vector2(499, -202)
+scale = Vector2(1.8031046, 0.7511063)
+
+[node name="platform2" parent="." unique_id=1039624759 instance=ExtResource("1_5wop5")]
+position = Vector2(994, -630)
+
+[node name="platform3" parent="." unique_id=832513540 instance=ExtResource("1_5wop5")]
+position = Vector2(1669.9999, -370)
+scale = Vector2(1.8764838, 0.7656396)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=60705751]
+position = Vector2(2559, -376)

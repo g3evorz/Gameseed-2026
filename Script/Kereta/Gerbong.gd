@@ -23,10 +23,8 @@ var was_on_floor = false
 @export var BATAS_MINIMUM_COUPLER = 12.5
 @export var LEBAR_ASLI_GAMBAR_HIDROLIK = 110.0 
 
-# --- REVISI PRIORITAS SEDANG: Pembersihan Magic Numbers ---
+# BATAS EKSTREM GERBONG HANCUR
 @export var BATAS_HANCUR = 1500.0
-# Nilai ini adalah fallback ekstrem pasca-collision, jika sistem tug 
-# gagal menyelamatkan gerbong (misal karena terjepit rintangan)
 @export var BATAS_EKSTRIM_X = 200.0 
 @export var BATAS_EKSTRIM_Y = 100.0 
 
@@ -43,10 +41,11 @@ func _physics_process(delta):
 	# --- 1. JIKA PUTUS SAMBUNGAN ---
 	if not tersambung or not sedang_aktif:
 		if is_on_floor():
-			if game_manager != null:
-				velocity.x = move_toward(velocity.x, -game_manager.current_world_speed, 600 * delta)
-			else:
-				velocity.x = move_toward(velocity.x, 0, 600 * delta)
+			#if game_manager != null:
+				#velocity.x = move_toward(velocity.x, -game_manager.current_world_speed, 600 * delta)
+			#else:
+			velocity.x = move_toward(velocity.x, 0, 600 * delta)
+				
 		velocity.y += gravity * delta
 		move_and_slide()
 		
