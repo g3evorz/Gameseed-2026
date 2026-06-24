@@ -25,6 +25,9 @@ func _ready():
 #		gun.shoot()
 
 func _physics_process(delta):
+	if GameManager.is_hit_stopping:
+		return
+		
 	# 1. Terapkan Gravitasi
 	if not is_on_floor():
 		velocity.y += gravity * delta
