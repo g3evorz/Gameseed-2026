@@ -9,9 +9,8 @@
 [node name="Main" type="Node2D" unique_id=1169577489]
 script = ExtResource("1_jjvhh")
 
-[node name="Kereta" parent="." unique_id=1640051749 node_paths=PackedStringArray("game_manager") groups=["Player"] instance=ExtResource("1_bo1nx")]
+[node name="Kereta" parent="." unique_id=1640051749 groups=["Player"] instance=ExtResource("1_bo1nx")]
 position = Vector2(0, -50)
-game_manager = NodePath("..")
 scene_gerbong = ExtResource("3_kry3j")
 
 [node name="World" parent="." unique_id=1368948942 instance=ExtResource("2_8gbba")]
