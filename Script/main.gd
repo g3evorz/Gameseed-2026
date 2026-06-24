@@ -1,0 +1,41 @@
+extends Node2D
+
+@onready var node_kereta = $Kereta # Node yang memakai kereta.gd
+@onready var ui_game_over = $CanvasLayer/GameOver
+@onready var ui_pause = $CanvasLayer/PauseMenu
+@onready var score_label = $CanvasLayer/GameOver/VBoxContainer/ScoreLabel
+@onready var coin_label = $CanvasLayer/GameOver/VBoxContainer/TotalCoin
+
+func _ready():
+	ui_game_over.hide()
+	ui_pause.hide()
+
+	if is_instance_valid(node_kereta):
+		node_kereta.connect("kereta_hancur", Callable(self, "_on_kereta_hancur"))
+
+	GameManager.game_paused.connect(_on_game_paused)
+	GameManager.game_resumed.connect(_on_game_resumed)
+	GameManager.game_over_triggered.connect(_on_game_over)
+
+	GameManager.mulai_game()
+
+func _on_kereta_hancur():
+	GameManager.trigger_game_over()
+
+func _on_game_paused():
+	ui_pause.show()
+
+func _on_game_resumed():
+	ui_pause.hide()
+
+func _on_game_over():
+	score_label.text = "Score: " + str(int(ScoreManager.current_score))
+	coin_label.text = "Total Koin: " + str(ScoreManager.accumulated_coin_this_run)
+	ui_game_over.show()
+
+# --- TOMBOL UI (hubungkan via Signal Inspector seperti sebelumnya) ---
+func _on_btn_restart_pressed():
+	GameManager.restart_game()
+
+func _on_btn_quit_pressed():
+	GameManager.quit_game()

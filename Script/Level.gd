@@ -1,8 +1,5 @@
 extends Node2D
 
-# [Opsional] Biarkan jika Anda menggunakan metode Dependency Injection
-var game_manager: Node2D = null
-
 # Referensi ke wadah semua spawner rintangan
 @onready var spawners_container: Node2D = $Spawners
 
@@ -11,9 +8,8 @@ func _ready() -> void:
 	trigger_all_spawners()
 
 func _process(delta: float) -> void:
-	# Posisi x berkurang berdasarkan kecepatan global
-	if game_manager != null:
-		position.x -= game_manager.current_world_speed * delta
+
+	position.x -= GameManager.current_world_speed * delta
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	# Membersihkan memori saat chunk sudah tidak terlihat

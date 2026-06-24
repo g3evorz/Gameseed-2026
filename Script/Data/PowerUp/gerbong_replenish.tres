@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ObstacleData" format=3 uid="uid://dl6ffbqtc5qiu"]
+
+[ext_resource type="PackedScene" uid="uid://cpbjju48r073" path="res://Scenes/Components/PowerUps/gerbong_replenish.tscn" id="1_2nlhh"]
+[ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/System/ObstacleData.gd" id="1_ukaon"]
+
+[resource]
+script = ExtResource("1_ukaon")
+obstacle_scene = ExtResource("1_2nlhh")
+metadata/_custom_type_script = "uid://brhx3skaebmcy"
