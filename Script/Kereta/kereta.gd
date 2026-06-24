@@ -13,8 +13,6 @@ signal kereta_hancur
 @export var FAKTOR_PELURUHAN = 0.8
 @export var DAMAGE_GERBONG_PUTUS = 200
 
-@export var game_manager = Node2D
-
 var rantai_permanen = [] 
 
 # --- Variabel Sistem Health & Lose State ---
@@ -37,8 +35,6 @@ func _ready():
 			rantai_permanen.append(gerbong) 
 			gerbong.global_position.x = kepala_kereta.global_position.x - ((i + 1) * JARAK_PIKSEL_ANTAR_GERBONG)
 			gerbong.global_position.y = kepala_kereta.global_position.y
-		if game_manager != null:
-				gerbong.game_manager = self.game_manager
 	
 	# --- APLIKASI UPGRADE DEFENSE ---
 	# Misal: Tiap 1 level defense menambah 250 HP pada batas maksimal

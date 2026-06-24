@@ -8,5 +8,5 @@ script = ExtResource("2_kyu32")
 obstacle_scene = ExtResource("1_jywk0")
 spawn_weight = 5.0
 obstacle_type = 1
-max_hp = 100
+max_hp = 20
 metadata/_custom_type_script = "uid://brhx3skaebmcy"
