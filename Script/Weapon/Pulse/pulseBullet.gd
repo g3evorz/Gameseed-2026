@@ -6,14 +6,17 @@ extends Area2D
 
 const SPRITE_NATIVE_WIDTH = 32.0 
 
-# UBAH NAMA FUNGSI INI DARI _ready() MENJADI fire()
 func fire():
+	
+	ray_cast.collide_with_areas = true
+	
 	ray_cast.force_raycast_update()
 	
 	var beam_length: float
 	
 	if ray_cast.is_colliding():
 		var collision_point = ray_cast.get_collision_point()
+		
 		beam_length = global_position.distance_to(collision_point)
 		
 		var musuh = ray_cast.get_collider()
@@ -21,8 +24,9 @@ func fire():
 		if musuh.has_method("take_damage"):
 			musuh.take_damage(ScoreManager.level_upgrade_laser * 10)
 		else:
-			print("Nabrak tembok/benda mati, abaikan.")
+			print("Nabrak tembok/benda mati/Area lain, abaikan.")
 	else:
+		# Menyesuaikan panjang maksimum jika tidak ada tabrakan
 		beam_length = ray_cast.target_position.x
 
 	var required_scale_x = beam_length / SPRITE_NATIVE_WIDTH

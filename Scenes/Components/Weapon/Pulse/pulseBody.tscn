@@ -35,5 +35,5 @@ gizmo_extents = 0.0
 [node name="RadarArea" parent="." unique_id=363232625 instance=ExtResource("4_1ll14")]
 position = Vector2(24, -18)
 
-[connection signal="body_entered" from="RadarArea" to="." method="_on_radar_area_body_entered"]
-[connection signal="body_exited" from="RadarArea" to="." method="_on_radar_area_body_exited"]
+[connection signal="area_entered" from="RadarArea" to="." method="_on_radar_area_area_entered"]
+[connection signal="area_exited" from="RadarArea" to="." method="_on_radar_area_area_exited"]
