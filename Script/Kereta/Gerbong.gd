@@ -26,6 +26,8 @@ var was_on_floor = false
 @export var BATAS_EKSTRIM_X = 200.0 
 @export var BATAS_EKSTRIM_Y = 100.0 
 
+var FAST_FALL_VELOCITY = 0.0
+
 func putus_sambungan():
 	tersambung = false
 	sedang_aktif = false
@@ -63,8 +65,13 @@ func _physics_process(delta):
 	if is_instance_valid(node_target):
 		var jarak_y = node_target.global_position.y - global_position.y
 		
-		if is_on_floor() and jarak_y > 40.0:
-			global_position.y += 2.0
+		if Input.is_action_just_pressed("ui_down"):
+			if is_on_floor():
+				# Jika di lantai: tembus platform One-Way
+				global_position.y += 2.0
+			else:
+				# Jika di udara: ikuti bantingan gravitasi kepala kereta
+				velocity.y = FAST_FALL_VELOCITY
 			
 		if node_target.is_class("CharacterBody2D") and node_target.is_on_floor():
 			if is_on_floor():

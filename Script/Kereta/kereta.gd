@@ -86,6 +86,9 @@ func _physics_process(delta):
 		gerbong.target_x_velocity = kecepatan_sekarang
 		gerbong.posisi_y_kepala_absolut = kepala_kereta.global_position.y
 		
+		if "FAST_FALL_VELOCITY" in kepala_kereta:
+			gerbong.FAST_FALL_VELOCITY = kepala_kereta.FAST_FALL_VELOCITY
+		
 		if i == 0:
 			gerbong.node_target = kepala_kereta
 			gerbong.target_rot = sprite_kepala.rotation
