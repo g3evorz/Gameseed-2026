@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cpcua8add3i0a"]
+
+[ext_resource type="Script" uid="uid://cbmv173i77ke0" path="res://Script/enemy.gd" id="1_j403j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlq78"]
+
+[node name="SmallAsteroid" type="StaticBody2D" unique_id=1192487518]
+scale = Vector2(4.1539445, 4.1539445)
+collision_layer = 6
+collision_mask = 3
+script = ExtResource("1_j403j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1060150501]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1518009490]
+shape = SubResource("RectangleShape2D_hlq78")

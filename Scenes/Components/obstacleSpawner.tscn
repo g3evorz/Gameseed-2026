@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dfoomfadjrnm4"]
+
+[ext_resource type="Script" uid="uid://cxjel8yjdd1oh" path="res://Script/System/obstacle_spawner.gd" id="1_qm7nj"]
+[ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/System/ObstacleData.gd" id="2_nb8qs"]
+
+[node name="ObstacleSpawner" type="Marker2D" unique_id=837773415]
+script = ExtResource("1_qm7nj")
+possible_obstacles = Array[ExtResource("2_nb8qs")]([null, null, null])

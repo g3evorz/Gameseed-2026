@@ -2,10 +2,7 @@ extends CharacterBody2D
 
 # --- Konfigurasi Pergerakan ---
 @export var JUMP_VELOCITY = -1000.0
-@export var BASE_SPEED = 300.0 
-@export var MAX_SPEED = 1000.0 
-@export var ACCELERATION = 15.0 
-var current_speed = 0.0
+
 var is_dead: bool = false
 
 # --- Konfigurasi Efek Tilting Parabola ---
@@ -14,17 +11,18 @@ var is_dead: bool = false
 @export var TILT_SMOOTHNESS = 10.0 # Seberapa mulus transisi rotasinya
 
 @onready var sprite = $Sprite2D
-@onready var label_speed = $CanvasLayer/LabelSpeed
 @onready var gun = $Sprite2D/PulseBody
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	current_speed = BASE_SPEED
+	# Membaca level upgrade mesin dari autoload. 
+	# Misal: Tiap 1 level menambah Base Speed dan Max Speed sebesar 50
+	var bonus_kecepatan = ScoreManager.level_upgrade_mesin * 50.0
 
-func _process(delta):
-	if Input.is_action_pressed("shoot"):
-		gun.shoot()
+#func _process(_delta):
+#	if Input.is_action_pressed("shoot"):
+#		gun.shoot()
 
 func _physics_process(delta):
 	# 1. Terapkan Gravitasi
@@ -34,13 +32,14 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 
-	# 2. Fitur Lompat
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	# 2. Fitur Lompat & Turun
+	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		
+	if Input.is_action_just_pressed("ui_down") and is_on_floor():
+		global_position.y += 2.0
 
 	# 3. Gerakan Otomatis ke Depan Gradually
-	current_speed = move_toward(current_speed, MAX_SPEED, ACCELERATION * delta)
-	velocity.x = current_speed
 
 	# 4. Efek Tilting Parabola Berdasarkan Kecepatan Vertikal
 	var target_rotation = 0.0
@@ -66,7 +65,7 @@ func _physics_process(delta):
 
 	# Gunakan fungsi lerp_angle untuk menggerakkan rotasi secara mulus ke targetnya
 	sprite.rotation = lerp_angle(sprite.rotation, target_rotation, TILT_SMOOTHNESS * delta)
-	label_speed.text = "Speed: " + str(round(current_speed))
+
 
 	# 5. Eksekusi pergerakan fisika
 	move_and_slide()
@@ -74,6 +73,5 @@ func _physics_process(delta):
 # Fungsi untuk menghentikan laju kereta saat Game Over
 func mati():
 	is_dead = true
-	current_speed = 0.0
 	velocity.x = 0.0
 	# Mematikan proses fisika agar kepala kereta tidak lagi bergerak ke depan atau melompat

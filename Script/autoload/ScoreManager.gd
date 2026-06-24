@@ -7,9 +7,10 @@ var high_score: int = 0
 var dompet_koin: int = 0 # Ini sekarang berfungsi sebagai saldo akumulasi
 
 # --- DATA UPGRADE (Akan Disimpan) ---
-# Contoh: Kita buat 2 jenis upgrade
-var level_upgrade_gerbong: int = 0 # Menambah jumlah gerbong awal (Health)
-var level_upgrade_mesin: int = 0   # Menambah kecepatan awal kereta
+
+var level_upgrade_laser: int = 0
+var level_upgrade_defense: int = 0
+var level_upgrade_mesin: int = 0
 
 # --- DATA RUNTIME (Tidak Disimpan) ---
 var current_score: float = 0.0
@@ -47,51 +48,46 @@ func reset_current_run():
 	accumulated_coin_this_run = 0
 
 # --- SISTEM PEMBELANJAAN (SHOP) ---
-# Fungsi ini dipanggil oleh tombol di UI Shop Menu
 func beli_upgrade(harga: int, tipe_upgrade: String) -> bool:
 	if dompet_koin >= harga:
-		dompet_koin -= harga # Potong saldo koin
+		dompet_koin -= harga 
 		
-		# Terapkan level upgrade
-		if tipe_upgrade == "gerbong":
-			level_upgrade_gerbong += 1
+		if tipe_upgrade == "laser":
+			level_upgrade_laser += 1
+		elif tipe_upgrade == "defense":
+			level_upgrade_defense += 1
 		elif tipe_upgrade == "mesin":
 			level_upgrade_mesin += 1
 			
-		print("Upgrade berhasil! Sisa Koin: ", dompet_koin)
-		save_game_data() # Langsung simpan data agar tidak hilang jika game diclose
+		save_game_data() 
 		return true
-	else:
-		print("Koin tidak cukup!")
-		return false
+	return false
 
 # --- SISTEM PENYIMPANAN SINKRONOUS ---
 func save_game_data():
 	var config = ConfigFile.new()
 	
-	# Simpan Progresi & Uang
 	config.set_value("Progression", "high_score", high_score)
 	config.set_value("Currency", "dompet_koin", dompet_koin)
 	
-	# Simpan Level Upgrade
-	config.set_value("Upgrades", "level_gerbong", level_upgrade_gerbong)
+	config.set_value("Upgrades", "level_laser", level_upgrade_laser)
+	config.set_value("Upgrades", "level_defense", level_upgrade_defense)
 	config.set_value("Upgrades", "level_mesin", level_upgrade_mesin)
 	
 	config.save(SAVE_PATH)
 
 func load_game_data():
 	var config = ConfigFile.new()
-	var error = config.load(SAVE_PATH)
-	
-	if error == OK:
+	if config.load(SAVE_PATH) == OK:
 		high_score = config.get_value("Progression", "high_score", 0)
 		dompet_koin = config.get_value("Currency", "dompet_koin", 0)
 		
-		level_upgrade_gerbong = config.get_value("Upgrades", "level_gerbong", 0)
+		level_upgrade_laser = config.get_value("Upgrades", "level_laser", 0)
+		level_upgrade_defense = config.get_value("Upgrades", "level_defense", 0)
 		level_upgrade_mesin = config.get_value("Upgrades", "level_mesin", 0)
 	else:
-		# Jika file belum ada (Pemain Baru)
 		high_score = 0
 		dompet_koin = 0
-		level_upgrade_gerbong = 0
+		level_upgrade_laser = 0
+		level_upgrade_defense = 0
 		level_upgrade_mesin = 0
