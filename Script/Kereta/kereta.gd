@@ -13,6 +13,8 @@ signal kereta_hancur
 @export var FAKTOR_PELURUHAN = 0.8
 @export var DAMAGE_GERBONG_PUTUS = 200
 
+@export var scene_gerbong: PackedScene
+
 var rantai_permanen = [] 
 
 # --- Variabel Sistem Health & Lose State ---
@@ -25,6 +27,7 @@ var posisi_x_terakhir: float = 0.0
 var jumlah_gerbong_sebelumnya: int = 0 
 
 func _ready():
+	add_to_group("Kereta")
 	ScoreManager.reset_current_run()
 	posisi_x_terakhir = kepala_kereta.global_position.x
 
@@ -137,3 +140,41 @@ func trigger_game_over():
 		kepala_kereta.mati()
 		
 	emit_signal("kereta_hancur")
+	
+	
+# --- FUNGSI POWER UP NAMBAH GERBONG ---
+func tambah_gerbong():
+	if scene_gerbong == null:
+		print("ERROR: scene_gerbong belum diisi di Inspector KeretaManager!")
+		return
+		
+	# 1. Spawn wadah/scene gerbong baru
+	var gerbong_baru_instans = scene_gerbong.instantiate()
+	kumpulan_gerbong.add_child(gerbong_baru_instans)
+	
+	# 2. Ambil fisikanya (Karena hierarki Anda menggunakan Wadah > CharacterBody2D)
+	var gerbong_fisika = gerbong_baru_instans.get_node_or_null("CharacterBody2D")
+	
+	# Fallback: Jika ternyata gerbong_baru_instans langsung berupa CharacterBody2D
+	if gerbong_fisika == null:
+		gerbong_fisika = gerbong_baru_instans 
+		
+	# 3. Cari gerbong paling belakang yang masih hidup untuk menentukan posisi spawn
+	var node_paling_belakang = kepala_kereta
+	for i in range(rantai_permanen.size() - 1, -1, -1):
+		if is_instance_valid(rantai_permanen[i]) and rantai_permanen[i].tersambung:
+			node_paling_belakang = rantai_permanen[i]
+			break
+			
+	# 4. Posisikan gerbong baru tepat di belakang gerbong terakhir
+	gerbong_fisika.global_position.x = node_paling_belakang.global_position.x - JARAK_PIKSEL_ANTAR_GERBONG
+	gerbong_fisika.global_position.y = node_paling_belakang.global_position.y
+	
+	# 5. Daftarkan ke dalam sistem rantai agar ikut bergerak
+	rantai_permanen.append(gerbong_fisika)
+	
+	# 6. Tambah Darah (HP) & Update Tracker agar tidak dianggap kena damage
+	current_health += DAMAGE_GERBONG_PUTUS # Nambah 200 HP
+	jumlah_gerbong_sebelumnya += 1 # Sinkronisasi variabel pengecek damage
+	
+	print("Power Up Gerbong Diambil! HP Sekarang: ", current_health)

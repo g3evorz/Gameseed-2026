@@ -20,9 +20,9 @@ func _ready():
 	# Misal: Tiap 1 level menambah Base Speed dan Max Speed sebesar 50
 	var bonus_kecepatan = ScoreManager.level_upgrade_mesin * 50.0
 
-func _process(_delta):
-	if Input.is_action_pressed("shoot"):
-		gun.shoot()
+#func _process(_delta):
+#	if Input.is_action_pressed("shoot"):
+#		gun.shoot()
 
 func _physics_process(delta):
 	# 1. Terapkan Gravitasi

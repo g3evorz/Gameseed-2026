@@ -12,17 +12,13 @@ script = ExtResource("1_l81m1")
 [node name="KumpulanGerbong" type="Node2D" parent="." unique_id=399389016]
 position = Vector2(-280, 0)
 
-[node name="Gerbong1" parent="KumpulanGerbong" unique_id=2090834745 node_paths=PackedStringArray("game_manager") instance=ExtResource("3_k3j8q")]
-game_manager = NodePath("")
+[node name="Gerbong1" parent="KumpulanGerbong" unique_id=2090834745 instance=ExtResource("3_k3j8q")]
 
-[node name="Gerbong2" parent="KumpulanGerbong" unique_id=286542621 node_paths=PackedStringArray("game_manager") instance=ExtResource("3_k3j8q")]
-game_manager = NodePath("")
+[node name="Gerbong2" parent="KumpulanGerbong" unique_id=286542621 instance=ExtResource("3_k3j8q")]
 
-[node name="Gerbong3" parent="KumpulanGerbong" unique_id=422210554 node_paths=PackedStringArray("game_manager") instance=ExtResource("3_k3j8q")]
-game_manager = NodePath("")
+[node name="Gerbong3" parent="KumpulanGerbong" unique_id=422210554 instance=ExtResource("3_k3j8q")]
 
-[node name="Gerbong4" parent="KumpulanGerbong" unique_id=434939152 node_paths=PackedStringArray("game_manager") instance=ExtResource("3_k3j8q")]
-game_manager = NodePath("")
+[node name="Gerbong4" parent="KumpulanGerbong" unique_id=434939152 instance=ExtResource("3_k3j8q")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1250077466]
 
