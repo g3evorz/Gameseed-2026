@@ -119,13 +119,13 @@ func aktifkan_power_up_laser(durasi: float):
 	print("Turret masuk ke mode Double Laser selama ", durasi, " detik!")
 
 # --- SINYAL DARI RADAR AREA ---
-func _on_radar_area_body_entered(body):
-	print("RADAR MENDETEKSI: ", body.name)
+func _on_radar_area_area_entered(area):
+	print("RADAR MENDETEKSI TARGET: ", area.name)
 	# Jika musuh masuk ke radar, tambahkan ke dalam antrean target
-	if not daftar_target.has(body):
-		daftar_target.append(body)
+	if not daftar_target.has(area):
+		daftar_target.append(area)
 
-func _on_radar_area_body_exited(body):
+func _on_radar_area_area_exited(area):
 	# Jika musuh keluar dari radar, hapus dari antrean
-	if daftar_target.has(body):
-		daftar_target.erase(body)
+	if daftar_target.has(area):
+		daftar_target.erase(area)
