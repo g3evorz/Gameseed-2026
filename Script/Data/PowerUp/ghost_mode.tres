@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ObstacleData" format=3 uid="uid://dvw3jmwvw8fn"]
+
+[ext_resource type="PackedScene" uid="uid://bdmoyd1ncpg05" path="res://Scenes/Components/PowerUps/ghost_mode.tscn" id="1_0dp0g"]
+[ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/System/ObstacleData.gd" id="1_getb3"]
+
+[resource]
+script = ExtResource("1_getb3")
+obstacle_scene = ExtResource("1_0dp0g")
+metadata/_custom_type_script = "uid://brhx3skaebmcy"

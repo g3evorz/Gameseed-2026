@@ -13,6 +13,9 @@ signal kereta_hancur
 @export var FAKTOR_PELURUHAN = 0.8
 @export var DAMAGE_GERBONG_PUTUS = 200
 
+var is_invincible: bool = false
+var timer_invincible: float = 0.0
+
 @export var scene_gerbong: PackedScene
 
 var rantai_permanen = [] 
@@ -54,6 +57,12 @@ func _physics_process(delta):
 	# Jika game over, hentikan seluruh proses kalkulasi rantai
 	if is_game_over:
 		return
+		
+	# --- LOGIKA DURASI MODE HANTU ---
+	if is_invincible:
+		timer_invincible -= delta
+		if timer_invincible <= 0:
+			matikan_mode_hantu()
 		
 	# --- SISTEM HITUNG SKOR BERDASARKAN JARAK X ---
 	var posisi_x_sekarang = kepala_kereta.global_position.x
@@ -131,6 +140,36 @@ func terima_damage(jumlah_damage: int):
 	if current_health <= 0:
 		current_health = 0 # Cegah HP menjadi minus
 		trigger_game_over()
+
+# --- FUNGSI MENGAKTIFKAN/MEMATIKAN MODE HANTU ---
+func aktifkan_mode_hantu(durasi: float):
+	if is_game_over: return
+	
+	is_invincible = true
+	timer_invincible = durasi
+	print("Mode Hantu Aktif selama ", durasi, " detik!")
+	
+	# Ubah Kepala menjadi semi-transparan (Alpha = 0.5)
+	if is_instance_valid(sprite_kepala):
+		sprite_kepala.modulate.a = 0.5
+		
+	# Ubah seluruh Gerbong menjadi semi-transparan
+	for gerbong in rantai_permanen:
+		if is_instance_valid(gerbong) and gerbong.has_node("Sprite2D"):
+			gerbong.get_node("Sprite2D").modulate.a = 0.5
+
+func matikan_mode_hantu():
+	is_invincible = false
+	print("Mode Hantu Berakhir, kembali normal!")
+	
+	# Kembalikan Kepala menjadi solid (Alpha = 1.0)
+	if is_instance_valid(sprite_kepala):
+		sprite_kepala.modulate.a = 1.0
+		
+	# Kembalikan seluruh Gerbong menjadi solid
+	for gerbong in rantai_permanen:
+		if is_instance_valid(gerbong) and gerbong.has_node("Sprite2D"):
+			gerbong.get_node("Sprite2D").modulate.a = 1.0
 
 
 func trigger_game_over():

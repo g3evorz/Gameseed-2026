@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bdmoyd1ncpg05"]
+
+[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_10y1a"]
+[ext_resource type="Script" uid="uid://bu5x86qnfewy0" path="res://Script/PowerUps/GhostMode.gd" id="1_l3svq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x4qwr"]
+
+[node name="Area2D" type="Area2D" unique_id=195210444]
+script = ExtResource("1_l3svq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=567690501]
+scale = Vector2(8.479107, 8.479107)
+shape = SubResource("CircleShape2D_x4qwr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=35613204]
+texture = ExtResource("1_10y1a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
