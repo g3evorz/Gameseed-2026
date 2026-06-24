@@ -1,7 +1,4 @@
 extends Node2D
-# Tempel script ini di root node scene gameplay (yang dulu pakai GameManager.gd).
-# Tugasnya: pegang referensi node yang memang spesifik untuk scene ini,
-# lalu sambungkan ke signal dari GameManager (autoload).
 
 @onready var node_kereta = $Kereta # Node yang memakai kereta.gd
 @onready var ui_game_over = $CanvasLayer/GameOver

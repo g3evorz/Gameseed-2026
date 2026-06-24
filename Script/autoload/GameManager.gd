@@ -1,7 +1,4 @@
 extends Node
-# Autoload (singleton) — TIDAK boleh punya referensi $Node ke scene tertentu.
-# Tugasnya cuma mengatur state dunia & game flow, lalu memberi tahu scene
-# lewat signal. Scene yang mau "dengar" tinggal connect ke signal di bawah.
 
 # Kecepatan Platform
 @export var BASE_SPEED: float = 300.0
@@ -35,7 +32,6 @@ func _physics_process(delta):
 func mulai_game():
 	status_sekarang = GameState.BERMAIN
 	current_world_speed = BASE_SPEED
-	# Bisa tambahkan logika hitung mundur 3..2..1 di sini
 	game_started.emit()
 
 # --- LOGIKA PAUSE ---

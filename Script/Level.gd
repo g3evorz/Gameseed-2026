@@ -1,7 +1,5 @@
 extends Node2D
 
-# [Opsional] Biarkan jika Anda menggunakan metode Dependency Injection
-
 # Referensi ke wadah semua spawner rintangan
 @onready var spawners_container: Node2D = $Spawners
 
