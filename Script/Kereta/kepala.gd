@@ -9,6 +9,7 @@ var is_dead: bool = false
 @export var MAX_TILT_UP = -20.0   # Derajat maksimal saat naik (hidung ke atas)
 @export var MAX_TILT_DOWN = 15.0  # Derajat maksimal saat turun (hidung menunduk)
 @export var TILT_SMOOTHNESS = 10.0 # Seberapa mulus transisi rotasinya
+@export var FAST_FALL_VELOCITY = 1500.0
 
 @onready var sprite = $Sprite2D
 @onready var gun = $Sprite2D/PulseBody
@@ -39,8 +40,12 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
-	if Input.is_action_just_pressed("ui_down") and is_on_floor():
-		global_position.y += 2.0
+	if Input.is_action_just_pressed("ui_down"):
+		if is_on_floor():
+			global_position.y += 2.0
+		else:
+			# Jika di udara: Bantingan instan ke bawah (Fast-Fall)
+			velocity.y = FAST_FALL_VELOCITY
 
 	# 3. Gerakan Otomatis ke Depan Gradually
 
