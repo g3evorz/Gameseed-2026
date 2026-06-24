@@ -4,8 +4,6 @@ extends CharacterBody2D
 @onready var coupler_sensor = $Coupler/RayCast2D
 @onready var coupler_visual = $Coupler/Sprite2D
 
-@export var game_manager: Node2D = null	
-
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var sedang_aktif = true
 var tersambung = true
@@ -51,10 +49,7 @@ func putus_sambungan():
 func _physics_process(delta):
 	# --- 1. JIKA PUTUS SAMBUNGAN ---
 	if not tersambung or not sedang_aktif:
-		if game_manager != null:
-			position.x -= game_manager.current_world_speed * delta
-		else:
-			velocity.x = move_toward(velocity.x, 0, 600 * delta)
+		position.x -= GameManager.current_world_speed * delta
 		velocity.y += gravity * delta
 		move_and_slide()
 		

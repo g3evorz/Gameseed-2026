@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dcol80whnldwb"]
 
 [ext_resource type="PackedScene" uid="uid://dukt3ykblby48" path="res://Scenes/Components/kereta.tscn" id="1_bo1nx"]
-[ext_resource type="Script" uid="uid://c43l2tgw5vtty" path="res://Script/System/GameManager.gd" id="1_jjvhh"]
+[ext_resource type="Script" uid="uid://cekcnut1c71hi" path="res://Script/main.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cuyokbbea850y" path="res://Scenes/Components/Worldborder.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://do7otuteiauu" path="res://Scenes/Components/levelsSpawner.tscn" id="4_jjvhh"]
@@ -17,10 +17,9 @@ scene_gerbong = ExtResource("3_kry3j")
 [node name="World" parent="." unique_id=1368948942 instance=ExtResource("2_8gbba")]
 position = Vector2(3, 0)
 
-[node name="LevelsSpawner" parent="." unique_id=429419869 node_paths=PackedStringArray("player", "game_manager") instance=ExtResource("4_jjvhh")]
+[node name="LevelsSpawner" parent="." unique_id=429419869 node_paths=PackedStringArray("player") instance=ExtResource("4_jjvhh")]
 position = Vector2(1013, -1)
 player = NodePath("../Kereta")
-game_manager = NodePath("..")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2120541488]
 process_mode = 3
