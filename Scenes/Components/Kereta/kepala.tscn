@@ -12,6 +12,12 @@ size = Vector2(233.5, 62.5)
 collision_mask = 2
 script = ExtResource("1_kiorl")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1503878241]
+position = Vector2(-129, 38)
+scale = Vector2(2.0234377, 0.59375)
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("1_eu8wk")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1829586725]
 position = Vector2(-129, 38)
 scale = Vector2(2.0234377, 0.59375)
@@ -41,12 +47,3 @@ shape = SubResource("RectangleShape2D_eu8wk")
 [node name="LabelSpeed" type="Label" parent="CanvasLayer" unique_id=448355568]
 offset_right = 40.0
 offset_bottom = 23.0
-
-[node name="Kepala" type="Node2D" parent="." unique_id=1780252134]
-
-[node name="Camera2D" type="Camera2D" parent="Kepala" unique_id=1503878241 node_paths=PackedStringArray("target")]
-position = Vector2(-129, 38)
-scale = Vector2(2.0234377, 0.59375)
-zoom = Vector2(0.5, 0.5)
-script = ExtResource("1_eu8wk")
-target = NodePath("../..")
