@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	# Membersihkan memori saat chunk sudah tidak terlihat
-	print("Level Chunk [", name, "] Terhapus!")
+	#print("Level Chunk [", name, "] Terhapus!")
 	queue_free()
 
 func trigger_all_spawners() -> void:
