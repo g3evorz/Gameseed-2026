@@ -12,7 +12,7 @@ func _ready():
 func take_damage(damage_amount: int):
 	current_hp -= damage_amount
 	
-	print("CURRENT HP : ", current_hp)
+	#print("CURRENT HP : ", current_hp)
 	
 	if current_hp <= 0:
 		die()

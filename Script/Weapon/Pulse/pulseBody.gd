@@ -53,7 +53,7 @@ func _process(_delta):
 		timer_double_laser -= _delta
 		if timer_double_laser <= 0:
 			is_double_laser = false
-			print("Power up habis, kembali ke 1 laser.")
+			#print("Power up habis, kembali ke 1 laser.")
 
 func _proses_auto_aim():
 	daftar_target = daftar_target.filter(func(target): return is_instance_valid(target))
@@ -116,11 +116,11 @@ func _spawn_laser_ke_target(posisi_spawn: Vector2, posisi_target: Vector2):
 func aktifkan_power_up_laser(durasi: float):
 	is_double_laser = true
 	timer_double_laser = durasi
-	print("Turret masuk ke mode Double Laser selama ", durasi, " detik!")
+	#print("Turret masuk ke mode Double Laser selama ", durasi, " detik!")
 
 # --- SINYAL DARI RADAR AREA ---
 func _on_radar_area_area_entered(area):
-	print("RADAR MENDETEKSI TARGET: ", area.name)
+	#print("RADAR MENDETEKSI TARGET: ", area.name)
 	# Jika musuh masuk ke radar, tambahkan ke dalam antrean target
 	if not daftar_target.has(area):
 		daftar_target.append(area)

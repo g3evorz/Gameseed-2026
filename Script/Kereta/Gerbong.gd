@@ -16,6 +16,8 @@ var kekakuan_rantai = 15.0
 var posisi_y_kepala_absolut = 0.0
 var was_on_floor = false
 
+var timer_imunitas = 0.0
+
 @export var MAX_SPRING_VELOCITY = 1000.0 
 @export var BATAS_MAKSIMUM_COUPLER = 35.0
 @export var BATAS_MINIMUM_COUPLER = 12.5
@@ -49,6 +51,12 @@ func putus_sambungan():
 		coupler_visual.visible = false
 
 func _physics_process(delta):
+	
+	var immune_frame = false
+	if timer_imunitas > 0.0:
+		timer_imunitas -= delta
+		immune_frame = true
+	
 	# --- 1. JIKA PUTUS SAMBUNGAN ---
 	if not tersambung or not sedang_aktif:
 		position.x -= GameManager.current_world_speed * delta
@@ -126,31 +134,35 @@ func _physics_process(delta):
 		
 		# --- KINEMATIC TUG (PRIORITAS TINGGI: Jarak Sumbu X) ---
 		var akan_macet = false
-		var jarak_x_absolut = abs(vektor_jarak.x) # Isolasi perhitungan dari sumbu Y
+		var jarak_x_absolut = abs(vektor_jarak.x) 
 		
+		# Deklarasi variabel di luar agar bisa diakses oleh blok sistem kebal di bawah
+		var gerak_tug = Vector2.ZERO 
+		
+		# 1. Tentukan arah dan besar tarikan/dorongan dulu
 		if jarak_x_absolut > BATAS_MAKSIMUM_COUPLER:
 			var overstretch = jarak_x_absolut - BATAS_MAKSIMUM_COUPLER
-			var KOREKSI_MAX_PER_FRAME = 6.0  # batasi agar tidak "snap" sekali jalan
+			var KOREKSI_MAX_PER_FRAME = 12.0  
 			var koreksi = min(overstretch, KOREKSI_MAX_PER_FRAME)
-			var gerak_tug = Vector2(arah_x * koreksi, 0)
-			var posisi_sebelum_dbg = global_position
+			gerak_tug = Vector2(arah_x * koreksi, 0)
+			
+		elif jarak_x_absolut < BATAS_MINIMUM_COUPLER:
+			var overcompression = BATAS_MINIMUM_COUPLER - jarak_x_absolut
+			gerak_tug = Vector2(-arah_x * overcompression, 0)
+
+		# 2. Eksekusi pergerakan HANYA JIKA ada gerak_tug yang terisi
+		if gerak_tug != Vector2.ZERO:
 			if test_move(global_transform, gerak_tug):
 				akan_macet = true
 			else:
 				move_and_collide(gerak_tug)
-			
-		elif jarak_x_absolut < BATAS_MINIMUM_COUPLER:
-			var overcompression = BATAS_MINIMUM_COUPLER - jarak_x_absolut
-			var gerak_tug2 = Vector2(-arah_x * overcompression, 0)
-			if test_move(global_transform, gerak_tug2):
-				akan_macet = true
-			else:
-				move_and_collide(gerak_tug2)
 
 		# --- PRIORITAS SEDANG: Penanganan Macet ---
 		if akan_macet:
-			putus_sambungan()
-
+			if immune_frame:
+				global_position += gerak_tug
+			else:
+				putus_sambungan()
 		# Hitung Ulang Titik Awal JIKA Kinematic Tug menggeser posisi gerbong
 		if is_instance_valid(node_titik_depan):
 			titik_awal = node_titik_depan.global_position
@@ -168,16 +180,17 @@ func _physics_process(delta):
 		
 		coupler_sensor.target_position = coupler_sensor.to_local(titik_target)
 		coupler_sensor.force_raycast_update()
-		
+	
 		# DETEKSI PUTUS EKSTREM TERAKHIR
-		if coupler_sensor.is_colliding():
-			var hit_normal = coupler_sensor.get_collision_normal()
-			if abs(hit_normal.x) > abs(hit_normal.y):
+		if not immune_frame:
+			if coupler_sensor.is_colliding():
+				var hit_normal = coupler_sensor.get_collision_normal()
+				if abs(hit_normal.x) > abs(hit_normal.y):
+					putus_sambungan()
+			if jarak_sekarang > BATAS_MAKSIMUM_COUPLER + BATAS_EKSTRIM_X:
 				putus_sambungan()
-		if jarak_sekarang > BATAS_MAKSIMUM_COUPLER + BATAS_EKSTRIM_X:
-			putus_sambungan()
-		if global_position.y - node_target.global_position.y > BATAS_EKSTRIM_Y:
-			putus_sambungan()
+			if global_position.y - node_target.global_position.y > BATAS_EKSTRIM_Y:
+				putus_sambungan()
 
 func hancur():
 	queue_free()
