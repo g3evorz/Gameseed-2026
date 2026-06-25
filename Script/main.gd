@@ -38,4 +38,12 @@ func _on_btn_restart_pressed():
 	GameManager.restart_game()
 
 func _on_btn_quit_pressed():
-	GameManager.quit_game()
+	get_tree().change_scene_to_file("res://Scenes/Upgradable.tscn")
+
+
+func _on_pause_button_pressed() -> void:
+	GameManager.toggle_pause()
+
+
+func _on_resume_pressed() -> void:
+	GameManager.toggle_pause()
