@@ -3,7 +3,7 @@ extends Node
 # Kecepatan Platform
 @export var BASE_SPEED: float = 300.0
 @export var MAX_SPEED: float = 1000.0
-@export var ACCELERATION: float = 15.0
+@export var ACCELERATION: float = 30.0
 
 # Hit and Stop 
 @export var HIT_STOP_DURATION: float = 0.8  # Durasi game freeze (dalam detik)
