@@ -5,6 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlq78"]
 
 [node name="BigAsteroid" type="Area2D" unique_id=713695786]
+visible = false
 scale = Vector2(10, 10)
 collision_layer = 6
 script = ExtResource("1_6rx0e")

@@ -11,25 +11,31 @@ func _ready():
 	
 func take_damage(damage_amount: int):
 	current_hp -= damage_amount
-	
 	print("CURRENT HP : ", current_hp)
-	
 	if current_hp <= 0:
 		die()
 
 func _on_body_entered(body):
-	if body.name == "Kepala":
-		var kereta = body.get_parent()
+	if body.name == "Kepala" or body.is_in_group("Player"):
+		var kereta = body.get_parent() # Mengambil node KeretaManager
+		
+		# --- CEK GHOST MODE DI SINI ---
+		# Jika kereta punya variabel is_invincible dan nilainya true, abaikan tabrakan!
+		if kereta and "is_invincible" in kereta and kereta.is_invincible:
+			print("Kereta transparan menembus objek tanpa menghancurkannya!")
+			return # Fungsi dihentikan di sini, baris kode di bawahnya tidak akan dijalankan
+		# ------------------------------
+		
+		# Jika tidak mode hantu, jalankan tabrakan normal
 		if kereta and kereta.has_method("terima_damage"):
 			kereta.terima_damage(damage_tabrakan)
-			
 			GameManager.terapkan_efek_ram(kekuatan_slow)
 			
-		# 3. Hancurkan obstacle
+		# Hancurkan obstacle karena ditabrak secara fisik
 		die()
 
-# DESTROY OBJECT
 
+# DESTROY OBJECT
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	print("Platform Terhapus !")
 	queue_free()	

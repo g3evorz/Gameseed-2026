@@ -7,7 +7,7 @@ func _on_body_entered(body):
 	if body.name == "Kepala" or "Gerbong" in body.name or body.is_in_group("Player"):
 		
 		# Panggil fungsi mode hantu di manajer kereta
-		get_tree().call_group("Kereta", "aktifkan_mode_hantu", durasi_aktif)
+		get_tree().call_group("Kereta", "ghost_mode", durasi_aktif)
 		
 		# Hancurkan item dari map
 		queue_free()

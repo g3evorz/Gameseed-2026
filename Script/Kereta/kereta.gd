@@ -145,13 +145,12 @@ func terima_damage(jumlah_damage: int):
 		trigger_game_over()
 
 # --- FUNGSI MENGAKTIFKAN/MEMATIKAN MODE HANTU ---
-func aktifkan_mode_hantu(durasi: float):
+func ghost_mode(durasi: float):
 	if is_game_over: return
 	
 	is_invincible = true
 	timer_invincible = durasi
 	print("Mode Hantu Aktif selama ", durasi, " detik!")
-	
 	# Ubah Kepala menjadi semi-transparan (Alpha = 0.5)
 	if is_instance_valid(sprite_kepala):
 		sprite_kepala.modulate.a = 0.5
