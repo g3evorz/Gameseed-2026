@@ -17,7 +17,7 @@ scene_gerbong = ExtResource("3_kry3j")
 position = Vector2(3, 0)
 
 [node name="LevelsSpawner" parent="." unique_id=429419869 node_paths=PackedStringArray("player") instance=ExtResource("4_jjvhh")]
-position = Vector2(1013, -1)
+position = Vector2(2243, -55)
 player = NodePath("../Kereta")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2120541488]
