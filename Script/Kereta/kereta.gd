@@ -14,7 +14,7 @@ signal kereta_hancur
 @export var DAMAGE_GERBONG_PUTUS = 200
 
 @export var IMMUNITY_TIMER = 4.0
-@export var SPAWN_GERBONG_OFFSITE = 1000.0
+@export var SPAWN_GERBONG_OFFSITE = 2000.0
 
 @export var scene_gerbong: PackedScene
 

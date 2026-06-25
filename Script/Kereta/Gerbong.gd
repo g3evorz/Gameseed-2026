@@ -142,7 +142,7 @@ func _physics_process(delta):
 		# 1. Tentukan arah dan besar tarikan/dorongan dulu
 		if jarak_x_absolut > BATAS_MAKSIMUM_COUPLER:
 			var overstretch = jarak_x_absolut - BATAS_MAKSIMUM_COUPLER
-			var KOREKSI_MAX_PER_FRAME = 6.0  
+			var KOREKSI_MAX_PER_FRAME = 12.0  
 			var koreksi = min(overstretch, KOREKSI_MAX_PER_FRAME)
 			gerak_tug = Vector2(arah_x * koreksi, 0)
 			
