@@ -2,7 +2,7 @@ extends Camera2D
 
 @export_group("Dynamic Offset")
 @export var default_offset_x: float = 0.0
-@export var max_lag_offset_x: float = 700.0
+@export var max_lag_offset_x: float = 1000.0
 
 @export_group("Dynamic Zoom")
 @export var default_zoom: Vector2 = Vector2(0.6, 0.6)
