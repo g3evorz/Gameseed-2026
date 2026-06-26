@@ -2,7 +2,7 @@ extends Area2D
 
 @export var data: ObstacleData
 @export var damage_tabrakan: int = 200
-@export var kekuatan_slow: float = 0.7 # Kecepatan dipotong 50%
+@export var kekuatan_slow: float = 0.7 
 
 var current_hp: int
 
