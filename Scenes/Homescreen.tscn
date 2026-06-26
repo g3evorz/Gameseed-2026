@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://ceaifoo0dwpbd"]
+
+[ext_resource type="Script" uid="uid://c1lov7xii2qm3" path="res://Script/homescreen.gd" id="1_rk5ra"]
+[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_s2xo7"]
+
+[node name="Homescreen" type="Control" unique_id=1142522670]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rk5ra")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1598306005]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03164652, 0.061809458, 0.13147017, 1)
+
+[node name="MarginButton" type="MarginContainer" parent="ColorRect" unique_id=495135515]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -434.0
+offset_top = -132.0
+offset_bottom = 221.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_right = 150
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginButton" unique_id=2052434342]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="ButtonPlay" type="Button" parent="ColorRect/MarginButton/VBoxContainer" unique_id=669510937]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "PLAY"
+
+[node name="ButtonSettings" type="Button" parent="ColorRect/MarginButton/VBoxContainer" unique_id=492538118]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "SETTINGS"
+
+[node name="ButtonExit" type="Button" parent="ColorRect/MarginButton/VBoxContainer" unique_id=1482728523]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "QUIT"
+
+[node name="MarginJudul" type="MarginContainer" parent="ColorRect" unique_id=255807367]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 100
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginJudul" unique_id=1894493874]
+layout_mode = 2
+texture = ExtResource("1_s2xo7")
+
+[connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
+[connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
