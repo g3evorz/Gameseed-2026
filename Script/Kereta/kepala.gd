@@ -19,11 +19,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	# Membaca level upgrade mesin dari autoload. 
 	# Misal: Tiap 1 level menambah Base Speed dan Max Speed sebesar 50
-	var bonus_kecepatan = ScoreManager.level_upgrade_mesin * 50.0
-
-#func _process(_delta):
-#	if Input.is_action_pressed("shoot"):
-#		gun.shoot()
+	pass
 
 func _physics_process(delta):
 	if GameManager.is_hit_stopping:
