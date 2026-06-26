@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://do7otuteiauu" path="res://Scenes/Components/levelsSpawner.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://70puepcgsjlx" path="res://Scenes/Levels/basicLandscapes.tscn" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://c7qnoqxs7j6wd" path="res://Scenes/Levels/level_1.tscn" id="7_344ge"]
+[ext_resource type="PackedScene" uid="uid://dxf8keb5h1lo2" path="res://Scenes/Levels/level_2.tscn" id="8_hptm8"]
+[ext_resource type="PackedScene" uid="uid://cekjkxc2vo48a" path="res://Scenes/Levels/level_3.tscn" id="9_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://bfkjsq3o02u5j" path="res://Scenes/Levels/level_4.tscn" id="10_6iyac"]
 
 [node name="Main" type="Node2D" unique_id=1169577489]
 script = ExtResource("1_jjvhh")
@@ -20,7 +23,7 @@ position = Vector2(3, 0)
 
 [node name="LevelsSpawner" parent="." unique_id=429419869 node_paths=PackedStringArray("player") instance=ExtResource("4_jjvhh")]
 position = Vector2(1013, -1)
-list_scene_level = Array[PackedScene]([ExtResource("6_6bp64"), ExtResource("7_344ge")])
+list_scene_level = Array[PackedScene]([ExtResource("6_6bp64"), ExtResource("7_344ge"), ExtResource("8_hptm8"), ExtResource("9_d1ilt"), ExtResource("10_6iyac")])
 player = NodePath("../Kereta")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2120541488]
