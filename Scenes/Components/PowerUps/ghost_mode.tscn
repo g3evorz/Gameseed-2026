@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bsct62oth0bkl"]
 
 [ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_10y1a"]
-[ext_resource type="Script" path="res://Script/PowerUps/GhostMode.gd" id="1_l3svq"]
+[ext_resource type="Script" uid="uid://cmy1ie0rjfubg" path="res://Script/PowerUps/GhostMode.gd" id="1_l3svq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x4qwr"]
 
