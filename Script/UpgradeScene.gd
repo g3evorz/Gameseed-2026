@@ -56,14 +56,16 @@ func hitung_harga(dasar: int, kelipatan: int, level_saat_ini: int) -> int:
 # --- FUNGSI KLIK TOMBOL BELI (Hubungkan via Inspector ke masing-masing Button) ---
 
 func _on_btn_beli_laser_pressed():
-	var harga = hitung_harga(harga_dasar_laser, kelipatan_harga_laser, ScoreManager.level_upgrade_laser)
-	if ScoreManager.beli_upgrade(harga, "laser"):
-		update_semua_ui()
+	if ScoreManager.level_upgrade_laser <= 3:
+		var harga = hitung_harga(harga_dasar_laser, kelipatan_harga_laser, ScoreManager.level_upgrade_laser)
+		if ScoreManager.beli_upgrade(harga, "laser"):
+			update_semua_ui()
 
 func _on_btn_beli_defense_pressed():
-	var harga = hitung_harga(harga_dasar_defense, kelipatan_harga_defense, ScoreManager.level_upgrade_defense)
-	if ScoreManager.beli_upgrade(harga, "defense"):
-		update_semua_ui()
+	if ScoreManager.level_upgrade_defense <= 3:
+		var harga = hitung_harga(harga_dasar_defense, kelipatan_harga_defense, ScoreManager.level_upgrade_defense)
+		if ScoreManager.beli_upgrade(harga, "defense"):
+			update_semua_ui()
 
 
 
