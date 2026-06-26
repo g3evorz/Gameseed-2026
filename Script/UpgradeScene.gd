@@ -11,9 +11,7 @@ extends CanvasLayer # Atau Node2D, sesuaikan dengan tipe node 'Main' Anda
 @onready var label_lvl_defense = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Label
 @onready var btn_beli_defense = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Button
 
-# Node Item Mesin
-@onready var label_lvl_mesin = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemMesin/Label
-@onready var btn_beli_mesin = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemMesin/Button
+
 
 # --- KONFIGURASI HARGA (Harga Dasar & Kelipatan per Level) ---
 var harga_dasar_laser = 200
@@ -22,8 +20,7 @@ var kelipatan_harga_laser = 100
 var harga_dasar_defense = 150
 var kelipatan_harga_defense = 75
 
-var harga_dasar_mesin = 100
-var kelipatan_harga_mesin = 50
+
 
 func _ready():
 	# Muat data dari save file saat menu dibuka
