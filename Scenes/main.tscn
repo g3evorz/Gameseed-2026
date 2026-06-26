@@ -6,21 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cn6jf1k6pe6l8" path="res://Scenes/enemy.tscn" id="2_21xkr"]
 [ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://do7otuteiauu" path="res://Scenes/Components/levelsSpawner.tscn" id="4_jjvhh"]
-<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://70puepcgsjlx" path="res://Scenes/Levels/basicLandscapes.tscn" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://c7qnoqxs7j6wd" path="res://Scenes/Levels/level_1.tscn" id="7_344ge"]
 [ext_resource type="PackedScene" uid="uid://dxf8keb5h1lo2" path="res://Scenes/Levels/level_2.tscn" id="8_hptm8"]
 [ext_resource type="PackedScene" uid="uid://cekjkxc2vo48a" path="res://Scenes/Levels/level_3.tscn" id="9_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://c317owqmvgsig" path="res://Scenes/Levels/level_4.tscn" id="10_6iyac"]
-=======
-[ext_resource type="PackedScene" uid="uid://70puepcgsjlx" path="res://Scenes/Levels/basicLandscapes.tscn" id="7_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://c7qnoqxs7j6wd" path="res://Scenes/Levels/level_1.tscn" id="8_6iyac"]
-[ext_resource type="PackedScene" uid="uid://dxf8keb5h1lo2" path="res://Scenes/Levels/level_2.tscn" id="9_fdnlq"]
-[ext_resource type="PackedScene" uid="uid://cekjkxc2vo48a" path="res://Scenes/Levels/level_3.tscn" id="10_jkdf5"]
-[ext_resource type="PackedScene" uid="uid://c317owqmvgsig" path="res://Scenes/Levels/level_4.tscn" id="11_wsu2k"]
->>>>>>> Stashed changes
 
-[node name="Main2" type="Node2D" unique_id=1169577489]
+[node name="Main" type="Node2D" unique_id=1169577489]
 script = ExtResource("1_jjvhh")
 
 [node name="Enemy" parent="." unique_id=811008233 instance=ExtResource("2_21xkr")]
@@ -36,12 +28,9 @@ position = Vector2(3, 0)
 
 [node name="LevelsSpawner" parent="." unique_id=429419869 node_paths=PackedStringArray("player") instance=ExtResource("4_jjvhh")]
 position = Vector2(2243, 0)
-<<<<<<< Updated upstream
 list_scene_level = Array[PackedScene]([ExtResource("6_6bp64"), ExtResource("7_344ge"), ExtResource("8_hptm8"), ExtResource("9_d1ilt"), ExtResource("10_6iyac")])
-=======
-list_scene_level = Array[PackedScene]([ExtResource("7_d1ilt"), ExtResource("8_6iyac"), ExtResource("9_fdnlq"), ExtResource("10_jkdf5"), ExtResource("11_wsu2k")])
->>>>>>> Stashed changes
 player = NodePath("../Kereta")
+spawn_interval = 8.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2120541488]
 process_mode = 3
