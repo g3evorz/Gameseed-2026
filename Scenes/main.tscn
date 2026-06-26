@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cn6jf1k6pe6l8" path="res://Scenes/enemy.tscn" id="2_21xkr"]
 [ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://do7otuteiauu" path="res://Scenes/Components/levelsSpawner.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://70puepcgsjlx" path="res://Scenes/Levels/basicLandscapes.tscn" id="6_6bp64"]
+[ext_resource type="PackedScene" uid="uid://c7qnoqxs7j6wd" path="res://Scenes/Levels/level_1.tscn" id="7_344ge"]
+[ext_resource type="PackedScene" uid="uid://dxf8keb5h1lo2" path="res://Scenes/Levels/level_2.tscn" id="8_hptm8"]
+[ext_resource type="PackedScene" uid="uid://cekjkxc2vo48a" path="res://Scenes/Levels/level_3.tscn" id="9_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://bfkjsq3o02u5j" path="res://Scenes/Levels/level_4.tscn" id="10_6iyac"]
 
 [node name="Main" type="Node2D" unique_id=1169577489]
 script = ExtResource("1_jjvhh")
