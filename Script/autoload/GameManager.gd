@@ -1,9 +1,9 @@
 extends Node
 
 # Kecepatan Platform
-@export var BASE_SPEED: float = 300.0
-@export var MAX_SPEED: float = 1000.0
-@export var ACCELERATION: float = 15.0
+@export var BASE_SPEED: float = 500.0
+@export var MAX_SPEED: float = 3000.0
+@export var ACCELERATION: float = 20.0
 
 # Hit and Stop 
 @export var HIT_STOP_DURATION: float = 0.8  # Durasi game freeze (dalam detik)
@@ -46,17 +46,16 @@ func _physics_process(delta):
 func terapkan_efek_ram(efek_slow_percent: float):
 	if status_sekarang != GameState.BERMAIN:
 		return
+	var world_speed = current_world_speed
 	current_world_speed -= current_world_speed * efek_slow_percent
 
 	# 2. Freeze sesaat — ini yang menciptakan "feel" hit-stop
 	is_hit_stopping = true
 	await get_tree().create_timer(HIT_STOP_DURATION, true, false, true).timeout
 	is_hit_stopping = false
-
-	# 3. Mulai recovery: akselerasi balik ke MAX_SPEED
-	ACCELERATION = RECOVERY_ACCELERATION
-
-	ACCELERATION = RECOVERY_ACCELERATION
+	
+	current_world_speed = world_speed
+	
 
 func mulai_game():
 	status_sekarang = GameState.BERMAIN
