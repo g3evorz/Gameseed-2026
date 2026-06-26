@@ -1,11 +1,9 @@
 extends Node2D
 
-signal kereta_hancur
-
 @onready var kepala_kereta = $Kepala
 @onready var sprite_kepala = $Kepala/Sprite2D
 @onready var kumpulan_gerbong = $KumpulanGerbong
-@onready var label_jumlah_gerbong = $CanvasLayer/LabelJumlahGerbong
+@onready var label_jumlah_gerbong = $CanvasLayer/MarginContainer/LabelJumlahGerbong
 
 @export var JARAK_PIKSEL_ANTAR_GERBONG = 350.0 
 @export var KEKAKUAN_DASAR = 15.0 
@@ -13,23 +11,22 @@ signal kereta_hancur
 @export var FAKTOR_PELURUHAN = 0.8
 @export var DAMAGE_GERBONG_PUTUS = 200
 
+@export var IMMUNITY_TIMER = 4.0
+@export var SPAWN_GERBONG_OFFSITE = 2000.0
 @export var scene_gerbong: PackedScene
 
 var rantai_permanen = [] 
 
-# --- Variabel Sistem Health & Lose State ---
+# --- Variabel Sistem Health ---
 var max_health: int = 1000
 var current_health: int = 0
-var is_game_over: bool = false
-var posisi_x_terakhir: float = 0.0
-
-# Variabel baru untuk melacak jumlah gerbong frame lalu
 var jumlah_gerbong_sebelumnya: int = 0 
 
 func _ready():
 	add_to_group("Kereta")
-	ScoreManager.reset_current_run()
-	posisi_x_terakhir = kepala_kereta.global_position.x
+	
+	# Sambungkan pendeteksi Game Over dari GameManager
+	GameManager.game_over_triggered.connect(_eksekusi_kematian_kereta)
 
 	var daftar_wadah = kumpulan_gerbong.get_children()
 	for i in range(daftar_wadah.size()):
@@ -39,36 +36,22 @@ func _ready():
 			gerbong.global_position.x = kepala_kereta.global_position.x - ((i + 1) * JARAK_PIKSEL_ANTAR_GERBONG)
 			gerbong.global_position.y = kepala_kereta.global_position.y
 	
-	# --- APLIKASI UPGRADE DEFENSE ---
-	# Misal: Tiap 1 level defense menambah 250 HP pada batas maksimal
 	var bonus_hp = ScoreManager.level_upgrade_defense * 250
 	max_health = 1000 + bonus_hp
 	current_health = max_health
-	print("Defense Level ", ScoreManager.level_upgrade_defense, " | HP Total: ", current_health)
 	
-	# Catat jumlah awal gerbong saat mulai
 	jumlah_gerbong_sebelumnya = rantai_permanen.size()
 
-
-func _physics_process(delta):
-	# Jika game over, hentikan seluruh proses kalkulasi rantai
-	if is_game_over:
+func _physics_process(_delta):
+	# Gunakan GameManager sebagai patokan jalan tidaknya game
+	if GameManager.status_sekarang != GameManager.GameState.BERMAIN:
 		return
-		
-	# --- SISTEM HITUNG SKOR BERDASARKAN JARAK X ---
-	var posisi_x_sekarang = kepala_kereta.global_position.x
-	var jarak_frame_ini = posisi_x_sekarang - posisi_x_terakhir
-	
-	if jarak_frame_ini > 0:
-		ScoreManager.add_distance_score(jarak_frame_ini)
-		ScoreManager.update_conversion() 
-	
-	posisi_x_terakhir = posisi_x_sekarang
 
 	# --- LOGIKA FISIKA & RANTAI ---
 	var kecepatan_sekarang = kepala_kereta.velocity.x
 	var sambungan_utuh = true 
 	var jumlah_aktif = 0
+	var rantai_sehat = []
 	
 	for i in range(rantai_permanen.size()):
 		var gerbong = rantai_permanen[i]
@@ -82,99 +65,84 @@ func _physics_process(delta):
 			continue 
 		
 		jumlah_aktif += 1
+		rantai_sehat.append(gerbong) 
 		
 		gerbong.target_x_velocity = kecepatan_sekarang
 		gerbong.posisi_y_kepala_absolut = kepala_kereta.global_position.y
+		
+		if "FAST_FALL_VELOCITY" in kepala_kereta:
+			gerbong.FAST_FALL_VELOCITY = kepala_kereta.FAST_FALL_VELOCITY
 		
 		if i == 0:
 			gerbong.node_target = kepala_kereta
 			gerbong.target_rot = sprite_kepala.rotation
 		else:
-			var gerbong_depan = rantai_permanen[i - 1]
+			var gerbong_depan = rantai_sehat[jumlah_aktif - 2]
 			gerbong.node_target = gerbong_depan
 			
 			if gerbong_depan.has_node("Sprite2D"):
 				gerbong.target_rot = gerbong_depan.get_node("Sprite2D").rotation
 			else:
 				gerbong.target_rot = gerbong_depan.rotation
-
+				
 		var kalkulasi_kekakuan = KEKAKUAN_DASAR * FAKTOR_AWAL * pow(FAKTOR_PELURUHAN, i)
 		gerbong.kekakuan_rantai = max(kalkulasi_kekakuan, 5.0)
-
+		
+	rantai_permanen = rantai_sehat
+	
 	# --- LOGIKA HEALTH ---
-	# Cek jika jumlah gerbong aktif sekarang LEBIH SEDIKIT dari frame sebelumnya
 	if jumlah_gerbong_sebelumnya > jumlah_aktif:
 		var gerbong_hilang = jumlah_gerbong_sebelumnya - jumlah_aktif
 		var total_damage = gerbong_hilang * DAMAGE_GERBONG_PUTUS
-		
-		print("Gerbong putus! Jumlah: ", gerbong_hilang)
 		terima_damage(total_damage)
 	
-	# Update variabel referensi untuk dicek di frame berikutnya
 	jumlah_gerbong_sebelumnya = jumlah_aktif
 		
 	if label_jumlah_gerbong:
 		label_jumlah_gerbong.text = "HP: " + str(current_health) + " | Gerbong: " + str(jumlah_aktif)
 
 
-# --- FUNGSI DAMAGE UMUM ---
-# Fungsi ini dibuat fleksibel sehingga bisa dipanggil dari objek apa saja
+# --- FUNGSI DAMAGE & GAME OVER ---
 func terima_damage(jumlah_damage: int):
-	if is_game_over:
+	if GameManager.status_sekarang != GameManager.GameState.BERMAIN:
 		return
 		
 	current_health -= jumlah_damage
-	print("Terkena Damage: ", jumlah_damage, " | Sisa HP: ", current_health)
-	
-	# Opsional: Tambahkan efek visual berkedip merah atau screen shake di sini
 	
 	if current_health <= 0:
-		current_health = 0 # Cegah HP menjadi minus
-		trigger_game_over()
+		current_health = 0 
+		GameManager.trigger_game_over() # Lapor ke GameManager
 
-
-func trigger_game_over():
-	is_game_over = true
-	
+func _eksekusi_kematian_kereta():
 	if is_instance_valid(kepala_kereta) and kepala_kereta.has_method("mati"):
 		kepala_kereta.mati()
-		
-	emit_signal("kereta_hancur")
-	
 	
 # --- FUNGSI POWER UP NAMBAH GERBONG ---
 func tambah_gerbong():
 	if scene_gerbong == null:
-		print("ERROR: scene_gerbong belum diisi di Inspector KeretaManager!")
 		return
 		
-	# 1. Spawn wadah/scene gerbong baru
 	var gerbong_baru_instans = scene_gerbong.instantiate()
-	kumpulan_gerbong.add_child(gerbong_baru_instans)
-	
-	# 2. Ambil fisikanya (Karena hierarki Anda menggunakan Wadah > CharacterBody2D)
 	var gerbong_fisika = gerbong_baru_instans.get_node_or_null("CharacterBody2D")
 	
-	# Fallback: Jika ternyata gerbong_baru_instans langsung berupa CharacterBody2D
 	if gerbong_fisika == null:
 		gerbong_fisika = gerbong_baru_instans 
 		
-	# 3. Cari gerbong paling belakang yang masih hidup untuk menentukan posisi spawn
+	# Pencarian gerbong terakhir lebih efisien menggunakan .back()
 	var node_paling_belakang = kepala_kereta
-	for i in range(rantai_permanen.size() - 1, -1, -1):
-		if is_instance_valid(rantai_permanen[i]) and rantai_permanen[i].tersambung:
-			node_paling_belakang = rantai_permanen[i]
-			break
-			
-	# 4. Posisikan gerbong baru tepat di belakang gerbong terakhir
-	gerbong_fisika.global_position.x = node_paling_belakang.global_position.x - JARAK_PIKSEL_ANTAR_GERBONG
+	if rantai_permanen.size() > 0:
+		node_paling_belakang = rantai_permanen.back()
+	
+	gerbong_fisika.global_position.x = node_paling_belakang.global_position.x - SPAWN_GERBONG_OFFSITE
 	gerbong_fisika.global_position.y = node_paling_belakang.global_position.y
 	
-	# 5. Daftarkan ke dalam sistem rantai agar ikut bergerak
+	if "timer_imunitas" in gerbong_fisika:
+		gerbong_fisika.timer_imunitas = IMMUNITY_TIMER
+	
 	rantai_permanen.append(gerbong_fisika)
 	
-	# 6. Tambah Darah (HP) & Update Tracker agar tidak dianggap kena damage
-	current_health += DAMAGE_GERBONG_PUTUS # Nambah 200 HP
-	jumlah_gerbong_sebelumnya += 1 # Sinkronisasi variabel pengecek damage
+	# Memastikan penambahan node ditunda agar tidak crash dengan physics query saat menabrak item
+	kumpulan_gerbong.call_deferred("add_child", gerbong_baru_instans)
 	
-	print("Power Up Gerbong Diambil! HP Sekarang: ", current_health)
+	current_health += DAMAGE_GERBONG_PUTUS
+	jumlah_gerbong_sebelumnya += 1

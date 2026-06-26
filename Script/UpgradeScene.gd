@@ -49,12 +49,7 @@ func update_semua_ui():
 	btn_beli_defense.text = "Beli: " + str(harga_d)
 	btn_beli_defense.disabled = ScoreManager.dompet_koin < harga_d
 	
-	# 3. Update UI Mesin
-	var level_m = ScoreManager.level_upgrade_mesin
-	var harga_m = hitung_harga(harga_dasar_mesin, kelipatan_harga_mesin, level_m)
-	label_lvl_mesin.text = "Mesin (Lvl " + str(level_m) + ")"
-	btn_beli_mesin.text = "Beli: " + str(harga_m)
-	btn_beli_mesin.disabled = ScoreManager.dompet_koin < harga_m
+
 
 # Fungsi bantuan untuk menghitung harga dinamis
 func hitung_harga(dasar: int, kelipatan: int, level_saat_ini: int) -> int:
@@ -73,21 +68,15 @@ func _on_btn_beli_defense_pressed():
 	if ScoreManager.beli_upgrade(harga, "defense"):
 		update_semua_ui()
 
-func _on_btn_beli_mesin_pressed():
-	var harga = hitung_harga(harga_dasar_mesin, kelipatan_harga_mesin, ScoreManager.level_upgrade_mesin)
-	if ScoreManager.beli_upgrade(harga, "mesin"):
-		update_semua_ui()
+
 
 
 # --- FUNGSI NAVIGASI ---
 
-func _on_button_back_pressed():
-	# Contoh kembali ke Main Menu
-	# get_tree().change_scene_to_file("res://MainMenu.tscn")
-	pass
+
 
 func _on_button_home_pressed():
-	pass
+	get_tree().change_scene_to_file("res://Scenes/Homescreen.tscn")
 
 func _on_button_start_pressed():
 	# Pindah ke scene gameplay

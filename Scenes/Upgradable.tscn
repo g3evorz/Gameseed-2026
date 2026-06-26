@@ -11,8 +11,11 @@
 script = ExtResource("1_nwapd")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2126470011]
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.32468924, 0.37083524, 0.5994377, 1)
 
 [node name="Kereta" type="Node2D" parent="." unique_id=345644684]
@@ -36,11 +39,15 @@ texture = ExtResource("4_5eqk7")
 
 [node name="MarginUpgrade" type="MarginContainer" parent="." unique_id=701692828]
 custom_minimum_size = Vector2(1920, 0)
-anchors_preset = 2
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -960.0
 offset_top = -300.0
-offset_right = 1920.0
+offset_right = 960.0
+grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 50
@@ -72,6 +79,7 @@ texture = ExtResource("5_gbid7")
 
 [node name="Button" type="Button" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemLaser" unique_id=1040562127]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "UPGRADE"
 
 [node name="ItemDefense" type="VBoxContainer" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade" unique_id=21496006]
@@ -89,23 +97,7 @@ texture = ExtResource("5_gbid7")
 
 [node name="Button" type="Button" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense" unique_id=2122922821]
 layout_mode = 2
-text = "UPGRADE"
-
-[node name="ItemMesin" type="VBoxContainer" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade" unique_id=205912553]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemMesin" unique_id=1700243214]
-layout_mode = 2
-text = "Level : "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemMesin" unique_id=509327527]
-layout_mode = 2
-texture = ExtResource("5_gbid7")
-
-[node name="Button" type="Button" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemMesin" unique_id=1952179991]
-layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "UPGRADE"
 
 [node name="MarginUang" type="MarginContainer" parent="." unique_id=1945784231]
@@ -132,16 +124,9 @@ offset_bottom = 40.0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 
-[node name="HBoxNavigate" type="HBoxContainer" parent="MarginNavigate" unique_id=462109611]
+[node name="ButtonHome" type="Button" parent="MarginNavigate" unique_id=2143797680]
 layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="ButtonBack" type="Button" parent="MarginNavigate/HBoxNavigate" unique_id=437874909]
-layout_mode = 2
-text = "BACK"
-
-[node name="ButtonHome" type="Button" parent="MarginNavigate/HBoxNavigate" unique_id=2143797680]
-layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "HOME"
 
 [node name="MarginStart" type="MarginContainer" parent="." unique_id=638616264]
@@ -160,11 +145,10 @@ theme_override_constants/margin_bottom = 50
 
 [node name="ButtonStart" type="Button" parent="MarginStart" unique_id=951959055]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "START "
 
 [connection signal="pressed" from="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemLaser/Button" to="." method="_on_btn_beli_laser_pressed"]
 [connection signal="pressed" from="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Button" to="." method="_on_btn_beli_defense_pressed"]
-[connection signal="pressed" from="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemMesin/Button" to="." method="_on_btn_beli_mesin_pressed"]
-[connection signal="pressed" from="MarginNavigate/HBoxNavigate/ButtonBack" to="." method="_on_button_back_pressed"]
-[connection signal="pressed" from="MarginNavigate/HBoxNavigate/ButtonHome" to="." method="_on_button_home_pressed"]
+[connection signal="pressed" from="MarginNavigate/ButtonHome" to="." method="_on_button_home_pressed"]
 [connection signal="pressed" from="MarginStart/ButtonStart" to="." method="_on_button_start_pressed"]

@@ -9,6 +9,7 @@ var is_dead: bool = false
 @export var MAX_TILT_UP = -20.0   # Derajat maksimal saat naik (hidung ke atas)
 @export var MAX_TILT_DOWN = 15.0  # Derajat maksimal saat turun (hidung menunduk)
 @export var TILT_SMOOTHNESS = 10.0 # Seberapa mulus transisi rotasinya
+@export var FAST_FALL_VELOCITY = 1500.0
 
 @onready var sprite = $Sprite2D
 @onready var gun = $Sprite2D/PulseBody
@@ -18,13 +19,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	# Membaca level upgrade mesin dari autoload. 
 	# Misal: Tiap 1 level menambah Base Speed dan Max Speed sebesar 50
-	var bonus_kecepatan = ScoreManager.level_upgrade_mesin * 50.0
-
-#func _process(_delta):
-#	if Input.is_action_pressed("shoot"):
-#		gun.shoot()
+	pass
 
 func _physics_process(delta):
+	if GameManager.is_hit_stopping:
+		return
+		
 	# 1. Terapkan Gravitasi
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -36,8 +36,12 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
-	if Input.is_action_just_pressed("ui_down") and is_on_floor():
-		global_position.y += 2.0
+	if Input.is_action_just_pressed("ui_down"):
+		if is_on_floor():
+			global_position.y += 2.0
+		else:
+			# Jika di udara: Bantingan instan ke bawah (Fast-Fall)
+			velocity.y = FAST_FALL_VELOCITY
 
 	# 3. Gerakan Otomatis ke Depan Gradually
 
