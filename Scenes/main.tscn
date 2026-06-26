@@ -30,6 +30,7 @@ position = Vector2(3, 0)
 position = Vector2(2243, 0)
 list_scene_level = Array[PackedScene]([ExtResource("6_6bp64"), ExtResource("7_344ge"), ExtResource("8_hptm8"), ExtResource("9_d1ilt"), ExtResource("10_6iyac")])
 player = NodePath("../Kereta")
+spawn_interval = 8.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2120541488]
 process_mode = 3
