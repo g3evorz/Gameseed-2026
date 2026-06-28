@@ -8,7 +8,7 @@ extends Node
 # Hit and Stop 
 @export var HIT_STOP_DURATION: float = 0.8  # Durasi game freeze (dalam detik)
 @export var RECOVERY_ACCELERATION: float = 500.0
-@export var RAM_COOLDOWN: float = 2.0      
+@export var RAM_COOLDOWN: float = 1.2      
 
 var is_hit_stopping: bool = false
 var is_ram_on_cooldown: bool = false
@@ -44,6 +44,13 @@ func _physics_process(delta):
 	if ACCELERATION > normal_acceleration and current_world_speed >= MAX_SPEED - 50.0:
 			ACCELERATION = normal_acceleration
 			
+
+func get_speed_ratio() -> float:
+	var max_speed = MAX_SPEED
+	if max_speed == BASE_SPEED:
+		max_speed += 1.0
+
+	return clamp((current_world_speed - BASE_SPEED) / (max_speed - BASE_SPEED), 0.0, 1.0)
 
 func terapkan_efek_ram(efek_slow_percent: float):
 	if status_sekarang != GameState.BERMAIN:
