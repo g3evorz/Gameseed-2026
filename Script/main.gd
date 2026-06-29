@@ -38,6 +38,8 @@ func _on_btn_restart_pressed():
 	GameManager.restart_game()
 
 func _on_btn_quit_pressed():
+	get_tree().paused = false
+	GameManager.status_sekarang = GameManager.GameState.MULAI
 	get_tree().change_scene_to_file("res://Scenes/Upgradable.tscn")
 
 
