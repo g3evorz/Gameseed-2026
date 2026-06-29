@@ -4,98 +4,20 @@
 [ext_resource type="Script" uid="uid://cekcnut1c71hi" path="res://Script/main.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cuyokbbea850y" path="res://Scenes/Components/Worldborder.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cn6jf1k6pe6l8" path="res://Scenes/enemy.tscn" id="2_21xkr"]
-[ext_resource type="PackedScene" uid="uid://dfoomfadjrnm4" path="res://Scenes/Components/obstacleSpawner.tscn" id="2_ynf5e"]
 [ext_resource type="Script" uid="uid://bxawmns3p3xd7" path="res://Script/System/EnemyWeapon_spawner.gd" id="3_344ge"]
+[ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/Configuration/ObstacleData.gd" id="3_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_kry3j"]
+[ext_resource type="Resource" uid="uid://n6oa88amem4a" path="res://Script/Data/Obstacle/roket.tres" id="4_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://do7otuteiauu" path="res://Scenes/Components/levelsSpawner.tscn" id="4_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://beu1amvuojaxt" path="res://Scenes/Components/Weapon/Musuh/rocket.tscn" id="4_ynf5e"]
+[ext_resource type="Resource" uid="uid://7avancjj5v0" path="res://Script/Data/Difficulty/easy_difficulty.tres" id="5_6iyac"]
 
 [node name="Main" type="Node2D" unique_id=1169577489]
 script = ExtResource("1_jjvhh")
 
-[node name="EnemyWeaponWrapper" type="Node2D" parent="." unique_id=1667369368]
-position = Vector2(2150, 41.47)
-scale = Vector2(1.0191693, 1)
-
-[node name="EnemyWeaponSpawner" parent="EnemyWeaponWrapper" unique_id=837773415 instance=ExtResource("2_ynf5e")]
-position = Vector2(0, -603.47)
+[node name="EnemyWeaponSpawner" type="Node" parent="." unique_id=1565456601]
 script = ExtResource("3_344ge")
-rocket_scene = ExtResource("4_ynf5e")
-spawn_chance = 0.6
-cooldown_duration = 1.5
-targeting_inaccuracy = 30.0
-spawn_margin = 150.0
-min_track_y = 200.0
-max_track_y = 1000.0
-base_forbidden_radius = 110.0
-hard_forbidden_radius = 70.0
-base_safe_gap = 180.0
-hard_safe_gap = 120.0
-player_hitbox_height = 60.0
-
-[node name="EnemyWeaponSpawner2" parent="EnemyWeaponWrapper" unique_id=79949372 instance=ExtResource("2_ynf5e")]
-position = Vector2(0, -135.23001)
-script = ExtResource("3_344ge")
-rocket_scene = ExtResource("4_ynf5e")
-spawn_chance = 0.6
-cooldown_duration = 1.5
-targeting_inaccuracy = 30.0
-spawn_margin = 150.0
-min_track_y = 100.0
-max_track_y = 600.0
-base_forbidden_radius = 110.0
-hard_forbidden_radius = 70.0
-base_safe_gap = 180.0
-hard_safe_gap = 120.0
-player_hitbox_height = 60.0
-
-[node name="EnemyWeaponSpawner3" parent="EnemyWeaponWrapper" unique_id=2066736077 instance=ExtResource("2_ynf5e")]
-position = Vector2(0, -1094.47)
-script = ExtResource("3_344ge")
-rocket_scene = ExtResource("4_ynf5e")
-spawn_chance = 0.6
-cooldown_duration = 1.5
-targeting_inaccuracy = 30.0
-spawn_margin = 150.0
-min_track_y = 100.0
-max_track_y = 600.0
-base_forbidden_radius = 110.0
-hard_forbidden_radius = 70.0
-base_safe_gap = 180.0
-hard_safe_gap = 120.0
-player_hitbox_height = 60.0
-
-[node name="EnemyWeaponSpawner4" parent="EnemyWeaponWrapper" unique_id=42452695 instance=ExtResource("2_ynf5e")]
-position = Vector2(0, -859.47)
-script = ExtResource("3_344ge")
-rocket_scene = ExtResource("4_ynf5e")
-spawn_chance = 0.6
-cooldown_duration = 1.5
-targeting_inaccuracy = 30.0
-spawn_margin = 150.0
-min_track_y = 100.0
-max_track_y = 600.0
-base_forbidden_radius = 110.0
-hard_forbidden_radius = 70.0
-base_safe_gap = 180.0
-hard_safe_gap = 120.0
-player_hitbox_height = 60.0
-
-[node name="EnemyWeaponSpawner5" parent="EnemyWeaponWrapper" unique_id=1920502426 instance=ExtResource("2_ynf5e")]
-position = Vector2(0, -351.47)
-script = ExtResource("3_344ge")
-rocket_scene = ExtResource("4_ynf5e")
-spawn_chance = 0.6
-cooldown_duration = 1.5
-targeting_inaccuracy = 30.0
-spawn_margin = 150.0
-min_track_y = 100.0
-max_track_y = 600.0
-base_forbidden_radius = 110.0
-hard_forbidden_radius = 70.0
-base_safe_gap = 180.0
-hard_safe_gap = 120.0
-player_hitbox_height = 60.0
+possible_obstacles = Array[ExtResource("3_hptm8")]([ExtResource("4_d1ilt")])
+current_difficulty = ExtResource("5_6iyac")
 
 [node name="Enemy" parent="." unique_id=811008233 groups=["Enemy"] instance=ExtResource("2_21xkr")]
 position = Vector2(319.99997, -313.00003)

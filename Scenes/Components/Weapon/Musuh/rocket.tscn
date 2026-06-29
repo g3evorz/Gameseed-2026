@@ -11,12 +11,15 @@ script = ExtResource("1_v0csw")
 
 [node name="WarningSprite" type="Sprite2D" parent="." unique_id=1840057059]
 texture = ExtResource("1_7cxqh")
+offset = Vector2(-300, 0)
 
 [node name="RocketSprite" type="Sprite2D" parent="." unique_id=2034819980]
+position = Vector2(179.19989, 0.25501633)
 scale = Vector2(2.7999983, 0.62898463)
 texture = ExtResource("1_7cxqh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066472482]
+position = Vector2(179.19989, 0.2550163)
 scale = Vector2(15.84438, 3.108983)
 shape = SubResource("RectangleShape2D_v0csw")
 

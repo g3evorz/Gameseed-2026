@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 ScoreManager="*uid://dagykubtbwaw2"
 GameManager="*uid://c43l2tgw5vtty"
 SwipeControls="*uid://3nxliqpdpb0o"
+LevelManager="*uid://ctftklvi8gp38"
 
 [display]
 
