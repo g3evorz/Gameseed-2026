@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_kry3j"]
 [ext_resource type="Resource" uid="uid://n6oa88amem4a" path="res://Script/Data/Obstacle/roket.tres" id="4_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://do7otuteiauu" path="res://Scenes/Components/levelsSpawner.tscn" id="4_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://beu1amvuojaxt" path="res://Scenes/Components/Weapon/Musuh/rocket.tscn" id="4_ynf5e"]
+[ext_resource type="Resource" uid="uid://bdhucb6u023mc" path="res://Script/Data/Difficulty/hard_difficulty.tres" id="5_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://70puepcgsjlx" path="res://Scenes/Levels/basicLandscapes.tscn" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://c7qnoqxs7j6wd" path="res://Scenes/Levels/level_1.tscn" id="7_344ge"]
 [ext_resource type="PackedScene" uid="uid://dxf8keb5h1lo2" path="res://Scenes/Levels/level_2.tscn" id="8_hptm8"]
@@ -22,7 +22,7 @@ script = ExtResource("1_jjvhh")
 [node name="EnemyWeaponSpawner" type="Node" parent="." unique_id=1565456601]
 script = ExtResource("3_344ge")
 possible_obstacles = Array[ExtResource("3_hptm8")]([ExtResource("4_d1ilt")])
-current_difficulty = ExtResource("5_6iyac")
+current_difficulty = ExtResource("5_wsu2k")
 
 [node name="Enemy" parent="." unique_id=811008233 groups=["Enemy"] instance=ExtResource("2_21xkr")]
 position = Vector2(319.99997, -313.00003)
