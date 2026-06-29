@@ -10,7 +10,7 @@ func spawn_obstacle():
 	# --- 1. CEK PELUANG UTAMA ---
 	# randf() menghasilkan angka acak antara 0.0 sampai 1.0
 	if randf() > spawn_chance:
-		# Gagal melewati peluang, batalkan proses spawn (biarkan kosong)
+		LevelManager.register_empty_slot(self)
 		return
 
 	if possible_obstacles.is_empty():
