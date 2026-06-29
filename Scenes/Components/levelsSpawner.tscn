@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://do7otuteiauu"]
 
 [ext_resource type="Script" uid="uid://dcsbhlflouiv0" path="res://Script/System/LevelSpawner.gd" id="1_tg4oo"]
-[ext_resource type="PackedScene" uid="uid://70puepcgsjlx" path="res://Scenes/Levels/basicLandscapes.tscn" id="2_sknle"]
 
-[node name="LevelsSpawner" type="Node2D" unique_id=429419869 node_paths=PackedStringArray("player", "game_manager")]
+[node name="LevelsSpawner" type="Node2D" unique_id=429419869]
 script = ExtResource("1_tg4oo")
-item_to_spawn = ExtResource("2_sknle")
-player = NodePath("")
 spawn_interval = 10.0
-game_manager = NodePath("")

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://beu1amvuojaxt"]
+
+[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_7cxqh"]
+[ext_resource type="Script" uid="uid://bfs673vj815m8" path="res://Script/Weapon/Musuh/rocket.gd" id="1_v0csw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0csw"]
+
+[node name="Rocket" type="Area2D" unique_id=139320472]
+collision_layer = 2
+script = ExtResource("1_v0csw")
+
+[node name="WarningSprite" type="Sprite2D" parent="." unique_id=1840057059]
+texture = ExtResource("1_7cxqh")
+offset = Vector2(-300, 0)
+
+[node name="RocketSprite" type="Sprite2D" parent="." unique_id=2034819980]
+position = Vector2(179.19989, 0.25501633)
+scale = Vector2(2.7999983, 0.62898463)
+texture = ExtResource("1_7cxqh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066472482]
+position = Vector2(179.19989, 0.2550163)
+scale = Vector2(15.84438, 3.108983)
+shape = SubResource("RectangleShape2D_v0csw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

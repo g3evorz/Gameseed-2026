@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ciej1ht535fuo" path="res://Scenes/Components/Obstacle/platform.tscn" id="1_5wop5"]
 [ext_resource type="Script" uid="uid://bbu4urqab8mo1" path="res://Script/Level.gd" id="1_thjbd"]
 [ext_resource type="PackedScene" uid="uid://dfoomfadjrnm4" path="res://Scenes/Components/obstacleSpawner.tscn" id="3_l4xcd"]
-[ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/System/ObstacleData.gd" id="4_vnr04"]
+[ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/Configuration/ObstacleData.gd" id="4_vnr04"]
 [ext_resource type="Resource" uid="uid://bw6wnloibyrcs" path="res://Script/Data/Obstacle/big_asteroid.tres" id="5_fka3a"]
 [ext_resource type="Resource" uid="uid://b3eb6mfvn044l" path="res://Script/Data/Obstacle/small_asteroid.tres" id="6_fe3wn"]
 [ext_resource type="Resource" uid="uid://dl6ffbqtc5qiu" path="res://Script/Data/PowerUp/gerbong_replenish.tres" id="7_ss2k6"]
@@ -72,20 +72,10 @@ position = Vector2(1891, -408)
 possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_ro0fg")])
 spawn_chance = 0.7
 
-[node name="ObstacleSpawner13" parent="Spawners" unique_id=691782341 instance=ExtResource("3_l4xcd")]
-position = Vector2(3703, -437)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn")])
-spawn_chance = 0.8
-
-[node name="ObstacleSpawner14" parent="Spawners" unique_id=1306145697 instance=ExtResource("3_l4xcd")]
-position = Vector2(4503, -437)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("8_fe3wn")])
-spawn_chance = 0.2
-
-[node name="ObstacleSpawner17" parent="Spawners" unique_id=1333953082 instance=ExtResource("3_l4xcd")]
-position = Vector2(4450, -78)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("7_ss2k6"), ExtResource("8_ro0fg")])
-spawn_chance = 0.5
+[node name="ObstacleSpawner10" parent="Spawners" unique_id=1803498278 instance=ExtResource("3_l4xcd")]
+position = Vector2(1539, -55)
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("7_ss2k6"), ExtResource("5_fka3a"), null, null])
+spawn_chance = 1.0
 
 [node name="ObstacleSpawner18" parent="Spawners" unique_id=956117306 instance=ExtResource("3_l4xcd")]
 position = Vector2(5426, -437)

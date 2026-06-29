@@ -4,8 +4,12 @@
 [ext_resource type="Script" uid="uid://cekcnut1c71hi" path="res://Script/main.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cuyokbbea850y" path="res://Scenes/Components/Worldborder.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cn6jf1k6pe6l8" path="res://Scenes/enemy.tscn" id="2_21xkr"]
+[ext_resource type="Script" uid="uid://bxawmns3p3xd7" path="res://Script/System/EnemyWeapon_spawner.gd" id="3_344ge"]
+[ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/Configuration/ObstacleData.gd" id="3_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_kry3j"]
+[ext_resource type="Resource" uid="uid://n6oa88amem4a" path="res://Script/Data/Obstacle/roket.tres" id="4_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://do7otuteiauu" path="res://Scenes/Components/levelsSpawner.tscn" id="4_jjvhh"]
+[ext_resource type="Resource" uid="uid://bdhucb6u023mc" path="res://Script/Data/Difficulty/hard_difficulty.tres" id="5_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://70puepcgsjlx" path="res://Scenes/Levels/basicLandscapes.tscn" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://c7qnoqxs7j6wd" path="res://Scenes/Levels/level_1.tscn" id="7_344ge"]
 [ext_resource type="PackedScene" uid="uid://dxf8keb5h1lo2" path="res://Scenes/Levels/level_2.tscn" id="8_hptm8"]
@@ -16,11 +20,16 @@
 [node name="Main" type="Node2D" unique_id=1169577489]
 script = ExtResource("1_jjvhh")
 
-[node name="Enemy" parent="." unique_id=811008233 instance=ExtResource("2_21xkr")]
+[node name="EnemyWeaponSpawner" type="Node" parent="." unique_id=1565456601]
+script = ExtResource("3_344ge")
+possible_obstacles = Array[ExtResource("3_hptm8")]([ExtResource("4_d1ilt")])
+current_difficulty = ExtResource("5_wsu2k")
+
+[node name="Enemy" parent="." unique_id=811008233 groups=["Enemy"] instance=ExtResource("2_21xkr")]
 position = Vector2(319.99997, -313.00003)
 scale = Vector2(1.25, 1.25)
 
-[node name="Kereta" parent="." unique_id=1640051749 groups=["Player"] instance=ExtResource("1_bo1nx")]
+[node name="Kereta" parent="." unique_id=1640051749 instance=ExtResource("1_bo1nx")]
 position = Vector2(441, -39)
 scene_gerbong = ExtResource("3_kry3j")
 
@@ -209,4 +218,7 @@ text = "PAUSE "
 [connection signal="pressed" from="CanvasLayer/GameOver/HBoxContainer/Retry" to="." method="_on_btn_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOver/HBoxContainer/Exit" to="." method="_on_btn_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/PauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="konfirmasi_ya" from="CanvasLayer/ConfirmationPanel" to="." method="_on_confirmation_panel_konfirmasi_ya"]
+
+[editable path="Enemy"]
+[editable path="Kereta"]
+[editable path="Kereta/Kepala"]
