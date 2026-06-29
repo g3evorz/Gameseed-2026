@@ -24,41 +24,73 @@ scale = Vector2(7, 0.564)
 [node name="Spawners" type="Node2D" parent="." unique_id=386448179]
 
 [node name="ObstacleSpawner" parent="Spawners" unique_id=837773415 instance=ExtResource("3_l4xcd")]
-position = Vector2(10, -418)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_fe3wn"), ExtResource("8_ro0fg")])
+position = Vector2(187, -85)
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a")])
+spawn_chance = 0.8
 
 [node name="ObstacleSpawner2" parent="Spawners" unique_id=1764472550 instance=ExtResource("3_l4xcd")]
 position = Vector2(254, -418)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_fe3wn"), ExtResource("8_ro0fg")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fe3wn")])
+spawn_chance = 0.8
 
 [node name="ObstacleSpawner3" parent="Spawners" unique_id=1164452393 instance=ExtResource("3_l4xcd")]
 position = Vector2(543, -418)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_fe3wn"), ExtResource("8_ro0fg")])
-
-[node name="ObstacleSpawner10" parent="Spawners" unique_id=1803498278 instance=ExtResource("3_l4xcd")]
-position = Vector2(1358, -408)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_fe3wn"), ExtResource("8_ro0fg")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fe3wn")])
 spawn_chance = 1.0
 
+[node name="ObstacleSpawner10" parent="Spawners" unique_id=1803498278 instance=ExtResource("3_l4xcd")]
+position = Vector2(1145, -408)
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_ro0fg")])
+spawn_chance = 0.7
+
 [node name="ObstacleSpawner11" parent="Spawners" unique_id=64424452 instance=ExtResource("3_l4xcd")]
-position = Vector2(1602, -408)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_fe3wn"), ExtResource("8_ro0fg")])
+position = Vector2(1508, -408)
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_ro0fg")])
+
+[node name="ObstacleSpawner15" parent="Spawners" unique_id=807426846 instance=ExtResource("3_l4xcd")]
+position = Vector2(2402, -66)
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("7_ss2k6"), ExtResource("8_ro0fg")])
+spawn_chance = 1.0
+
+[node name="ObstacleSpawner16" parent="Spawners" unique_id=1654922089 instance=ExtResource("3_l4xcd")]
+position = Vector2(2765, -66)
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("7_ss2k6"), ExtResource("8_ro0fg")])
+spawn_chance = 1.0
+
+[node name="ObstacleSpawner19" parent="Spawners" unique_id=2135683818 instance=ExtResource("3_l4xcd")]
+position = Vector2(3473, -66)
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("7_ss2k6"), ExtResource("8_fe3wn"), ExtResource("8_ro0fg")])
+spawn_chance = 0.7
+
+[node name="ObstacleSpawner20" parent="Spawners" unique_id=231090367 instance=ExtResource("3_l4xcd")]
+position = Vector2(3836, -66)
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn")])
+spawn_chance = 1.0
 
 [node name="ObstacleSpawner12" parent="Spawners" unique_id=382322877 instance=ExtResource("3_l4xcd")]
 position = Vector2(1891, -408)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_fe3wn"), ExtResource("8_ro0fg")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_ro0fg")])
+spawn_chance = 0.7
 
 [node name="ObstacleSpawner13" parent="Spawners" unique_id=691782341 instance=ExtResource("3_l4xcd")]
 position = Vector2(3703, -437)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_fe3wn"), ExtResource("8_ro0fg")])
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn")])
+spawn_chance = 0.8
+
+[node name="ObstacleSpawner14" parent="Spawners" unique_id=1306145697 instance=ExtResource("3_l4xcd")]
+position = Vector2(4503, -437)
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("8_fe3wn")])
+spawn_chance = 0.2
 
 [node name="ObstacleSpawner17" parent="Spawners" unique_id=1333953082 instance=ExtResource("3_l4xcd")]
-position = Vector2(4275, -408)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_fe3wn"), ExtResource("8_ro0fg")])
+position = Vector2(4450, -78)
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("7_ss2k6"), ExtResource("8_ro0fg")])
+spawn_chance = 0.5
 
 [node name="ObstacleSpawner18" parent="Spawners" unique_id=956117306 instance=ExtResource("3_l4xcd")]
-position = Vector2(5307, -408)
-possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_fe3wn"), ExtResource("8_ro0fg")])
+position = Vector2(5426, -437)
+possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn")])
+spawn_chance = 0.8
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=60705751]
 position = Vector2(6299, -313)

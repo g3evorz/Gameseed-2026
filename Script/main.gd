@@ -5,6 +5,7 @@ extends Node2D
 @onready var ui_pause = $CanvasLayer/PauseMenu
 @onready var score_label = $CanvasLayer/GameOver/VBoxContainer/ScoreLabel
 @onready var coin_label = $CanvasLayer/GameOver/VBoxContainer/TotalCoin
+@onready var confirmation_panel = $CanvasLayer/ConfirmationPanel
 
 func _ready():
 	ui_game_over.hide()
@@ -38,11 +39,15 @@ func _on_btn_restart_pressed():
 	GameManager.restart_game()
 
 func _on_btn_quit_pressed():
+
+	confirmation_panel.tampilkan("Return?")
+	
+
+func _on_confirmation_panel_konfirmasi_ya():
 	get_tree().paused = false
 	GameManager.status_sekarang = GameManager.GameState.MULAI
-	get_tree().change_scene_to_file("res://Scenes/Upgradable.tscn")
-
-
+	SceneTransition.pindah_scene("res://Scenes/Upgradable.tscn")
+	
 func _on_pause_button_pressed() -> void:
 	GameManager.toggle_pause()
 

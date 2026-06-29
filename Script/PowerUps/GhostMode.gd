@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var durasi_aktif: float = 15.0 # Aktif selama 7 detik
+@export var durasi_aktif: float = 7.0 # Aktif selama 7 detik
 
 func _on_body_entered(body):
 	# Mengecek apakah yang menyentuh item ini adalah Kepala atau Gerbong

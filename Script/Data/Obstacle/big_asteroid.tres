@@ -7,5 +7,5 @@
 script = ExtResource("2_csmlr")
 obstacle_scene = ExtResource("1_70nic")
 obstacle_type = 1
-max_hp = 50
+max_hp = 100
 metadata/_custom_type_script = "uid://brhx3skaebmcy"

@@ -11,16 +11,12 @@ extends CanvasLayer # Atau Node2D, sesuaikan dengan tipe node 'Main' Anda
 @onready var label_lvl_defense = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Label
 @onready var btn_beli_defense = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Button
 
-
-
 # --- KONFIGURASI HARGA (Harga Dasar & Kelipatan per Level) ---
 var harga_dasar_laser = 200
 var kelipatan_harga_laser = 100 
 
 var harga_dasar_defense = 150
 var kelipatan_harga_defense = 75
-
-
 
 func _ready():
 	# Muat data dari save file saat menu dibuka
@@ -67,17 +63,10 @@ func _on_btn_beli_defense_pressed():
 		if ScoreManager.beli_upgrade(harga, "defense"):
 			update_semua_ui()
 
-
-
-
 # --- FUNGSI NAVIGASI ---
 
-
-
 func _on_button_home_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Homescreen.tscn")
+	SceneTransition.pindah_scene("res://Scenes/Homescreen.tscn")
 
 func _on_button_start_pressed():
-	# Pindah ke scene gameplay
-	get_tree().change_scene_to_file("res://Scenes/main.tscn")
-	pass
+	SceneTransition.pindah_scene("res://Scenes/main.tscn")
