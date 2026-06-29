@@ -19,6 +19,10 @@ extends Camera2D
 @export var wobble_active_duration: float = 0.5 
 @export var wobble_pause_duration: float = 1.5
 
+@export_group("Hit Stop Shake")
+@export var hit_shake_intensity: float = 15.0 # Seberapa kuat getarannya (dalam piksel)
+@export var hit_shake_decay: float = 15.0 # Kecepatan kamera kembali tenang setelah hit stop
+
 var _current_active_smoothing: float = 8.0
 var _fixed_global_y: float = 0.0
 var _time_passed: float = 0.0 # Waktu berjalan untuk fungsi gelombang sinus
@@ -71,8 +75,19 @@ func _physics_process(delta):
 	var target_smoothing = lerp(max_smoothing, min_smoothing, speed_ratio)
 	
 	var current_transition = transition_speed
+	# --- LOGIKA KETIKA HIT STOP AKTIF ---
 	if GameManager.is_hit_stopping:
 		current_transition *= 3.0 
+		
+		# Hasilkan angka acak (X dan Y) secara liar untuk efek getaran tabrakan
+		var shake_x = randf_range(-hit_shake_intensity, hit_shake_intensity)
+		var shake_y = randf_range(-hit_shake_intensity, hit_shake_intensity)
+		
+		# Gunakan properti 'offset' bawaan Camera2D agar tidak merusak perhitungan global_position
+		self.offset = Vector2(shake_x, shake_y)
+	else:
+		# Jika tidak hit_stop, kembalikan offset ke 0 secara perlahan (mulus)
+		self.offset = self.offset.lerp(Vector2.ZERO, hit_shake_decay * delta)
 		
 	_current_active_smoothing = lerp(_current_active_smoothing, target_smoothing, current_transition * delta)
 	

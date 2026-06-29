@@ -1,0 +1,42 @@
+<<<<<<< Updated upstream
+[gd_scene format=3 uid="uid://7kgr7dr7qmc7"]
+=======
+[gd_scene format=3 uid="uid://1xwgvqxjwcre"]
+>>>>>>> Stashed changes
+
+[ext_resource type="PackedScene" uid="uid://blvniqmv0cixc" path="res://Scenes/Components/Kereta/kepala.tscn" id="1_2wmvs"]
+[ext_resource type="Script" uid="uid://hopwy0agpns4" path="res://Script/Kereta/kereta.gd" id="1_l81m1"]
+[ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_k3j8q"]
+
+[node name="Kereta" type="Node2D" unique_id=1640051749]
+script = ExtResource("1_l81m1")
+
+[node name="Kepala" parent="." unique_id=1780252134 instance=ExtResource("1_2wmvs")]
+
+[node name="KumpulanGerbong" type="Node2D" parent="." unique_id=399389016]
+position = Vector2(-280, 0)
+
+[node name="Gerbong1" parent="KumpulanGerbong" unique_id=2090834745 instance=ExtResource("3_k3j8q")]
+
+[node name="Gerbong2" parent="KumpulanGerbong" unique_id=286542621 instance=ExtResource("3_k3j8q")]
+
+[node name="Gerbong3" parent="KumpulanGerbong" unique_id=422210554 instance=ExtResource("3_k3j8q")]
+
+[node name="Gerbong4" parent="KumpulanGerbong" unique_id=434939152 instance=ExtResource("3_k3j8q")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1250077466]
+
+<<<<<<< Updated upstream
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1047966626]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+
+[node name="LabelJumlahGerbong" type="Label" parent="CanvasLayer/MarginContainer" unique_id=978373017]
+layout_mode = 2
+=======
+[node name="LabelJumlahGerbong" type="Label" parent="CanvasLayer" unique_id=978373017]
+offset_right = 40.0
+offset_bottom = 23.0
+>>>>>>> Stashed changes
