@@ -39,7 +39,6 @@ func _on_btn_restart_pressed():
 	GameManager.restart_game()
 
 func _on_btn_quit_pressed():
-
 	confirmation_panel.tampilkan("Return?")
 	
 

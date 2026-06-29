@@ -218,6 +218,7 @@ text = "PAUSE "
 [connection signal="pressed" from="CanvasLayer/GameOver/HBoxContainer/Retry" to="." method="_on_btn_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOver/HBoxContainer/Exit" to="." method="_on_btn_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="konfirmasi_ya" from="CanvasLayer/ConfirmationPanel" to="." method="_on_confirmation_panel_konfirmasi_ya"]
 
 [editable path="Enemy"]
 [editable path="Kereta"]
