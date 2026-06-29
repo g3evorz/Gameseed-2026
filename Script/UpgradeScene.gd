@@ -64,9 +64,7 @@ func _on_btn_beli_defense_pressed():
 # --- FUNGSI NAVIGASI ---
 
 func _on_button_home_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Homescreen.tscn")
+	SceneTransition.pindah_scene("res://Scenes/Homescreen.tscn")
 
 func _on_button_start_pressed():
-	# Pindah ke scene gameplay
-	get_tree().change_scene_to_file("res://Scenes/main.tscn")
-	pass
+	SceneTransition.pindah_scene("res://Scenes/main.tscn")

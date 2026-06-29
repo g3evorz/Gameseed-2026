@@ -14,52 +14,87 @@
 script = ExtResource("1_blpqv")
 
 [node name="platform" parent="." unique_id=2120483876 instance=ExtResource("2_1jlnc")]
-position = Vector2(447, -418)
+position = Vector2(447, -315)
+scale = Vector2(1.8031046, 0.7511063)
+
+[node name="platform2" parent="." unique_id=1672490690 instance=ExtResource("2_1jlnc")]
+position = Vector2(1783, -320.99997)
+scale = Vector2(1.8031046, 0.7511063)
+
+[node name="platform4" parent="." unique_id=1841047469 instance=ExtResource("2_1jlnc")]
+position = Vector2(1783, -1008)
 scale = Vector2(1.8031046, 0.7511063)
 
 [node name="platform3" parent="." unique_id=832513540 instance=ExtResource("2_1jlnc")]
-position = Vector2(3000, -405.99997)
+position = Vector2(3000, -564.99994)
 scale = Vector2(1.8764838, 0.7656396)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=60705751]
-position = Vector2(3938, -331)
+position = Vector2(3973, -331)
 
 [node name="Spawners" type="Node2D" parent="." unique_id=386448179]
 
 [node name="ObstacleSpawner" parent="Spawners" unique_id=837773415 instance=ExtResource("3_u40f0")]
-position = Vector2(202, -464)
-possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("9_ia1lp"), ExtResource("5_uqiic"), ExtResource("6_eopvx"), ExtResource("7_t27xo")])
+position = Vector2(198, -452)
+possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("5_uqiic"), ExtResource("7_t27xo")])
+spawn_chance = 0.7
 
 [node name="ObstacleSpawner2" parent="Spawners" unique_id=1764472550 instance=ExtResource("3_u40f0")]
-position = Vector2(446, -464)
-possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("9_ia1lp"), ExtResource("5_uqiic"), ExtResource("6_eopvx"), ExtResource("7_t27xo")])
-
-[node name="ObstacleSpawner3" parent="Spawners" unique_id=1164452393 instance=ExtResource("3_u40f0")]
-position = Vector2(735, -464)
-possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("9_ia1lp"), ExtResource("5_uqiic"), ExtResource("6_eopvx"), ExtResource("7_t27xo")])
+position = Vector2(674, -452)
+possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("5_uqiic"), ExtResource("7_t27xo")])
+spawn_chance = 0.7
 
 [node name="ObstacleSpawner7" parent="Spawners" unique_id=1990665921 instance=ExtResource("3_u40f0")]
-position = Vector2(2759, -454)
+position = Vector2(2759, -613)
 possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("9_ia1lp"), ExtResource("5_uqiic"), ExtResource("6_eopvx"), ExtResource("7_t27xo")])
+spawn_chance = 0.4
 
 [node name="ObstacleSpawner8" parent="Spawners" unique_id=1775246808 instance=ExtResource("3_u40f0")]
-position = Vector2(3003, -454)
+position = Vector2(3003, -613)
 possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("9_ia1lp"), ExtResource("5_uqiic"), ExtResource("6_eopvx"), ExtResource("7_t27xo")])
+spawn_chance = 0.4
 
 [node name="ObstacleSpawner9" parent="Spawners" unique_id=1976000251 instance=ExtResource("3_u40f0")]
-position = Vector2(3292, -454)
+position = Vector2(3292, -613)
 possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("9_ia1lp"), ExtResource("5_uqiic"), ExtResource("6_eopvx"), ExtResource("7_t27xo")])
+spawn_chance = 0.4
 
 [node name="ObstacleSpawner10" parent="Spawners" unique_id=1803498278 instance=ExtResource("3_u40f0")]
-position = Vector2(1539, -55)
-possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("9_ia1lp"), ExtResource("5_uqiic"), ExtResource("6_eopvx"), ExtResource("7_t27xo")])
+position = Vector2(1526, -55)
+possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("5_uqiic"), ExtResource("6_eopvx"), ExtResource("7_t27xo")])
+spawn_chance = 0.7
 
 [node name="ObstacleSpawner11" parent="Spawners" unique_id=64424452 instance=ExtResource("3_u40f0")]
-position = Vector2(1783, -55)
-possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("9_ia1lp"), ExtResource("5_uqiic"), ExtResource("6_eopvx"), ExtResource("7_t27xo")])
+position = Vector2(2017, -55)
+possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("5_uqiic"), ExtResource("6_eopvx"), ExtResource("7_t27xo")])
+spawn_chance = 0.7
 
-[node name="ObstacleSpawner12" parent="Spawners" unique_id=382322877 instance=ExtResource("3_u40f0")]
-position = Vector2(2072, -55)
+[node name="ObstacleSpawner13" parent="Spawners" unique_id=440591441 instance=ExtResource("3_u40f0")]
+position = Vector2(1526, -462)
 possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("9_ia1lp"), ExtResource("5_uqiic"), ExtResource("6_eopvx"), ExtResource("7_t27xo")])
+spawn_chance = 0.6
+
+[node name="ObstacleSpawner14" parent="Spawners" unique_id=529484413 instance=ExtResource("3_u40f0")]
+position = Vector2(1770, -678)
+possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("9_ia1lp"), ExtResource("7_t27xo")])
+spawn_chance = 0.8
+
+[node name="ObstacleSpawner15" parent="Spawners" unique_id=1410967974 instance=ExtResource("3_u40f0")]
+position = Vector2(2059, -462)
+possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("9_ia1lp"), ExtResource("5_uqiic"), ExtResource("6_eopvx"), ExtResource("7_t27xo")])
+spawn_chance = 0.6
+
+[node name="ObstacleSpawner16" parent="Spawners" unique_id=1984370245 instance=ExtResource("3_u40f0")]
+position = Vector2(1526, -1089)
+possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("9_ia1lp")])
+
+[node name="ObstacleSpawner17" parent="Spawners" unique_id=471684125 instance=ExtResource("3_u40f0")]
+position = Vector2(1770, -1089)
+possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("6_eopvx")])
+spawn_chance = 1.0
+
+[node name="ObstacleSpawner18" parent="Spawners" unique_id=1300085162 instance=ExtResource("3_u40f0")]
+position = Vector2(2059, -1089)
+possible_obstacles = Array[ExtResource("4_0x4y1")]([ExtResource("8_yxf76"), ExtResource("9_ia1lp")])
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
