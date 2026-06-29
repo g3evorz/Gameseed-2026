@@ -44,14 +44,7 @@ func _physics_process(delta):
 	if not has_node("/root/GameManager"):
 		return
 
-	var current_speed = GameManager.current_world_speed
-	var max_speed = GameManager.MAX_SPEED
-	var base_speed = GameManager.BASE_SPEED
-	
-	if max_speed == base_speed:
-		max_speed += 1.0 
-	
-	var speed_ratio = clamp((current_speed - base_speed) / (max_speed - base_speed), 0.0, 1.0)
+	var speed_ratio = GameManager.get_speed_ratio()
 	
 	# --- SISTEM INTERVAL WOBBLE ---
 	if _is_wobbling_active:
@@ -102,3 +95,7 @@ func _physics_process(delta):
 	global_position = Vector2(new_x, _fixed_global_y)
 	
 	zoom = lerp(zoom, target_zoom, _current_active_smoothing * delta)
+
+func get_right_edge_x(margin: float = 0.0) -> float:
+	var half_world_width = (get_viewport_rect().size.x / 2.0) / zoom.x
+	return global_position.x + half_world_width + margin

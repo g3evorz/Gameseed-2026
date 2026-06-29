@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="ObstacleData" format=3 uid="uid://n6oa88amem4a"]
 
 [ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/System/ObstacleData.gd" id="1_dqqjb"]
+[ext_resource type="PackedScene" uid="uid://beu1amvuojaxt" path="res://Scenes/Components/Weapon/Musuh/rocket.tscn" id="1_j3jkk"]
 
 [resource]
 script = ExtResource("1_dqqjb")
+obstacle_scene = ExtResource("1_j3jkk")
 metadata/_custom_type_script = "uid://brhx3skaebmcy"

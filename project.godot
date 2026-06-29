@@ -35,6 +35,7 @@ project/assembly_name="GAMESEED-2026"
 [global_group]
 
 Player=""
+Enemy=""
 
 [input]
 
