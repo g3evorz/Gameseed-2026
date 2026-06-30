@@ -17,10 +17,13 @@ extends Node2D
 
 var rantai_permanen = [] 
 
-# --- Variabel Sistem Health ---
+# --- Variabel Sistem Health & Mode Hantu ---
 var max_health: int = 1000
 var current_health: int = 0
 var jumlah_gerbong_sebelumnya: int = 0 
+
+var is_invincible: bool = false
+var timer_invincible: float = 0.0
 
 func _ready():
 	add_to_group("Kereta")
@@ -42,10 +45,18 @@ func _ready():
 	
 	jumlah_gerbong_sebelumnya = rantai_permanen.size()
 
-func _physics_process(_delta):
+
+# PERBAIKAN: Ubah _delta menjadi delta (hapus garis bawah) agar timer bisa membaca waktu
+func _physics_process(delta):
 	# Gunakan GameManager sebagai patokan jalan tidaknya game
 	if GameManager.status_sekarang != GameManager.GameState.BERMAIN:
 		return
+		
+	# --- LOGIKA DURASI MODE HANTU ---
+	if is_invincible:
+		timer_invincible -= delta
+		if timer_invincible <= 0:
+			matikan_mode_hantu()
 
 	# --- LOGIKA FISIKA & RANTAI ---
 	var kecepatan_sekarang = kepala_kereta.velocity.x
@@ -102,9 +113,64 @@ func _physics_process(_delta):
 		label_jumlah_gerbong.text = "HP: " + str(current_health) + " | Gerbong: " + str(jumlah_aktif)
 
 
+# --- FUNGSI MENGAKTIFKAN/MEMATIKAN MODE HANTU ---
+func ghost_mode(durasi: float):
+	if GameManager.status_sekarang != GameManager.GameState.BERMAIN: return
+	
+	is_invincible = true
+	timer_invincible = durasi
+	print("Mode Hantu Aktif selama ", durasi, " detik! Pindah ke Layer 4")
+	
+	# 1. Atur Kepala Kereta
+	if is_instance_valid(kepala_kereta):
+		sprite_kepala.modulate.a = 0.5
+		
+		# Matikan layer 1 (asumsi layer default) dan nyalakan layer 4
+		# WAJIB pakai call_deferred untuk mencegah error physics queries
+		kepala_kereta.call_deferred("set_collision_layer_value", 1, false)
+		kepala_kereta.call_deferred("set_collision_layer_value", 4, true)
+		
+	# 2. Atur Seluruh Gerbong
+	for gerbong in rantai_permanen:
+		if is_instance_valid(gerbong):
+			if gerbong.has_node("Sprite2D"):
+				gerbong.get_node("Sprite2D").modulate.a = 0.5
+				
+			# Ubah layer tiap gerbong
+			gerbong.call_deferred("set_collision_layer_value", 1, false)
+			gerbong.call_deferred("set_collision_layer_value", 4, true)
+
+func matikan_mode_hantu():
+	is_invincible = false
+	print("Mode Hantu Berakhir, kembali ke Layer 1 normal!")
+	
+	# 1. Kembalikan Kepala Kereta
+	if is_instance_valid(kepala_kereta):
+		sprite_kepala.modulate.a = 1.0
+		
+		# Matikan layer 4 dan kembalikan ke layer 1
+		kepala_kereta.call_deferred("set_collision_layer_value", 4, false)
+		kepala_kereta.call_deferred("set_collision_layer_value", 1, true)
+		
+	# 2. Kembalikan Seluruh Gerbong
+	for gerbong in rantai_permanen:
+		if is_instance_valid(gerbong):
+			if gerbong.has_node("Sprite2D"):
+				gerbong.get_node("Sprite2D").modulate.a = 1.0
+				
+			# Kembalikan layer tiap gerbong
+			gerbong.call_deferred("set_collision_layer_value", 4, false)
+			gerbong.call_deferred("set_collision_layer_value", 1, true)
+
+
 # --- FUNGSI DAMAGE & GAME OVER ---
 func terima_damage(jumlah_damage: int):
 	if GameManager.status_sekarang != GameManager.GameState.BERMAIN:
+		return
+		
+	# PERBAIKAN: Kebal terhadap damage saat Ghost Mode aktif
+	if is_invincible:
+		print("Kereta sedang Ghost Mode! Kebal damage.")
 		return
 		
 	current_health -= jumlah_damage

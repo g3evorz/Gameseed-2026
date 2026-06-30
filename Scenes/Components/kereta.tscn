@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://dukt3ykblby48"]
+<<<<<<< Updated upstream
+[gd_scene format=3 uid="uid://7kgr7dr7qmc7"]
+=======
+[gd_scene format=3 uid="uid://1xwgvqxjwcre"]
+>>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://blvniqmv0cixc" path="res://Scenes/Components/Kereta/kepala.tscn" id="1_2wmvs"]
 [ext_resource type="Script" uid="uid://hopwy0agpns4" path="res://Script/Kereta/kereta.gd" id="1_l81m1"]
@@ -22,6 +26,7 @@ position = Vector2(-280, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1250077466]
 
+<<<<<<< Updated upstream
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1047966626]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -30,3 +35,8 @@ theme_override_constants/margin_top = 50
 
 [node name="LabelJumlahGerbong" type="Label" parent="CanvasLayer/MarginContainer" unique_id=978373017]
 layout_mode = 2
+=======
+[node name="LabelJumlahGerbong" type="Label" parent="CanvasLayer" unique_id=978373017]
+offset_right = 40.0
+offset_bottom = 23.0
+>>>>>>> Stashed changes

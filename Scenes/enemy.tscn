@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cn6jf1k6pe6l8"]
+
+[ext_resource type="Script" uid="uid://bn3fkdkf46ee7" path="res://Script/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_hghv2"]
+[ext_resource type="PackedScene" uid="uid://dbkh6apanukm8" path="res://Scenes/Components/Musuh/gerbong_musuh.tscn" id="3_afpow"]
+
+[node name="Enemy" type="Node2D" unique_id=233523717]
+script = ExtResource("1_1f0kj")
+
+[node name="Kepala" type="Node2D" parent="." unique_id=811008233]
+
+[node name="VisualWrapper" type="Node2D" parent="Kepala" unique_id=1739382607]
+
+[node name="Sprite2D" type="Sprite2D" parent="Kepala/VisualWrapper" unique_id=254567006]
+position = Vector2(-129, 38)
+scale = Vector2(2.0234377, 0.59375)
+texture = ExtResource("1_hghv2")
+centered = false
+offset = Vector2(0, -126)
+
+[node name="Kumpulan Gerbong" type="Node2D" parent="." unique_id=3761946]
+
+[node name="Gerbong_musuh" parent="Kumpulan Gerbong" unique_id=801158437 instance=ExtResource("3_afpow")]
+position = Vector2(-278, 0)
+
+[node name="Gerbong_musuh2" parent="Kumpulan Gerbong" unique_id=1694006447 instance=ExtResource("3_afpow")]
+position = Vector2(-556, 0)
+
+[node name="Gerbong_musuh3" parent="Kumpulan Gerbong" unique_id=361256157 instance=ExtResource("3_afpow")]
+position = Vector2(-834, 0)
+
+[node name="Gerbong_musuh4" parent="Kumpulan Gerbong" unique_id=783311124 instance=ExtResource("3_afpow")]
+position = Vector2(-1112, 0)

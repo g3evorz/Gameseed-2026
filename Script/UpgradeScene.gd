@@ -11,19 +11,12 @@ extends CanvasLayer # Atau Node2D, sesuaikan dengan tipe node 'Main' Anda
 @onready var label_lvl_defense = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Label
 @onready var btn_beli_defense = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Button
 
-# Node Item Mesin
-@onready var label_lvl_mesin = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemMesin/Label
-@onready var btn_beli_mesin = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemMesin/Button
-
 # --- KONFIGURASI HARGA (Harga Dasar & Kelipatan per Level) ---
 var harga_dasar_laser = 200
-var kelipatan_harga_laser = 100 
+var kelipatan_harga_laser = 200
 
 var harga_dasar_defense = 150
-var kelipatan_harga_defense = 75
-
-var harga_dasar_mesin = 100
-var kelipatan_harga_mesin = 50
+var kelipatan_harga_defense = 100
 
 func _ready():
 	# Muat data dari save file saat menu dibuka
@@ -50,35 +43,28 @@ func update_semua_ui():
 	btn_beli_defense.disabled = ScoreManager.dompet_koin < harga_d
 	
 
-
 # Fungsi bantuan untuk menghitung harga dinamis
 func hitung_harga(dasar: int, kelipatan: int, level_saat_ini: int) -> int:
 	return dasar + (kelipatan * level_saat_ini)
 
-
 # --- FUNGSI KLIK TOMBOL BELI (Hubungkan via Inspector ke masing-masing Button) ---
 
 func _on_btn_beli_laser_pressed():
-	var harga = hitung_harga(harga_dasar_laser, kelipatan_harga_laser, ScoreManager.level_upgrade_laser)
-	if ScoreManager.beli_upgrade(harga, "laser"):
-		update_semua_ui()
+	if ScoreManager.level_upgrade_laser <= 3:
+		var harga = hitung_harga(harga_dasar_laser, kelipatan_harga_laser, ScoreManager.level_upgrade_laser)
+		if ScoreManager.beli_upgrade(harga, "laser"):
+			update_semua_ui()
 
 func _on_btn_beli_defense_pressed():
-	var harga = hitung_harga(harga_dasar_defense, kelipatan_harga_defense, ScoreManager.level_upgrade_defense)
-	if ScoreManager.beli_upgrade(harga, "defense"):
-		update_semua_ui()
-
-
-
+	if ScoreManager.level_upgrade_defense <= 3:
+		var harga = hitung_harga(harga_dasar_defense, kelipatan_harga_defense, ScoreManager.level_upgrade_defense)
+		if ScoreManager.beli_upgrade(harga, "defense"):
+			update_semua_ui()
 
 # --- FUNGSI NAVIGASI ---
 
-
-
 func _on_button_home_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Homescreen.tscn")
+	SceneTransition.pindah_scene("res://Scenes/Homescreen.tscn")
 
 func _on_button_start_pressed():
-	# Pindah ke scene gameplay
-	get_tree().change_scene_to_file("res://Scenes/main.tscn")
-	pass
+	SceneTransition.pindah_scene("res://Scenes/main.tscn")

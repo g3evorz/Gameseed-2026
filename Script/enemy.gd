@@ -1,38 +1,163 @@
-extends Area2D
+extends Node2D
 
-@export var data: ObstacleData
-@export var damage_tabrakan: int = 200
-@export var kekuatan_slow: float = 0.7 # Kecepatan dipotong 50%
+## State machine musuh:
+## - ENTRANCE: kemunculan pertama musuh di scene, cepat & dramatis (cinematic).
+## - LURKING: musuh diam/menunggu di tepi layar, belum terlihat menyerang.
+## - OVERTAKE: musuh mendahului pemain menuju titik drop.
+## - DROPPING: musuh menjatuhkan rintangan di titik drop.
+## - COOLDOWN: musuh kembali mundur ke area lurking, lalu mengulang siklus.
+enum State { ENTRANCE, LURKING, OVERTAKE, DROPPING, COOLDOWN }
 
-var current_hp: int
+var current_state: State = State.ENTRANCE
 
-func _ready():
-	current_hp = data.max_hp
-	
-func take_damage(damage_amount: int):
-	current_hp -= damage_amount
-	
-	#print("CURRENT HP : ", current_hp)
-	
-	if current_hp <= 0:
-		die()
+signal obstacle_dropped(drop_position: Vector2)
 
-func _on_body_entered(body):
-	if body.name == "Kepala":
-		var kereta = body.get_parent()
-		if kereta and kereta.has_method("terima_damage"):
-			kereta.terima_damage(damage_tabrakan)
+# --- Variabel dasar pergerakan ---
+
+## Posisi X "standar" musuh, jadi acuan saat musuh tidak sedang di-tween ke posisi lain.
+var base_x_position: float
+
+## Posisi Y "standar" musuh, jadi titik tengah dari gelombang hover (sine wave).
+var base_y_position: float
+
+## Seberapa cepat musuh melayang naik-turun (semakin besar, semakin cepat getarannya).
+@export var hover_speed: float = 2.0
+
+## Seberapa jauh musuh melayang naik-turun dari posisi standarnya (dalam pixel).
+@export var hover_amplitude: float = 8.0
+
+# --- Variabel state machine ---
+
+@export var entrance_offset: float = 2500.0
+
+@export var entrance_duration: float = 15.0
+
+var _entrance_start_x: float
+
+@export var overtake_duration: float = 7.5
+
+@export var overtake_offset: float = 700.0
+
+@export var cooldown_duration: float = 5.0
+
+@export var drop_hold_time: float = 3.5
+
+@export var lurk_time_min: float = 10.0
+@export var lurk_time_max: float = 15.0
+
+var _lurk_x: float
+var _drop_x: float
+
+var _lurk_timer: Timer
+
+var _time_passed: float = 0.0
+
+var _move_tween: Tween
+
+func _ready() -> void:
+	base_x_position = position.x
+	base_y_position = position.y
+
+	_lurk_x = base_x_position
+	_drop_x = base_x_position + overtake_offset
+
+	var overtake_direction: float = sign(overtake_offset) if overtake_offset != 0.0 else 1.0
+	_entrance_start_x = _lurk_x - overtake_direction * entrance_offset
+
+	_lurk_timer = Timer.new()
+	_lurk_timer.one_shot = true
+	add_child(_lurk_timer)
+	_lurk_timer.timeout.connect(_on_lurk_timer_timeout)
+
+	_enter_state(State.ENTRANCE)
+
+func _process(delta: float) -> void:
+	_time_passed += delta
+
+	position.y = base_y_position + sin(_time_passed * hover_speed) * hover_amplitude
+
+	match current_state:
+		State.ENTRANCE:
+			pass # Pergerakan ditangani oleh Tween dari move_to_x(); tidak perlu logika tiap frame.
+		State.LURKING:
+			pass # Diam menunggu; _lurk_timer yang akan memicu pindah ke OVERTAKE.
+		State.OVERTAKE:
+			pass # Pergerakan ditangani oleh Tween dari move_to_x(); tidak perlu logika tiap frame.
+		State.DROPPING:
+			pass # State ini transisional, ditangani sepenuhnya di _enter_state().
+		State.COOLDOWN:
+			pass # Pergerakan ditangani oleh Tween dari move_to_x(); tidak perlu logika tiap frame.
+
+
+func _enter_state(new_state: State) -> void:
+	current_state = new_state
+
+	match current_state:
+		State.ENTRANCE:
+			# Kemunculan pertama: posisikan musuh jauh di belakang dulu...
+			position.x = _entrance_start_x
+			base_x_position = _entrance_start_x
+
+			move_to_x(
+				_lurk_x, entrance_duration,
+				func() -> void: _enter_state(State.LURKING),
+				Tween.TRANS_BACK, Tween.EASE_OUT
+			)
+
+		State.LURKING:
+			# Diam/menetap di tepi layar (posisi lurking).
+			position.x = _lurk_x
+			base_x_position = _lurk_x
+
+			# Mulai timer acak sebelum musuh mulai menyerang lagi.
+			_lurk_timer.wait_time = randf_range(lurk_time_min, lurk_time_max)
+			_lurk_timer.start()
+
+		State.OVERTAKE:
+			move_to_x(
+				_drop_x, overtake_duration,
+				func() -> void: _enter_state(State.DROPPING),
+				Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
+			)
+
+		State.DROPPING:
+			_drop_obstacle()
 			
-			GameManager.terapkan_efek_ram(kekuatan_slow)
-			
-		# 3. Hancurkan obstacle
-		die()
+			await get_tree().create_timer(drop_hold_time).timeout
+			_enter_state(State.COOLDOWN)
 
-# DESTROY OBJECT
+		State.COOLDOWN:
+			move_to_x(
+				_lurk_x, cooldown_duration,
+				func() -> void: _enter_state(State.LURKING),
+				Tween.TRANS_QUAD, Tween.EASE_IN_OUT
+			)
 
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	print("Platform Terhapus !")
-	queue_free()	
 
-func die():
-	queue_free()
+func _on_lurk_timer_timeout() -> void:
+	_enter_state(State.OVERTAKE)
+
+
+func _drop_obstacle() -> void:
+	obstacle_dropped.emit(global_position)
+
+func move_to_x(
+	target_x: float,
+	duration: float,
+	on_finished: Callable = Callable(),
+	trans: Tween.TransitionType = Tween.TRANS_SINE,
+	ease: Tween.EaseType = Tween.EASE_IN_OUT
+) -> void:
+
+	if _move_tween and _move_tween.is_running():
+		_move_tween.kill()
+
+	_move_tween = create_tween()
+	_move_tween.tween_property(self, "position:x", target_x, duration)\
+		.set_trans(trans)\
+		.set_ease(ease)
+
+	if on_finished.is_valid():
+		_move_tween.finished.connect(on_finished, CONNECT_ONE_SHOT)
+
+	base_x_position = target_x
