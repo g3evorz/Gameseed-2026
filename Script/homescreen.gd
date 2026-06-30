@@ -7,6 +7,7 @@ extends Control
 @onready var volume_slider = $SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/VolumeSlider
 
 func _ready() -> void:
+	AudioManager.putar_musik(AudioManager.musik_homescreen)
 	settings_panel.hide()
 	mute_button.button_pressed = AudioManager.is_muted
 	volume_slider.value = AudioManager.current_volume

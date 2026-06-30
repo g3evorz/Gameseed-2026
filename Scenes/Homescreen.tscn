@@ -1,8 +1,50 @@
-[gd_scene format=3 uid="uid://ceaifoo0dwpbd"]
+[gd_scene format=4 uid="uid://ceaifoo0dwpbd"]
 
 [ext_resource type="Script" uid="uid://c1lov7xii2qm3" path="res://Script/homescreen.gd" id="1_rk5ra"]
-[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_s2xo7"]
+[ext_resource type="Texture2D" uid="uid://dadelgefpdwtq" path="res://Assets/Background Part/Background-Menu/Start-bg-utama.png" id="2_w5jvm"]
+[ext_resource type="Texture2D" uid="uid://bqdfj271rchjb" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil1.png" id="3_6f7lb"]
 [ext_resource type="PackedScene" uid="uid://badj5pnsv3mrf" path="res://Scenes/ConfirmationPanel.tscn" id="3_b08y3"]
+[ext_resource type="Texture2D" uid="uid://da14tj7d6dpdr" path="res://Assets/Background Part/Background-Menu/Stars.png" id="3_w5jvm"]
+[ext_resource type="Texture2D" uid="uid://bqwv0j54db2ek" path="res://Assets/Background Part/Background-Menu/Start-bg.png" id="3_xk144"]
+[ext_resource type="Texture2D" uid="uid://dg52mc0xi5r6d" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil2.png" id="4_j7hrd"]
+[ext_resource type="Texture2D" uid="uid://cyuaqjdbww1np" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil3.png" id="5_ec4m1"]
+[ext_resource type="Texture2D" uid="uid://de2vx171ti5co" path="res://Assets/Player Train/Head/1.png" id="6_duqje"]
+[ext_resource type="Texture2D" uid="uid://bf67mttdextrm" path="res://Assets/Player Train/Gerbong + Pintu/1.png" id="7_afqwc"]
+[ext_resource type="Texture2D" uid="uid://shucujg0qkxu" path="res://Assets/Player Train/Gerbong/1.png" id="8_tdydt"]
+[ext_resource type="Texture2D" uid="uid://dcbaant0r41ce" path="res://Assets/Player Train/Tail/1.png" id="9_sw8df"]
+[ext_resource type="Texture2D" uid="uid://qvyxml81pi2p" path="res://Assets/UI/Button-UI/play-btn.png" id="12_tdydt"]
+[ext_resource type="Texture2D" uid="uid://bjtmsaqgckcpc" path="res://Assets/Rail/Normal/Straight.png" id="13_afqwc"]
+[ext_resource type="Texture2D" uid="uid://d0q85q4b4coc7" path="res://Assets/UI/Button-UI/cum-btn.png" id="13_dhaah"]
+[ext_resource type="Texture2D" uid="uid://esukp1c3h1vh" path="res://Assets/UI/Button-UI/Quit-btn.png" id="13_sw8df"]
+[ext_resource type="Texture2D" uid="uid://374vcrnka2qm" path="res://Assets/Props & Decoration/Neon-Sign.png" id="14_tdydt"]
+[ext_resource type="Texture2D" uid="uid://c8u42pgowqyjc" path="res://Assets/Props & Decoration/Other-Energy-Generator.png" id="15_sw8df"]
+[ext_resource type="Texture2D" uid="uid://ce3eulpw4l4yt" path="res://Assets/Rail/Normal/Broken Right/2.png" id="16_dhaah"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy0vh"]
+texture = ExtResource("13_afqwc")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgr1c"]
+texture = ExtResource("14_tdydt")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ccoam"]
+texture = ExtResource("15_sw8df")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iv4cj"]
+texture = ExtResource("16_dhaah")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8ggym"]
+sources/0 = SubResource("TileSetAtlasSource_qy0vh")
+sources/1 = SubResource("TileSetAtlasSource_xgr1c")
+sources/2 = SubResource("TileSetAtlasSource_ccoam")
+sources/3 = SubResource("TileSetAtlasSource_iv4cj")
 
 [node name="Homescreen" type="Control" unique_id=1142522670]
 layout_mode = 3
@@ -13,7 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rk5ra")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1598306005]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=504675820]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
 anchors_preset = 15
@@ -21,42 +63,102 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.03164652, 0.061809458, 0.13147017, 1)
+texture = ExtResource("2_w5jvm")
 
-[node name="MarginButton" type="MarginContainer" parent="ColorRect" unique_id=495135515]
+[node name="TileMapLayer" type="TileMapLayer" parent="TextureRect" unique_id=1823466137]
+position = Vector2(-678.00006, -370.00003)
+rotation = -0.26080787
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAANACwAAAAAAAAAAAAdACwAAAAAAAAAAAAhACwAAAAAAAAAAAAlACwAAAAAAAAAAAApACwAAAAAAAAAAAAtACwAAAAAAAAAAAAVACwAAAAAAAAAAAAZACwAAAAAAAAAAAARACwAAAAAAAAAAAAxACwAAAAAAAAAAAA1ACwAAwAAAAAAAAAJACwAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_8ggym")
+
+[node name="PlanetKecil1" type="Sprite2D" parent="TextureRect" unique_id=1933719326]
+position = Vector2(976, 137)
+texture = ExtResource("3_6f7lb")
+
+[node name="PlanetKecil2" type="Sprite2D" parent="TextureRect" unique_id=1000588642]
+position = Vector2(1311, 957)
+texture = ExtResource("4_j7hrd")
+
+[node name="PlanetKecil3" type="Sprite2D" parent="TextureRect" unique_id=2146006058]
+position = Vector2(219, 763)
+texture = ExtResource("5_ec4m1")
+
+[node name="Kereta" type="Node2D" parent="TextureRect" unique_id=1951924519]
+position = Vector2(940, 615.00006)
+rotation = -0.26402715
+scale = Vector2(2.5572577, 2.5572577)
+
+[node name="Kepala" type="Sprite2D" parent="TextureRect/Kereta" unique_id=1839415954]
+texture = ExtResource("6_duqje")
+
+[node name="Gerbong-1" type="Sprite2D" parent="TextureRect/Kereta" unique_id=398357471]
+position = Vector2(-109, 0)
+texture = ExtResource("7_afqwc")
+
+[node name="Gerbong-2" type="Sprite2D" parent="TextureRect/Kereta" unique_id=954409974]
+position = Vector2(-218, 0)
+texture = ExtResource("8_tdydt")
+
+[node name="Ekor" type="Sprite2D" parent="TextureRect/Kereta" unique_id=329367997]
+position = Vector2(-328, 0)
+texture = ExtResource("9_sw8df")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=833021458]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -373.0
+offset_bottom = 373.0
+grow_horizontal = 0
+texture = ExtResource("3_w5jvm")
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect" unique_id=1692249435]
+modulate = Color(1, 1, 1, 0.36078432)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xk144")
+
+[node name="MarginButton" type="MarginContainer" parent="TextureRect" unique_id=495135515]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -434.0
-offset_top = -132.0
-offset_bottom = 221.0
+offset_left = -546.0
+offset_top = -58.0
+offset_right = -390.0
+offset_bottom = 58.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/margin_right = 150
+scale = Vector2(3.5, 3.5)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginButton" unique_id=2052434342]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginButton" unique_id=2052434342]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 10
 
-[node name="ButtonPlay" type="Button" parent="ColorRect/MarginButton/VBoxContainer" unique_id=669510937]
+[node name="ButtonPlay" type="TextureButton" parent="TextureRect/MarginButton/VBoxContainer" unique_id=1388215360]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "PLAY"
+texture_normal = ExtResource("12_tdydt")
+stretch_mode = 5
 
-[node name="ButtonSettings" type="Button" parent="ColorRect/MarginButton/VBoxContainer" unique_id=492538118]
+[node name="ButtonSettings" type="TextureButton" parent="TextureRect/MarginButton/VBoxContainer" unique_id=1336916813]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "SETTINGS"
+texture_normal = ExtResource("13_dhaah")
+stretch_mode = 5
 
-[node name="ButtonExit" type="Button" parent="ColorRect/MarginButton/VBoxContainer" unique_id=1482728523]
+[node name="ButtonExit" type="TextureButton" parent="TextureRect/MarginButton/VBoxContainer" unique_id=430617791]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "QUIT"
+texture_normal = ExtResource("13_sw8df")
+stretch_mode = 5
 
-[node name="MarginJudul" type="MarginContainer" parent="ColorRect" unique_id=255807367]
+[node name="MarginJudul" type="MarginContainer" parent="TextureRect" unique_id=255807367]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -67,14 +169,12 @@ grow_horizontal = 0
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 100
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginJudul" unique_id=1894493874]
-layout_mode = 2
-texture = ExtResource("1_s2xo7")
-
 [node name="ConfirmationPanel" parent="." unique_id=699353212 instance=ExtResource("3_b08y3")]
+visible = false
 layout_mode = 1
 
 [node name="SettingsPanel" type="Control" parent="." unique_id=426690044]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -159,9 +259,9 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "BACK"
 
-[connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
-[connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
-[connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="pressed" from="TextureRect/MarginButton/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="TextureRect/MarginButton/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
+[connection signal="pressed" from="TextureRect/MarginButton/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
 [connection signal="konfirmasi_ya" from="ConfirmationPanel" to="." method="_on_confirmation_panel_konfirmasi_ya"]
 [connection signal="toggled" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Mute" to="." method="_on_mute_toggled"]
 [connection signal="value_changed" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
