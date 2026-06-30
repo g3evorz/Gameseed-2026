@@ -34,16 +34,9 @@ var base_y_position: float
 
 var _entrance_start_x: float
 
-@export var overtake_duration: float = 7.5
-
 @export var overtake_offset: float = 700.0
 
-@export var cooldown_duration: float = 5.0
-
 @export var drop_hold_time: float = 3.5
-
-@export var lurk_time_min: float = 10.0
-@export var lurk_time_max: float = 15.0
 
 var _lurk_x: float
 var _drop_x: float
@@ -91,7 +84,9 @@ func _process(delta: float) -> void:
 
 func _enter_state(new_state: State) -> void:
 	current_state = new_state
-
+	
+	var diff = GameManager.current_difficulty
+	
 	match current_state:
 		State.ENTRANCE:
 			# Kemunculan pertama: posisikan musuh jauh di belakang dulu...
@@ -110,12 +105,12 @@ func _enter_state(new_state: State) -> void:
 			base_x_position = _lurk_x
 
 			# Mulai timer acak sebelum musuh mulai menyerang lagi.
-			_lurk_timer.wait_time = randf_range(lurk_time_min, lurk_time_max)
+			_lurk_timer.wait_time = randf_range(diff.lurk_time_min, diff.lurk_time_max)
 			_lurk_timer.start()
 
 		State.OVERTAKE:
 			move_to_x(
-				_drop_x, overtake_duration,
+				_drop_x, diff.overtake_duration,
 				func() -> void: _enter_state(State.DROPPING),
 				Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
 			)
@@ -128,7 +123,7 @@ func _enter_state(new_state: State) -> void:
 
 		State.COOLDOWN:
 			move_to_x(
-				_lurk_x, cooldown_duration,
+				_lurk_x, diff.cooldown_duration,
 				func() -> void: _enter_state(State.LURKING),
 				Tween.TRANS_QUAD, Tween.EASE_IN_OUT
 			)

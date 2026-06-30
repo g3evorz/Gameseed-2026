@@ -2,19 +2,23 @@ extends Node
 
 # Kecepatan Platform
 @export var BASE_SPEED: float = 500.0
-@export var MAX_SPEED: float = 3000.0
+@export var MAX_SPEED: float = 3000.0	
 @export var ACCELERATION: float = 20.0
+
+@export var difficulty_phases: Array[DifficultyConfig] = []
 
 # Hit and Stop 
 @export var HIT_STOP_DURATION: float = 0.8  # Durasi game freeze (dalam detik)
 @export var RECOVERY_ACCELERATION: float = 500.0
-@export var RAM_COOLDOWN: float = 1.2      
+@export var RAM_COOLDOWN: float = 0.95      
 
 var is_hit_stopping: bool = false
 var is_ram_on_cooldown: bool = false
 
 var current_world_speed: float = 0.0
 var normal_acceleration: float = 0.0
+
+var current_difficulty: DifficultyConfig
 
 # Status Permainan
 enum GameState { MULAI, BERMAIN, PAUSED, GAME_OVER }
@@ -25,9 +29,13 @@ signal game_started
 signal game_paused
 signal game_resumed
 signal game_over_triggered
+signal difficulty_increased(new_config: DifficultyConfig)
 
 func _ready():
 	current_world_speed = BASE_SPEED
+	
+	if not difficulty_phases.is_empty():
+		current_difficulty = difficulty_phases[0]
 
 func _process(_delta):
 	# Tombol pause global, tidak butuh node manapun
@@ -40,6 +48,7 @@ func _physics_process(delta):
 	
 	if status_sekarang == GameState.BERMAIN:
 		current_world_speed = move_toward(current_world_speed, MAX_SPEED, ACCELERATION * delta)
+		_evaluate_difficulty()
 		
 	if ACCELERATION > normal_acceleration and current_world_speed >= MAX_SPEED - 50.0:
 			ACCELERATION = normal_acceleration
@@ -51,6 +60,24 @@ func get_speed_ratio() -> float:
 		max_speed += 1.0
 
 	return clamp((current_world_speed - BASE_SPEED) / (max_speed - BASE_SPEED), 0.0, 1.0)
+
+func _evaluate_difficulty():
+	if difficulty_phases.is_empty() or current_difficulty == null:
+		return
+
+	var current_ratio = get_speed_ratio()
+
+	# Iterasi dari belakang (fase paling susah) ke depan
+	for i in range(difficulty_phases.size() - 1, -1, -1):
+		var phase = difficulty_phases[i]
+
+		if current_ratio >= phase.activation_speed_ratio:
+		# Jika rasio terpenuhi dan config-nya berbeda, terapkan!
+			if current_difficulty != phase:
+				current_difficulty = phase
+				difficulty_increased.emit(current_difficulty)
+				print("Difficulty Upgraded at ratio: ", current_ratio)
+			break
 
 func terapkan_efek_ram(efek_slow_percent: float):
 	if status_sekarang != GameState.BERMAIN:

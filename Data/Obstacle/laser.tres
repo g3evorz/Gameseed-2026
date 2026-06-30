@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ObstacleData" format=3 uid="uid://chewkll570sp2"]
+
+[ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/Configuration/ObstacleData.gd" id="1_4r31s"]
+[ext_resource type="PackedScene" uid="uid://dl5o2mi43t85q" path="res://Scenes/Components/Weapon/Musuh/Laser/Satelite.tscn" id="1_nddwi"]
+
+[resource]
+script = ExtResource("1_4r31s")
+obstacle_scene = ExtResource("1_nddwi")
+spawn_weight = 10.0
+spawn_behavior = 1
+spawn_edge_margin = 0.0
+fire_duration = 3.0
+metadata/_custom_type_script = "uid://brhx3skaebmcy"

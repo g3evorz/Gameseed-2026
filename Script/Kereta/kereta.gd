@@ -105,7 +105,7 @@ func _physics_process(delta):
 	if jumlah_gerbong_sebelumnya > jumlah_aktif:
 		var gerbong_hilang = jumlah_gerbong_sebelumnya - jumlah_aktif
 		var total_damage = gerbong_hilang * DAMAGE_GERBONG_PUTUS
-		terima_damage(total_damage)
+		take_damage(total_damage)
 	
 	jumlah_gerbong_sebelumnya = jumlah_aktif
 		
@@ -164,7 +164,7 @@ func matikan_mode_hantu():
 
 
 # --- FUNGSI DAMAGE & GAME OVER ---
-func terima_damage(jumlah_damage: int):
+func take_damage(jumlah_damage: int):
 	if GameManager.status_sekarang != GameManager.GameState.BERMAIN:
 		return
 		
