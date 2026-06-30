@@ -31,7 +31,10 @@ func _on_game_resumed():
 
 func _on_game_over():
 	score_label.text = "Score: " + str(int(ScoreManager.current_score))
-	coin_label.text = "Total Koin: " + str(ScoreManager.accumulated_coin_this_run)
+	
+	# Menampilkan koin ronde ini DAN total saldo di dompet
+	coin_label.text = "Koin Didapat: " + str(ScoreManager.accumulated_coin_this_run) + " | Saldo: " + str(ScoreManager.dompet_koin)
+	
 	ui_game_over.show()
 
 # --- TOMBOL UI (hubungkan via Signal Inspector seperti sebelumnya) ---

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c1lov7xii2qm3" path="res://Script/homescreen.gd" id="1_rk5ra"]
 [ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_s2xo7"]
+[ext_resource type="PackedScene" uid="uid://badj5pnsv3mrf" path="res://Scenes/ConfirmationPanel.tscn" id="3_b08y3"]
 
 [node name="Homescreen" type="Control" unique_id=1142522670]
 layout_mode = 3
@@ -70,6 +71,10 @@ theme_override_constants/margin_right = 100
 layout_mode = 2
 texture = ExtResource("1_s2xo7")
 
+[node name="ConfirmationPanel" parent="." unique_id=699353212 instance=ExtResource("3_b08y3")]
+layout_mode = 1
+
 [connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="konfirmasi_ya" from="ConfirmationPanel" to="." method="_on_confirmation_panel_konfirmasi_ya"]

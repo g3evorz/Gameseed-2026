@@ -115,34 +115,52 @@ func _physics_process(delta):
 
 # --- FUNGSI MENGAKTIFKAN/MEMATIKAN MODE HANTU ---
 func ghost_mode(durasi: float):
-	# PERBAIKAN: Gunakan GameManager untuk mengecek status game
 	if GameManager.status_sekarang != GameManager.GameState.BERMAIN: return
 	
 	is_invincible = true
 	timer_invincible = durasi
-	print("Mode Hantu Aktif selama ", durasi, " detik!")
+	print("Mode Hantu Aktif selama ", durasi, " detik! Pindah ke Layer 4")
 	
-	# Ubah Kepala menjadi semi-transparan (Alpha = 0.5)
-	if is_instance_valid(sprite_kepala):
+	# 1. Atur Kepala Kereta
+	if is_instance_valid(kepala_kereta):
 		sprite_kepala.modulate.a = 0.5
 		
-	# Ubah seluruh Gerbong menjadi semi-transparan
+		# Matikan layer 1 (asumsi layer default) dan nyalakan layer 4
+		# WAJIB pakai call_deferred untuk mencegah error physics queries
+		kepala_kereta.call_deferred("set_collision_layer_value", 1, false)
+		kepala_kereta.call_deferred("set_collision_layer_value", 4, true)
+		
+	# 2. Atur Seluruh Gerbong
 	for gerbong in rantai_permanen:
-		if is_instance_valid(gerbong) and gerbong.has_node("Sprite2D"):
-			gerbong.get_node("Sprite2D").modulate.a = 0.5
+		if is_instance_valid(gerbong):
+			if gerbong.has_node("Sprite2D"):
+				gerbong.get_node("Sprite2D").modulate.a = 0.5
+				
+			# Ubah layer tiap gerbong
+			gerbong.call_deferred("set_collision_layer_value", 1, false)
+			gerbong.call_deferred("set_collision_layer_value", 4, true)
 
 func matikan_mode_hantu():
 	is_invincible = false
-	print("Mode Hantu Berakhir, kembali normal!")
+	print("Mode Hantu Berakhir, kembali ke Layer 1 normal!")
 	
-	# Kembalikan Kepala menjadi solid (Alpha = 1.0)
-	if is_instance_valid(sprite_kepala):
+	# 1. Kembalikan Kepala Kereta
+	if is_instance_valid(kepala_kereta):
 		sprite_kepala.modulate.a = 1.0
 		
-	# Kembalikan seluruh Gerbong menjadi solid
+		# Matikan layer 4 dan kembalikan ke layer 1
+		kepala_kereta.call_deferred("set_collision_layer_value", 4, false)
+		kepala_kereta.call_deferred("set_collision_layer_value", 1, true)
+		
+	# 2. Kembalikan Seluruh Gerbong
 	for gerbong in rantai_permanen:
-		if is_instance_valid(gerbong) and gerbong.has_node("Sprite2D"):
-			gerbong.get_node("Sprite2D").modulate.a = 1.0
+		if is_instance_valid(gerbong):
+			if gerbong.has_node("Sprite2D"):
+				gerbong.get_node("Sprite2D").modulate.a = 1.0
+				
+			# Kembalikan layer tiap gerbong
+			gerbong.call_deferred("set_collision_layer_value", 4, false)
+			gerbong.call_deferred("set_collision_layer_value", 1, true)
 
 
 # --- FUNGSI DAMAGE & GAME OVER ---
