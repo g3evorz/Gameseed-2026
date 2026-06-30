@@ -9,5 +9,5 @@ obstacle_scene = ExtResource("1_nddwi")
 spawn_weight = 10.0
 spawn_behavior = 1
 spawn_edge_margin = 0.0
-fire_duration = 5.0
+fire_duration = 3.0
 metadata/_custom_type_script = "uid://brhx3skaebmcy"
