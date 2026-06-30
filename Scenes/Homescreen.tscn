@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c1lov7xii2qm3" path="res://Script/homescreen.gd" id="1_rk5ra"]
 [ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_s2xo7"]
+[ext_resource type="PackedScene" uid="uid://badj5pnsv3mrf" path="res://Scenes/ConfirmationPanel.tscn" id="3_b08y3"]
 
 [node name="Homescreen" type="Control" unique_id=1142522670]
 layout_mode = 3
@@ -70,6 +71,98 @@ theme_override_constants/margin_right = 100
 layout_mode = 2
 texture = ExtResource("1_s2xo7")
 
+[node name="ConfirmationPanel" parent="." unique_id=699353212 instance=ExtResource("3_b08y3")]
+layout_mode = 1
+
+[node name="SettingsPanel" type="Control" parent="." unique_id=426690044]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="SettingsPanel" unique_id=350844861]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -777.99994
+offset_top = -433.99997
+offset_right = 1142.0
+offset_bottom = 646.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+color = Color(0, 0, 0, 0.4745098)
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/ColorRect" unique_id=116522752]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/ColorRect/MarginContainer" unique_id=697842172]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer" unique_id=976005815]
+layout_mode = 2
+theme_override_constants/separation = 1200
+
+[node name="MuteLabel" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1578302864]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "MUTE AUDIO "
+
+[node name="Mute" type="CheckBox" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=292162702]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer" unique_id=1501142483]
+layout_mode = 2
+theme_override_constants/separation = 1200
+
+[node name="Volume" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=983705103]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "VOLUME"
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1292663245]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="MarginContainer2" type="MarginContainer" parent="SettingsPanel/ColorRect" unique_id=325341801]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -161.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 60
+
+[node name="BackSettings" type="Button" parent="SettingsPanel/ColorRect/MarginContainer2" unique_id=1032263527]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "BACK"
+
 [connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="konfirmasi_ya" from="ConfirmationPanel" to="." method="_on_confirmation_panel_konfirmasi_ya"]
+[connection signal="toggled" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Mute" to="." method="_on_mute_toggled"]
+[connection signal="value_changed" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="SettingsPanel/ColorRect/MarginContainer2/BackSettings" to="." method="_on_back_settings_pressed"]

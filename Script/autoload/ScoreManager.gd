@@ -59,7 +59,7 @@ func beli_upgrade(harga: int, tipe_upgrade: String) -> bool:
 		
 		if tipe_upgrade == "laser" and level_upgrade_laser <= 3:
 			level_upgrade_laser += 1
-		elif tipe_upgrade == "defense" and level_upgrade_defense <= 3:
+		elif tipe_upgrade  == "defense" and level_upgrade_defense <= 3:
 			level_upgrade_defense += 1
 			
 		save_game_data() 
