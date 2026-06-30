@@ -1,26 +1,100 @@
-[gd_scene format=3 uid="uid://xbaa5p1r5bej"]
+[gd_scene format=4 uid="uid://xbaa5p1r5bej"]
 
 [ext_resource type="Script" uid="uid://k77n4gdxn01i" path="res://Script/UpgradeScene.gd" id="1_nwapd"]
 [ext_resource type="Texture2D" uid="uid://de2vx171ti5co" path="res://Assets/Player Train/Head/1.png" id="1_texcv"]
+[ext_resource type="Texture2D" uid="uid://bsl7sky5carmi" path="res://Assets/Background Part/Background.png" id="2_0i5va"]
+[ext_resource type="Texture2D" uid="uid://cvkyyqqj7g8rs" path="res://Assets/Station/Station.png" id="2_5eqk7"]
 [ext_resource type="Texture2D" uid="uid://bf67mttdextrm" path="res://Assets/Player Train/Gerbong + Pintu/1.png" id="2_gbid7"]
 [ext_resource type="Texture2D" uid="uid://shucujg0qkxu" path="res://Assets/Player Train/Gerbong/1.png" id="3_nwapd"]
 [ext_resource type="Texture2D" uid="uid://dcbaant0r41ce" path="res://Assets/Player Train/Tail/1.png" id="4_5eqk7"]
-[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="5_gbid7"]
+[ext_resource type="Texture2D" uid="uid://374vcrnka2qm" path="res://Assets/Props & Decoration/Neon-Sign.png" id="4_t1o5p"]
+[ext_resource type="Texture2D" uid="uid://c8u42pgowqyjc" path="res://Assets/Props & Decoration/Other-Energy-Generator.png" id="5_3asds"]
+[ext_resource type="Texture2D" uid="uid://dwghl8chkc18j" path="res://Assets/Background Part/Planet & Star (Part by Part)/Bumi.png" id="7_e1ntu"]
+[ext_resource type="Texture2D" uid="uid://bqdfj271rchjb" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil1.png" id="8_pgf22"]
+[ext_resource type="Texture2D" uid="uid://bjtmsaqgckcpc" path="res://Assets/Rail/Normal/Straight.png" id="8_vcn0l"]
+[ext_resource type="Texture2D" uid="uid://dg52mc0xi5r6d" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil2.png" id="9_eg75n"]
+[ext_resource type="Texture2D" uid="uid://bs2s54dog4jgr" path="res://Assets/Station/Laser - Button.png" id="14_nptlx"]
+[ext_resource type="Texture2D" uid="uid://iiqxjea82ok8" path="res://Assets/Station/Upgrade Button.png" id="15_eg75n"]
+[ext_resource type="Texture2D" uid="uid://c7n1c3xs4mm7y" path="res://Assets/UI/Button-UI/Home-BTN.png" id="15_pgf22"]
+[ext_resource type="Texture2D" uid="uid://biwhg2cd6qbv4" path="res://Assets/Station/Shield - Button.png" id="16_5fq8u"]
+[ext_resource type="Texture2D" uid="uid://qvyxml81pi2p" path="res://Assets/UI/Button-UI/play-btn.png" id="16_eg75n"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0i5va"]
+texture = ExtResource("8_vcn0l")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e1ntu"]
+texture = ExtResource("4_t1o5p")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pgf22"]
+texture = ExtResource("5_3asds")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_e1ntu"]
+sources/0 = SubResource("TileSetAtlasSource_0i5va")
+sources/1 = SubResource("TileSetAtlasSource_e1ntu")
+sources/2 = SubResource("TileSetAtlasSource_pgf22")
 
 [node name="Main" type="CanvasLayer" unique_id=857746939]
 script = ExtResource("1_nwapd")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=2126470011]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=1265016474]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.32468924, 0.37083524, 0.5994377, 1)
+texture = ExtResource("2_0i5va")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1635487521]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 500.0
+offset_top = 213.0
+offset_right = 500.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_5eqk7")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1186416837]
+position = Vector2(11, -758.00006)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAABACwAAAAAAAAAAAAJACwAAAAAAAAAAAANACwAAAAAAAAAAAAdACwAAAAAAAAAAAAhACwAAAAAAAAAAAAlACwAAAAAAAAAAAApACwAAAAAAAAAAAAtACwAAAAAAAAAAAAxACwAAAAAAAAAAAA1ACwAAAAAAAAAAAA5ACwAAAAAAAAAAAAFACwAAAAAAAAAAAAVACwAAAAAAAAAAAAZACwAAAAAAAAAAAARACwAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_e1ntu")
+
+[node name="Bumi" type="Sprite2D" parent="." unique_id=862894607]
+position = Vector2(280, 274)
+scale = Vector2(0.734375, 0.734375)
+texture = ExtResource("7_e1ntu")
+
+[node name="PlanetKecil1" type="Sprite2D" parent="." unique_id=196483083]
+position = Vector2(976, 137)
+texture = ExtResource("8_pgf22")
+
+[node name="PlanetKecil2" type="Sprite2D" parent="." unique_id=1071368546]
+position = Vector2(1311, 957)
+texture = ExtResource("9_eg75n")
+
+[node name="NeonSign" type="Sprite2D" parent="." unique_id=800922006]
+position = Vector2(1820, 615)
+scale = Vector2(3, 3)
+texture = ExtResource("4_t1o5p")
+
+[node name="OtherEnergyGenerator" type="Sprite2D" parent="." unique_id=106413705]
+position = Vector2(159.99997, 554.99994)
+scale = Vector2(4.109375, 4.109375)
+texture = ExtResource("5_3asds")
 
 [node name="Kereta" type="Node2D" parent="." unique_id=345644684]
-position = Vector2(1476, 560)
-scale = Vector2(3, 3)
+position = Vector2(1556, 615.00006)
+scale = Vector2(3.2676375, 3.2676375)
 
 [node name="Kepala" type="Sprite2D" parent="Kereta" unique_id=1812742069]
 texture = ExtResource("1_texcv")
@@ -38,67 +112,58 @@ position = Vector2(-328, 0)
 texture = ExtResource("4_5eqk7")
 
 [node name="MarginUpgrade" type="MarginContainer" parent="." unique_id=701692828]
-custom_minimum_size = Vector2(1920, 0)
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -960.0
-offset_top = -300.0
-offset_right = 960.0
-grow_horizontal = 2
+offset_top = -364.0
+offset_right = 196.0
+offset_bottom = -272.0
 grow_vertical = 0
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 200
-theme_override_constants/margin_bottom = 50
+scale = Vector2(4, 4)
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_bottom = 20
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginUpgrade" unique_id=1130031956]
-custom_minimum_size = Vector2(1080, 200)
-layout_direction = 2
+[node name="HBoxUpgrade" type="HBoxContainer" parent="MarginUpgrade" unique_id=2082900917]
 layout_mode = 2
-vertical_scroll_mode = 0
+theme_override_constants/separation = 20
 
-[node name="HBoxUpgrade" type="HBoxContainer" parent="MarginUpgrade/ScrollContainer" unique_id=2082900917]
-layout_mode = 2
-theme_override_constants/separation = 50
-
-[node name="ItemLaser" type="VBoxContainer" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade" unique_id=1699840185]
+[node name="ItemLaser" type="VBoxContainer" parent="MarginUpgrade/HBoxUpgrade" unique_id=1699840185]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemLaser" unique_id=186144333]
+[node name="Label" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=186144333]
 layout_mode = 2
 text = "Level : "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemLaser" unique_id=1753241013]
+[node name="TextureRect" type="TextureRect" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=1753241013]
 layout_mode = 2
-texture = ExtResource("5_gbid7")
+texture = ExtResource("14_nptlx")
+stretch_mode = 5
 
-[node name="Button" type="Button" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemLaser" unique_id=1040562127]
+[node name="Button" type="TextureButton" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=2068951583]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "UPGRADE"
+texture_normal = ExtResource("15_eg75n")
+stretch_mode = 5
 
-[node name="ItemDefense" type="VBoxContainer" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade" unique_id=21496006]
+[node name="ItemDefense" type="VBoxContainer" parent="MarginUpgrade/HBoxUpgrade" unique_id=21496006]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense" unique_id=1584985600]
+[node name="Label" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1584985600]
 layout_mode = 2
 text = "Level : "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense" unique_id=1469697925]
+[node name="TextureRect" type="TextureRect" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1469697925]
 layout_mode = 2
-texture = ExtResource("5_gbid7")
+texture = ExtResource("16_5fq8u")
+stretch_mode = 5
 
-[node name="Button" type="Button" parent="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense" unique_id=2122922821]
+[node name="Button" type="TextureButton" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1798512828]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "UPGRADE"
+texture_normal = ExtResource("15_eg75n")
+stretch_mode = 5
 
 [node name="MarginUang" type="MarginContainer" parent="." unique_id=1945784231]
 anchors_preset = 1
@@ -121,13 +186,14 @@ text = "COINS :  "
 [node name="MarginNavigate" type="MarginContainer" parent="." unique_id=98163976]
 offset_right = 100.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+scale = Vector2(1.5, 1.5)
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
 
-[node name="ButtonHome" type="Button" parent="MarginNavigate" unique_id=2143797680]
+[node name="ButtonHome" type="TextureButton" parent="MarginNavigate" unique_id=1938737155]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "HOME"
+texture_normal = ExtResource("15_pgf22")
+stretch_mode = 5
 
 [node name="MarginStart" type="MarginContainer" parent="." unique_id=638616264]
 custom_minimum_size = Vector2(250, 150)
@@ -143,12 +209,12 @@ grow_vertical = 0
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="ButtonStart" type="Button" parent="MarginStart" unique_id=951959055]
+[node name="ButtonStart" type="TextureButton" parent="MarginStart" unique_id=1278087452]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "START "
+texture_normal = ExtResource("16_eg75n")
+stretch_mode = 5
 
-[connection signal="pressed" from="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemLaser/Button" to="." method="_on_btn_beli_laser_pressed"]
-[connection signal="pressed" from="MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Button" to="." method="_on_btn_beli_defense_pressed"]
+[connection signal="pressed" from="MarginUpgrade/HBoxUpgrade/ItemLaser/Button" to="." method="_on_btn_beli_laser_pressed"]
+[connection signal="pressed" from="MarginUpgrade/HBoxUpgrade/ItemDefense/Button" to="." method="_on_btn_beli_defense_pressed"]
 [connection signal="pressed" from="MarginNavigate/ButtonHome" to="." method="_on_button_home_pressed"]
 [connection signal="pressed" from="MarginStart/ButtonStart" to="." method="_on_button_start_pressed"]

@@ -4,12 +4,12 @@ extends CanvasLayer # Atau Node2D, sesuaikan dengan tipe node 'Main' Anda
 @onready var label_dompet = $MarginUang/HBoxUang/LabelDompet
 
 # Node Item Laser
-@onready var label_lvl_laser = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemLaser/Label
-@onready var btn_beli_laser = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemLaser/Button
+@onready var label_lvl_laser = $MarginUpgrade/HBoxUpgrade/ItemLaser/Label
+@onready var btn_beli_laser = $MarginUpgrade/HBoxUpgrade/ItemLaser/Button
 
 # Node Item Defense
-@onready var label_lvl_defense = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Label
-@onready var btn_beli_defense = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Button
+@onready var label_lvl_defense = $MarginUpgrade/HBoxUpgrade/ItemDefense/Label
+@onready var btn_beli_defense = $MarginUpgrade/HBoxUpgrade/ItemDefense/Button
 
 # --- KONFIGURASI HARGA (Harga Dasar & Kelipatan per Level) ---
 var harga_dasar_laser = 200
