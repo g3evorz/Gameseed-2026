@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bjtmsaqgckcpc" path="res://Assets/Rail/Normal/Straight.png" id="8_vcn0l"]
 [ext_resource type="Texture2D" uid="uid://dg52mc0xi5r6d" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil2.png" id="9_eg75n"]
 [ext_resource type="Texture2D" uid="uid://bs2s54dog4jgr" path="res://Assets/Station/Laser - Button.png" id="14_nptlx"]
-[ext_resource type="Texture2D" uid="uid://iiqxjea82ok8" path="res://Assets/Station/Upgrade Button.png" id="15_eg75n"]
+[ext_resource type="Texture2D" uid="uid://ggh5vb5bf2ft" path="res://Assets/UI/Button-UI/Upgrade Button - UPDT.png" id="15_nptlx"]
 [ext_resource type="Texture2D" uid="uid://c7n1c3xs4mm7y" path="res://Assets/UI/Button-UI/Home-BTN.png" id="15_pgf22"]
 [ext_resource type="Texture2D" uid="uid://biwhg2cd6qbv4" path="res://Assets/Station/Shield - Button.png" id="16_5fq8u"]
 [ext_resource type="Texture2D" uid="uid://qvyxml81pi2p" path="res://Assets/UI/Button-UI/play-btn.png" id="16_eg75n"]
@@ -42,7 +42,7 @@ sources/2 = SubResource("TileSetAtlasSource_pgf22")
 [node name="Main" type="CanvasLayer" unique_id=857746939]
 script = ExtResource("1_nwapd")
 
-[node name="ColorRect" type="TextureRect" parent="." unique_id=1265016474]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1265016474]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -50,7 +50,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_0i5va")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1635487521]
+[node name="Bengkel" type="TextureRect" parent="." unique_id=1635487521]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -111,6 +111,16 @@ texture = ExtResource("3_nwapd")
 position = Vector2(-328, 0)
 texture = ExtResource("4_5eqk7")
 
+[node name="Panel" type="Panel" parent="." unique_id=1918528123]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -393.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+
 [node name="MarginUpgrade" type="MarginContainer" parent="." unique_id=701692828]
 anchors_preset = 2
 anchor_top = 1.0
@@ -132,6 +142,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=186144333]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "Level : "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -141,9 +152,16 @@ layout_mode = 2
 texture = ExtResource("14_nptlx")
 stretch_mode = 5
 
+[node name="LabelPrice" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=314573826]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Level : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Button" type="TextureButton" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=2068951583]
 layout_mode = 2
-texture_normal = ExtResource("15_eg75n")
+texture_normal = ExtResource("15_nptlx")
 stretch_mode = 5
 
 [node name="ItemDefense" type="VBoxContainer" parent="MarginUpgrade/HBoxUpgrade" unique_id=21496006]
@@ -151,6 +169,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1584985600]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "Level : "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -160,9 +179,16 @@ layout_mode = 2
 texture = ExtResource("16_5fq8u")
 stretch_mode = 5
 
+[node name="LabelPrice" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1448363954]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Level : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Button" type="TextureButton" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1798512828]
 layout_mode = 2
-texture_normal = ExtResource("15_eg75n")
+texture_normal = ExtResource("15_nptlx")
 stretch_mode = 5
 
 [node name="MarginUang" type="MarginContainer" parent="." unique_id=1945784231]
