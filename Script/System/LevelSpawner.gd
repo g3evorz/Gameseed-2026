@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	# Logika untuk menelurkan (spawn) objek
 	_time_passed += delta
 	if _time_passed >= spawn_interval:
-		#_spawn_item()
+		_spawn_item()
 		_time_passed = 0.0
 
 func _spawn_item() -> void:
