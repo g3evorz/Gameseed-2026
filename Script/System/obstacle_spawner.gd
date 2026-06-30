@@ -4,12 +4,12 @@ extends Marker2D
 
 # Tambahkan variabel peluang: 0.0 (0%) hingga 1.0 (100%)
 # Default 0.7 berarti ada peluang 70% objek muncul, dan 30% kosong.
-@export_range(0.0, 1.0) var spawn_chance: float = 0.3 
 
 func spawn_obstacle():
 	# --- 1. CEK PELUANG UTAMA ---
+	var current_chance = GameManager.current_difficulty.spawn_chance
 	# randf() menghasilkan angka acak antara 0.0 sampai 1.0
-	if randf() > spawn_chance:
+	if randf() > current_chance:
 		LevelManager.register_empty_slot(self)
 		return
 

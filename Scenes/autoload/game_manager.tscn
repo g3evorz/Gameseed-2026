@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://jrkjbenagwvr"]
+
+[ext_resource type="Script" uid="uid://c43l2tgw5vtty" path="res://Script/autoload/GameManager.gd" id="1_0plnt"]
+[ext_resource type="Script" uid="uid://bwbhc3np6qbq5" path="res://Script/Configuration/Difficulty_config.gd" id="2_4i8gt"]
+[ext_resource type="Resource" uid="uid://bdhucb6u023mc" path="res://Data/Difficulty/hard_difficulty.tres" id="4_d8g8p"]
+
+[node name="GameManager" type="Node2D" unique_id=1564804882]
+script = ExtResource("1_0plnt")
+difficulty_phases = Array[ExtResource("2_4i8gt")]([ExtResource("4_d8g8p")])

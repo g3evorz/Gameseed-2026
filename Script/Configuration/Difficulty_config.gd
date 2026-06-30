@@ -1,6 +1,10 @@
 class_name DifficultyConfig
 extends Resource
 
+@export_group("Activation Threshold")
+## Nilai dari 0.0 sampai 1.0. Menentukan di rasio kecepatan berapa config ini aktif.
+@export_range(0.0, 1.0) var activation_speed_ratio: float = 0.0
+
 @export_group("Spawn Rates")
 ## Peluang musuh memutuskan untuk menjatuhkan rintangan saat sinyal obstacle_dropped diterima (0.0 - 1.0).
 @export_range(0.0, 1.0) var spawn_chance: float = 0.5
@@ -12,3 +16,9 @@ extends Resource
 
 ## Menentukan apakah di tingkat kesulitan ini musuh diizinkan menjatuhkan rintangan PERMANENT.
 @export var allow_permanent_obstacles: bool = false
+
+@export_group("Enemy State Duration")
+@export var overtake_duration: float = 7.5
+@export var cooldown_duration: float = 5.0
+@export var lurk_time_min: float = 10.0
+@export var lurk_time_max: float = 15.0
