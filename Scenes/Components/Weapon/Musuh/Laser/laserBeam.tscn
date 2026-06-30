@@ -13,7 +13,7 @@ script = ExtResource("1_f3ma1")
 shape = SubResource("RectangleShape2D_2wrmy")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=541335986]
-target_position = Vector2(-3000, 0)
+target_position = Vector2(3000, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=320522823]
 position = Vector2(0, -3)

@@ -40,8 +40,10 @@ func fire(direction: Vector2 = Vector2.RIGHT) -> void:
 	if shape:
 		shape.size.x = beam_length
 		collision_shape.position.x = (beam_length / 2.0) * dir_multiplier
-
 		collision_shape.shape = shape
+		
+		print("shape size : ", collision_shape.shape.size.x)
+		
 		force_update_transform()
 	else:
 		print("ERROR: Bentuk collision bukan RectangleShape2D!")

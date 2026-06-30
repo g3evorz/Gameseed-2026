@@ -2,7 +2,6 @@ extends Node
 class_name EnemyObstacleSpawner
 
 @export var possible_obstacles: Array[ObstacleData]
-@export var current_difficulty: DifficultyConfig
 @export var spawn_margin: float = 150.0
 
 @export_group("Zona Terlarang (Temporary Obstacles)")
@@ -12,6 +11,8 @@ class_name EnemyObstacleSpawner
 @export var base_safe_gap: float = 180.0
 @export var hard_safe_gap: float = 120.0
 @export var player_hitbox_height: float = 60.0
+
+@onready var current_difficulty: DifficultyConfig = GameManager.current_difficulty
 
 var _active_zones: Array[Dictionary] = []
 var forbidden_zone_radius: float
