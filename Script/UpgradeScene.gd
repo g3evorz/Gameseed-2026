@@ -20,6 +20,7 @@ var kelipatan_harga_defense = 100
 
 func _ready():
 	# Muat data dari save file saat menu dibuka
+	AudioManager.putar_musik(AudioManager.musik_upgrade)
 	ScoreManager.load_game_data()
 	update_semua_ui()
 

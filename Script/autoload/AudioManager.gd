@@ -7,12 +7,35 @@ var master_bus_index: int
 var current_volume: float = 1.0 # 1.0 = 100%, 0.5 = 50%
 var is_muted: bool = false
 
+# --- [BARU] VARIABEL MUSIK ---
+var bgm_player: AudioStreamPlayer
+
+# GANTI path di bawah ini sesuai dengan lokasi file musik Anda di folder Godot!
+# (Bisa format .mp3, .ogg, atau .wav)
+var musik_homescreen = preload("res://Assets/Music/train_mainmenu FIX SEMENTARA.wav") 
+var musik_upgrade = preload("res://Assets/Music/upgrade stasion.wav")
+
 func _ready():
-	# Mengambil indeks dari Bus "Master" bawaan Godot
 	master_bus_index = AudioServer.get_bus_index("Master")
 	
+	# --- [BARU] BUAT PEMUTAR MUSIK DI LATAR BELAKANG ---
+	bgm_player = AudioStreamPlayer.new()
+	bgm_player.bus = "Master" 
+	add_child(bgm_player)
+	# ---------------------------------------------------
 	load_audio_settings()
 	terapkan_pengaturan()
+
+func putar_musik(track: AudioStream):
+	# Jika musik yang diminta sudah sedang diputar, jangan diulang dari awal
+	if bgm_player.stream == track and bgm_player.playing:
+		return
+		
+	bgm_player.stream = track
+	bgm_player.play()
+
+func hentikan_musik():
+	bgm_player.stop()
 
 # Dipanggil oleh UI Slider
 func set_volume(nilai: float):
