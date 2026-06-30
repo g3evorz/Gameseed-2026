@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://sgvpha3ornh3"]
+
+[ext_resource type="Texture2D" uid="uid://c65jnrcoovfgx" path="res://Assets/Enemy/Weapon/Laser/Main.png" id="1_7oksn"]
+[ext_resource type="Script" uid="uid://lf3x2jbh43df" path="res://Script/Weapon/Pulse/pulseBullet.gd" id="1_f3ma1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wrmy"]
+
+[node name="LaserBeam" type="Area2D" unique_id=1702495695]
+collision_layer = 16
+script = ExtResource("1_f3ma1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=797123171]
+shape = SubResource("RectangleShape2D_2wrmy")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=541335986]
+target_position = Vector2(-3000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=320522823]
+position = Vector2(0, -3)
+scale = Vector2(3, 3)
+texture = ExtResource("1_7oksn")

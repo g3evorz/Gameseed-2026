@@ -2,13 +2,13 @@ extends Node
 
 # Kecepatan Platform
 @export var BASE_SPEED: float = 500.0
-@export var MAX_SPEED: float = 3000.0
+@export var MAX_SPEED: float = 3000.0	
 @export var ACCELERATION: float = 20.0
 
 # Hit and Stop 
 @export var HIT_STOP_DURATION: float = 0.8  # Durasi game freeze (dalam detik)
 @export var RECOVERY_ACCELERATION: float = 500.0
-@export var RAM_COOLDOWN: float = 1.2      
+@export var RAM_COOLDOWN: float = 0.95      
 
 var is_hit_stopping: bool = false
 var is_ram_on_cooldown: bool = false

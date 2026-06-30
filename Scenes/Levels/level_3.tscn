@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://bbu4urqab8mo1" path="res://Script/Level.gd" id="1_4ahh4"]
 [ext_resource type="PackedScene" uid="uid://ciej1ht535fuo" path="res://Scenes/Components/Obstacle/platform.tscn" id="2_dl55b"]
 [ext_resource type="PackedScene" uid="uid://dfoomfadjrnm4" path="res://Scenes/Components/obstacleSpawner.tscn" id="3_osqx1"]
-[ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/System/ObstacleData.gd" id="4_sy7oa"]
-[ext_resource type="Resource" uid="uid://dl6ffbqtc5qiu" path="res://Script/Data/PowerUp/gerbong_replenish.tres" id="5_md4x4"]
-[ext_resource type="Resource" uid="uid://dvw3jmwvw8fn" path="res://Script/Data/PowerUp/ghost_mode.tres" id="6_1hf40"]
-[ext_resource type="Resource" uid="uid://bnp2sd3chdb2q" path="res://Script/Data/PowerUp/laserPowerups.tres" id="7_13yca"]
-[ext_resource type="Resource" uid="uid://bw6wnloibyrcs" path="res://Script/Data/Obstacle/big_asteroid.tres" id="8_8dmpc"]
-[ext_resource type="Resource" uid="uid://b3eb6mfvn044l" path="res://Script/Data/Obstacle/small_asteroid.tres" id="9_anjjd"]
+[ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/Configuration/ObstacleData.gd" id="4_sy7oa"]
+[ext_resource type="Resource" uid="uid://dl6ffbqtc5qiu" path="res://Data/PowerUp/gerbong_replenish.tres" id="5_md4x4"]
+[ext_resource type="Resource" uid="uid://dvw3jmwvw8fn" path="res://Data/PowerUp/ghost_mode.tres" id="6_1hf40"]
+[ext_resource type="Resource" uid="uid://bnp2sd3chdb2q" path="res://Data/PowerUp/laserPowerups.tres" id="7_13yca"]
+[ext_resource type="Resource" uid="uid://bw6wnloibyrcs" path="res://Data/Obstacle/big_asteroid.tres" id="8_8dmpc"]
+[ext_resource type="Resource" uid="uid://b3eb6mfvn044l" path="res://Data/Obstacle/small_asteroid.tres" id="9_anjjd"]
 
 [node name="BasicLandscapes" type="Node2D" unique_id=799622499]
 script = ExtResource("1_4ahh4")

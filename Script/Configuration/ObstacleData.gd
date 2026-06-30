@@ -13,11 +13,15 @@ enum SpawnBehavior { LEVEL_ONLY, DYNAMIC_TEMPORARY, DYNAMIC_PERMANENT }
 @export var obstacle_type: ObstacleType = ObstacleType.SMALL
 @export var max_hp: int = 10
 
-# Variabel khusus untuk musuh
 @export_group("Enemy Spawner Settings")
-## Tentukan bagaimana musuh men-spawn rintangan ini. 
-## LEVEL_ONLY berarti rintangan ini HANYA spawn dari level dan diabaikan oleh musuh.
 @export var spawn_behavior: SpawnBehavior = SpawnBehavior.LEVEL_ONLY
-
-## Durasi ekstra peringatan bahaya (hanya berguna jika ini tipe DYNAMIC_TEMPORARY)
 @export var extra_warning_duration: float = 3.0
+@export var spawn_edge_margin: float = 150.0
+
+@export_group("Telegraph Settings")
+@export var warning_duration: float = 2.0
+@export var telegraph_speed: float = 25.0
+
+@export_group("Firing Settings")
+## Lama beam/laser aktif menembak setelah fase warning selesai.
+@export var fire_duration: float = 0.5

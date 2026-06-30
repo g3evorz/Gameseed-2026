@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dl5o2mi43t85q"]
+
+[ext_resource type="Texture2D" uid="uid://ctwgif71msapi" path="res://Assets/Enemy/Weapon/Laser/Satelit.png" id="1_hjxpo"]
+[ext_resource type="Script" uid="uid://chuixbdylxvpu" path="res://Script/Weapon/Musuh/laser.gd" id="1_jf0rq"]
+[ext_resource type="PackedScene" uid="uid://sgvpha3ornh3" path="res://Scenes/Components/Weapon/Musuh/Laser/laserBeam.tscn" id="2_qlvml"]
+
+[node name="Satelite" type="Node2D" unique_id=183153272]
+scale = Vector2(3, 3)
+script = ExtResource("1_jf0rq")
+bullet_scene = ExtResource("2_qlvml")
+
+[node name="SatelliteSprite" type="Sprite2D" parent="." unique_id=136255791]
+position = Vector2(-24, 0)
+rotation = -1.5707964
+texture = ExtResource("1_hjxpo")
+offset = Vector2(1, 0)
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1736112884]
+position = Vector2(-43, 0)
+
+[node name="WarningIndicator" type="Line2D" parent="." unique_id=2008843764]
+position = Vector2(-43, 0)
+points = PackedVector2Array(-3000, 0, 0, 0)
+width = 4.0
+default_color = Color(0.26666668, 0, 0, 1)
