@@ -10,7 +10,7 @@ extends Node2D
 func _ready():
 	ui_game_over.hide()
 	ui_pause.hide()
-
+	AudioManager.putar_musik(AudioManager.musik_play)
 	if is_instance_valid(node_kereta):
 		node_kereta.connect("kereta_hancur", Callable(self, "_on_kereta_hancur"))
 

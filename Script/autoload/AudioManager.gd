@@ -2,37 +2,55 @@ extends Node
 
 const SAVE_PATH = "user://audio_settings.cfg"
 var master_bus_index: int
+var sfx_bus_index: int
 
-# Variabel penyimpan status audio saat ini
-var current_volume: float = 1.0 # 1.0 = 100%, 0.5 = 50%
+var current_volume: float = 1.0
 var is_muted: bool = false
 
-# --- [BARU] VARIABEL MUSIK ---
+# --- PEMUTAR MUSIK (BGM) ---
 var bgm_player: AudioStreamPlayer
 
-# GANTI path di bawah ini sesuai dengan lokasi file musik Anda di folder Godot!
-# (Bisa format .mp3, .ogg, atau .wav)
+# PATH MUSIK
 var musik_homescreen = preload("res://Assets/Music/train_mainmenu FIX SEMENTARA.wav") 
 var musik_upgrade = preload("res://Assets/Music/upgrade stasion.wav")
+var musik_play = preload("res://Assets/Music/main theme latest.wav")
+
+# PATH SFX
+var sfx_klik = preload("res://Assets/SFX/select button sfx/blipSelect (1).wav")
+var sfx_upgrade = preload("res://Assets/SFX/click.wav")
 
 func _ready():
 	master_bus_index = AudioServer.get_bus_index("Master")
-	
-	# --- [BARU] BUAT PEMUTAR MUSIK DI LATAR BELAKANG ---
+	sfx_bus_index = AudioServer.get_bus_index("SFX")
+	# 1. SETUP BGM PLAYER (Hanya dibuat sekali)
 	bgm_player = AudioStreamPlayer.new()
-	bgm_player.bus = "Master" 
+	bgm_player.bus = "Master"
+	# Penting: Jangan hubungkan sinyal 'finished' ke BGM player
 	add_child(bgm_player)
-	# ---------------------------------------------------
+	
 	load_audio_settings()
 	terapkan_pengaturan()
 
+# --- FUNGSI MUSIK (BGM) ---
 func putar_musik(track: AudioStream):
-	# Jika musik yang diminta sudah sedang diputar, jangan diulang dari awal
+	# Jika musik sama dan sedang diputar, biarkan
 	if bgm_player.stream == track and bgm_player.playing:
 		return
 		
 	bgm_player.stream = track
 	bgm_player.play()
+
+# --- FUNGSI SFX (EFEK SUARA) ---
+func putar_sfx(track: AudioStream):
+	var sfx_player = AudioStreamPlayer.new()
+	sfx_player.stream = track
+	
+	# [PENTING] Arahkan ke bus SFX agar bisa diatur volumenya secara terpisah
+	sfx_player.bus = "SFX" 
+	
+	add_child(sfx_player)
+	sfx_player.finished.connect(sfx_player.queue_free)
+	sfx_player.play()
 
 func hentikan_musik():
 	bgm_player.stop()
