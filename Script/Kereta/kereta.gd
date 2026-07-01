@@ -5,6 +5,9 @@ extends Node2D
 @onready var kumpulan_gerbong = $KumpulanGerbong
 @onready var label_jumlah_gerbong = $CanvasLayer/MarginContainer/LabelJumlahGerbong
 
+@onready var health_bar = $CanvasLayer/MarginContainer/HealthBar
+@onready var label_hp_angka = $CanvasLayer/MarginContainer/HealthBar/Label # Sesuaikan path ini!
+
 @export var JARAK_PIKSEL_ANTAR_GERBONG = 350.0 
 @export var KEKAKUAN_DASAR = 15.0 
 @export var FAKTOR_AWAL = 0.95 
@@ -22,13 +25,13 @@ var max_health: int = 1000
 var current_health: int = 0
 var jumlah_gerbong_sebelumnya: int = 0 
 
+var batas_maksimal_gerbong: int = 0 # [BARU] Variabel penyimpan kapasitas awal
+
 var is_invincible: bool = false
 var timer_invincible: float = 0.0
 
 func _ready():
 	add_to_group("Kereta")
-	
-	# Sambungkan pendeteksi Game Over dari GameManager
 	GameManager.game_over_triggered.connect(_eksekusi_kematian_kereta)
 
 	var daftar_wadah = kumpulan_gerbong.get_children()
@@ -39,11 +42,25 @@ func _ready():
 			gerbong.global_position.x = kepala_kereta.global_position.x - ((i + 1) * JARAK_PIKSEL_ANTAR_GERBONG)
 			gerbong.global_position.y = kepala_kereta.global_position.y
 	
+	# --- [BARU] CATAT KAPASITAS MAKSIMAL ---
+	# Menyimpan jumlah awal gerbong (misal: 4) sebagai batas absolut
+	batas_maksimal_gerbong = rantai_permanen.size()
+	
 	var bonus_hp = ScoreManager.level_upgrade_defense * 250
 	max_health = 1000 + bonus_hp
 	current_health = max_health
 	
+	# Panggil fungsi UI untuk pertama kali
+	update_ui_kesehatan()
+	
 	jumlah_gerbong_sebelumnya = rantai_permanen.size()
+	
+	if is_instance_valid(health_bar):
+		health_bar.max_value = max_health
+		health_bar.value = current_health
+		
+		# Opsional: Agar transisi perubahan HP tidak kaku, aktifkan pengaturan ini jika memakai ProgressBar biasa
+		# health_bar.step = 0.1
 
 
 # PERBAIKAN: Ubah _delta menjadi delta (hapus garis bawah) agar timer bisa membaca waktu
@@ -112,6 +129,16 @@ func _physics_process(delta):
 	if label_jumlah_gerbong:
 		label_jumlah_gerbong.text = "HP: " + str(current_health) + " | Gerbong: " + str(jumlah_aktif)
 
+func update_ui_kesehatan():
+	if is_instance_valid(health_bar):
+		# Pastikan batas maksimal selalu sinkron dengan hasil upgrade
+		health_bar.max_value = max_health
+		# Geser isi bar ke angka saat ini
+		health_bar.value = current_health
+		
+	if is_instance_valid(label_hp_angka):
+		# Menampilkan teks "1000 / 1500" agar upgrade terlihat sangat jelas
+		label_hp_angka.text = str(current_health) + " / " + str(max_health)
 
 # --- FUNGSI MENGAKTIFKAN/MEMATIKAN MODE HANTU ---
 func ghost_mode(durasi: float):
@@ -168,7 +195,6 @@ func terima_damage(jumlah_damage: int):
 	if GameManager.status_sekarang != GameManager.GameState.BERMAIN:
 		return
 		
-	# PERBAIKAN: Kebal terhadap damage saat Ghost Mode aktif
 	if is_invincible:
 		print("Kereta sedang Ghost Mode! Kebal damage.")
 		return
@@ -177,7 +203,10 @@ func terima_damage(jumlah_damage: int):
 	
 	if current_health <= 0:
 		current_health = 0 
-		GameManager.trigger_game_over() # Lapor ke GameManager
+		GameManager.trigger_game_over() 
+
+	# Langsung panggil fungsi UI kita
+	update_ui_kesehatan()
 
 func _eksekusi_kematian_kereta():
 	if is_instance_valid(kepala_kereta) and kepala_kereta.has_method("mati"):
@@ -186,6 +215,18 @@ func _eksekusi_kematian_kereta():
 # --- FUNGSI POWER UP NAMBAH GERBONG ---
 func tambah_gerbong():
 	if scene_gerbong == null:
+		return
+	
+	# --- [BARU] CEK BATAS MAKSIMAL GERBONG ---
+	if scene_gerbong == null:
+		return
+		
+	if rantai_permanen.size() >= batas_maksimal_gerbong:
+		current_health += DAMAGE_GERBONG_PUTUS
+		current_health = min(current_health, max_health) 
+		
+		# Langsung panggil fungsi UI kita
+		update_ui_kesehatan()
 		return
 		
 	var gerbong_baru_instans = scene_gerbong.instantiate()
@@ -211,4 +252,8 @@ func tambah_gerbong():
 	kumpulan_gerbong.call_deferred("add_child", gerbong_baru_instans)
 	
 	current_health += DAMAGE_GERBONG_PUTUS
+	current_health = min(current_health, max_health)
 	jumlah_gerbong_sebelumnya += 1
+	
+	# Langsung panggil fungsi UI kita
+	update_ui_kesehatan()

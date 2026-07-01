@@ -10,15 +10,36 @@
 [ext_resource type="Texture2D" uid="uid://cyuaqjdbww1np" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil3.png" id="5_ec4m1"]
 [ext_resource type="Texture2D" uid="uid://de2vx171ti5co" path="res://Assets/Player Train/Head/1.png" id="6_duqje"]
 [ext_resource type="Texture2D" uid="uid://bf67mttdextrm" path="res://Assets/Player Train/Gerbong + Pintu/1.png" id="7_afqwc"]
+[ext_resource type="Script" uid="uid://ml4shu6ff4jj" path="res://Script/planet_homescreen.gd" id="8_mo2ge"]
 [ext_resource type="Texture2D" uid="uid://shucujg0qkxu" path="res://Assets/Player Train/Gerbong/1.png" id="8_tdydt"]
 [ext_resource type="Texture2D" uid="uid://dcbaant0r41ce" path="res://Assets/Player Train/Tail/1.png" id="9_sw8df"]
+[ext_resource type="Texture2D" uid="uid://bonmr8og32cly" path="res://Assets/Player Train/Head/2.png" id="11_xgr1c"]
+[ext_resource type="Texture2D" uid="uid://bt1115h8enjfq" path="res://Assets/Player Train/Head/3.png" id="12_ccoam"]
 [ext_resource type="Texture2D" uid="uid://qvyxml81pi2p" path="res://Assets/UI/Button-UI/play-btn.png" id="12_tdydt"]
 [ext_resource type="Texture2D" uid="uid://bjtmsaqgckcpc" path="res://Assets/Rail/Normal/Straight.png" id="13_afqwc"]
-[ext_resource type="Texture2D" uid="uid://d0q85q4b4coc7" path="res://Assets/UI/Button-UI/cum-btn.png" id="13_dhaah"]
+[ext_resource type="Texture2D" uid="uid://csob4u7hn38eh" path="res://Assets/Player Train/Head/4.png" id="13_iv4cj"]
 [ext_resource type="Texture2D" uid="uid://esukp1c3h1vh" path="res://Assets/UI/Button-UI/Quit-btn.png" id="13_sw8df"]
+[ext_resource type="Texture2D" uid="uid://desn503n3s6en" path="res://Assets/Player Train/Head/5.png" id="14_8ggym"]
 [ext_resource type="Texture2D" uid="uid://374vcrnka2qm" path="res://Assets/Props & Decoration/Neon-Sign.png" id="14_tdydt"]
 [ext_resource type="Texture2D" uid="uid://c8u42pgowqyjc" path="res://Assets/Props & Decoration/Other-Energy-Generator.png" id="15_sw8df"]
+[ext_resource type="Texture2D" uid="uid://rapsyddrxa8a" path="res://Assets/Player Train/Head/6.png" id="15_vtil3"]
 [ext_resource type="Texture2D" uid="uid://ce3eulpw4l4yt" path="res://Assets/Rail/Normal/Broken Right/2.png" id="16_dhaah"]
+[ext_resource type="Texture2D" uid="uid://djdpo7x5t8t6t" path="res://Assets/UI/Button-UI/setting-btn.png" id="17_dhaah"]
+[ext_resource type="Texture2D" uid="uid://qickhgglbgfj" path="res://Assets/Player Train/Gerbong + Pintu/2.png" id="17_uvxl7"]
+[ext_resource type="Texture2D" uid="uid://qfcrgl05bpc7" path="res://Assets/Player Train/Gerbong + Pintu/3.png" id="18_ncvkv"]
+[ext_resource type="Texture2D" uid="uid://33sj3fpwbpta" path="res://Assets/Player Train/Gerbong + Pintu/4.png" id="19_qdkyv"]
+[ext_resource type="Texture2D" uid="uid://ddp8khnrwxw8b" path="res://Assets/Player Train/Gerbong + Pintu/5.png" id="20_sans3"]
+[ext_resource type="Texture2D" uid="uid://cwt1g13c5cas2" path="res://Assets/Player Train/Gerbong + Pintu/6.png" id="21_o6ltj"]
+[ext_resource type="Texture2D" uid="uid://b5aiesji7kt8s" path="res://Assets/Player Train/Gerbong/2.png" id="23_1fsbu"]
+[ext_resource type="Texture2D" uid="uid://bk5omsfcfrvvv" path="res://Assets/Player Train/Gerbong/3.png" id="24_u20w3"]
+[ext_resource type="Texture2D" uid="uid://dv3moe3ucna7w" path="res://Assets/Player Train/Gerbong/4.png" id="25_ppdrf"]
+[ext_resource type="Texture2D" uid="uid://hq10glq7eifx" path="res://Assets/Player Train/Gerbong/5.png" id="26_ic7h6"]
+[ext_resource type="Texture2D" uid="uid://0s2x50m4s6on" path="res://Assets/Player Train/Gerbong/6.png" id="27_d3stl"]
+[ext_resource type="Texture2D" uid="uid://wyobya062pgb" path="res://Assets/Player Train/Tail/2.png" id="29_lr6my"]
+[ext_resource type="Texture2D" uid="uid://djwrdcuc40xuo" path="res://Assets/Player Train/Tail/3.png" id="30_mo2ge"]
+[ext_resource type="Texture2D" uid="uid://bpf63rycml4ag" path="res://Assets/Player Train/Tail/4.png" id="31_7cpcu"]
+[ext_resource type="Texture2D" uid="uid://bp8fuhdcd8wg7" path="res://Assets/Player Train/Tail/5.png" id="32_hc27c"]
+[ext_resource type="Texture2D" uid="uid://3t451yupotal" path="res://Assets/Player Train/Tail/6.png" id="33_c0cds"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy0vh"]
 texture = ExtResource("13_afqwc")
@@ -46,6 +67,110 @@ sources/1 = SubResource("TileSetAtlasSource_xgr1c")
 sources/2 = SubResource("TileSetAtlasSource_ccoam")
 sources/3 = SubResource("TileSetAtlasSource_iv4cj")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_vrfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_duqje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xgr1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ccoam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_iv4cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8ggym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vtil3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s4yk4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_afqwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_uvxl7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ncvkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_qdkyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_sans3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_o6ltj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ieiow"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_tdydt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_1fsbu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_u20w3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ppdrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ic7h6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_d3stl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5bbo0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_sw8df")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_lr6my")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_mo2ge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_7cpcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_hc27c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_c0cds")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Homescreen" type="Control" unique_id=1142522670]
 layout_mode = 3
 anchors_preset = 15
@@ -72,37 +197,59 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAANACwAAAAAAAAAAAAdACwAAAAAAAAAAAAhACwAAAAAAAAAAAAlACwAAAAAAAAAAAApACwAAAAAAAAAAAAtACwAAAAAAAAAAAAVACwAAAAAAAAAAAAZACwAAAAAAAAAAAARACwAAAAAAAAAAAAxACwAAAAAAAAAAAA1ACwAAwAAAAAAAAAJACwAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_8ggym")
 
-[node name="PlanetKecil1" type="Sprite2D" parent="TextureRect" unique_id=1933719326]
-position = Vector2(976, 137)
+[node name="PlanetKecil1" type="TextureRect" parent="TextureRect" unique_id=1596541638]
+layout_mode = 0
+offset_left = 889.0
+offset_top = 18.0
+offset_right = 1145.0
+offset_bottom = 274.0
 texture = ExtResource("3_6f7lb")
+script = ExtResource("8_mo2ge")
+kecepatan_melayang = 1.5
 
-[node name="PlanetKecil2" type="Sprite2D" parent="TextureRect" unique_id=1000588642]
-position = Vector2(1311, 957)
+[node name="PlanetKecil2" type="TextureRect" parent="TextureRect" unique_id=1374139780]
+layout_mode = 0
+offset_left = 1218.0
+offset_top = 739.0
+offset_right = 1474.0
+offset_bottom = 995.0
 texture = ExtResource("4_j7hrd")
+script = ExtResource("8_mo2ge")
+kecepatan_melayang = 1.5
 
-[node name="PlanetKecil3" type="Sprite2D" parent="TextureRect" unique_id=2146006058]
-position = Vector2(219, 763)
+[node name="PlanetKecil3" type="TextureRect" parent="TextureRect" unique_id=1964769363]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 545.0
+offset_right = 382.0
+offset_bottom = 801.0
 texture = ExtResource("5_ec4m1")
+script = ExtResource("8_mo2ge")
+kecepatan_melayang = 1.5
 
 [node name="Kereta" type="Node2D" parent="TextureRect" unique_id=1951924519]
-position = Vector2(940, 615.00006)
+position = Vector2(958, 621)
 rotation = -0.26402715
 scale = Vector2(2.5572577, 2.5572577)
 
-[node name="Kepala" type="Sprite2D" parent="TextureRect/Kereta" unique_id=1839415954]
-texture = ExtResource("6_duqje")
+[node name="Kepala" type="AnimatedSprite2D" parent="TextureRect/Kereta" unique_id=1978104251]
+sprite_frames = SubResource("SpriteFrames_vrfe7")
+frame_progress = 0.81098676
 
-[node name="Gerbong-1" type="Sprite2D" parent="TextureRect/Kereta" unique_id=398357471]
+[node name="Gerbong-1" type="AnimatedSprite2D" parent="TextureRect/Kereta" unique_id=598211060]
 position = Vector2(-109, 0)
-texture = ExtResource("7_afqwc")
+sprite_frames = SubResource("SpriteFrames_s4yk4")
+frame = 1
+frame_progress = 0.14691752
 
-[node name="Gerbong-2" type="Sprite2D" parent="TextureRect/Kereta" unique_id=954409974]
+[node name="Gerbong-2" type="AnimatedSprite2D" parent="TextureRect/Kereta" unique_id=1816725436]
 position = Vector2(-218, 0)
-texture = ExtResource("8_tdydt")
+sprite_frames = SubResource("SpriteFrames_ieiow")
+frame_progress = 0.20675756
 
-[node name="Ekor" type="Sprite2D" parent="TextureRect/Kereta" unique_id=329367997]
+[node name="Ekor" type="AnimatedSprite2D" parent="TextureRect/Kereta" unique_id=1210087543]
 position = Vector2(-328, 0)
-texture = ExtResource("9_sw8df")
+sprite_frames = SubResource("SpriteFrames_5bbo0")
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=833021458]
 layout_mode = 1
@@ -113,6 +260,10 @@ offset_left = -373.0
 offset_bottom = 373.0
 grow_horizontal = 0
 texture = ExtResource("3_w5jvm")
+script = ExtResource("8_mo2ge")
+kecepatan_melayang = 0.8
+jarak_melayang_y = 10.0
+kecepatan_rotasi = 1.0
 
 [node name="TextureRect2" type="TextureRect" parent="TextureRect" unique_id=1692249435]
 modulate = Color(1, 1, 1, 0.36078432)
@@ -123,6 +274,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_xk144")
+script = ExtResource("8_mo2ge")
+kecepatan_melayang = 0.8
+jarak_melayang_y = 3.0
+jarak_melayang_x = 3.0
+kecepatan_rotasi = 0.5
+batas_kemiringan_derajat = 0.5
 
 [node name="MarginButton" type="MarginContainer" parent="TextureRect" unique_id=495135515]
 layout_mode = 1
@@ -150,7 +307,7 @@ stretch_mode = 5
 
 [node name="ButtonSettings" type="TextureButton" parent="TextureRect/MarginButton/VBoxContainer" unique_id=1336916813]
 layout_mode = 2
-texture_normal = ExtResource("13_dhaah")
+texture_normal = ExtResource("17_dhaah")
 stretch_mode = 5
 
 [node name="ButtonExit" type="TextureButton" parent="TextureRect/MarginButton/VBoxContainer" unique_id=430617791]

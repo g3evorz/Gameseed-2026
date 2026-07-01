@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://badj5pnsv3mrf"]
 
 [ext_resource type="Script" uid="uid://hd1yrmuw0sb" path="res://Script/ConfirmationPanel.gd" id="1_264qt"]
+[ext_resource type="FontFile" uid="uid://bnumkmoiqqk13" path="res://Assets/determination.ttf" id="2_qgbfg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgbfg"]
+bg_color = Color(0.08627451, 0.08235294, 0.35686275, 0.4392157)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0.61960787, 0.6039216, 0.3882353, 0.57254905)
+corner_detail = 20
 
 [node name="ConfirmationPanel" type="Control" unique_id=699353212]
 layout_mode = 3
@@ -34,6 +44,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qgbfg")
 
 [node name="Label" type="Label" parent="Panel" unique_id=1778702188]
 layout_mode = 1
@@ -45,6 +56,7 @@ offset_top = 19.0
 offset_right = 37.5
 offset_bottom = 61.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_qgbfg")
 theme_override_font_sizes/font_size = 30
 text = "EXIT?"
 horizontal_alignment = 1
@@ -66,12 +78,14 @@ theme_override_constants/separation = 70
 [node name="ButtonYes" type="Button" parent="Panel/HBoxContainer" unique_id=2004237647]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qgbfg")
 theme_override_font_sizes/font_size = 30
 text = "YES"
 
 [node name="ButtonNo" type="Button" parent="Panel/HBoxContainer" unique_id=1562933833]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qgbfg")
 theme_override_font_sizes/font_size = 30
 text = "NO"
 

@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://blvniqmv0cixc" path="res://Scenes/Components/Kereta/kepala.tscn" id="1_2wmvs"]
 [ext_resource type="Script" uid="uid://hopwy0agpns4" path="res://Script/Kereta/kereta.gd" id="1_l81m1"]
 [ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_k3j8q"]
+[ext_resource type="Texture2D" uid="uid://bwmqq7no154dx" path="res://Assets/Health-Bar/Health-Indicator-Bar2.png" id="4_cacri"]
+[ext_resource type="Texture2D" uid="uid://clxd8uuurlfc8" path="res://Assets/Health-Bar/Health-Indicator-Bar3.png" id="5_vk30c"]
+[ext_resource type="FontFile" uid="uid://bnumkmoiqqk13" path="res://Assets/determination.ttf" id="6_vk30c"]
 
 [node name="Kereta" type="Node2D" unique_id=1640051749]
 script = ExtResource("1_l81m1")
@@ -25,8 +28,24 @@ position = Vector2(-280, 0)
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1047966626]
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
+scale = Vector2(3.1420066, 3.1420066)
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
 
-[node name="LabelJumlahGerbong" type="Label" parent="CanvasLayer/MarginContainer" unique_id=978373017]
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer" unique_id=1878149337]
 layout_mode = 2
+texture_under = ExtResource("4_cacri")
+texture_progress = ExtResource("5_vk30c")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/HealthBar" unique_id=1950846510]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 14.372937
+offset_bottom = 17.372936
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_vk30c")
+horizontal_alignment = 1
+vertical_alignment = 1

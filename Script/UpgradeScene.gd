@@ -35,14 +35,14 @@ func update_semua_ui():
 	var level_l = ScoreManager.level_upgrade_laser
 	var harga_l = hitung_harga(harga_dasar_laser, kelipatan_harga_laser, level_l)
 	label_lvl_laser.text = "Laser (Lvl " + str(level_l) + ")"
-	label_harga_laser.text = "Beli: " + str(harga_l)
+	label_harga_laser.text = "$ " + str(harga_l)
 	btn_beli_laser.disabled = ScoreManager.dompet_koin < harga_l # Matikan tombol jika uang kurang
 	
 	# 2. Update UI Defense
 	var level_d = ScoreManager.level_upgrade_defense
 	var harga_d = hitung_harga(harga_dasar_defense, kelipatan_harga_defense, level_d)
 	label_lvl_defense.text = "Defense (Lvl " + str(level_d) + ")"
-	label_harga_defense.text = "Beli: " + str(harga_d)
+	label_harga_defense.text = "$ " + str(harga_d)
 	btn_beli_defense.disabled = ScoreManager.dompet_koin < harga_d
 	
 
