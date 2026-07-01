@@ -40,6 +40,13 @@
 [ext_resource type="Texture2D" uid="uid://bpf63rycml4ag" path="res://Assets/Player Train/Tail/4.png" id="31_7cpcu"]
 [ext_resource type="Texture2D" uid="uid://bp8fuhdcd8wg7" path="res://Assets/Player Train/Tail/5.png" id="32_hc27c"]
 [ext_resource type="Texture2D" uid="uid://3t451yupotal" path="res://Assets/Player Train/Tail/6.png" id="33_c0cds"]
+[ext_resource type="Texture2D" uid="uid://c5khmd4f8s64" path="res://Assets/UI/Button-UI/SliderMusic3.png" id="41_7cpcu"]
+[ext_resource type="FontFile" uid="uid://bnumkmoiqqk13" path="res://Assets/determination.ttf" id="41_bse0w"]
+[ext_resource type="Texture2D" uid="uid://diitew8e7q1d7" path="res://Assets/UI/Button-UI/marked checkbox.png" id="41_hc27c"]
+[ext_resource type="Texture2D" uid="uid://bhnp5a62qr2pv" path="res://Assets/UI/Button-UI/checkbox.png" id="42_c0cds"]
+[ext_resource type="Texture2D" uid="uid://brft8ika6hu7m" path="res://Assets/UI/Button-UI/SliderMusic1.png" id="44_nqof3"]
+[ext_resource type="Texture2D" uid="uid://bdap1nqy05j2q" path="res://Assets/UI/Button-UI/SliderMusic2.png" id="45_bse0w"]
+[ext_resource type="Texture2D" uid="uid://dtx66dd4o3anb" path="res://Assets/UI/Button-UI/back-btn.png" id="47_onw8t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy0vh"]
 texture = ExtResource("13_afqwc")
@@ -171,6 +178,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5bbo0"]
+texture = ExtResource("44_nqof3")
+texture_margin_left = 10.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nqof3"]
+texture = ExtResource("45_bse0w")
+texture_margin_left = 10.0
+texture_margin_right = 10.0
+
 [node name="Homescreen" type="Control" unique_id=1142522670]
 layout_mode = 3
 anchors_preset = 15
@@ -234,7 +253,7 @@ scale = Vector2(2.5572577, 2.5572577)
 
 [node name="Kepala" type="AnimatedSprite2D" parent="TextureRect/Kereta" unique_id=1978104251]
 sprite_frames = SubResource("SpriteFrames_vrfe7")
-frame_progress = 0.81098676
+frame_progress = 0.030326677
 
 [node name="Gerbong-1" type="AnimatedSprite2D" parent="TextureRect/Kereta" unique_id=598211060]
 position = Vector2(-109, 0)
@@ -245,7 +264,7 @@ frame_progress = 0.14691752
 [node name="Gerbong-2" type="AnimatedSprite2D" parent="TextureRect/Kereta" unique_id=1816725436]
 position = Vector2(-218, 0)
 sprite_frames = SubResource("SpriteFrames_ieiow")
-frame_progress = 0.20675756
+frame_progress = 0.38751832
 
 [node name="Ekor" type="AnimatedSprite2D" parent="TextureRect/Kereta" unique_id=1210087543]
 position = Vector2(-328, 0)
@@ -331,7 +350,6 @@ visible = false
 layout_mode = 1
 
 [node name="SettingsPanel" type="Control" parent="." unique_id=426690044]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -377,11 +395,14 @@ theme_override_constants/separation = 1200
 
 [node name="MuteLabel" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1578302864]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("41_bse0w")
 theme_override_font_sizes/font_size = 50
 text = "MUTE AUDIO "
 
 [node name="Mute" type="CheckBox" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=292162702]
 layout_mode = 2
+theme_override_icons/checked = ExtResource("41_hc27c")
+theme_override_icons/unchecked = ExtResource("42_c0cds")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer" unique_id=1501142483]
 layout_mode = 2
@@ -389,32 +410,35 @@ theme_override_constants/separation = 1200
 
 [node name="Volume" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=983705103]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("41_bse0w")
 theme_override_font_sizes/font_size = 50
 text = "VOLUME"
 
 [node name="VolumeSlider" type="HSlider" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1292663245]
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
+theme_override_icons/grabber = ExtResource("41_7cpcu")
+theme_override_icons/grabber_highlight = ExtResource("41_7cpcu")
+theme_override_styles/slider = SubResource("StyleBoxTexture_5bbo0")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_nqof3")
 max_value = 1.0
 step = 0.05
+value = 1.0
 
-[node name="MarginContainer2" type="MarginContainer" parent="SettingsPanel/ColorRect" unique_id=325341801]
+[node name="BackSettings" type="TextureButton" parent="SettingsPanel/ColorRect" unique_id=2052555037]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -300.0
+offset_left = -341.25012
 offset_top = -161.0
+offset_right = -41.250122
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_constants/margin_right = 80
-theme_override_constants/margin_bottom = 60
-
-[node name="BackSettings" type="Button" parent="SettingsPanel/ColorRect/MarginContainer2" unique_id=1032263527]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "BACK"
+scale = Vector2(3, 3)
+texture_normal = ExtResource("47_onw8t")
 
 [connection signal="pressed" from="TextureRect/MarginButton/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="TextureRect/MarginButton/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
@@ -422,4 +446,4 @@ text = "BACK"
 [connection signal="konfirmasi_ya" from="ConfirmationPanel" to="." method="_on_confirmation_panel_konfirmasi_ya"]
 [connection signal="toggled" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Mute" to="." method="_on_mute_toggled"]
 [connection signal="value_changed" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
-[connection signal="pressed" from="SettingsPanel/ColorRect/MarginContainer2/BackSettings" to="." method="_on_back_settings_pressed"]
+[connection signal="pressed" from="SettingsPanel/ColorRect/BackSettings" to="." method="_on_back_settings_pressed"]
