@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_0s2i5")
+spawn_chance = 0.25
+targeting_inaccuracy = 70.0
 metadata/_custom_type_script = "uid://bwbhc3np6qbq5"

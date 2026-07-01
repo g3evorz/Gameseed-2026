@@ -5,9 +5,13 @@ extends Resource
 ## Nilai dari 0.0 sampai 1.0. Menentukan di rasio kecepatan berapa config ini aktif.
 @export_range(0.0, 1.0) var activation_speed_ratio: float = 0.0
 
-@export_group("Spawn Rates")
+@export_group("Object Spawn Rates")
 ## Peluang musuh memutuskan untuk menjatuhkan rintangan saat sinyal obstacle_dropped diterima (0.0 - 1.0).
 @export_range(0.0, 1.0) var spawn_chance: float = 0.5
+
+@export_group("Level Spawn Interval")
+
+@export var spawn_interval: float = 10.0
 
 @export_group("Targeting & Complexity")
 ## Tingkat ketidakakuratan musuh saat membidik posisi Y pemain (untuk rintangan TEMPORARY).
@@ -22,3 +26,5 @@ extends Resource
 @export var cooldown_duration: float = 5.0
 @export var lurk_time_min: float = 10.0
 @export var lurk_time_max: float = 15.0
+@export var drop_hold_time: float = 3.0
+@export var drop_interval: float = 3.0

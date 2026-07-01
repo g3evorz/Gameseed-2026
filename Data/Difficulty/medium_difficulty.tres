@@ -4,4 +4,12 @@
 
 [resource]
 script = ExtResource("1_na1ai")
+activation_speed_ratio = 0.5
+spawn_chance = 0.65
+spawn_interval = 4.0
+cooldown_duration = 4.2
+lurk_time_min = 8.0
+lurk_time_max = 10.0
+drop_hold_time = 5.0
+drop_interval = 2.5
 metadata/_custom_type_script = "uid://bwbhc3np6qbq5"

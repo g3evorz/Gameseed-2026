@@ -7,7 +7,7 @@ extends Node2D
 @export var player: Node2D 
 
 # Waktu jeda (dalam detik) antar spawn
-@export var spawn_interval: float = 2.0
+@onready var spawn_interval: float = GameManager.current_difficulty.spawn_interval
 
 var _time_passed: float = 0.0
 

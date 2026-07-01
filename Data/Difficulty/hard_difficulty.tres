@@ -4,9 +4,13 @@
 
 [resource]
 script = ExtResource("1_agvgg")
-spawn_chance = 0.95
+activation_speed_ratio = 0.8
+spawn_chance = 0.8
+spawn_interval = 3.0
 targeting_inaccuracy = 20.0
 overtake_duration = 10.0
 lurk_time_min = 3.0
 lurk_time_max = 5.0
+drop_hold_time = 5.0
+drop_interval = 1.5
 metadata/_custom_type_script = "uid://bwbhc3np6qbq5"
