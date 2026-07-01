@@ -13,7 +13,6 @@ func _ready():
 # Fungsi yang akan dipanggil oleh tombol dari scene lain
 func pindah_scene(target_path: String):
 	animation_player.play("fade_in")
-	print("animasi di play")
 	path_tujuan = target_path
 	
 

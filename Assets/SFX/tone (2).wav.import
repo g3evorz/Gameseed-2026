@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://sjm4mwpncj41"
+path="res://.godot/imported/tone (2).wav-fe06d2ba7532456af3a27249ae8bafc0.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/tone (2).wav"
+dest_files=["res://.godot/imported/tone (2).wav-fe06d2ba7532456af3a27249ae8bafc0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

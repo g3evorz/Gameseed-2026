@@ -14,12 +14,32 @@
 [ext_resource type="Texture2D" uid="uid://bqdfj271rchjb" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil1.png" id="8_pgf22"]
 [ext_resource type="Texture2D" uid="uid://bjtmsaqgckcpc" path="res://Assets/Rail/Normal/Straight.png" id="8_vcn0l"]
 [ext_resource type="Texture2D" uid="uid://dg52mc0xi5r6d" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil2.png" id="9_eg75n"]
+[ext_resource type="Texture2D" uid="uid://bonmr8og32cly" path="res://Assets/Player Train/Head/2.png" id="12_bwkv0"]
+[ext_resource type="Texture2D" uid="uid://bt1115h8enjfq" path="res://Assets/Player Train/Head/3.png" id="13_houxq"]
+[ext_resource type="Texture2D" uid="uid://csob4u7hn38eh" path="res://Assets/Player Train/Head/4.png" id="14_1rmuu"]
 [ext_resource type="Texture2D" uid="uid://bs2s54dog4jgr" path="res://Assets/Station/Laser - Button.png" id="14_nptlx"]
+[ext_resource type="Texture2D" uid="uid://desn503n3s6en" path="res://Assets/Player Train/Head/5.png" id="15_8of08"]
 [ext_resource type="Texture2D" uid="uid://ggh5vb5bf2ft" path="res://Assets/UI/Button-UI/Upgrade Button - UPDT.png" id="15_nptlx"]
 [ext_resource type="Texture2D" uid="uid://c7n1c3xs4mm7y" path="res://Assets/UI/Button-UI/Home-BTN.png" id="15_pgf22"]
 [ext_resource type="Texture2D" uid="uid://biwhg2cd6qbv4" path="res://Assets/Station/Shield - Button.png" id="16_5fq8u"]
 [ext_resource type="FontFile" uid="uid://bnumkmoiqqk13" path="res://Assets/determination.ttf" id="16_8rjld"]
 [ext_resource type="Texture2D" uid="uid://qvyxml81pi2p" path="res://Assets/UI/Button-UI/play-btn.png" id="16_eg75n"]
+[ext_resource type="Texture2D" uid="uid://rapsyddrxa8a" path="res://Assets/Player Train/Head/6.png" id="16_pn3y0"]
+[ext_resource type="Texture2D" uid="uid://qickhgglbgfj" path="res://Assets/Player Train/Gerbong + Pintu/2.png" id="18_25n4n"]
+[ext_resource type="Texture2D" uid="uid://qfcrgl05bpc7" path="res://Assets/Player Train/Gerbong + Pintu/3.png" id="19_dvunb"]
+[ext_resource type="Texture2D" uid="uid://33sj3fpwbpta" path="res://Assets/Player Train/Gerbong + Pintu/4.png" id="20_pw5x4"]
+[ext_resource type="Texture2D" uid="uid://ddp8khnrwxw8b" path="res://Assets/Player Train/Gerbong + Pintu/5.png" id="21_t6nki"]
+[ext_resource type="Texture2D" uid="uid://cwt1g13c5cas2" path="res://Assets/Player Train/Gerbong + Pintu/6.png" id="22_vsica"]
+[ext_resource type="Texture2D" uid="uid://b5aiesji7kt8s" path="res://Assets/Player Train/Gerbong/2.png" id="24_yaa21"]
+[ext_resource type="Texture2D" uid="uid://bk5omsfcfrvvv" path="res://Assets/Player Train/Gerbong/3.png" id="25_hybj8"]
+[ext_resource type="Texture2D" uid="uid://dv3moe3ucna7w" path="res://Assets/Player Train/Gerbong/4.png" id="26_wv6lk"]
+[ext_resource type="Texture2D" uid="uid://hq10glq7eifx" path="res://Assets/Player Train/Gerbong/5.png" id="27_wwm3j"]
+[ext_resource type="Texture2D" uid="uid://0s2x50m4s6on" path="res://Assets/Player Train/Gerbong/6.png" id="28_2iqe2"]
+[ext_resource type="Texture2D" uid="uid://wyobya062pgb" path="res://Assets/Player Train/Tail/2.png" id="30_g24sj"]
+[ext_resource type="Texture2D" uid="uid://djwrdcuc40xuo" path="res://Assets/Player Train/Tail/3.png" id="31_hthnv"]
+[ext_resource type="Texture2D" uid="uid://bpf63rycml4ag" path="res://Assets/Player Train/Tail/4.png" id="32_5ejxh"]
+[ext_resource type="Texture2D" uid="uid://bp8fuhdcd8wg7" path="res://Assets/Player Train/Tail/5.png" id="33_sx1pw"]
+[ext_resource type="Texture2D" uid="uid://3t451yupotal" path="res://Assets/Player Train/Tail/6.png" id="34_e788m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0i5va"]
 texture = ExtResource("8_vcn0l")
@@ -41,6 +61,110 @@ sources/0 = SubResource("TileSetAtlasSource_0i5va")
 sources/1 = SubResource("TileSetAtlasSource_e1ntu")
 sources/2 = SubResource("TileSetAtlasSource_pgf22")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_fk2id"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_texcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bwkv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_houxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_1rmuu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_8of08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_pn3y0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27cyn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gbid7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_25n4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_dvunb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_pw5x4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_t6nki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_vsica")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rxdui"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nwapd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_yaa21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_hybj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_wv6lk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_wwm3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_2iqe2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ltja7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5eqk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_g24sj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_hthnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_5ejxh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_sx1pw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_e788m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Main" type="CanvasLayer" unique_id=857746939]
 script = ExtResource("1_nwapd")
 
@@ -56,14 +180,15 @@ texture = ExtResource("2_0i5va")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 500.0
-offset_top = 213.0
-offset_right = 500.0
-offset_bottom = 213.0
+offset_left = 204.0
+offset_top = 206.00002
+offset_right = 204.0
+offset_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.76246524, 0.76246524)
 texture = ExtResource("2_5eqk7")
+stretch_mode = 4
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1186416837]
 position = Vector2(11, -758.00006)
@@ -72,10 +197,10 @@ tile_map_data = PackedByteArray("AAABACwAAAAAAAAAAAAJACwAAAAAAAAAAAANACwAAAAAAAA
 tile_set = SubResource("TileSet_e1ntu")
 
 [node name="Bumi" type="TextureRect" parent="." unique_id=1449049369]
-offset_left = 186.0
-offset_top = 130.00002
-offset_right = 442.0
-offset_bottom = 386.0
+offset_left = 349.00003
+offset_top = 25.000002
+offset_right = 605.0
+offset_bottom = 281.0
 scale = Vector2(0.734375, 0.734375)
 texture = ExtResource("7_e1ntu")
 script = ExtResource("8_8rjld")
@@ -117,20 +242,20 @@ texture = ExtResource("4_t1o5p")
 position = Vector2(1511, 615.00006)
 scale = Vector2(3.2676375, 3.2676375)
 
-[node name="Kepala" type="Sprite2D" parent="Kereta" unique_id=1812742069]
-texture = ExtResource("1_texcv")
+[node name="Kepala" type="AnimatedSprite2D" parent="Kereta" unique_id=239157152]
+sprite_frames = SubResource("SpriteFrames_fk2id")
 
-[node name="Gerbong-1" type="Sprite2D" parent="Kereta" unique_id=1733923599]
+[node name="Gerbong-1" type="AnimatedSprite2D" parent="Kereta" unique_id=1391849002]
 position = Vector2(-109, 0)
-texture = ExtResource("2_gbid7")
+sprite_frames = SubResource("SpriteFrames_27cyn")
 
-[node name="Gerbong-2" type="Sprite2D" parent="Kereta" unique_id=1476576485]
+[node name="Gerbong-2" type="AnimatedSprite2D" parent="Kereta" unique_id=1910412433]
 position = Vector2(-218, 0)
-texture = ExtResource("3_nwapd")
+sprite_frames = SubResource("SpriteFrames_rxdui")
 
-[node name="Ekor" type="Sprite2D" parent="Kereta" unique_id=1327032834]
+[node name="Ekor" type="AnimatedSprite2D" parent="Kereta" unique_id=772593586]
 position = Vector2(-328, 0)
-texture = ExtResource("4_5eqk7")
+sprite_frames = SubResource("SpriteFrames_ltja7")
 
 [node name="Panel" type="Panel" parent="." unique_id=1918528123]
 anchors_preset = 12

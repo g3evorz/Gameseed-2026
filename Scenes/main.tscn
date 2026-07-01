@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cekcnut1c71hi" path="res://Script/main.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cuyokbbea850y" path="res://Scenes/Components/Worldborder.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cn6jf1k6pe6l8" path="res://Scenes/enemy.tscn" id="2_21xkr"]
+[ext_resource type="Texture2D" uid="uid://bsl7sky5carmi" path="res://Assets/Background Part/Background.png" id="2_h1bgf"]
 [ext_resource type="Script" uid="uid://bxawmns3p3xd7" path="res://Script/System/EnemyWeapon_spawner.gd" id="3_344ge"]
 [ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/Configuration/ObstacleData.gd" id="3_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_kry3j"]
@@ -19,6 +20,18 @@
 
 [node name="Main" type="Node2D" unique_id=1169577489]
 script = ExtResource("1_jjvhh")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2066398796]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2270.0
+offset_top = -1135.0
+offset_right = 2624.0
+offset_bottom = 1312.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_h1bgf")
 
 [node name="EnemyWeaponSpawner" type="Node" parent="." unique_id=1565456601]
 script = ExtResource("3_344ge")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cub7rsntb4udv"
+path="res://.godot/imported/laser spam slowed.wav-bcb5b3b8181d6b4e60ffbd2ef5eb7ddb.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Laser shoot/laser spam slowed.wav"
+dest_files=["res://.godot/imported/laser spam slowed.wav-bcb5b3b8181d6b4e60ffbd2ef5eb7ddb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
