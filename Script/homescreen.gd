@@ -5,8 +5,16 @@ extends Control
 
 @onready var mute_button = $SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Mute
 @onready var volume_slider = $SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/VolumeSlider
+@onready var anim_kepala = $TextureRect/Kereta/Kepala
+@onready var anim_gerbong_1 = $"TextureRect/Kereta/Gerbong-1"
+@onready var anim_gerbong_2 = $"TextureRect/Kereta/Gerbong-2"
+@onready var anim_ekor = $TextureRect/Kereta/Ekor
 
 func _ready() -> void:
+	anim_kepala.play("default")
+	anim_gerbong_1.play("default")
+	anim_gerbong_2.play("default")
+	anim_ekor.play("default")
 	AudioManager.putar_musik(AudioManager.musik_homescreen)
 	settings_panel.hide()
 	mute_button.button_pressed = AudioManager.is_muted

@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://374vcrnka2qm" path="res://Assets/Props & Decoration/Neon-Sign.png" id="4_t1o5p"]
 [ext_resource type="Texture2D" uid="uid://c8u42pgowqyjc" path="res://Assets/Props & Decoration/Other-Energy-Generator.png" id="5_3asds"]
 [ext_resource type="Texture2D" uid="uid://dwghl8chkc18j" path="res://Assets/Background Part/Planet & Star (Part by Part)/Bumi.png" id="7_e1ntu"]
+[ext_resource type="Script" uid="uid://ml4shu6ff4jj" path="res://Script/planet_homescreen.gd" id="8_8rjld"]
 [ext_resource type="Texture2D" uid="uid://bqdfj271rchjb" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil1.png" id="8_pgf22"]
 [ext_resource type="Texture2D" uid="uid://bjtmsaqgckcpc" path="res://Assets/Rail/Normal/Straight.png" id="8_vcn0l"]
 [ext_resource type="Texture2D" uid="uid://dg52mc0xi5r6d" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil2.png" id="9_eg75n"]
@@ -17,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ggh5vb5bf2ft" path="res://Assets/UI/Button-UI/Upgrade Button - UPDT.png" id="15_nptlx"]
 [ext_resource type="Texture2D" uid="uid://c7n1c3xs4mm7y" path="res://Assets/UI/Button-UI/Home-BTN.png" id="15_pgf22"]
 [ext_resource type="Texture2D" uid="uid://biwhg2cd6qbv4" path="res://Assets/Station/Shield - Button.png" id="16_5fq8u"]
+[ext_resource type="FontFile" uid="uid://bnumkmoiqqk13" path="res://Assets/determination.ttf" id="16_8rjld"]
 [ext_resource type="Texture2D" uid="uid://qvyxml81pi2p" path="res://Assets/UI/Button-UI/play-btn.png" id="16_eg75n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0i5va"]
@@ -69,31 +71,50 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAABACwAAAAAAAAAAAAJACwAAAAAAAAAAAANACwAAAAAAAAAAAAdACwAAAAAAAAAAAAhACwAAAAAAAAAAAAlACwAAAAAAAAAAAApACwAAAAAAAAAAAAtACwAAAAAAAAAAAAxACwAAAAAAAAAAAA1ACwAAAAAAAAAAAA5ACwAAAAAAAAAAAAFACwAAAAAAAAAAAAVACwAAAAAAAAAAAAZACwAAAAAAAAAAAARACwAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_e1ntu")
 
-[node name="Bumi" type="Sprite2D" parent="." unique_id=862894607]
-position = Vector2(280, 274)
+[node name="Bumi" type="TextureRect" parent="." unique_id=1449049369]
+offset_left = 186.0
+offset_top = 130.00002
+offset_right = 442.0
+offset_bottom = 386.0
 scale = Vector2(0.734375, 0.734375)
 texture = ExtResource("7_e1ntu")
+script = ExtResource("8_8rjld")
+kecepatan_melayang = 0.7
+jarak_melayang_y = 8.0
+kecepatan_rotasi = 0.5
+batas_kemiringan_derajat = 1.0
 
-[node name="PlanetKecil1" type="Sprite2D" parent="." unique_id=196483083]
-position = Vector2(976, 137)
+[node name="PlanetKecil1" type="TextureRect" parent="." unique_id=690689081]
+offset_left = 882.0
+offset_top = -7.0
+offset_right = 1138.0
+offset_bottom = 249.0
 texture = ExtResource("8_pgf22")
+script = ExtResource("8_8rjld")
+kecepatan_melayang = 0.7
+jarak_melayang_y = 8.0
+kecepatan_rotasi = 0.5
+batas_kemiringan_derajat = 1.0
 
-[node name="PlanetKecil2" type="Sprite2D" parent="." unique_id=1071368546]
-position = Vector2(1311, 957)
+[node name="PlanetKecil2" type="TextureRect" parent="." unique_id=1398329189]
+offset_left = 1217.0
+offset_top = 813.0
+offset_right = 1473.0
+offset_bottom = 1069.0
 texture = ExtResource("9_eg75n")
+script = ExtResource("8_8rjld")
+kecepatan_melayang = 0.7
+jarak_melayang_y = 8.0
+kecepatan_rotasi = 0.5
+batas_kemiringan_derajat = 1.0
 
 [node name="NeonSign" type="Sprite2D" parent="." unique_id=800922006]
-position = Vector2(1820, 615)
+position = Vector2(1895, 615)
 scale = Vector2(3, 3)
 texture = ExtResource("4_t1o5p")
 
-[node name="OtherEnergyGenerator" type="Sprite2D" parent="." unique_id=106413705]
-position = Vector2(159.99997, 554.99994)
-scale = Vector2(4.109375, 4.109375)
-texture = ExtResource("5_3asds")
-
 [node name="Kereta" type="Node2D" parent="." unique_id=345644684]
-position = Vector2(1556, 615.00006)
+position = Vector2(1511, 615.00006)
 scale = Vector2(3.2676375, 3.2676375)
 
 [node name="Kepala" type="Sprite2D" parent="Kereta" unique_id=1812742069]
@@ -142,10 +163,12 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=186144333]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("16_8rjld")
 theme_override_font_sizes/font_size = 12
 text = "Level : "
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="TextureRect" type="TextureRect" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=1753241013]
 layout_mode = 2
@@ -154,10 +177,12 @@ stretch_mode = 5
 
 [node name="LabelPrice" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=314573826]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("16_8rjld")
+theme_override_font_sizes/font_size = 12
 text = "Level : "
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="Button" type="TextureButton" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=2068951583]
 layout_mode = 2
@@ -169,10 +194,12 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1584985600]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("16_8rjld")
 theme_override_font_sizes/font_size = 12
 text = "Level : "
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="TextureRect" type="TextureRect" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1469697925]
 layout_mode = 2
@@ -181,10 +208,12 @@ stretch_mode = 5
 
 [node name="LabelPrice" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1448363954]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("16_8rjld")
+theme_override_font_sizes/font_size = 12
 text = "Level : "
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="Button" type="TextureButton" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1798512828]
 layout_mode = 2
@@ -206,6 +235,7 @@ layout_mode = 2
 
 [node name="LabelDompet" type="Label" parent="MarginUang/HBoxUang" unique_id=688523793]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("16_8rjld")
 theme_override_font_sizes/font_size = 60
 text = "COINS :  "
 
@@ -228,8 +258,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
+offset_left = -366.66663
+offset_top = -220.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/margin_right = 50
