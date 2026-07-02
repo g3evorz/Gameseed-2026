@@ -3,10 +3,41 @@
 [ext_resource type="Script" uid="uid://v8j4m4vyhi5g" path="res://Script/camera.gd" id="1_eu8wk"]
 [ext_resource type="Script" uid="uid://b6wxh3yelr5j6" path="res://Script/Kereta/kepala.gd" id="1_kiorl"]
 [ext_resource type="PackedScene" uid="uid://mggdmmjq4q5n" path="res://Scenes/Components/Weapon/Pulse/pulseBody.tscn" id="2_eu8wk"]
-[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="2_pvioj"]
+[ext_resource type="Texture2D" uid="uid://de2vx171ti5co" path="res://Assets/Player Train/Head/1.png" id="3_jjnpx"]
+[ext_resource type="Texture2D" uid="uid://bonmr8og32cly" path="res://Assets/Player Train/Head/2.png" id="4_nteqc"]
+[ext_resource type="Texture2D" uid="uid://bt1115h8enjfq" path="res://Assets/Player Train/Head/3.png" id="5_i8yxk"]
+[ext_resource type="Texture2D" uid="uid://csob4u7hn38eh" path="res://Assets/Player Train/Head/4.png" id="6_r8xe7"]
+[ext_resource type="Texture2D" uid="uid://desn503n3s6en" path="res://Assets/Player Train/Head/5.png" id="7_gl0qx"]
+[ext_resource type="Texture2D" uid="uid://rapsyddrxa8a" path="res://Assets/Player Train/Head/6.png" id="8_w4mw0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_404rq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jjnpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nteqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i8yxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_r8xe7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gl0qx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_w4mw0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eu8wk"]
-size = Vector2(233.5, 62.5)
+size = Vector2(84, 27)
 
 [node name="Kepala" type="CharacterBody2D" unique_id=1215859441]
 collision_mask = 2
@@ -18,28 +49,25 @@ scale = Vector2(2.0234377, 0.59375)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("1_eu8wk")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1829586725]
-position = Vector2(-129, 38)
-scale = Vector2(2.0234377, 0.59375)
-texture = ExtResource("2_pvioj")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1516044458]
+position = Vector2(-73, 93)
+sprite_frames = SubResource("SpriteFrames_404rq")
 centered = false
 offset = Vector2(0, -126)
 
 [node name="PulseBody" parent="Sprite2D" unique_id=862216815 instance=ExtResource("2_eu8wk")]
-position = Vector2(63.75289, -122.94738)
-scale = Vector2(0.8017096, 2.7321424)
+position = Vector2(22, -119)
 
 [node name="TitikSambungBelakang" type="Marker2D" parent="Sprite2D" unique_id=1181210845]
-position = Vector2(-0.28664398, -64.00001)
+position = Vector2(8, -84)
 scale = Vector2(0.49420846, 1.6842107)
 
 [node name="TitikSambungDepan" type="Marker2D" parent="Sprite2D" unique_id=1549894906]
-position = Vector2(128, -64)
+position = Vector2(122, -84)
 scale = Vector2(0.244242, 2.8365655)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1440733009]
-position = Vector2(-4.7683716e-07, 0)
-scale = Vector2(0.9615588, 0.9438583)
+position = Vector2(-13, -1.5)
 shape = SubResource("RectangleShape2D_eu8wk")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1870364125]

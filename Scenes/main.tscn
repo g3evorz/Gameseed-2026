@@ -20,6 +20,11 @@
 [ext_resource type="PackedScene" uid="uid://badj5pnsv3mrf" path="res://Scenes/ConfirmationPanel.tscn" id="12_6iyac"]
 [ext_resource type="Texture2D" uid="uid://dadelgefpdwtq" path="res://Assets/Background Part/Background-Menu/Start-bg-utama.png" id="17_b3802"]
 [ext_resource type="Texture2D" uid="uid://bqwv0j54db2ek" path="res://Assets/Background Part/Background-Menu/Start-bg.png" id="18_fevyy"]
+[ext_resource type="Texture2D" uid="uid://7tdl3yab8cbd" path="res://Assets/UI/Button-UI/Resume-btn.png" id="20_ee4r6"]
+[ext_resource type="Texture2D" uid="uid://dqtigwmmtm505" path="res://Assets/UI/Button-UI/PauseBTN.png" id="20_pdsj5"]
+[ext_resource type="FontFile" uid="uid://bnumkmoiqqk13" path="res://Assets/determination.ttf" id="20_u50mg"]
+[ext_resource type="Texture2D" uid="uid://c7g31rlev0qv1" path="res://Assets/UI/Button-UI/retry-btn.png" id="21_gt3je"]
+[ext_resource type="Texture2D" uid="uid://dfidbdgp06qyg" path="res://Assets/UI/Button-UI/home-btn(1).png" id="22_3pmx8"]
 
 [node name="Main" type="Node2D" unique_id=1169577489]
 script = ExtResource("1_jjvhh")
@@ -30,7 +35,6 @@ possible_obstacles = Array[ExtResource("3_hptm8")]([ExtResource("4_d1ilt"), ExtR
 vertical_spawn_margin_min = 200.0
 
 [node name="ParallaxGalaxy" type="Parallax2D" parent="." unique_id=1313303119]
-scale = Vector2(8.015922, 8.015922)
 scroll_scale = Vector2(0.1, 0.1)
 repeat_size = Vector2(1024, 0)
 script = ExtResource("6_hibaj")
@@ -39,7 +43,6 @@ script = ExtResource("6_hibaj")
 texture = ExtResource("17_b3802")
 
 [node name="ParallaxStars" type="Parallax2D" parent="." unique_id=1659890443]
-scale = Vector2(8.015922, 8.015922)
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(1024, 0)
 script = ExtResource("6_hibaj")
@@ -48,7 +51,6 @@ script = ExtResource("6_hibaj")
 texture = ExtResource("18_fevyy")
 
 [node name="ParallaxPlanet" type="Parallax2D" parent="." unique_id=1892508997]
-scale = Vector2(4.230104, 4.230104)
 scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(0, -255.00005)
 repeat_size = Vector2(1024, 0)
@@ -68,6 +70,9 @@ scene_gerbong = ExtResource("3_kry3j")
 [node name="Camera2D" parent="Kereta/Kepala" parent_id_path=PackedInt32Array(1640051749, 1780252134) index="0" unique_id=1503878241]
 position = Vector2(-129, -174.68)
 
+[node name="KumpulanGerbong" parent="Kereta" index="1" unique_id=399389016]
+position = Vector2(-134, 0)
+
 [node name="World" parent="." unique_id=1368948942 instance=ExtResource("2_8gbba")]
 position = Vector2(3, 0)
 
@@ -80,7 +85,6 @@ player = NodePath("../Kereta")
 process_mode = 3
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=1041411612]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,18 +106,19 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -200.0
+offset_left = -287.0
 offset_top = 162.0
-offset_right = 200.0
+offset_right = 113.0
 offset_bottom = 245.0
 grow_horizontal = 2
+scale = Vector2(1.4775721, 1.4775721)
+theme_override_fonts/font = ExtResource("20_u50mg")
 theme_override_font_sizes/font_size = 60
 text = "PAUSE MENU "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu" unique_id=1448723986]
-custom_minimum_size = Vector2(300, 400)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -122,30 +127,29 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
 offset_top = -164.0
-offset_right = 150.0
-offset_bottom = 236.0
+offset_right = -54.0
+offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(3, 3)
 theme_override_constants/separation = 30
 
-[node name="Resume" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer" unique_id=712932605]
+[node name="Resume" type="TextureButton" parent="CanvasLayer/PauseMenu/VBoxContainer" unique_id=1787848828]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "RESUME"
+texture_normal = ExtResource("20_ee4r6")
 
-[node name="Retry" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer" unique_id=477364473]
+[node name="Retry" type="TextureButton" parent="CanvasLayer/PauseMenu/VBoxContainer" unique_id=473326610]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
 action_mode = 0
-text = "RETRY"
+texture_normal = ExtResource("21_gt3je")
 
-[node name="Exit" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer" unique_id=2064784973]
+[node name="Exit" type="TextureButton" parent="CanvasLayer/PauseMenu/VBoxContainer" unique_id=584017652]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
 action_mode = 0
-text = "EXIT"
+texture_normal = ExtResource("22_3pmx8")
 
 [node name="GameOver" type="Control" parent="CanvasLayer" unique_id=134540017]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -233,18 +237,22 @@ text = "EXIT
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -197.0
-offset_bottom = 97.0
+offset_left = -279.0
+offset_right = -28.429688
+offset_bottom = 145.0
 grow_horizontal = 0
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
+scale = Vector2(1.636039, 1.636039)
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
-[node name="PauseButton" type="Button" parent="CanvasLayer/MarginContainer" unique_id=1540144660]
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer/MarginContainer" unique_id=820578102]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "PAUSE "
+texture_normal = ExtResource("20_pdsj5")
 
 [node name="ConfirmationPanel" parent="CanvasLayer" unique_id=699353212 instance=ExtResource("12_6iyac")]
+visible = false
 
 [connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/Retry" to="." method="_on_btn_restart_pressed"]

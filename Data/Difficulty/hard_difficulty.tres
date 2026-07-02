@@ -6,9 +6,10 @@
 
 [resource]
 script = ExtResource("1_agvgg")
-activation_speed_ratio = 0.2
+activation_speed_ratio = 0.8
 spawn_chance = 0.919
 spawn_interval = 3.0
+health_multiplier = 5.5
 specific_weight_multipliers = {
 ExtResource("2_xe3wx"): 3.0,
 ExtResource("3_jnxtl"): 2.0

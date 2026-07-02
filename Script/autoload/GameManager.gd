@@ -1,9 +1,9 @@
 extends Node
 
 # Kecepatan Platform
-@export var BASE_SPEED: float = 500.0
-@export var MAX_SPEED: float = 3000.0	
-@export var ACCELERATION: float = 13.0
+@export var BASE_SPEED: float = 300.0
+@export var MAX_SPEED: float = 1000.0
+@export var ACCELERATION: float = 10.0
 
 @export var difficulty_phases: Array[DifficultyConfig] = []
 @export var weight_multipliers: Dictionary = {}
