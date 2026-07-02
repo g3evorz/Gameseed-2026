@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://cekcnut1c71hi" path="res://Script/main.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://cuyokbbea850y" path="res://Scenes/Components/Worldborder.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cn6jf1k6pe6l8" path="res://Scenes/enemy.tscn" id="2_21xkr"]
-[ext_resource type="Texture2D" uid="uid://bsl7sky5carmi" path="res://Assets/Background Part/Background.png" id="2_h1bgf"]
 [ext_resource type="Script" uid="uid://bxawmns3p3xd7" path="res://Script/System/EnemyWeapon_spawner.gd" id="3_344ge"]
 [ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/Configuration/ObstacleData.gd" id="3_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_kry3j"]
@@ -12,31 +11,51 @@
 [ext_resource type="PackedScene" uid="uid://do7otuteiauu" path="res://Scenes/Components/levelsSpawner.tscn" id="4_jjvhh"]
 [ext_resource type="Resource" uid="uid://chewkll570sp2" path="res://Data/Obstacle/laser.tres" id="5_k12tt"]
 [ext_resource type="PackedScene" uid="uid://70puepcgsjlx" path="res://Scenes/Levels/basicLandscapes.tscn" id="6_6bp64"]
+[ext_resource type="Script" uid="uid://bwcjximrcwbwg" path="res://Script/bg_controller.gd" id="6_hibaj"]
 [ext_resource type="PackedScene" uid="uid://c7qnoqxs7j6wd" path="res://Scenes/Levels/level_1.tscn" id="7_344ge"]
+[ext_resource type="Texture2D" uid="uid://bsi4lhrfybfhg" path="res://Assets/Background Part/Planet-Star.png" id="8_fevyy"]
 [ext_resource type="PackedScene" uid="uid://dxf8keb5h1lo2" path="res://Scenes/Levels/level_2.tscn" id="8_hptm8"]
 [ext_resource type="PackedScene" uid="uid://cekjkxc2vo48a" path="res://Scenes/Levels/level_3.tscn" id="9_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://c317owqmvgsig" path="res://Scenes/Levels/level_4.tscn" id="10_6iyac"]
 [ext_resource type="PackedScene" uid="uid://badj5pnsv3mrf" path="res://Scenes/ConfirmationPanel.tscn" id="12_6iyac"]
+[ext_resource type="Texture2D" uid="uid://dadelgefpdwtq" path="res://Assets/Background Part/Background-Menu/Start-bg-utama.png" id="17_b3802"]
+[ext_resource type="Texture2D" uid="uid://bqwv0j54db2ek" path="res://Assets/Background Part/Background-Menu/Start-bg.png" id="18_fevyy"]
 
 [node name="Main" type="Node2D" unique_id=1169577489]
 script = ExtResource("1_jjvhh")
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2066398796]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2270.0
-offset_top = -1135.0
-offset_right = 2624.0
-offset_bottom = 1312.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_h1bgf")
 
 [node name="EnemyWeaponSpawner" type="Node" parent="." unique_id=1565456601]
 script = ExtResource("3_344ge")
 possible_obstacles = Array[ExtResource("3_hptm8")]([ExtResource("4_d1ilt"), ExtResource("5_k12tt")])
 vertical_spawn_margin_min = 200.0
+
+[node name="ParallaxGalaxy" type="Parallax2D" parent="." unique_id=1313303119]
+scale = Vector2(8.015922, 8.015922)
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(1024, 0)
+script = ExtResource("6_hibaj")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxGalaxy" unique_id=768409368]
+texture = ExtResource("17_b3802")
+
+[node name="ParallaxStars" type="Parallax2D" parent="." unique_id=1659890443]
+scale = Vector2(8.015922, 8.015922)
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1024, 0)
+script = ExtResource("6_hibaj")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxStars" unique_id=1745736146]
+texture = ExtResource("18_fevyy")
+
+[node name="ParallaxPlanet" type="Parallax2D" parent="." unique_id=1892508997]
+scale = Vector2(4.230104, 4.230104)
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(0, -255.00005)
+repeat_size = Vector2(1024, 0)
+script = ExtResource("6_hibaj")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxPlanet" unique_id=1023978265]
+texture = ExtResource("8_fevyy")
 
 [node name="Enemy" parent="." unique_id=811008233 groups=["Enemy"] instance=ExtResource("2_21xkr")]
 position = Vector2(319.99997, -313.00003)

@@ -11,13 +11,16 @@ var is_muted: bool = false
 var bgm_player: AudioStreamPlayer
 
 # PATH MUSIK
-var musik_homescreen = preload("res://Assets/Music/train_mainmenu FIX SEMENTARA.wav") 
-var musik_upgrade = preload("res://Assets/Music/upgrade stasion.wav")
-var musik_play = preload("res://Assets/Music/main theme latest.wav")
+var musik_homescreen = preload("res://Assets/Music/train_mainmenu FIX SEMENTARA.ogg") 
+var musik_upgrade = preload("res://Assets/Music/upgrade stasion.ogg")
+var musik_play = preload("res://Assets/Music/main theme latest.ogg")
 
 # PATH SFX
 var sfx_klik = preload("res://Assets/SFX/select button sfx/blipSelect (1).wav")
 var sfx_upgrade = preload("res://Assets/SFX/click.wav")
+var sfx_power_up_pick = preload("res://Assets/SFX/power up/powerUp.wav")
+var sfx_crash = preload("res://Assets/SFX/train crash/crash with obstacle (2).wav")
+
 
 func _ready():
 	master_bus_index = AudioServer.get_bus_index("Master")

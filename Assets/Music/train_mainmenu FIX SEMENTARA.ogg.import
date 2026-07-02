@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cdcm78ki62moe"
+path="res://.godot/imported/train_mainmenu FIX SEMENTARA.ogg-c5261185050ce118178dc1e5535ad25a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/train_mainmenu FIX SEMENTARA.ogg"
+dest_files=["res://.godot/imported/train_mainmenu FIX SEMENTARA.ogg-c5261185050ce118178dc1e5535ad25a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
