@@ -29,6 +29,7 @@ func _on_body_entered(body):
 		
 		# Jika Ghost Mode mati, jalankan tabrakan normal
 		if kereta and kereta.has_method("terima_damage"):
+			AudioManager.putar_sfx(AudioManager.sfx_crash)
 			kereta.terima_damage(damage_tabrakan)
 			GameManager.terapkan_efek_ram(kekuatan_slow)
 			
