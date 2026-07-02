@@ -85,7 +85,8 @@ func _on_body_entered(body: Node2D) -> void:
 		#elif body.get_parent() and body.get_parent().has_method("terima_damage"):
 			#body.get_parent().terima_damage(damage_tabrakan)
 			
-	GameManager.terapkan_efek_ram(kekuatan_slow)
+		GameManager.terapkan_efek_ram(kekuatan_slow)
+		
 	queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
