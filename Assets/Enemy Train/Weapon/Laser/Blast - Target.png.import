@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://m0ki1dp54fjw"
-path="res://.godot/imported/Blast - Target.png-320f03e9915f47522b429fa6f2871ac7.ctex"
+path="res://.godot/imported/Blast - Target.png-19fc0583c1d8246c179a1536b1c42573.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemy/Weapon/Laser/Blast - Target.png"
-dest_files=["res://.godot/imported/Blast - Target.png-320f03e9915f47522b429fa6f2871ac7.ctex"]
+source_file="res://Assets/Enemy Train/Weapon/Laser/Blast - Target.png"
+dest_files=["res://.godot/imported/Blast - Target.png-19fc0583c1d8246c179a1536b1c42573.ctex"]
 
 [params]
 

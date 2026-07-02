@@ -23,6 +23,8 @@ var timer_imunitas = 0.0
 @export var BATAS_MINIMUM_COUPLER = 12.5
 @export var LEBAR_ASLI_GAMBAR_HIDROLIK = 110.0 
 
+@export var MAX_HP : float = 200.0
+
 # BATAS EKSTREM GERBONG HANCUR
 @export var BATAS_HANCUR = 1500.0
 @export var BATAS_EKSTRIM_X = 200.0 
@@ -191,6 +193,18 @@ func _physics_process(delta):
 				putus_sambungan()
 			if global_position.y - node_target.global_position.y > BATAS_EKSTRIM_Y:
 				putus_sambungan()
+
+func take_damage(jumlah_damage: int):
+	if GameManager.status_sekarang != GameManager.GameState.BERMAIN:
+		return
+		
+	var current_health = MAX_HP
+	
+	current_health -= jumlah_damage
+	
+	if current_health <= 0:
+		current_health = 0 
+		hancur()
 
 func hancur():
 	queue_free()

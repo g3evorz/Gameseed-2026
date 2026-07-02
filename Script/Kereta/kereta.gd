@@ -3,12 +3,11 @@ extends Node2D
 @onready var kepala_kereta = $Kepala
 @onready var sprite_kepala = $Kepala/Sprite2D
 @onready var kumpulan_gerbong = $KumpulanGerbong
-@onready var label_jumlah_gerbong = $CanvasLayer/MarginContainer/LabelJumlahGerbong
 
 @onready var health_bar = $CanvasLayer/MarginContainer/HealthBar
 @onready var label_hp_angka = $CanvasLayer/MarginContainer/HealthBar/Label # Sesuaikan path ini!
 
-@export var JARAK_PIKSEL_ANTAR_GERBONG = 350.0 
+@export var JARAK_PIKSEL_ANTAR_GERBONG = 200.0 
 @export var KEKAKUAN_DASAR = 15.0 
 @export var FAKTOR_AWAL = 0.95 
 @export var FAKTOR_PELURUHAN = 0.8
@@ -126,8 +125,6 @@ func _physics_process(delta):
 	
 	jumlah_gerbong_sebelumnya = jumlah_aktif
 		
-	if label_jumlah_gerbong:
-		label_jumlah_gerbong.text = "HP: " + str(current_health) + " | Gerbong: " + str(jumlah_aktif)
 
 func update_ui_kesehatan():
 	if is_instance_valid(health_bar):

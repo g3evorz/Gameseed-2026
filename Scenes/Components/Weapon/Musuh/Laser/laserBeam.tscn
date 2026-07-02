@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://sgvpha3ornh3"]
 
-[ext_resource type="Texture2D" uid="uid://c65jnrcoovfgx" path="res://Assets/Enemy/Weapon/Laser/Main.png" id="1_7oksn"]
+[ext_resource type="Texture2D" uid="uid://c65jnrcoovfgx" path="res://Assets/Enemy Train/Weapon/Laser/Main.png" id="1_7oksn"]
 [ext_resource type="Script" uid="uid://lf3x2jbh43df" path="res://Script/Weapon/Pulse/pulseBullet.gd" id="1_f3ma1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wrmy"]

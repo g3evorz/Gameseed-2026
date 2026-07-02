@@ -13,7 +13,7 @@ script = ExtResource("1_l81m1")
 [node name="Kepala" parent="." unique_id=1780252134 groups=["Player"] instance=ExtResource("1_2wmvs")]
 
 [node name="KumpulanGerbong" type="Node2D" parent="." unique_id=399389016]
-position = Vector2(-280, 0)
+position = Vector2(-140, -3)
 
 [node name="Gerbong1" parent="KumpulanGerbong" unique_id=2090834745 instance=ExtResource("3_k3j8q")]
 

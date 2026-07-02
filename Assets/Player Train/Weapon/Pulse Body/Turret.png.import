@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjcq15ehh1uus"
-path="res://.godot/imported/First Blast.png-9b20da476693c49aefc1f326aa3dbc2c.ctex"
+uid="uid://c1is3gj5v6mbr"
+path="res://.godot/imported/Turret.png-2751480781aa7c07dd301159e307fa8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemy/Weapon/Laser/First Blast.png"
-dest_files=["res://.godot/imported/First Blast.png-9b20da476693c49aefc1f326aa3dbc2c.ctex"]
+source_file="res://Assets/Player Train/Weapon/Pulse Body/Turret.png"
+dest_files=["res://.godot/imported/Turret.png-2751480781aa7c07dd301159e307fa8d.ctex"]
 
 [params]
 

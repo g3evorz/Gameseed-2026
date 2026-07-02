@@ -34,7 +34,7 @@ var base_y_position: float
 
 var _entrance_start_x: float
 
-@export var overtake_offset: float = 700.
+@export var overtake_offset: float = 400.0
 
 # ---  Variable @onready ---
 

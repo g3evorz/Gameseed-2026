@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crxc5w7rs0r7k"
-path="res://.godot/imported/Turret-bawah.png-295d828507d5ea37cb92e132ea1a70a9.ctex"
+uid="uid://cwtv4tyrhk6lw"
+path="res://.godot/imported/Ujung - NULL.png-a42068102646df3d788e3648a333c36d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player Train/Turret-bawah.png"
-dest_files=["res://.godot/imported/Turret-bawah.png-295d828507d5ea37cb92e132ea1a70a9.ctex"]
+source_file="res://Assets/Player Train/Weapon/Pulse Bullet/Ujung - NULL.png"
+dest_files=["res://.godot/imported/Ujung - NULL.png-a42068102646df3d788e3648a333c36d.ctex"]
 
 [params]
 

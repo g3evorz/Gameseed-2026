@@ -77,6 +77,6 @@ func _physics_process(delta: float) -> void:
 		if hit_target:
 			if hit_target.has_method("take_damage"):
 				hit_target.take_damage(_current_damage)
-			elif hit_target.get_parent().is_in_group("Player") and hit_target.get_parent().has_method("take_damage"):
+			elif hit_target.is_in_group("Player") and hit_target.has_method("take_damage"):
 				hit_target.get_parent().take_damage(_current_damage)
 				GameManager.terapkan_efek_ram(kekuatan_slow)

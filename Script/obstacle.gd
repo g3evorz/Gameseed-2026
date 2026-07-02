@@ -20,6 +20,7 @@ func take_damage(damage_amount: int):
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		var kereta = body.get_parent() # Mengambil node KeretaManager
+		
 		# --- CEK GHOST MODE DI SINI ---
 		if kereta and "is_invincible" in kereta and kereta.is_invincible:
 			print("Kereta transparan menembus rintangan!")

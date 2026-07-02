@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blk062137h4ss"
-path="res://.godot/imported/Ujung - NULL.png-621adab7db4fb86ec73d80a5b1fc729c.ctex"
+uid="uid://c65jnrcoovfgx"
+path="res://.godot/imported/Main.png-96fc59f52b39ed07c94a54da88760703.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemy/Weapon/Laser/Ujung - NULL.png"
-dest_files=["res://.godot/imported/Ujung - NULL.png-621adab7db4fb86ec73d80a5b1fc729c.ctex"]
+source_file="res://Assets/Enemy Train/Weapon/Laser/Main.png"
+dest_files=["res://.godot/imported/Main.png-96fc59f52b39ed07c94a54da88760703.ctex"]
 
 [params]
 
