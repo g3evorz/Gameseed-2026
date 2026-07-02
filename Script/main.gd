@@ -13,11 +13,11 @@ func _ready():
 	AudioManager.putar_musik(AudioManager.musik_play)
 	if is_instance_valid(node_kereta):
 		node_kereta.connect("kereta_hancur", Callable(self, "_on_kereta_hancur"))
-
+	_play_animasi_kereta()
 	GameManager.game_paused.connect(_on_game_paused)
 	GameManager.game_resumed.connect(_on_game_resumed)
 	GameManager.game_over_triggered.connect(_on_game_over)
-
+	
 	GameManager.mulai_game()
 
 func _on_kereta_hancur():
@@ -57,3 +57,11 @@ func _on_pause_button_pressed() -> void:
 
 func _on_resume_pressed() -> void:
 	GameManager.toggle_pause()
+	
+func _play_animasi_kereta():
+	$Kereta/Kepala/Sprite2D.play("default")
+	$Kereta/KumpulanGerbong/Gerbong1/Sprite2D.play("default")
+	$Kereta/KumpulanGerbong/Gerbong2/Sprite2D.play("default")
+	$Kereta/KumpulanGerbong/Gerbong3/Sprite2D.play("default")
+	$Kereta/KumpulanGerbong/Gerbong4/Sprite2D.play("default")
+	

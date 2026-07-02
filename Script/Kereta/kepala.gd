@@ -17,6 +17,7 @@ var is_dead: bool = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	
 	# Membaca level upgrade mesin dari autoload. 
 	# Misal: Tiap 1 level menambah Base Speed dan Max Speed sebesar 50
 	pass
