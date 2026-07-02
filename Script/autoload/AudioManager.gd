@@ -14,6 +14,7 @@ var bgm_player: AudioStreamPlayer
 var musik_homescreen = preload("res://Assets/Music/train_mainmenu FIX SEMENTARA.ogg") 
 var musik_upgrade = preload("res://Assets/Music/upgrade stasion.ogg")
 var musik_play = preload("res://Assets/Music/main theme latest.ogg")
+var musik_prolog = preload("res://Assets/Music/prolog music.ogg")
 
 # PATH SFX
 var sfx_klik = preload("res://Assets/SFX/select button sfx/blipSelect (1).wav")
