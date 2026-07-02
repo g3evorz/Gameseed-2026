@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://70puepcgsjlx"]
+[gd_scene format=4 uid="uid://70puepcgsjlx"]
 
 [ext_resource type="PackedScene" uid="uid://ciej1ht535fuo" path="res://Scenes/Components/Obstacle/platform.tscn" id="1_5wop5"]
 [ext_resource type="Script" uid="uid://bbu4urqab8mo1" path="res://Script/Level.gd" id="1_thjbd"]
@@ -9,81 +9,143 @@
 [ext_resource type="Resource" uid="uid://dl6ffbqtc5qiu" path="res://Data/PowerUp/gerbong_replenish.tres" id="7_ss2k6"]
 [ext_resource type="Resource" uid="uid://dvw3jmwvw8fn" path="res://Data/PowerUp/ghost_mode.tres" id="8_fe3wn"]
 [ext_resource type="Resource" uid="uid://bnp2sd3chdb2q" path="res://Data/PowerUp/laserPowerups.tres" id="8_ro0fg"]
+[ext_resource type="Texture2D" uid="uid://cjup7udg20gst" path="res://Assets/Rail/Normal/Right.png" id="9_mu74g"]
+[ext_resource type="Texture2D" uid="uid://cp1p3smhg47j4" path="res://Assets/Rail/Normal/Straight + Boost/RailBoost-sheet.png" id="10_ss2k6"]
+[ext_resource type="Texture2D" uid="uid://bjtmsaqgckcpc" path="res://Assets/Rail/Normal/Straight.png" id="10_vq00j"]
+[ext_resource type="Texture2D" uid="uid://dmypkkkbxvkfo" path="res://Assets/Rail/Normal/Broken Right/BrokenRight-sheet.png" id="11_vq00j"]
+[ext_resource type="Texture2D" uid="uid://by13ndvd1erp0" path="res://Assets/Rail/Normal/Broken Left/BrokenLeft-sheet.png" id="12_aucjo"]
+[ext_resource type="Texture2D" uid="uid://d4c56h0atdp6q" path="res://Assets/Rail/Normal/Left.png" id="12_chf80"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aucjo"]
+texture = ExtResource("9_mu74g")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xro07"]
+texture = ExtResource("10_vq00j")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_columns = 4
+0:0/animation_speed = 4.0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_chf80"]
+texture = ExtResource("11_vq00j")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_columns = 5
+0:0/animation_speed = 5.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qb28h"]
+texture = ExtResource("12_aucjo")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_columns = 5
+0:0/animation_speed = 5.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ro0fg"]
+texture = ExtResource("10_ss2k6")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_columns = 4
+0:0/animation_speed = 4.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yy3m5"]
+texture = ExtResource("12_chf80")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mu74g"]
+tile_size = Vector2i(64, 64)
+sources/8 = SubResource("TileSetAtlasSource_ro0fg")
+sources/9 = SubResource("TileSetAtlasSource_yy3m5")
+sources/10 = SubResource("TileSetAtlasSource_aucjo")
+sources/11 = SubResource("TileSetAtlasSource_xro07")
+sources/12 = SubResource("TileSetAtlasSource_chf80")
+sources/13 = SubResource("TileSetAtlasSource_qb28h")
 
 [node name="BasicLandscapes" type="Node2D" unique_id=799622499]
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_thjbd")
 
 [node name="platform" parent="." unique_id=2120483876 instance=ExtResource("1_5wop5")]
-position = Vector2(975, -325)
-scale = Vector2(5, 0.751)
+position = Vector2(1052.4999, -362.49997)
+scale = Vector2(5.6201534, 2.1724153)
 
-[node name="platform2" parent="." unique_id=1057472937 instance=ExtResource("1_5wop5")]
-position = Vector2(4445.001, -335.49)
-scale = Vector2(7, 0.564)
+[node name="platform2" parent="." unique_id=1509873145 instance=ExtResource("1_5wop5")]
+position = Vector2(4454.9995, -362.49997)
+scale = Vector2(7.662089, 2.2796807)
 
 [node name="Spawners" type="Node2D" parent="." unique_id=386448179]
 
 [node name="ObstacleSpawner" parent="Spawners" unique_id=837773415 instance=ExtResource("3_l4xcd")]
 position = Vector2(187, -85)
 possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a")])
-spawn_chance = 0.8
 
 [node name="ObstacleSpawner2" parent="Spawners" unique_id=1764472550 instance=ExtResource("3_l4xcd")]
-position = Vector2(254, -418)
+position = Vector2(254, -467.5)
 possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fe3wn")])
-spawn_chance = 0.8
 
 [node name="ObstacleSpawner3" parent="Spawners" unique_id=1164452393 instance=ExtResource("3_l4xcd")]
-position = Vector2(543, -418)
+position = Vector2(543, -467.5)
 possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fe3wn")])
-spawn_chance = 1.0
 
 [node name="ObstacleSpawner10" parent="Spawners" unique_id=1803498278 instance=ExtResource("3_l4xcd")]
-position = Vector2(1145, -408)
+position = Vector2(1145, -457.5)
 possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_ro0fg")])
-spawn_chance = 0.7
 
 [node name="ObstacleSpawner11" parent="Spawners" unique_id=64424452 instance=ExtResource("3_l4xcd")]
-position = Vector2(1508, -408)
+position = Vector2(1508, -457.5)
 possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_ro0fg")])
 
 [node name="ObstacleSpawner15" parent="Spawners" unique_id=807426846 instance=ExtResource("3_l4xcd")]
 position = Vector2(2402, -66)
 possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("7_ss2k6"), ExtResource("8_ro0fg")])
-spawn_chance = 1.0
 
 [node name="ObstacleSpawner16" parent="Spawners" unique_id=1654922089 instance=ExtResource("3_l4xcd")]
 position = Vector2(2765, -66)
 possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("7_ss2k6"), ExtResource("8_ro0fg")])
-spawn_chance = 1.0
 
 [node name="ObstacleSpawner19" parent="Spawners" unique_id=2135683818 instance=ExtResource("3_l4xcd")]
 position = Vector2(3473, -66)
 possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("7_ss2k6"), ExtResource("8_fe3wn"), ExtResource("8_ro0fg")])
-spawn_chance = 0.7
 
 [node name="ObstacleSpawner20" parent="Spawners" unique_id=231090367 instance=ExtResource("3_l4xcd")]
 position = Vector2(3836, -66)
 possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn")])
-spawn_chance = 1.0
 
 [node name="ObstacleSpawner12" parent="Spawners" unique_id=382322877 instance=ExtResource("3_l4xcd")]
-position = Vector2(1891, -408)
+position = Vector2(1891, -457.5)
 possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("6_fe3wn"), ExtResource("7_ss2k6"), ExtResource("8_ro0fg")])
-spawn_chance = 0.7
 
-[node name="ObstacleSpawner10" parent="Spawners" unique_id=1803498278 instance=ExtResource("3_l4xcd")]
+[node name="ObstacleSpawner13" parent="Spawners" unique_id=823218908 instance=ExtResource("3_l4xcd")]
 position = Vector2(1539, -55)
 possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("7_ss2k6"), ExtResource("5_fka3a"), null, null])
-spawn_chance = 1.0
 
 [node name="ObstacleSpawner18" parent="Spawners" unique_id=956117306 instance=ExtResource("3_l4xcd")]
-position = Vector2(5426, -437)
+position = Vector2(5426, -472.5)
 possible_obstacles = Array[ExtResource("4_vnr04")]([ExtResource("5_fka3a"), ExtResource("6_fe3wn")])
-spawn_chance = 0.8
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=60705751]
 position = Vector2(6299, -313)
 scale = Vector2(0.99999994, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1878394457]
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAAAAP7/CAAAAAAAAAABAP7/CwAAAAAAAAACAP7/CwAAAAAAAAADAP7/CAAAAAAAAAAEAP7/CAAAAAAAAAAFAP7/CwAAAAAAAAAGAP7/CwAAAAAAAAAHAP7/CAAAAAAAAAAMAP7/CAAAAAAAAAANAP7/CwAAAAAAAAAOAP7/CwAAAAAAAAAPAP7/CAAAAAAAAAAQAP7/CAAAAAAAAAARAP7/CwAAAAAAAAASAP7/CAAAAAAAAAATAP7/CAAAAAAAAAAUAP7/CwAAAAAAAAAVAP7/CwAAAAAAAAAWAP7/CAAAAAAAAAAIAP7/DAAAAAAAAAD///7/CQAAAAAAAAALAP7/DQAAAAAAAAAXAP7/CgAAAAAAAAA=")
+tile_set = SubResource("TileSet_mu74g")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
