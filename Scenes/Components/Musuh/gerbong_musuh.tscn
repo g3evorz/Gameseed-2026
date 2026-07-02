@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dbkh6apanukm8"]
 
 [ext_resource type="Texture2D" uid="uid://duny4j0q7bu6n" path="res://Assets/Enemy Train/Gerbong Plasma/1.png" id="1_kriox"]
-[ext_resource type="PackedScene" uid="uid://8nceytgwwcui" path="res://Scenes/Components/Kereta/coupler.tscn" id="2_3qj86"]
 [ext_resource type="Texture2D" uid="uid://b2hyykci4x3rw" path="res://Assets/Enemy Train/Gerbong Plasma/2.png" id="2_xysaw"]
 [ext_resource type="Texture2D" uid="uid://bw7p635gesqbo" path="res://Assets/Enemy Train/Gerbong Plasma/3.png" id="3_yes7a"]
 [ext_resource type="Texture2D" uid="uid://cxqnvs1ye77jg" path="res://Assets/Enemy Train/Gerbong Plasma/4.png" id="4_1s1rn"]
@@ -49,9 +48,5 @@ scale = Vector2(0.49420846, 1.6842107)
 [node name="TitikSambungDepan" type="Marker2D" parent="Sprite2D" unique_id=1661644739]
 position = Vector2(116.00001, -92)
 scale = Vector2(0.49420846, 1.6842107)
-
-[node name="Coupler" parent="." unique_id=164977633 instance=ExtResource("2_3qj86")]
-position = Vector2(54, 1)
-scale = Vector2(1.0087036, 1)
 
 [node name="Gerbong" type="Node2D" parent="." unique_id=155161926]

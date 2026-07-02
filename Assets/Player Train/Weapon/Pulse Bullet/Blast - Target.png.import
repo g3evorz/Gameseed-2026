@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1is3gj5v6mbr"
-path="res://.godot/imported/Turret.png-3d6d553f7be12e442d0c22d32457a961.ctex"
+uid="uid://cgi6g1dtcfkg"
+path="res://.godot/imported/Blast - Target.png-08d80ea0e6816d7447c9e631eb9a46ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player Train/Turret.png"
-dest_files=["res://.godot/imported/Turret.png-3d6d553f7be12e442d0c22d32457a961.ctex"]
+source_file="res://Assets/Player Train/Weapon/Pulse Bullet/Blast - Target.png"
+dest_files=["res://.godot/imported/Blast - Target.png-08d80ea0e6816d7447c9e631eb9a46ce.ctex"]
 
 [params]
 

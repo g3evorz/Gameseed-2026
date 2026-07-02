@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctwgif71msapi"
-path="res://.godot/imported/Satelit.png-662cae368545121a1724645d831f5b08.ctex"
+uid="uid://bjcq15ehh1uus"
+path="res://.godot/imported/First Blast.png-c5b66d4cf7fa44aa21c815a6c8097df0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemy/Weapon/Laser/Satelit.png"
-dest_files=["res://.godot/imported/Satelit.png-662cae368545121a1724645d831f5b08.ctex"]
+source_file="res://Assets/Enemy Train/Weapon/Laser/First Blast.png"
+dest_files=["res://.godot/imported/First Blast.png-c5b66d4cf7fa44aa21c815a6c8097df0.ctex"]
 
 [params]
 

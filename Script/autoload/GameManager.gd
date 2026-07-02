@@ -10,7 +10,7 @@ extends Node
 
 # Hit and Stop 
 @export var HIT_STOP_DURATION: float = 0.8  # Durasi game freeze (dalam detik)
-@export var RECOVERY_ACCELERATION: float = 500.0
+@export var RECOVERY_ACCELERATION: float = 300.0
 @export var RAM_COOLDOWN: float = 0.95      
 
 var is_hit_stopping: bool = false
@@ -77,7 +77,6 @@ func _evaluate_difficulty():
 			if current_difficulty != phase:
 				current_difficulty = phase
 				difficulty_increased.emit(current_difficulty)
-				print("Difficulty Upgraded at ratio: ", current_ratio)
 			break
 
 func terapkan_efek_ram(efek_slow_percent: float):

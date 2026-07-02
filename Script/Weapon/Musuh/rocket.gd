@@ -79,11 +79,10 @@ func _enter_state(new_state: State) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		
-		if body.has_method("take_damage"):
+		if body.has_method("take_damage") :
 			body.take_damage(damage_tabrakan)
-		#
-		#elif body.get_parent() and body.get_parent().has_method("terima_damage"):
-			#body.get_parent().terima_damage(damage_tabrakan)
+		elif body.get_parent() and body.get_parent().has_method("take_damage"):
+			body.get_parent().take_damage(damage_tabrakan)
 			
 		GameManager.terapkan_efek_ram(kekuatan_slow)
 		

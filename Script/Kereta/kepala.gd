@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # --- Konfigurasi Pergerakan ---
-@export var JUMP_VELOCITY = -1000.0
+@export var JUMP_VELOCITY = -670.0
 
 var is_dead: bool = false
 
@@ -73,7 +73,13 @@ func _physics_process(delta):
 
 	# 5. Eksekusi pergerakan fisika
 	move_and_slide()
-	
+
+func take_damage(jumlah_damage: int):
+	if GameManager.status_sekarang != GameManager.GameState.BERMAIN:
+		return
+		
+	get_parent().take_damage(jumlah_damage)
+
 # Fungsi untuk menghentikan laju kereta saat Game Over
 func mati():
 	is_dead = true

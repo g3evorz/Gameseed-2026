@@ -32,7 +32,8 @@ script = ExtResource("1_jjvhh")
 [node name="EnemyWeaponSpawner" type="Node" parent="." unique_id=1565456601]
 script = ExtResource("3_344ge")
 possible_obstacles = Array[ExtResource("3_hptm8")]([ExtResource("4_d1ilt"), ExtResource("5_k12tt")])
-vertical_spawn_margin_min = 200.0
+vertical_spawn_margin_min = 0.0
+vertical_spawn_margin_max = 200.0
 
 [node name="ParallaxGalaxy" type="Parallax2D" parent="." unique_id=1313303119]
 scroll_scale = Vector2(0.1, 0.1)
@@ -60,21 +61,26 @@ script = ExtResource("6_hibaj")
 texture = ExtResource("8_fevyy")
 
 [node name="Enemy" parent="." unique_id=811008233 groups=["Enemy"] instance=ExtResource("2_21xkr")]
-position = Vector2(319.99997, -313.00003)
+position = Vector2(-29.99997, -136.00002)
 scale = Vector2(1.25, 1.25)
 
-[node name="Kereta" parent="." unique_id=1640051749 groups=["Player"] instance=ExtResource("1_bo1nx")]
-position = Vector2(441, -39)
+[node name="Kereta" parent="." unique_id=1640051749 instance=ExtResource("1_bo1nx")]
+position = Vector2(0, -30)
 scene_gerbong = ExtResource("3_kry3j")
 
-[node name="Camera2D" parent="Kereta/Kepala" parent_id_path=PackedInt32Array(1640051749, 1780252134) index="0" unique_id=1503878241]
-position = Vector2(-129, -174.68)
+[node name="Kepala" parent="Kereta" index="0" unique_id=1780252134]
+position = Vector2(3, 2)
+
+[node name="Camera2D" parent="Kereta/Kepala" index="0" unique_id=1503878241]
+position = Vector2(-110, -132.99998)
+zoom = Vector2(1.2, 1.2)
 
 [node name="KumpulanGerbong" parent="Kereta" index="1" unique_id=399389016]
 position = Vector2(-134, 0)
 
 [node name="World" parent="." unique_id=1368948942 instance=ExtResource("2_8gbba")]
-position = Vector2(3, 0)
+
+[node name="GroundLevelRef" type="Marker2D" parent="World" unique_id=1460181134 groups=["GroundReference"]]
 
 [node name="LevelsSpawner" parent="." unique_id=429419869 node_paths=PackedStringArray("player") instance=ExtResource("4_jjvhh")]
 position = Vector2(2243, 0)
@@ -262,6 +268,5 @@ visible = false
 [connection signal="pressed" from="CanvasLayer/MarginContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="konfirmasi_ya" from="CanvasLayer/ConfirmationPanel" to="." method="_on_confirmation_panel_konfirmasi_ya"]
 
-[editable path="Enemy"]
 [editable path="Kereta"]
 [editable path="Kereta/Kepala"]

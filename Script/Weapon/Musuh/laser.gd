@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 		State.ENGAGING:
 			_time_passed += delta
 			#warning_indicator.modulate.a = 0.5 + (sin(_time_passed * telegraph_speed) * 0.5) # EFEK NGEBLINK
- 
+
 			var anchored_x: float = _get_anchored_x()
  
 			if _is_moving and engaging_duration > 0:
@@ -103,6 +103,9 @@ func _process(delta: float) -> void:
 func _enter_state(new_state: State) -> void:
 	current_state = new_state
 	_time_passed = 0.0 # Reset waktu untuk memastikan sinkronisasi tiap pergantian state
+
+	print("Position : ", 	_start_position)
+	print("Target : ", _target_position)
 
 	match current_state:
 		State.ENGAGING:

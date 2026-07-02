@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://w360yirgsaq0" path="res://Script/Weapon/Pulse/pulseBody.gd" id="1_lgxuk"]
 [ext_resource type="PackedScene" uid="uid://b2434knylnpe6" path="res://Scenes/Components/Weapon/Pulse/pulse_bullet.tscn" id="2_1ll14"]
-[ext_resource type="Texture2D" uid="uid://crxc5w7rs0r7k" path="res://Assets/Player Train/Turret-bawah.png" id="3_33y3h"]
-[ext_resource type="PackedScene" path="res://Scenes/Components/radarArea.tscn" id="4_1ll14"]
-[ext_resource type="Texture2D" uid="uid://c1is3gj5v6mbr" path="res://Assets/Player Train/Turret.png" id="4_jfhc6"]
+[ext_resource type="Texture2D" uid="uid://crxc5w7rs0r7k" path="res://Assets/Player Train/Weapon/Pulse Body/Turret-bawah.png" id="3_33y3h"]
+[ext_resource type="PackedScene" uid="uid://bsgk5fq18supq" path="res://Scenes/Components/radarArea.tscn" id="4_1ll14"]
+[ext_resource type="Texture2D" uid="uid://c1is3gj5v6mbr" path="res://Assets/Player Train/Weapon/Pulse Body/Turret.png" id="4_jfhc6"]
 
 [node name="PulseBody" type="Node2D" unique_id=1654954871]
 script = ExtResource("1_lgxuk")

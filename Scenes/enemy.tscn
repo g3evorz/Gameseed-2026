@@ -53,6 +53,10 @@ offset = Vector2(0, -126)
 [node name="Gerbong_musuh" parent="Kumpulan Gerbong" unique_id=801158437 instance=ExtResource("3_afpow")]
 position = Vector2(-189, 4)
 
+[node name="Sprite2D" parent="Kumpulan Gerbong/Gerbong_musuh" index="0" unique_id=1794841442]
+frame = 5
+frame_progress = 0.9466124
+
 [node name="Gerbong_musuh2" parent="Kumpulan Gerbong" unique_id=1694006447 instance=ExtResource("3_afpow")]
 position = Vector2(-315, 5)
 
@@ -61,3 +65,8 @@ position = Vector2(-439, 6)
 
 [node name="Gerbong_musuh4" parent="Kumpulan Gerbong" unique_id=783311124 instance=ExtResource("3_afpow")]
 position = Vector2(-563, 8)
+
+[editable path="Kumpulan Gerbong/Gerbong_musuh"]
+[editable path="Kumpulan Gerbong/Gerbong_musuh2"]
+[editable path="Kumpulan Gerbong/Gerbong_musuh3"]
+[editable path="Kumpulan Gerbong/Gerbong_musuh4"]
