@@ -8,6 +8,7 @@ const SPRITE_NATIVE_WIDTH = 32.0
 
 @export var beam_active_duration: float = 0.1   
 @export var damage_tick_rate: float = 0.1 # Interval waktu damage diberikan (contoh: 0.1 detik)
+@export var kekuatan_slow: float = 0.7 
 
 var _current_damage: float = 0.0
 var _dir_multiplier: float = 1.0
@@ -76,5 +77,6 @@ func _physics_process(delta: float) -> void:
 		if hit_target:
 			if hit_target.has_method("take_damage"):
 				hit_target.take_damage(_current_damage)
-			elif hit_target.get_parent() and hit_target.get_parent().has_method("take_damage"):
+			elif hit_target.get_parent().is_in_group("Player") and hit_target.get_parent().has_method("take_damage"):
 				hit_target.get_parent().take_damage(_current_damage)
+				GameManager.terapkan_efek_ram(kekuatan_slow)
