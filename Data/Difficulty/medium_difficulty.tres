@@ -1,12 +1,18 @@
 [gd_resource type="Resource" script_class="DifficultyConfig" format=3 uid="uid://bl1glh6yqcqdg"]
 
 [ext_resource type="Script" uid="uid://bwbhc3np6qbq5" path="res://Script/Configuration/Difficulty_config.gd" id="1_na1ai"]
+[ext_resource type="Resource" uid="uid://n6oa88amem4a" path="res://Data/Obstacle/roket.tres" id="2_q3r05"]
+[ext_resource type="Resource" uid="uid://bw6wnloibyrcs" path="res://Data/Obstacle/big_asteroid.tres" id="3_xveql"]
 
 [resource]
 script = ExtResource("1_na1ai")
 activation_speed_ratio = 0.5
 spawn_chance = 0.65
 spawn_interval = 4.0
+specific_weight_multipliers = {
+ExtResource("2_q3r05"): 2.0,
+ExtResource("3_xveql"): 2.0
+}
 cooldown_duration = 4.2
 lurk_time_min = 8.0
 lurk_time_max = 10.0

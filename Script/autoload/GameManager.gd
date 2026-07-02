@@ -6,6 +6,7 @@ extends Node
 @export var ACCELERATION: float = 13.0
 
 @export var difficulty_phases: Array[DifficultyConfig] = []
+@export var weight_multipliers: Dictionary = {}
 
 # Hit and Stop 
 @export var HIT_STOP_DURATION: float = 0.8  # Durasi game freeze (dalam detik)

@@ -13,6 +13,15 @@ extends Resource
 
 @export var spawn_interval: float = 10.0
 
+@export_group("Difficulty Obstacle Multiplier")
+
+@export var health_multiplier: float = 7.5
+@export var damage_multiplier: float = 5.0
+@export var default_spawn_weight_multiplier: float = 1.0
+
+@export_group("Targeted Weight Multipliers")
+@export var specific_weight_multipliers: Dictionary = {}
+
 @export_group("Targeting & Complexity")
 ## Tingkat ketidakakuratan musuh saat membidik posisi Y pemain (untuk rintangan TEMPORARY).
 ## Semakin kecil angkanya, tebakan musuh akan semakin presisi menjepit pemain.
