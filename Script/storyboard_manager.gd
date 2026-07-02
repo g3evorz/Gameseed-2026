@@ -88,4 +88,8 @@ func _input(event):
 
 func akhiri_storyboard():
 	# Masukkan kode transisi ke Main Menu atau Gameplay di sini
-	SceneTransition.pindah_scene("res://Scenes/Upgradable.tscn")
+	ScoreManager.sudah_lihat_intro = true
+	ScoreManager.save_game_data() # Wajib disimpan ke hard drive!
+	
+	# Pindah ke gameplay utama
+	SceneTransition.pindah_scene("res://Scenes/main.tscn")

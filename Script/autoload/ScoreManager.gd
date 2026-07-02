@@ -10,9 +10,12 @@ var dompet_koin: int = 0
 var level_upgrade_laser: int = 0
 var level_upgrade_defense: int = 0
 
+var sudah_lihat_intro: bool = false
+
 # --- DATA RUNTIME (Tidak Disimpan) ---
 var current_score: float = 0.0
 var accumulated_coin_this_run: int = 0 
+
 
 @export var SCORE_TO_COIN_RATIO: float = 0.05
 @export var SCORE_MULTIPLIER: float = 0.1 # Pengali skor dari jarak
@@ -75,7 +78,8 @@ func save_game_data():
 	
 	config.set_value("Upgrades", "level_laser", level_upgrade_laser)
 	config.set_value("Upgrades", "level_defense", level_upgrade_defense)
-
+	
+	config.set_value("Progress", "sudah_lihat_intro", sudah_lihat_intro)
 	
 	config.save(SAVE_PATH)
 
@@ -87,7 +91,9 @@ func load_game_data():
 		
 		level_upgrade_laser = config.get_value("Upgrades", "level_laser", 0)
 		level_upgrade_defense = config.get_value("Upgrades", "level_defense", 0)
-
+		
+		sudah_lihat_intro = config.get_value("Progress", "sudah_lihat_intro", false)
+		
 	else:
 		high_score = 0
 		dompet_koin = 0
