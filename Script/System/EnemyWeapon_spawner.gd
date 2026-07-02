@@ -5,7 +5,8 @@ class_name EnemyObstacleSpawner
 @export var spawn_margin: float = 150.0
 
 @export_group("Zona Terlarang (Temporary Obstacles)")
-@export var vertical_spawn_margin: float = 50.0
+@export var vertical_spawn_margin_min: float = 50.0
+@export var vertical_spawn_margin_max: float = 50.0
 @export var base_forbidden_radius: float = 110.0
 @export var hard_forbidden_radius: float = 70.0
 @export var base_safe_gap: float = 180.0
@@ -63,6 +64,7 @@ func _on_enemy_obstacle_dropped(_drop_position: Vector2) -> void:
 
 func _get_random_obstacle() -> ObstacleData:
 	var valid_obstacles: Array[ObstacleData] = []
+	var multiplier: float = current_difficulty.default_spawn_weight_multiplier
 	var total_weight: float = 0.0
 
 	for obs in possible_obstacles:
@@ -72,8 +74,11 @@ func _get_random_obstacle() -> ObstacleData:
 		if obs.spawn_behavior == ObstacleData.SpawnBehavior.DYNAMIC_PERMANENT and not current_difficulty.allow_permanent_obstacles:
 			continue
 			
+		if current_difficulty and current_difficulty.specific_weight_multipliers.has(obs):
+			multiplier = current_difficulty.specific_weight_multipliers[obs]
+			
 		valid_obstacles.append(obs)
-		total_weight += obs.spawn_weight
+		total_weight += obs.spawn_weight  * multiplier
 
 	if valid_obstacles.is_empty() or total_weight <= 0.0:
 		return null
@@ -106,9 +111,17 @@ func _spawn_temporary(obstacle_data: ObstacleData, player: Node2D, cam: Camera2D
 	var visible_rect_size = cam.get_viewport_rect().size / cam.zoom
 	var camera_top = screen_center_y - (visible_rect_size.y / 2.0)
 	var camera_bottom = screen_center_y + (visible_rect_size.y / 2.0)
-	var min_track_y = camera_top + vertical_spawn_margin
-	var max_track_y = camera_bottom - vertical_spawn_margin
-
+	#	I Also confused about the min and max track_y, this all happend because godot "weird" coordinate system
+	var min_track_y = camera_top + vertical_spawn_margin_max
+	var max_track_y = camera_bottom - vertical_spawn_margin_min
+	var inaccuracy = current_difficulty.targeting_inaccuracy
+	
+	print("Screen Center : ", screen_center_y)
+	print("Camera top : ", camera_top)
+	print("Camera bottom : ", camera_bottom)
+	print("Minimum Y spawn : ", min_track_y)
+	print("Maksimum Y spawn : ", max_track_y)
+	
 	if not _track_has_room(min_track_y, max_track_y):
 		return
 
@@ -139,12 +152,11 @@ func _spawn_temporary(obstacle_data: ObstacleData, player: Node2D, cam: Camera2D
 			player, min_track_y, max_track_y,
 			Callable(self, "_finalize_target_y"),
 			travel_time,
-			current_difficulty.targeting_inaccuracy
+			inaccuracy
 		)
 
 	elif instance.has_method("setup_dynamic_laser"):
-		var inaccuracy = current_difficulty.targeting_inaccuracy
-		var candidate_y = player.global_position.y + randf_range(-inaccuracy, inaccuracy)
+		var candidate_y = _find_largest_gap_center(min_track_y, max_track_y)
 		var target_y = _finalize_target_y(candidate_y, min_track_y, max_track_y, travel_time)
 
 		var start_y: float
@@ -158,7 +170,6 @@ func _spawn_temporary(obstacle_data: ObstacleData, player: Node2D, cam: Camera2D
 
 		instance.setup_dynamic_laser(start_pos, target_pos, travel_time, cam, obstacle_data.spawn_edge_margin)
 	else:
-		var inaccuracy = current_difficulty.targeting_inaccuracy
 		var candidate_y = player.global_position.y + randf_range(-inaccuracy, inaccuracy)
 		instance.global_position = Vector2(spawn_x, _finalize_target_y(candidate_y, min_track_y, max_track_y, travel_time))
 

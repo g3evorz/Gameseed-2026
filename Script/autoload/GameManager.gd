@@ -3,9 +3,10 @@ extends Node
 # Kecepatan Platform
 @export var BASE_SPEED: float = 500.0
 @export var MAX_SPEED: float = 3000.0	
-@export var ACCELERATION: float = 20.0
+@export var ACCELERATION: float = 13.0
 
 @export var difficulty_phases: Array[DifficultyConfig] = []
+@export var weight_multipliers: Dictionary = {}
 
 # Hit and Stop 
 @export var HIT_STOP_DURATION: float = 0.8  # Durasi game freeze (dalam detik)

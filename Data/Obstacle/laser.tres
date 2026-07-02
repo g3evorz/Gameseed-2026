@@ -8,6 +8,7 @@ script = ExtResource("1_4r31s")
 obstacle_scene = ExtResource("1_nddwi")
 spawn_weight = 10.0
 spawn_behavior = 1
+extra_warning_duration = 0.0
 spawn_edge_margin = 0.0
 fire_duration = 3.0
 metadata/_custom_type_script = "uid://brhx3skaebmcy"

@@ -1,7 +1,13 @@
 [gd_resource type="Resource" script_class="DifficultyConfig" format=3 uid="uid://7avancjj5v0"]
 
 [ext_resource type="Script" uid="uid://bwbhc3np6qbq5" path="res://Script/Configuration/Difficulty_config.gd" id="1_0s2i5"]
+[ext_resource type="Resource" uid="uid://b3eb6mfvn044l" path="res://Data/Obstacle/small_asteroid.tres" id="2_mq000"]
 
 [resource]
 script = ExtResource("1_0s2i5")
+spawn_chance = 0.25
+specific_weight_multipliers = {
+ExtResource("2_mq000"): 3.0
+}
+targeting_inaccuracy = 70.0
 metadata/_custom_type_script = "uid://bwbhc3np6qbq5"

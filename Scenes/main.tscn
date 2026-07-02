@@ -36,14 +36,18 @@ texture = ExtResource("2_h1bgf")
 [node name="EnemyWeaponSpawner" type="Node" parent="." unique_id=1565456601]
 script = ExtResource("3_344ge")
 possible_obstacles = Array[ExtResource("3_hptm8")]([ExtResource("4_d1ilt"), ExtResource("5_k12tt")])
+vertical_spawn_margin_min = 200.0
 
 [node name="Enemy" parent="." unique_id=811008233 groups=["Enemy"] instance=ExtResource("2_21xkr")]
 position = Vector2(319.99997, -313.00003)
 scale = Vector2(1.25, 1.25)
 
-[node name="Kereta" parent="." unique_id=1640051749 instance=ExtResource("1_bo1nx")]
+[node name="Kereta" parent="." unique_id=1640051749 groups=["Player"] instance=ExtResource("1_bo1nx")]
 position = Vector2(441, -39)
 scene_gerbong = ExtResource("3_kry3j")
+
+[node name="Camera2D" parent="Kereta/Kepala" parent_id_path=PackedInt32Array(1640051749, 1780252134) index="0" unique_id=1503878241]
+position = Vector2(-129, -174.68)
 
 [node name="World" parent="." unique_id=1368948942 instance=ExtResource("2_8gbba")]
 position = Vector2(3, 0)
@@ -52,7 +56,6 @@ position = Vector2(3, 0)
 position = Vector2(2243, 0)
 list_scene_level = Array[PackedScene]([ExtResource("6_6bp64"), ExtResource("7_344ge"), ExtResource("8_hptm8"), ExtResource("9_d1ilt"), ExtResource("10_6iyac")])
 player = NodePath("../Kereta")
-spawn_interval = 8.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2120541488]
 process_mode = 3

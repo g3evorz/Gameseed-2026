@@ -1,12 +1,23 @@
 [gd_resource type="Resource" script_class="DifficultyConfig" format=3 uid="uid://bdhucb6u023mc"]
 
 [ext_resource type="Script" uid="uid://bwbhc3np6qbq5" path="res://Script/Configuration/Difficulty_config.gd" id="1_agvgg"]
+[ext_resource type="Resource" uid="uid://bw6wnloibyrcs" path="res://Data/Obstacle/big_asteroid.tres" id="2_xe3wx"]
+[ext_resource type="Resource" uid="uid://chewkll570sp2" path="res://Data/Obstacle/laser.tres" id="3_jnxtl"]
 
 [resource]
 script = ExtResource("1_agvgg")
-spawn_chance = 0.95
-targeting_inaccuracy = 20.0
-overtake_duration = 10.0
+activation_speed_ratio = 0.2
+spawn_chance = 0.919
+spawn_interval = 3.0
+specific_weight_multipliers = {
+ExtResource("2_xe3wx"): 3.0,
+ExtResource("3_jnxtl"): 2.0
+}
+targeting_inaccuracy = 10.0
+overtake_duration = 8.0
+cooldown_duration = 8.0
 lurk_time_min = 3.0
 lurk_time_max = 5.0
+drop_hold_time = 5.0
+drop_interval = 1.5
 metadata/_custom_type_script = "uid://bwbhc3np6qbq5"

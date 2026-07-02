@@ -1,13 +1,13 @@
 extends Area2D
 
 @export var data: ObstacleData
-@export var damage_tabrakan: int = 200
+@export var damage_tabrakan: float = 200
 @export var kekuatan_slow: float = 0.7 
 
-var current_hp: int
+var current_hp: float
 
 func _ready():
-	current_hp = data.max_hp
+	current_hp = data.max_hp * GameManager.current_difficulty.health_multiplier
 	
 func take_damage(damage_amount: int):
 	current_hp -= damage_amount
@@ -28,7 +28,7 @@ func _on_body_entered(body):
 		
 		# Jika Ghost Mode mati, jalankan tabrakan normal
 		if kereta and kereta.has_method("take_damage"):
-			kereta.take_damage(damage_tabrakan)
+			kereta.take_damage(damage_tabrakan * GameManager.current_difficulty.damage_multiplier)
 		
 		GameManager.terapkan_efek_ram(kekuatan_slow)
 		# Hancurkan obstacle

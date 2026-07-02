@@ -6,7 +6,6 @@ var current_state: State = State.ENGAGING
 @export var bullet_scene: PackedScene
 @export var damage_laser: float = 9999999.0
 
-
 var engaging_duration: float = 1.0   # durasi laser bergerak dari start -> target
 var warning_duration: float = 2.0    # durasi telegraph diam di posisi akhir sebelum nembak
 var telegraph_speed: float = 25.0
@@ -24,6 +23,8 @@ var _time_passed: float = 0.0
 
 var _cam: Camera2D
 var _edge_margin: float = 0.0
+
+@export var entrance_offset_x: float = 300.0
 
 @onready var warning_indicator = $WarningIndicator
 @onready var satellite_body = $SatelliteSprite
@@ -53,20 +54,28 @@ func _process(delta: float) -> void:
 	match current_state:
 		State.ENGAGING:
 			_time_passed += delta
-			warning_indicator.modulate.a = 0.5 + (sin(_time_passed * telegraph_speed) * 0.5)
-
-			var current_x: float = _get_anchored_x()
-
+			#warning_indicator.modulate.a = 0.5 + (sin(_time_passed * telegraph_speed) * 0.5) # EFEK NGEBLINK
+ 
+			var anchored_x: float = _get_anchored_x()
+ 
 			if _is_moving and engaging_duration > 0:
 				var progress = clamp(_time_passed / engaging_duration, 0.0, 1.0)
 				var eased_progress = ease(progress, -1.5)
+ 
+				# Entrance X: mulai dari luar layar (anchored_x + offset, ke arah kanan)
+				# lalu slide masuk menuju anchored_x seiring progress.
+				var x = anchored_x + entrance_offset_x * (1.0 - eased_progress)
+ 
+				# Tracking Y tetap dinamis seperti semula (lock-on ke posisi target).
 				var y = lerp(_start_position.y, _target_position.y, eased_progress)
-				global_position = Vector2(current_x, y)
+				global_position = Vector2(x, y)
 			else:
-				global_position = Vector2(current_x, _target_position.y)
-
+				global_position = Vector2(anchored_x, _target_position.y)
+ 
 			if _time_passed >= engaging_duration:
 				_enter_state(State.WARNING)
+ 
+
 
 		State.WARNING:
 			_time_passed += delta
@@ -97,12 +106,11 @@ func _enter_state(new_state: State) -> void:
 
 	match current_state:
 		State.ENGAGING:
-			warning_indicator.show()
+			warning_indicator.hide()
 			satellite_body.show()
 
 		State.WARNING:
 			warning_indicator.show()
-			satellite_body.show()
 
 		State.LAUNCH:
 			warning_indicator.hide()
