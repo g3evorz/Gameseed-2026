@@ -1,8 +1,128 @@
-[gd_scene format=3 uid="uid://ceaifoo0dwpbd"]
+[gd_scene format=4 uid="uid://ceaifoo0dwpbd"]
 
 [ext_resource type="Script" uid="uid://c1lov7xii2qm3" path="res://Script/homescreen.gd" id="1_rk5ra"]
-[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_s2xo7"]
+[ext_resource type="Texture2D" uid="uid://dadelgefpdwtq" path="res://Assets/Background Part/Background-Menu/Start-bg-utama.png" id="2_w5jvm"]
+[ext_resource type="Texture2D" uid="uid://bqdfj271rchjb" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil1.png" id="3_6f7lb"]
 [ext_resource type="PackedScene" uid="uid://badj5pnsv3mrf" path="res://Scenes/ConfirmationPanel.tscn" id="3_b08y3"]
+[ext_resource type="Texture2D" uid="uid://da14tj7d6dpdr" path="res://Assets/Background Part/Background-Menu/Stars.png" id="3_w5jvm"]
+[ext_resource type="Texture2D" uid="uid://bqwv0j54db2ek" path="res://Assets/Background Part/Background-Menu/Start-bg.png" id="3_xk144"]
+[ext_resource type="Texture2D" uid="uid://dg52mc0xi5r6d" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil2.png" id="4_j7hrd"]
+[ext_resource type="Texture2D" uid="uid://cyuaqjdbww1np" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetKecil3.png" id="5_ec4m1"]
+[ext_resource type="Texture2D" uid="uid://de2vx171ti5co" path="res://Assets/Player Train/Head/1.png" id="6_duqje"]
+[ext_resource type="Texture2D" uid="uid://nqrh2kmpo6x2" path="res://Assets/Rail/Normal/Broken Right/1.png" id="7_ic7h6"]
+[ext_resource type="Texture2D" uid="uid://cj3pvelh27qhm" path="res://Assets/Rail/Normal/Broken Right/3.png" id="8_d3stl"]
+[ext_resource type="Script" uid="uid://ml4shu6ff4jj" path="res://Script/planet_homescreen.gd" id="8_mo2ge"]
+[ext_resource type="Texture2D" uid="uid://djrmjx026f0c5" path="res://Assets/Rail/Normal/Broken Right/4.png" id="9_ieiow"]
+[ext_resource type="Texture2D" uid="uid://08n4636gn1yn" path="res://Assets/Rail/Normal/Broken Right/5.png" id="10_lr6my"]
+[ext_resource type="Texture2D" uid="uid://bonmr8og32cly" path="res://Assets/Player Train/Head/2.png" id="11_xgr1c"]
+[ext_resource type="Texture2D" uid="uid://bt1115h8enjfq" path="res://Assets/Player Train/Head/3.png" id="12_ccoam"]
+[ext_resource type="Texture2D" uid="uid://qvyxml81pi2p" path="res://Assets/UI/Button-UI/play-btn.png" id="12_tdydt"]
+[ext_resource type="Texture2D" uid="uid://bjtmsaqgckcpc" path="res://Assets/Rail/Normal/Straight.png" id="13_afqwc"]
+[ext_resource type="Texture2D" uid="uid://csob4u7hn38eh" path="res://Assets/Player Train/Head/4.png" id="13_iv4cj"]
+[ext_resource type="Texture2D" uid="uid://esukp1c3h1vh" path="res://Assets/UI/Button-UI/Quit-btn.png" id="13_sw8df"]
+[ext_resource type="Texture2D" uid="uid://desn503n3s6en" path="res://Assets/Player Train/Head/5.png" id="14_8ggym"]
+[ext_resource type="Texture2D" uid="uid://374vcrnka2qm" path="res://Assets/Props & Decoration/Neon-Sign.png" id="14_tdydt"]
+[ext_resource type="Texture2D" uid="uid://c8u42pgowqyjc" path="res://Assets/Props & Decoration/Other-Energy-Generator.png" id="15_sw8df"]
+[ext_resource type="Texture2D" uid="uid://rapsyddrxa8a" path="res://Assets/Player Train/Head/6.png" id="15_vtil3"]
+[ext_resource type="Texture2D" uid="uid://ce3eulpw4l4yt" path="res://Assets/Rail/Normal/Broken Right/2.png" id="16_dhaah"]
+[ext_resource type="Texture2D" uid="uid://djdpo7x5t8t6t" path="res://Assets/UI/Button-UI/setting-btn.png" id="17_dhaah"]
+[ext_resource type="Texture2D" uid="uid://nekhsarcqn7s" path="res://Assets/Background Part/Planet & Star (Part by Part)/Matahari.png" id="22_s4yk4"]
+[ext_resource type="Texture2D" uid="uid://riiiy528twld" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetCincin.png" id="23_1fsbu"]
+[ext_resource type="Texture2D" uid="uid://dj3ca8oc3fbh1" path="res://Assets/Background Part/Planet & Star (Part by Part)/Stars.png" id="24_u20w3"]
+[ext_resource type="Texture2D" uid="uid://c5khmd4f8s64" path="res://Assets/UI/Button-UI/SliderMusic3.png" id="41_7cpcu"]
+[ext_resource type="FontFile" uid="uid://bnumkmoiqqk13" path="res://Assets/determination.ttf" id="41_bse0w"]
+[ext_resource type="Texture2D" uid="uid://diitew8e7q1d7" path="res://Assets/UI/Button-UI/marked checkbox.png" id="41_hc27c"]
+[ext_resource type="Texture2D" uid="uid://bhnp5a62qr2pv" path="res://Assets/UI/Button-UI/checkbox.png" id="42_c0cds"]
+[ext_resource type="Texture2D" uid="uid://brft8ika6hu7m" path="res://Assets/UI/Button-UI/SliderMusic1.png" id="44_nqof3"]
+[ext_resource type="Texture2D" uid="uid://bdap1nqy05j2q" path="res://Assets/UI/Button-UI/SliderMusic2.png" id="45_bse0w"]
+[ext_resource type="Texture2D" uid="uid://dtx66dd4o3anb" path="res://Assets/UI/Button-UI/back-btn.png" id="47_onw8t"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy0vh"]
+texture = ExtResource("13_afqwc")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgr1c"]
+texture = ExtResource("14_tdydt")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ccoam"]
+texture = ExtResource("15_sw8df")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iv4cj"]
+texture = ExtResource("16_dhaah")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8ggym"]
+sources/0 = SubResource("TileSetAtlasSource_qy0vh")
+sources/1 = SubResource("TileSetAtlasSource_xgr1c")
+sources/2 = SubResource("TileSetAtlasSource_ccoam")
+sources/3 = SubResource("TileSetAtlasSource_iv4cj")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mo2ge"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ic7h6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_dhaah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_d3stl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ieiow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lr6my")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vrfe7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_duqje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xgr1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ccoam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_iv4cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8ggym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vtil3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5bbo0"]
+texture = ExtResource("44_nqof3")
+texture_margin_left = 10.0
+texture_margin_top = 5.0
+texture_margin_right = 10.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nqof3"]
+texture = ExtResource("45_bse0w")
+texture_margin_left = 10.0
+texture_margin_right = 10.0
 
 [node name="Homescreen" type="Control" unique_id=1142522670]
 layout_mode = 3
@@ -13,7 +133,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rk5ra")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1598306005]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=504675820]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
 anchors_preset = 15
@@ -21,42 +141,131 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.03164652, 0.061809458, 0.13147017, 1)
+texture = ExtResource("2_w5jvm")
 
-[node name="MarginButton" type="MarginContainer" parent="ColorRect" unique_id=495135515]
+[node name="TileMapLayer" type="TileMapLayer" parent="TextureRect" unique_id=1823466137]
+position = Vector2(-6755.001, -3165)
+rotation = -0.26080787
+scale = Vector2(8, 8)
+tile_map_data = PackedByteArray("AAANACwAAAAAAAAAAAAdACwAAAAAAAAAAAAhACwAAAAAAAAAAAAlACwAAAAAAAAAAAApACwAAAAAAAAAAAAtACwAAAAAAAAAAAAVACwAAAAAAAAAAAAZACwAAAAAAAAAAAARACwAAAAAAAAAAAAJACwAAAAAAAAAAAAxACwAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_8ggym")
+
+[node name="Rel" type="AnimatedSprite2D" parent="TextureRect" unique_id=1619495474]
+position = Vector2(1321, 574)
+rotation = -0.2617994
+scale = Vector2(7.9406533, 7.9406533)
+sprite_frames = SubResource("SpriteFrames_mo2ge")
+frame_progress = 0.9851301
+
+[node name="PlanetKecil1" type="TextureRect" parent="TextureRect" unique_id=1596541638]
+layout_mode = 0
+offset_left = 889.0
+offset_top = 18.0
+offset_right = 1145.0
+offset_bottom = 274.0
+scale = Vector2(1.7329407, 1.7329407)
+texture = ExtResource("3_6f7lb")
+script = ExtResource("8_mo2ge")
+kecepatan_melayang = 1.5
+
+[node name="PlanetKecil2" type="TextureRect" parent="TextureRect" unique_id=1374139780]
+layout_mode = 0
+offset_left = 1218.0
+offset_top = 739.0
+offset_right = 1474.0
+offset_bottom = 995.0
+scale = Vector2(1.7329407, 1.7329407)
+texture = ExtResource("4_j7hrd")
+script = ExtResource("8_mo2ge")
+kecepatan_melayang = 1.5
+
+[node name="PlanetKecil3" type="TextureRect" parent="TextureRect" unique_id=1964769363]
+layout_mode = 0
+offset_left = 81.0
+offset_top = -25.0
+offset_right = 337.0
+offset_bottom = 231.0
+scale = Vector2(1.7329407, 1.7329407)
+texture = ExtResource("5_ec4m1")
+script = ExtResource("8_mo2ge")
+kecepatan_melayang = 1.5
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect" unique_id=1692249435]
+modulate = Color(1, 1, 1, 0.36078432)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xk144")
+script = ExtResource("8_mo2ge")
+kecepatan_melayang = 0.8
+jarak_melayang_y = 3.0
+jarak_melayang_x = 3.0
+kecepatan_rotasi = 0.5
+batas_kemiringan_derajat = 0.5
+
+[node name="Kereta" type="Node2D" parent="TextureRect" unique_id=1951924519]
+position = Vector2(413, 629)
+rotation = -0.26402715
+scale = Vector2(9.637139, 9.637139)
+
+[node name="Kepala" type="AnimatedSprite2D" parent="TextureRect/Kereta" unique_id=1978104251]
+sprite_frames = SubResource("SpriteFrames_vrfe7")
+frame_progress = 0.16011661
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=833021458]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1434.0
+offset_top = -37.0
+offset_right = -1061.0
+offset_bottom = 336.0
+grow_horizontal = 0
+texture = ExtResource("3_w5jvm")
+script = ExtResource("8_mo2ge")
+kecepatan_melayang = 0.8
+jarak_melayang_y = 10.0
+kecepatan_rotasi = 1.0
+
+[node name="MarginButton" type="MarginContainer" parent="TextureRect" unique_id=495135515]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -434.0
-offset_top = -132.0
-offset_bottom = 221.0
+offset_left = -546.0
+offset_top = -58.0
+offset_right = -390.0
+offset_bottom = 58.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/margin_right = 150
+scale = Vector2(3.5, 3.5)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginButton" unique_id=2052434342]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginButton" unique_id=2052434342]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 10
 
-[node name="ButtonPlay" type="Button" parent="ColorRect/MarginButton/VBoxContainer" unique_id=669510937]
+[node name="ButtonPlay" type="TextureButton" parent="TextureRect/MarginButton/VBoxContainer" unique_id=1388215360]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "PLAY"
+texture_normal = ExtResource("12_tdydt")
+stretch_mode = 5
 
-[node name="ButtonSettings" type="Button" parent="ColorRect/MarginButton/VBoxContainer" unique_id=492538118]
+[node name="ButtonSettings" type="TextureButton" parent="TextureRect/MarginButton/VBoxContainer" unique_id=1336916813]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "SETTINGS"
+texture_normal = ExtResource("17_dhaah")
+stretch_mode = 5
 
-[node name="ButtonExit" type="Button" parent="ColorRect/MarginButton/VBoxContainer" unique_id=1482728523]
+[node name="ButtonExit" type="TextureButton" parent="TextureRect/MarginButton/VBoxContainer" unique_id=430617791]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "QUIT"
+texture_normal = ExtResource("13_sw8df")
+stretch_mode = 5
 
-[node name="MarginJudul" type="MarginContainer" parent="ColorRect" unique_id=255807367]
+[node name="MarginJudul" type="MarginContainer" parent="TextureRect" unique_id=255807367]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -67,14 +276,142 @@ grow_horizontal = 0
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 100
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginJudul" unique_id=1894493874]
-layout_mode = 2
-texture = ExtResource("1_s2xo7")
+[node name="Matahari" type="TextureRect" parent="TextureRect" unique_id=252379423]
+layout_mode = 0
+offset_left = 1600.0
+offset_top = 23.0
+offset_right = 1882.0
+offset_bottom = 305.0
+texture = ExtResource("22_s4yk4")
+script = ExtResource("8_mo2ge")
+
+[node name="PlanetCincin" type="TextureRect" parent="TextureRect" unique_id=1267275915]
+layout_mode = 0
+offset_left = 1195.0
+offset_top = 219.0
+offset_right = 1451.0
+offset_bottom = 475.0
+texture = ExtResource("23_1fsbu")
+script = ExtResource("8_mo2ge")
+
+[node name="PlanetKecil4" type="TextureRect" parent="TextureRect" unique_id=580459219]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 797.0
+offset_right = 858.0
+offset_bottom = 1053.0
+texture = ExtResource("5_ec4m1")
+script = ExtResource("8_mo2ge")
+
+[node name="Stars" type="TextureRect" parent="TextureRect" unique_id=308361363]
+layout_mode = 0
+offset_left = 893.0
+offset_top = 739.0
+offset_right = 1149.0
+offset_bottom = 995.0
+texture = ExtResource("24_u20w3")
+script = ExtResource("8_mo2ge")
 
 [node name="ConfirmationPanel" parent="." unique_id=699353212 instance=ExtResource("3_b08y3")]
+visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
-[connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
-[connection signal="pressed" from="ColorRect/MarginButton/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
+[node name="SettingsPanel" type="Control" parent="." unique_id=426690044]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="SettingsPanel" unique_id=350844861]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -777.99994
+offset_top = -433.99997
+offset_right = 1142.0
+offset_bottom = 646.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+color = Color(0, 0, 0, 0.4745098)
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/ColorRect" unique_id=116522752]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/ColorRect/MarginContainer" unique_id=697842172]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer" unique_id=976005815]
+layout_mode = 2
+theme_override_constants/separation = 1200
+
+[node name="MuteLabel" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1578302864]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("41_bse0w")
+theme_override_font_sizes/font_size = 50
+text = "MUTE AUDIO "
+
+[node name="Mute" type="CheckBox" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=292162702]
+layout_mode = 2
+theme_override_icons/checked = ExtResource("41_hc27c")
+theme_override_icons/unchecked = ExtResource("42_c0cds")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer" unique_id=1501142483]
+layout_mode = 2
+theme_override_constants/separation = 1200
+
+[node name="Volume" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=983705103]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("41_bse0w")
+theme_override_font_sizes/font_size = 50
+text = "VOLUME"
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1292663245]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("41_7cpcu")
+theme_override_icons/grabber_highlight = ExtResource("41_7cpcu")
+theme_override_styles/slider = SubResource("StyleBoxTexture_5bbo0")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_nqof3")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="BackSettings" type="TextureButton" parent="SettingsPanel/ColorRect" unique_id=2052555037]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -341.25012
+offset_top = -161.0
+offset_right = -41.250122
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("47_onw8t")
+
+[connection signal="pressed" from="TextureRect/MarginButton/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="TextureRect/MarginButton/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
+[connection signal="pressed" from="TextureRect/MarginButton/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
 [connection signal="konfirmasi_ya" from="ConfirmationPanel" to="." method="_on_confirmation_panel_konfirmasi_ya"]
+[connection signal="toggled" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Mute" to="." method="_on_mute_toggled"]
+[connection signal="value_changed" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="SettingsPanel/ColorRect/BackSettings" to="." method="_on_back_settings_pressed"]

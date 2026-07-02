@@ -2,6 +2,7 @@ extends Node2D
 
 @export var bullet_scene: PackedScene
 @export var fire_rate: float = 0.5 
+@export var damage_multiplier : float = 10.0
 
 @onready var head_pivot = $Head
 @onready var muzzle = $Head/Muzzle
@@ -104,6 +105,8 @@ func shoot():
 # Fungsi bantuan yang diperbarui agar peluru memutar dirinya sendiri ke arah target
 func _spawn_laser_ke_target(posisi_spawn: Vector2, posisi_target: Vector2):
 	var bullet = bullet_scene.instantiate()
+	var damage: float = ScoreManager.level_upgrade_laser * damage_multiplier
+	
 	get_tree().current_scene.add_child(bullet) 
 	
 	bullet.global_position = posisi_spawn
@@ -111,7 +114,7 @@ func _spawn_laser_ke_target(posisi_spawn: Vector2, posisi_target: Vector2):
 	# PENTING: Gunakan look_at agar peluru langsung mengarah tepat ke koordinat target
 	bullet.look_at(posisi_target)
 	
-	bullet.fire()
+	bullet.fire(Vector2.RIGHT, damage)
 	
 func aktifkan_power_up_laser(durasi: float):
 	is_double_laser = true

@@ -4,13 +4,23 @@ extends CanvasLayer # Atau Node2D, sesuaikan dengan tipe node 'Main' Anda
 @onready var label_dompet = $MarginUang/HBoxUang/LabelDompet
 
 # Node Item Laser
-@onready var label_lvl_laser = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemLaser/Label
-@onready var btn_beli_laser = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemLaser/Button
+@onready var label_lvl_laser = $MarginUpgrade/HBoxUpgrade/ItemLaser/Label
+@onready var label_harga_laser = $MarginUpgrade/HBoxUpgrade/ItemLaser/LabelPrice
+@onready var btn_beli_laser = $MarginUpgrade/HBoxUpgrade/ItemLaser/Button
 
 # Node Item Defense
-@onready var label_lvl_defense = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Label
-@onready var btn_beli_defense = $MarginUpgrade/ScrollContainer/HBoxUpgrade/ItemDefense/Button
+@onready var label_lvl_defense = $MarginUpgrade/HBoxUpgrade/ItemDefense/Label
+@onready var label_harga_defense = $MarginUpgrade/HBoxUpgrade/ItemDefense/LabelPrice
+@onready var btn_beli_defense = $MarginUpgrade/HBoxUpgrade/ItemDefense/Button
 
+# Kereta
+@onready var kereta = $Kereta
+@onready var kepala_kereta = $Kereta/Kepala
+@onready var gerbong_1 = $"Kereta/Gerbong-1"
+@onready var gerbong_2 = $"Kereta/Gerbong-2"
+@onready var ekor_kereta = $Kereta/Ekor
+
+var launch: bool = false
 # --- KONFIGURASI HARGA (Harga Dasar & Kelipatan per Level) ---
 var harga_dasar_laser = 200
 var kelipatan_harga_laser = 200
@@ -20,6 +30,7 @@ var kelipatan_harga_defense = 100
 
 func _ready():
 	# Muat data dari save file saat menu dibuka
+	AudioManager.putar_musik(AudioManager.musik_upgrade)
 	ScoreManager.load_game_data()
 	update_semua_ui()
 
@@ -32,14 +43,14 @@ func update_semua_ui():
 	var level_l = ScoreManager.level_upgrade_laser
 	var harga_l = hitung_harga(harga_dasar_laser, kelipatan_harga_laser, level_l)
 	label_lvl_laser.text = "Laser (Lvl " + str(level_l) + ")"
-	btn_beli_laser.text = "Beli: " + str(harga_l)
+	label_harga_laser.text = "$ " + str(harga_l)
 	btn_beli_laser.disabled = ScoreManager.dompet_koin < harga_l # Matikan tombol jika uang kurang
 	
 	# 2. Update UI Defense
 	var level_d = ScoreManager.level_upgrade_defense
 	var harga_d = hitung_harga(harga_dasar_defense, kelipatan_harga_defense, level_d)
 	label_lvl_defense.text = "Defense (Lvl " + str(level_d) + ")"
-	btn_beli_defense.text = "Beli: " + str(harga_d)
+	label_harga_defense.text = "$ " + str(harga_d)
 	btn_beli_defense.disabled = ScoreManager.dompet_koin < harga_d
 	
 
@@ -51,12 +62,14 @@ func hitung_harga(dasar: int, kelipatan: int, level_saat_ini: int) -> int:
 
 func _on_btn_beli_laser_pressed():
 	if ScoreManager.level_upgrade_laser <= 3:
+		AudioManager.putar_sfx(AudioManager.sfx_upgrade)
 		var harga = hitung_harga(harga_dasar_laser, kelipatan_harga_laser, ScoreManager.level_upgrade_laser)
 		if ScoreManager.beli_upgrade(harga, "laser"):
 			update_semua_ui()
 
 func _on_btn_beli_defense_pressed():
 	if ScoreManager.level_upgrade_defense <= 3:
+		AudioManager.putar_sfx(AudioManager.sfx_upgrade)
 		var harga = hitung_harga(harga_dasar_defense, kelipatan_harga_defense, ScoreManager.level_upgrade_defense)
 		if ScoreManager.beli_upgrade(harga, "defense"):
 			update_semua_ui()
@@ -64,7 +77,26 @@ func _on_btn_beli_defense_pressed():
 # --- FUNGSI NAVIGASI ---
 
 func _on_button_home_pressed():
+	AudioManager.putar_sfx(AudioManager.sfx_klik)
 	SceneTransition.pindah_scene("res://Scenes/Homescreen.tscn")
 
 func _on_button_start_pressed():
-	SceneTransition.pindah_scene("res://Scenes/main.tscn")
+	launch = true
+	AudioManager.putar_sfx(AudioManager.sfx_klik)
+	
+func _process(delta: float) -> void:
+	if launch:
+		# 1. Jalankan animasi di setiap frame
+		kepala_kereta.play("default")
+		gerbong_1.play("default")
+		gerbong_2.play("default")
+		ekor_kereta.play("default")
+		await get_tree().create_timer(0.5).timeout 
+		# 2. Gerakkan kereta ke kanan
+		kereta.position.x += 1000 * delta
+		
+		# 3. Opsional: Berikan jeda (misal setelah 1 detik) baru pindah scene
+		# Agar pemain sempat melihat keretanya bergerak
+		await get_tree().create_timer(2.0).timeout 
+		SceneTransition.pindah_scene("res://Scenes/main.tscn")
+		launch = false # Matikan agar tidak terus-menerus memicu perpindaha

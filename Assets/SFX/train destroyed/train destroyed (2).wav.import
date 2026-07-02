@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cjw5oebdk10fc"
+path="res://.godot/imported/train destroyed (2).wav-83ab1dc0e1414c7e154cc89375154444.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/train destroyed/train destroyed (2).wav"
+dest_files=["res://.godot/imported/train destroyed (2).wav-83ab1dc0e1414c7e154cc89375154444.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

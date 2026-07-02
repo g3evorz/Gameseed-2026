@@ -34,24 +34,19 @@ var base_y_position: float
 
 var _entrance_start_x: float
 
-@export var overtake_duration: float = 7.5
+@export var overtake_offset: float = 700.
 
-@export var overtake_offset: float = 700.0
+# ---  Variable @onready ---
 
-@export var cooldown_duration: float = 5.0
-
-@export var drop_hold_time: float = 3.5
-
-@export var lurk_time_min: float = 10.0
-@export var lurk_time_max: float = 15.0
+@onready var diff : DifficultyConfig = GameManager.current_difficulty
 
 var _lurk_x: float
 var _drop_x: float
 
 var _lurk_timer: Timer
+var _drop_timer: Timer
 
 var _time_passed: float = 0.0
-
 var _move_tween: Tween
 
 func _ready() -> void:
@@ -68,6 +63,12 @@ func _ready() -> void:
 	_lurk_timer.one_shot = true
 	add_child(_lurk_timer)
 	_lurk_timer.timeout.connect(_on_lurk_timer_timeout)
+	
+	_drop_timer = Timer.new()
+	_drop_timer.wait_time = diff.drop_interval
+	_drop_timer.one_shot = false 
+	add_child(_drop_timer)
+	_drop_timer.timeout.connect(_drop_obstacle)
 
 	_enter_state(State.ENTRANCE)
 
@@ -91,7 +92,7 @@ func _process(delta: float) -> void:
 
 func _enter_state(new_state: State) -> void:
 	current_state = new_state
-
+	
 	match current_state:
 		State.ENTRANCE:
 			# Kemunculan pertama: posisikan musuh jauh di belakang dulu...
@@ -110,25 +111,34 @@ func _enter_state(new_state: State) -> void:
 			base_x_position = _lurk_x
 
 			# Mulai timer acak sebelum musuh mulai menyerang lagi.
-			_lurk_timer.wait_time = randf_range(lurk_time_min, lurk_time_max)
+			_lurk_timer.wait_time = randf_range(diff.lurk_time_min, diff.lurk_time_max)
 			_lurk_timer.start()
 
 		State.OVERTAKE:
 			move_to_x(
-				_drop_x, overtake_duration,
+				_drop_x, diff.overtake_duration,
 				func() -> void: _enter_state(State.DROPPING),
 				Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
 			)
 
 		State.DROPPING:
+			# Lakukan drop pertama kali secara instan saat baru masuk state ini
 			_drop_obstacle()
 			
-			await get_tree().create_timer(drop_hold_time).timeout
+			# Mulai timer untuk menjatuhkan obstacle tambahan secara berkala
+			_drop_timer.start()
+			
+			# Tunggu selama drop_hold_time
+			await get_tree().create_timer(diff.drop_hold_time).timeout
+			
+			# Hentikan drop timer agar tidak drop lagi saat pindah state
+			_drop_timer.stop()
+			
 			_enter_state(State.COOLDOWN)
 
 		State.COOLDOWN:
 			move_to_x(
-				_lurk_x, cooldown_duration,
+				_lurk_x, diff.cooldown_duration,
 				func() -> void: _enter_state(State.LURKING),
 				Tween.TRANS_QUAD, Tween.EASE_IN_OUT
 			)

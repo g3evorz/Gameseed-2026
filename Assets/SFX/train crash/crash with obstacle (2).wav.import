@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dunnmwgmlew5t"
+path="res://.godot/imported/crash with obstacle (2).wav-79523f051f6ab29547456f0476313001.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/train crash/crash with obstacle (2).wav"
+dest_files=["res://.godot/imported/crash with obstacle (2).wav-79523f051f6ab29547456f0476313001.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
