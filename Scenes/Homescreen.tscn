@@ -327,6 +327,7 @@ visible = false
 layout_mode = 1
 
 [node name="SettingsPanel" type="Control" parent="." unique_id=426690044]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -418,6 +419,7 @@ scale = Vector2(3, 3)
 texture_normal = ExtResource("47_onw8t")
 
 [node name="HelpPanel" type="Control" parent="." unique_id=668306926]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -50,6 +50,10 @@ var _time_passed: float = 0.0
 var _move_tween: Tween
 
 func _ready() -> void:
+	$"Kumpulan Gerbong/Gerbong_musuh/Sprite2D".play("default")
+	$"Kumpulan Gerbong/Gerbong_musuh2/Sprite2D".play("default")
+	$"Kumpulan Gerbong/Gerbong_musuh3/Sprite2D".play("default")
+	$"Kumpulan Gerbong/Gerbong_musuh4/Sprite2D".play("default")
 	base_x_position = position.x
 	base_y_position = position.y
 

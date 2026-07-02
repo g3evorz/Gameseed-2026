@@ -20,7 +20,12 @@ func _ready() -> void:
 
 func _on_button_play_pressed() -> void:
 	AudioManager.putar_sfx(AudioManager.sfx_klik)
-	SceneTransition.pindah_scene("res://Scenes/StoryboardScene.tscn")
+	if ScoreManager.sudah_lihat_intro == false:
+		# Pindah ke scene Storyboard
+		SceneTransition.pindah_scene("res://Scenes/StoryboardScene.tscn")
+	else:
+		# Langsung pindah ke Gameplay utama
+		SceneTransition.pindah_scene("res://Scenes/Upgradable.tscn")
 
 
 func _on_button_settings_pressed() -> void:

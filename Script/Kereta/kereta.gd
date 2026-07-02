@@ -32,7 +32,6 @@ var timer_invincible: float = 0.0
 func _ready():
 	add_to_group("Kereta")
 	GameManager.game_over_triggered.connect(_eksekusi_kematian_kereta)
-
 	var daftar_wadah = kumpulan_gerbong.get_children()
 	for i in range(daftar_wadah.size()):
 		var gerbong = daftar_wadah[i]
@@ -124,6 +123,7 @@ func _physics_process(delta):
 		take_damage(total_damage)
 	
 	jumlah_gerbong_sebelumnya = jumlah_aktif
+		
 		
 
 func update_ui_kesehatan():

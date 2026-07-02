@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dcol80whnldwb"]
+[gd_scene format=4 uid="uid://dcol80whnldwb"]
 
 [ext_resource type="PackedScene" uid="uid://dukt3ykblby48" path="res://Scenes/Components/Musuh/kereta.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://cekcnut1c71hi" path="res://Script/main.gd" id="1_jjvhh"]
@@ -17,7 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://dxf8keb5h1lo2" path="res://Scenes/Levels/level_2.tscn" id="8_hptm8"]
 [ext_resource type="PackedScene" uid="uid://cekjkxc2vo48a" path="res://Scenes/Levels/level_3.tscn" id="9_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://c317owqmvgsig" path="res://Scenes/Levels/level_4.tscn" id="10_6iyac"]
+[ext_resource type="Texture2D" uid="uid://5chw4x3cex0r" path="res://Assets/Rail/Hologram/Straight + Boost/HologramBoost-sheet.png" id="10_ueoa1"]
+[ext_resource type="Texture2D" uid="uid://cc3e16ytbmvg8" path="res://Assets/Rail/Hologram/Straight.png" id="11_6vcvc"]
 [ext_resource type="PackedScene" uid="uid://badj5pnsv3mrf" path="res://Scenes/ConfirmationPanel.tscn" id="12_6iyac"]
+[ext_resource type="Texture2D" uid="uid://bjtmsaqgckcpc" path="res://Assets/Rail/Normal/Straight.png" id="12_7k868"]
 [ext_resource type="Texture2D" uid="uid://dadelgefpdwtq" path="res://Assets/Background Part/Background-Menu/Start-bg-utama.png" id="17_b3802"]
 [ext_resource type="Texture2D" uid="uid://bqwv0j54db2ek" path="res://Assets/Background Part/Background-Menu/Start-bg.png" id="18_fevyy"]
 [ext_resource type="Texture2D" uid="uid://7tdl3yab8cbd" path="res://Assets/UI/Button-UI/Resume-btn.png" id="20_ee4r6"]
@@ -25,6 +28,32 @@
 [ext_resource type="FontFile" uid="uid://bnumkmoiqqk13" path="res://Assets/determination.ttf" id="20_u50mg"]
 [ext_resource type="Texture2D" uid="uid://c7g31rlev0qv1" path="res://Assets/UI/Button-UI/retry-btn.png" id="21_gt3je"]
 [ext_resource type="Texture2D" uid="uid://dfidbdgp06qyg" path="res://Assets/UI/Button-UI/home-btn(1).png" id="22_3pmx8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hpc6h"]
+texture = ExtResource("10_ueoa1")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_speed = 5.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kltya"]
+texture = ExtResource("11_6vcvc")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e08e2"]
+texture = ExtResource("12_7k868")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_u50mg"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_hpc6h")
+sources/1 = SubResource("TileSetAtlasSource_kltya")
+sources/2 = SubResource("TileSetAtlasSource_e08e2")
 
 [node name="Main" type="Node2D" unique_id=1169577489]
 script = ExtResource("1_jjvhh")
@@ -35,30 +64,53 @@ possible_obstacles = Array[ExtResource("3_hptm8")]([ExtResource("4_d1ilt"), ExtR
 vertical_spawn_margin_min = 0.0
 vertical_spawn_margin_max = 200.0
 
-[node name="ParallaxGalaxy" type="Parallax2D" parent="." unique_id=1313303119]
-scroll_scale = Vector2(0.1, 0.1)
-repeat_size = Vector2(1024, 0)
+[node name="Parallax" type="Node2D" parent="." unique_id=684376714]
 script = ExtResource("6_hibaj")
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxGalaxy" unique_id=768409368]
+[node name="ParallaxGalaxy" type="Parallax2D" parent="Parallax" unique_id=1313303119]
+scale = Vector2(2, 2)
+scroll_scale = Vector2(0.1, 0.1)
+scroll_offset = Vector2(0, 458.99997)
+repeat_size = Vector2(2048, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/ParallaxGalaxy" unique_id=768409368]
+scale = Vector2(2, 2)
 texture = ExtResource("17_b3802")
 
-[node name="ParallaxStars" type="Parallax2D" parent="." unique_id=1659890443]
+[node name="ParallaxStars" type="Parallax2D" parent="Parallax" unique_id=1659890443]
+scale = Vector2(2, 2)
 scroll_scale = Vector2(0.2, 0.2)
-repeat_size = Vector2(1024, 0)
-script = ExtResource("6_hibaj")
+scroll_offset = Vector2(0, 488.00003)
+repeat_size = Vector2(2048, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxStars" unique_id=1745736146]
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/ParallaxStars" unique_id=1745736146]
+scale = Vector2(2, 2)
 texture = ExtResource("18_fevyy")
 
-[node name="ParallaxPlanet" type="Parallax2D" parent="." unique_id=1892508997]
+[node name="ParallaxPlanet" type="Parallax2D" parent="Parallax" unique_id=1892508997]
+scale = Vector2(2, 2)
 scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(0, -255.00005)
-repeat_size = Vector2(1024, 0)
-script = ExtResource("6_hibaj")
+scroll_offset = Vector2(0, 15)
+repeat_size = Vector2(2048, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxPlanet" unique_id=1023978265]
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/ParallaxPlanet" unique_id=1023978265]
 texture = ExtResource("8_fevyy")
+
+[node name="ParallaxRel" type="Parallax2D" parent="Parallax" unique_id=1000762999]
+scale = Vector2(2, 2)
+scroll_offset = Vector2(0, 15)
+repeat_size = Vector2(2048, 0)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Parallax/ParallaxRel" unique_id=613038645]
+position = Vector2(0, -34.5)
+tile_map_data = PackedByteArray("AAD9/wAAAgAAAAAAAAD//wAAAgAAAAAAAAAAAAAAAgAAAAAAAAD+/wAAAgAAAAAAAAD7/wAAAgAAAAAAAAD8/wAAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAADAAAAAgAAAAAAAAAEAAAAAgAAAAAAAAAFAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAHAAAAAgAAAAAAAAAIAAAAAgAAAAAAAAD6/wAAAgAAAAAAAAD5/wAAAgAAAAAAAAD4/wAAAgAAAAAAAAD3/wAAAgAAAAAAAAD2/wAAAgAAAAAAAAD1/wAAAgAAAAAAAAD0/wAAAgAAAAAAAADz/wAAAgAAAAAAAADy/wAAAgAAAAAAAAAJAAAAAgAAAAAAAAAKAAAAAgAAAAAAAAALAAAAAgAAAAAAAAAMAAAAAgAAAAAAAAANAAAAAgAAAAAAAAAOAAAAAgAAAAAAAAAPAAAAAgAAAAAAAAAQAAAAAgAAAAAAAAARAAAAAgAAAAAAAAASAAAAAgAAAAAAAAATAAAAAgAAAAAAAAAUAAAAAgAAAAAAAAAVAAAAAgAAAAAAAAAWAAAAAgAAAAAAAAAXAAAAAgAAAAAAAAAYAAAAAgAAAAAAAAAZAAAAAgAAAAAAAAAaAAAAAgAAAAAAAAAbAAAAAgAAAAAAAAAcAAAAAgAAAAAAAAAdAAAAAgAAAAAAAAAeAAAAAgAAAAAAAADx/wAAAgAAAAAAAADw/wAAAgAAAAAAAADv/wAAAgAAAAAAAAAfAAAAAgAAAAAAAAAgAAAAAgAAAAAAAAAhAAAAAgAAAAAAAAAiAAAAAgAAAAAAAAAjAAAAAgAAAAAAAAAkAAAAAgAAAAAAAAAlAAAAAgAAAAAAAAAmAAAAAgAAAAAAAAAnAAAAAgAAAAAAAAAoAAAAAgAAAAAAAAApAAAAAgAAAAAAAAAqAAAAAgAAAAAAAAArAAAAAgAAAAAAAAAsAAAAAgAAAAAAAAAtAAAAAgAAAAAAAAAuAAAAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_u50mg")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="Parallax/ParallaxRel" unique_id=1654065172]
+position = Vector2(0, -87.5)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD9/wAAAQAAAAAAAAD//wAAAQAAAAAAAAAAAAAAAQAAAAAAAAD+/wAAAQAAAAAAAAD7/wAAAQAAAAAAAAD8/wAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAD6/wAAAQAAAAAAAAD5/wAAAQAAAAAAAAD4/wAAAQAAAAAAAAD3/wAAAQAAAAAAAAD2/wAAAQAAAAAAAAD1/wAAAQAAAAAAAAD0/wAAAQAAAAAAAADz/wAAAQAAAAAAAADy/wAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAPAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAARAAAAAQAAAAAAAAASAAAAAgAAAAAAAAATAAAAAgAAAAAAAAAUAAAAAgAAAAAAAAAVAAAAAgAAAAAAAAAWAAAAAgAAAAAAAAAXAAAAAgAAAAAAAAAYAAAAAgAAAAAAAAAZAAAAAgAAAAAAAAAaAAAAAgAAAAAAAAAbAAAAAgAAAAAAAAAcAAAAAgAAAAAAAAAdAAAAAgAAAAAAAAAeAAAAAgAAAAAAAADx/wAAAQAAAAAAAADw/wAAAQAAAAAAAADv/wAAAQAAAAAAAAAfAAAAAgAAAAAAAAAgAAAAAgAAAAAAAAAhAAAAAgAAAAAAAAAiAAAAAgAAAAAAAAAjAAAAAgAAAAAAAAAkAAAAAgAAAAAAAAAlAAAAAgAAAAAAAAAmAAAAAgAAAAAAAAAnAAAAAgAAAAAAAAAoAAAAAgAAAAAAAAApAAAAAgAAAAAAAAAqAAAAAgAAAAAAAAArAAAAAgAAAAAAAAAsAAAAAgAAAAAAAAAtAAAAAgAAAAAAAAAuAAAAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_u50mg")
 
 [node name="Enemy" parent="." unique_id=811008233 groups=["Enemy"] instance=ExtResource("2_21xkr")]
 position = Vector2(-29.99997, -136.00002)
@@ -91,6 +143,7 @@ player = NodePath("../Kereta")
 process_mode = 3
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=1041411612]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,7 +208,6 @@ action_mode = 0
 texture_normal = ExtResource("22_3pmx8")
 
 [node name="GameOver" type="Control" parent="CanvasLayer" unique_id=134540017]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -182,6 +234,7 @@ offset_top = 150.0
 offset_right = 204.0
 offset_bottom = 247.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("20_u50mg")
 theme_override_font_sizes/font_size = 71
 text = "GAME OVER"
 horizontal_alignment = 1
@@ -205,10 +258,12 @@ grow_vertical = 2
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=1575947529]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("20_u50mg")
 theme_override_font_sizes/font_size = 40
 
 [node name="TotalCoin" type="Label" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=2118115816]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("20_u50mg")
 theme_override_font_sizes/font_size = 40
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameOver" unique_id=2008643272]
@@ -218,26 +273,24 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -240.0
-offset_right = 100.0
-offset_bottom = -190.0
+offset_left = -323.0
+offset_top = -313.0
+offset_right = -111.0
+offset_bottom = -263.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(3, 3)
 theme_override_constants/separation = 20
 
-[node name="Retry" type="Button" parent="CanvasLayer/GameOver/HBoxContainer" unique_id=1608156125]
+[node name="Retry" type="TextureButton" parent="CanvasLayer/GameOver/HBoxContainer" unique_id=380017293]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
 action_mode = 0
-text = "RETRY"
+texture_normal = ExtResource("21_gt3je")
 
-[node name="Exit" type="Button" parent="CanvasLayer/GameOver/HBoxContainer" unique_id=1023894089]
+[node name="Exit" type="TextureButton" parent="CanvasLayer/GameOver/HBoxContainer" unique_id=1327402247]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
 action_mode = 0
-text = "EXIT
-"
+texture_normal = ExtResource("22_3pmx8")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1526034584]
 anchors_preset = 1
@@ -270,3 +323,7 @@ visible = false
 
 [editable path="Kereta"]
 [editable path="Kereta/Kepala"]
+[editable path="Kereta/KumpulanGerbong/Gerbong1"]
+[editable path="Kereta/KumpulanGerbong/Gerbong2"]
+[editable path="Kereta/KumpulanGerbong/Gerbong3"]
+[editable path="Kereta/KumpulanGerbong/Gerbong4"]
