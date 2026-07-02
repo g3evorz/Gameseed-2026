@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="DifficultyConfig" format=3 uid="uid://bdhucb6u023mc"]
-
-[ext_resource type="Script" uid="uid://bwbhc3np6qbq5" path="res://Script/Configuration/Difficulty_config.gd" id="1_agvgg"]
-
-[resource]
-script = ExtResource("1_agvgg")
-spawn_chance = 0.95
-targeting_inaccuracy = 20.0
-metadata/_custom_type_script = "uid://bwbhc3np6qbq5"

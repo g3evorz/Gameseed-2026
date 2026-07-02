@@ -2,16 +2,18 @@ extends Node
 class_name EnemyObstacleSpawner
 
 @export var possible_obstacles: Array[ObstacleData]
-@export var current_difficulty: DifficultyConfig
 @export var spawn_margin: float = 150.0
 
 @export_group("Zona Terlarang (Temporary Obstacles)")
-@export var vertical_spawn_margin: float = 50.0
+@export var vertical_spawn_margin_min: float = 50.0
+@export var vertical_spawn_margin_max: float = 50.0
 @export var base_forbidden_radius: float = 110.0
 @export var hard_forbidden_radius: float = 70.0
 @export var base_safe_gap: float = 180.0
 @export var hard_safe_gap: float = 120.0
 @export var player_hitbox_height: float = 60.0
+
+@onready var current_difficulty: DifficultyConfig = GameManager.current_difficulty
 
 var _active_zones: Array[Dictionary] = []
 var forbidden_zone_radius: float
@@ -22,7 +24,6 @@ func _ready() -> void:
 	get_tree().node_added.connect(_on_node_added)
 
 func _physics_process(_delta: float) -> void:
-	# Asumsi GameManager masih digunakan untuk mengatur speed ratio
 	var ratio: float = GameManager.get_speed_ratio()
 	forbidden_zone_radius = lerp(base_forbidden_radius, hard_forbidden_radius, ratio)
 	min_safe_gap = max(lerp(base_safe_gap, hard_safe_gap, ratio), player_hitbox_height + 20.0)
@@ -52,23 +53,20 @@ func _on_enemy_obstacle_dropped(_drop_position: Vector2) -> void:
 	if current_difficulty == null or possible_obstacles.is_empty():
 		return
 
-	# 1. Cek peluang utama dari DifficultyConfig
 	if randf() > current_difficulty.spawn_chance:
 		return
 
-	# 2. Pilih rintangan
 	var selected_data = _get_random_obstacle()
 	if selected_data == null:
 		return
 
-	# 3. Eksekusi
 	_execute_spawn(selected_data)
 
 func _get_random_obstacle() -> ObstacleData:
 	var valid_obstacles: Array[ObstacleData] = []
+	var multiplier: float = current_difficulty.default_spawn_weight_multiplier
 	var total_weight: float = 0.0
 
-	# Filter rintangan yang tidak valid untuk situasi saat ini
 	for obs in possible_obstacles:
 		if obs == null or obs.spawn_behavior == ObstacleData.SpawnBehavior.LEVEL_ONLY:
 			continue
@@ -76,13 +74,15 @@ func _get_random_obstacle() -> ObstacleData:
 		if obs.spawn_behavior == ObstacleData.SpawnBehavior.DYNAMIC_PERMANENT and not current_difficulty.allow_permanent_obstacles:
 			continue
 			
+		if current_difficulty and current_difficulty.specific_weight_multipliers.has(obs):
+			multiplier = current_difficulty.specific_weight_multipliers[obs]
+			
 		valid_obstacles.append(obs)
-		total_weight += obs.spawn_weight
+		total_weight += obs.spawn_weight  * multiplier
 
 	if valid_obstacles.is_empty() or total_weight <= 0.0:
 		return null
 
-	# Algoritma Weighted Random
 	var random_value = randf_range(0.0, total_weight)
 	for obs in valid_obstacles:
 		random_value -= obs.spawn_weight
@@ -111,42 +111,67 @@ func _spawn_temporary(obstacle_data: ObstacleData, player: Node2D, cam: Camera2D
 	var visible_rect_size = cam.get_viewport_rect().size / cam.zoom
 	var camera_top = screen_center_y - (visible_rect_size.y / 2.0)
 	var camera_bottom = screen_center_y + (visible_rect_size.y / 2.0)
-	var min_track_y = camera_top + vertical_spawn_margin
-	var max_track_y = camera_bottom - vertical_spawn_margin
-
-	# Cek dulu ada ruang aman SECARA UMUM di track, sebelum rocket terlihat di layar.
-	# Ini ganti posisi pengecekan lama (yang tadinya dilakukan terhadap kandidat tertentu).
+	#	I Also confused about the min and max track_y, this all happend because godot "weird" coordinate system
+	var min_track_y = camera_top + vertical_spawn_margin_max
+	var max_track_y = camera_bottom - vertical_spawn_margin_min
+	var inaccuracy = current_difficulty.targeting_inaccuracy
+	
+	print("Screen Center : ", screen_center_y)
+	print("Camera top : ", camera_top)
+	print("Camera bottom : ", camera_bottom)
+	print("Minimum Y spawn : ", min_track_y)
+	print("Maksimum Y spawn : ", max_track_y)
+	
 	if not _track_has_room(min_track_y, max_track_y):
 		return
 
 	var instance = obstacle_data.obstacle_scene.instantiate()
 	if "data" in instance:
 		instance.data = obstacle_data
+	if "warning_duration" in instance:
+		instance.warning_duration = obstacle_data.warning_duration
+	if "telegraph_speed" in instance:
+		instance.telegraph_speed = obstacle_data.telegraph_speed
+	if "fire_duration" in instance:
+		instance.fire_duration = obstacle_data.fire_duration
 
 	get_tree().current_scene.add_child(instance)
 
 	var spawn_x = cam.get_right_edge_x(spawn_margin)
-	var initial_y = clamp(player.global_position.y, min_track_y, max_track_y)
-	instance.global_position = Vector2(spawn_x, initial_y)
-
+	
 	var travel_time: float = obstacle_data.extra_warning_duration
 	if "warning_duration" in instance:
 		travel_time += instance.warning_duration
 
+	# Cek kapabilitas rintangan dan sesuaikan inisialisasinya
 	if instance.has_method("initialize_lock_on"):
-		# Tipe rocket: serahkan tracking + finalize ke rocket itu sendiri
+		var initial_y = clamp(player.global_position.y, min_track_y, max_track_y)
+		instance.global_position = Vector2(spawn_x, initial_y)
+
 		instance.initialize_lock_on(
 			player, min_track_y, max_track_y,
 			Callable(self, "_finalize_target_y"),
 			travel_time,
-			current_difficulty.targeting_inaccuracy
+			inaccuracy
 		)
-	else:
-		# Fallback untuk tipe obstacle lama yang belum punya lock-on (tetap instan seperti dulu)
-		var inaccuracy = current_difficulty.targeting_inaccuracy
-		var candidate_y = player.global_position.y + randf_range(-inaccuracy, inaccuracy)
-		instance.global_position.y = _finalize_target_y(candidate_y, min_track_y, max_track_y, travel_time)
 
+	elif instance.has_method("setup_dynamic_laser"):
+		var candidate_y = _find_largest_gap_center(min_track_y, max_track_y)
+		var target_y = _finalize_target_y(candidate_y, min_track_y, max_track_y, travel_time)
+
+		var start_y: float
+		if target_y > screen_center_y:
+			start_y = min_track_y
+		else:
+			start_y = max_track_y
+
+		var start_pos = Vector2(spawn_x, start_y)
+		var target_pos = Vector2(spawn_x, target_y)
+
+		instance.setup_dynamic_laser(start_pos, target_pos, travel_time, cam, obstacle_data.spawn_edge_margin)
+	else:
+		var candidate_y = player.global_position.y + randf_range(-inaccuracy, inaccuracy)
+		instance.global_position = Vector2(spawn_x, _finalize_target_y(candidate_y, min_track_y, max_track_y, travel_time))
 
 func _spawn_permanent(obstacle_data: ObstacleData, player: Node2D) -> void:
 	var target_slot: Node2D = LevelManager.get_available_slot_ahead(player.global_position.x)
@@ -156,11 +181,7 @@ func _spawn_permanent(obstacle_data: ObstacleData, player: Node2D) -> void:
 		if "data" in instance:
 			instance.data = obstacle_data
 			
-		# PENTING: Jadikan rintangan sebagai child dari slot di Level Chunk,
-		# agar ia otomatis ikut bergerak ke kiri mengikuti kecepatan dunia!
 		target_slot.add_child(instance)
-		
-		# Reset posisi relatif karena sekarang dia ada di dalam slot
 		instance.position = Vector2.ZERO
 
 # --- LOGIKA ZONA AMAN ---
@@ -217,7 +238,6 @@ func _largest_gap(bounds: Array[float]) -> Dictionary:
 		i += 2
 	return {"start": best_start, "end": best_end, "size": best_size}
 
-# --- Tiga pemakai, masing-masing cuma 1-2 baris sekarang ---
 func _has_safe_gap(new_y: float, min_track_y: float, max_track_y: float) -> bool:
 	var bounds = _get_sorted_zone_bounds(min_track_y, max_track_y, new_y)
 	return _has_any_gap_at_least(bounds, min_safe_gap)
@@ -231,7 +251,6 @@ func _find_largest_gap_center(min_track_y: float, max_track_y: float) -> float:
 	var gap = _largest_gap(bounds)
 	return clamp((gap.start + gap.end) / 2.0, min_track_y, max_track_y)
 	
-
 func _finalize_target_y(candidate_y: float, min_track_y: float, max_track_y: float, extra_travel_time: float) -> float:
 	var resolved = _resolve_safe_target_y(candidate_y, min_track_y, max_track_y)
 	if resolved == null:

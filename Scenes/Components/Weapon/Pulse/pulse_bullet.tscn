@@ -18,7 +18,4 @@ target_position = Vector2(2000, 0)
 collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=165877115]
-position = Vector2(0, 23.975)
 texture = ExtResource("2_voauv")
-centered = false
-offset = Vector2(0, -48.125)

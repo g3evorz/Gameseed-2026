@@ -7,9 +7,9 @@
 [ext_resource type="Script" uid="uid://bxawmns3p3xd7" path="res://Script/System/EnemyWeapon_spawner.gd" id="3_344ge"]
 [ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/Configuration/ObstacleData.gd" id="3_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dcnle0rgkvqcg" path="res://Scenes/Components/Kereta/gerbong.tscn" id="3_kry3j"]
-[ext_resource type="Resource" uid="uid://n6oa88amem4a" path="res://Script/Data/Obstacle/roket.tres" id="4_d1ilt"]
+[ext_resource type="Resource" uid="uid://n6oa88amem4a" path="res://Data/Obstacle/roket.tres" id="4_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://do7otuteiauu" path="res://Scenes/Components/levelsSpawner.tscn" id="4_jjvhh"]
-[ext_resource type="Resource" uid="uid://bdhucb6u023mc" path="res://Script/Data/Difficulty/hard_difficulty.tres" id="5_wsu2k"]
+[ext_resource type="Resource" uid="uid://chewkll570sp2" path="res://Data/Obstacle/laser.tres" id="5_k12tt"]
 [ext_resource type="PackedScene" uid="uid://70puepcgsjlx" path="res://Scenes/Levels/basicLandscapes.tscn" id="6_6bp64"]
 [ext_resource type="Script" uid="uid://bwcjximrcwbwg" path="res://Script/bg_controller.gd" id="6_hibaj"]
 [ext_resource type="PackedScene" uid="uid://c7qnoqxs7j6wd" path="res://Scenes/Levels/level_1.tscn" id="7_344ge"]
@@ -26,8 +26,8 @@ script = ExtResource("1_jjvhh")
 
 [node name="EnemyWeaponSpawner" type="Node" parent="." unique_id=1565456601]
 script = ExtResource("3_344ge")
-possible_obstacles = Array[ExtResource("3_hptm8")]([ExtResource("4_d1ilt")])
-current_difficulty = ExtResource("5_wsu2k")
+possible_obstacles = Array[ExtResource("3_hptm8")]([ExtResource("4_d1ilt"), ExtResource("5_k12tt")])
+vertical_spawn_margin_min = 200.0
 
 [node name="ParallaxGalaxy" type="Parallax2D" parent="." unique_id=1313303119]
 scale = Vector2(8.015922, 8.015922)
@@ -61,9 +61,12 @@ texture = ExtResource("8_fevyy")
 position = Vector2(319.99997, -313.00003)
 scale = Vector2(1.25, 1.25)
 
-[node name="Kereta" parent="." unique_id=1640051749 instance=ExtResource("1_bo1nx")]
+[node name="Kereta" parent="." unique_id=1640051749 groups=["Player"] instance=ExtResource("1_bo1nx")]
 position = Vector2(441, -39)
 scene_gerbong = ExtResource("3_kry3j")
+
+[node name="Camera2D" parent="Kereta/Kepala" parent_id_path=PackedInt32Array(1640051749, 1780252134) index="0" unique_id=1503878241]
+position = Vector2(-129, -174.68)
 
 [node name="World" parent="." unique_id=1368948942 instance=ExtResource("2_8gbba")]
 position = Vector2(3, 0)
@@ -72,7 +75,6 @@ position = Vector2(3, 0)
 position = Vector2(2243, 0)
 list_scene_level = Array[PackedScene]([ExtResource("6_6bp64"), ExtResource("7_344ge"), ExtResource("8_hptm8"), ExtResource("9_d1ilt"), ExtResource("10_6iyac")])
 player = NodePath("../Kereta")
-spawn_interval = 8.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2120541488]
 process_mode = 3
