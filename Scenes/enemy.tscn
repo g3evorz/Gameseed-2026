@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dwsc6utcp77a1" path="res://Assets/Enemy Train/Head/4.png" id="5_haro7"]
 [ext_resource type="Texture2D" uid="uid://o38gx3eomdll" path="res://Assets/Enemy Train/Head/5.png" id="6_56vhr"]
 [ext_resource type="Texture2D" uid="uid://hlfexk8b7hvj" path="res://Assets/Enemy Train/Head/6.png" id="7_ta2yt"]
+[ext_resource type="PackedScene" uid="uid://cekf0hkf3g5p8" path="res://Scenes/Components/Musuh/gerbong_musuh_2.tscn" id="9_8uf12"]
+[ext_resource type="PackedScene" uid="uid://davk4fm5202o" path="res://Scenes/Components/Musuh/gerbong_musuh_3.tscn" id="10_haro7"]
+[ext_resource type="PackedScene" uid="uid://boumun8kfpmi1" path="res://Scenes/Components/Musuh/gerbong_musuh_4.tscn" id="11_56vhr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m4x7e"]
 animations = [{
@@ -54,19 +57,15 @@ offset = Vector2(0, -126)
 position = Vector2(-189, 4)
 
 [node name="Sprite2D" parent="Kumpulan Gerbong/Gerbong_musuh" index="0" unique_id=1794841442]
-frame = 5
 frame_progress = 0.9466124
 
-[node name="Gerbong_musuh2" parent="Kumpulan Gerbong" unique_id=1694006447 instance=ExtResource("3_afpow")]
-position = Vector2(-315, 5)
+[node name="Gerbong_musuh2" parent="Kumpulan Gerbong" unique_id=669495298 instance=ExtResource("9_8uf12")]
+position = Vector2(-312, 5)
 
-[node name="Gerbong_musuh3" parent="Kumpulan Gerbong" unique_id=361256157 instance=ExtResource("3_afpow")]
-position = Vector2(-439, 6)
+[node name="Gerbong_musuh3" parent="Kumpulan Gerbong" unique_id=820446500 instance=ExtResource("10_haro7")]
+position = Vector2(-430, 4)
 
-[node name="Gerbong_musuh4" parent="Kumpulan Gerbong" unique_id=783311124 instance=ExtResource("3_afpow")]
-position = Vector2(-563, 8)
+[node name="Gerbong_musuh4" parent="Kumpulan Gerbong" unique_id=1591166798 instance=ExtResource("11_56vhr")]
+position = Vector2(-548, 5)
 
 [editable path="Kumpulan Gerbong/Gerbong_musuh"]
-[editable path="Kumpulan Gerbong/Gerbong_musuh2"]
-[editable path="Kumpulan Gerbong/Gerbong_musuh3"]
-[editable path="Kumpulan Gerbong/Gerbong_musuh4"]

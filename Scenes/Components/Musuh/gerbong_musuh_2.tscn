@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cekf0hkf3g5p8"]
+
+[ext_resource type="Texture2D" uid="uid://d1w5fb143n7fy" path="res://Assets/Enemy Train/Gerbong Storage/1.png" id="1_h7mx1"]
+[ext_resource type="Texture2D" uid="uid://b1028843l0iko" path="res://Assets/Enemy Train/Gerbong Storage/2.png" id="2_2r14c"]
+[ext_resource type="Texture2D" uid="uid://bowmdj45gpuys" path="res://Assets/Enemy Train/Gerbong Storage/3.png" id="3_t6odr"]
+[ext_resource type="Texture2D" uid="uid://ddl0khodlravi" path="res://Assets/Enemy Train/Gerbong Storage/4.png" id="4_6k716"]
+[ext_resource type="Texture2D" uid="uid://b3yeoatchnp7j" path="res://Assets/Enemy Train/Gerbong Storage/5.png" id="5_jplm6"]
+[ext_resource type="Texture2D" uid="uid://byh0gv6jjthpy" path="res://Assets/Enemy Train/Gerbong Storage/6.png" id="6_31gpj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7mx1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h7mx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2r14c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t6odr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6k716")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jplm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_31gpj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Gerbong_musuh" type="Node2D" unique_id=801158437]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1794841442]
+position = Vector2(-62, 93)
+sprite_frames = SubResource("SpriteFrames_h7mx1")
+centered = false
+offset = Vector2(0, -126)
+
+[node name="TitikSambungBelakang" type="Marker2D" parent="Sprite2D" unique_id=485620877]
+position = Vector2(10, -89)
+scale = Vector2(0.49420846, 1.6842107)
+
+[node name="TitikSambungDepan" type="Marker2D" parent="Sprite2D" unique_id=1661644739]
+position = Vector2(116.00001, -92)
+scale = Vector2(0.49420846, 1.6842107)
+
+[node name="Gerbong" type="Node2D" parent="." unique_id=155161926]
