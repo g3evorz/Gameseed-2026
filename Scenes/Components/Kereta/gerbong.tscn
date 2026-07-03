@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dcnle0rgkvqcg"]
 
-[ext_resource type="Script" uid="uid://cegc38w50tqyn" path="res://Script/Kereta/Gerbong.gd" id="1_ibxl1"]
+[ext_resource type="Script" uid="uid://bomgx43m4wmow" path="res://Script/Kereta/Gerbong.gd" id="1_ibxl1"]
 [ext_resource type="Texture2D" uid="uid://bf67mttdextrm" path="res://Assets/Player Train/Gerbong + Pintu/1.png" id="2_no8vl"]
 [ext_resource type="PackedScene" uid="uid://8nceytgwwcui" path="res://Scenes/Components/Kereta/coupler.tscn" id="3_2jg16"]
 [ext_resource type="Texture2D" uid="uid://qickhgglbgfj" path="res://Assets/Player Train/Gerbong + Pintu/2.png" id="3_m131a"]
@@ -62,7 +62,7 @@ scale = Vector2(0.83319235, 0.8178548)
 shape = SubResource("RectangleShape2D_ibxl1")
 
 [node name="Coupler" parent="." unique_id=164977633 instance=ExtResource("3_2jg16")]
-position = Vector2(53, 11)
+position = Vector2(45, 10)
 scale = Vector2(1.0087036, 1)
 
 [node name="Gerbong" type="Node2D" parent="." unique_id=2090834745]

@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://riiiy528twld" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetCincin.png" id="23_1fsbu"]
 [ext_resource type="Texture2D" uid="uid://dj3ca8oc3fbh1" path="res://Assets/Background Part/Planet & Star (Part by Part)/Stars.png" id="24_u20w3"]
 [ext_resource type="Texture2D" uid="uid://cc5adg57yx0w4" path="res://Assets/UI/Button-UI/HelpBTN.png" id="26_d3stl"]
+[ext_resource type="Texture2D" uid="uid://de8mqoe420d05" path="res://Assets/Background Part/Grafiti.png" id="30_lr6my"]
 [ext_resource type="Texture2D" uid="uid://m1lhd4umrdnt" path="res://Assets/UI/Button-UI/Background Button.png" id="31_ieiow"]
 [ext_resource type="Texture2D" uid="uid://c5khmd4f8s64" path="res://Assets/UI/Button-UI/SliderMusic3.png" id="41_7cpcu"]
 [ext_resource type="FontFile" uid="uid://bnumkmoiqqk13" path="res://Assets/determination.ttf" id="41_bse0w"]
@@ -247,6 +248,7 @@ offset_bottom = 58.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(3.5, 3.5)
+theme_override_constants/margin_right = 60
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginButton" unique_id=2052434342]
 layout_mode = 2
@@ -289,19 +291,19 @@ theme_override_constants/margin_right = 100
 
 [node name="Matahari" type="TextureRect" parent="TextureRect" unique_id=252379423]
 layout_mode = 0
-offset_left = 1600.0
-offset_top = 23.0
-offset_right = 1882.0
-offset_bottom = 305.0
+offset_left = 749.0
+offset_top = -122.0
+offset_right = 1031.0
+offset_bottom = 160.0
 texture = ExtResource("22_s4yk4")
 script = ExtResource("8_mo2ge")
 
 [node name="PlanetCincin" type="TextureRect" parent="TextureRect" unique_id=1267275915]
 layout_mode = 0
-offset_left = 1195.0
-offset_top = 219.0
-offset_right = 1451.0
-offset_bottom = 475.0
+offset_left = 959.0
+offset_top = 327.0
+offset_right = 1215.0
+offset_bottom = 583.0
 texture = ExtResource("23_1fsbu")
 script = ExtResource("8_mo2ge")
 
@@ -323,10 +325,21 @@ offset_bottom = 995.0
 texture = ExtResource("24_u20w3")
 script = ExtResource("8_mo2ge")
 
+[node name="Grafiti" type="TextureRect" parent="TextureRect" unique_id=1930986923]
+layout_mode = 0
+offset_left = 1213.0
+offset_top = 86.99999
+offset_right = 2213.0
+offset_bottom = 487.0
+scale = Vector2(0.70881087, 0.70881087)
+texture = ExtResource("30_lr6my")
+
 [node name="ConfirmationPanel" parent="." unique_id=699353212 instance=ExtResource("3_b08y3")]
+visible = false
 layout_mode = 1
 
 [node name="SettingsPanel" type="Control" parent="." unique_id=426690044]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
