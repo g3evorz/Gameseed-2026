@@ -132,6 +132,7 @@ func trigger_game_over():
 	if status_sekarang == GameState.GAME_OVER:
 		return
 	status_sekarang = GameState.GAME_OVER
+	get_tree().paused = true
 	ScoreManager.finalize_score_and_save()
 	game_over_triggered.emit()
 

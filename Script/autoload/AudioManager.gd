@@ -24,6 +24,7 @@ var sfx_crash = preload("res://Assets/SFX/train crash/crash with obstacle (2).wa
 
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	master_bus_index = AudioServer.get_bus_index("Master")
 	sfx_bus_index = AudioServer.get_bus_index("SFX")
 	# 1. SETUP BGM PLAYER (Hanya dibuat sekali)

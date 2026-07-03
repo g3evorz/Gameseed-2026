@@ -65,10 +65,10 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginPowerUps" unique_id=551250946]
+[node name="IndikatorPowerUp" type="TextureRect" parent="CanvasLayer/MarginPowerUps" unique_id=551250946]
 layout_mode = 2
 texture = ExtResource("7_qqvdf")
 stretch_mode = 2
 script = ExtResource("8_2of52")
 
-[node name="TimerDurasi" type="Timer" parent="CanvasLayer/MarginPowerUps/TextureRect" unique_id=2016660752]
+[node name="TimerDurasi" type="Timer" parent="CanvasLayer/MarginPowerUps/IndikatorPowerUp" unique_id=2016660752]

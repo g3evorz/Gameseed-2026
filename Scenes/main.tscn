@@ -335,6 +335,7 @@ action_mode = 0
 texture_normal = ExtResource("22_3pmx8")
 
 [node name="GameOver" type="Control" parent="CanvasLayer" unique_id=134540017]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
