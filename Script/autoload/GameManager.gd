@@ -31,6 +31,7 @@ signal game_paused
 signal game_resumed
 signal game_over_triggered
 signal difficulty_increased(new_config: DifficultyConfig)
+signal power_up_diaktifkan(durasi: float, tekstur_ikon: Texture2D)
 
 func _ready():
 	current_world_speed = BASE_SPEED

@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bwmqq7no154dx" path="res://Assets/Health-Bar/Health-Indicator-Bar2.png" id="4_cacri"]
 [ext_resource type="Texture2D" uid="uid://clxd8uuurlfc8" path="res://Assets/Health-Bar/Health-Indicator-Bar3.png" id="5_vk30c"]
 [ext_resource type="FontFile" uid="uid://bnumkmoiqqk13" path="res://Assets/determination.ttf" id="6_vk30c"]
+[ext_resource type="Texture2D" uid="uid://c6tntx5rylqfv" path="res://Assets/Power Up/Dual Laser.png" id="7_qqvdf"]
+[ext_resource type="Script" uid="uid://7j18np7s83nl" path="res://Script/indikator_powerups.gd" id="8_2of52"]
 
 [node name="Kereta" type="Node2D" unique_id=1640051749]
 script = ExtResource("1_l81m1")
@@ -49,3 +51,24 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_vk30c")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MarginPowerUps" type="MarginContainer" parent="CanvasLayer" unique_id=1075498049]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -432.0
+offset_right = -340.0
+offset_bottom = 62.0
+grow_horizontal = 0
+scale = Vector2(4.668221, 4.668221)
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginPowerUps" unique_id=551250946]
+layout_mode = 2
+texture = ExtResource("7_qqvdf")
+stretch_mode = 2
+script = ExtResource("8_2of52")
+
+[node name="TimerDurasi" type="Timer" parent="CanvasLayer/MarginPowerUps/TextureRect" unique_id=2016660752]
