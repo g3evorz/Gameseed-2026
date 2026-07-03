@@ -30,7 +30,6 @@ func _on_body_entered(body):
 		# Jika Ghost Mode mati, jalankan tabrakan normal
 		if kereta and kereta.has_method("take_damage"):
 			kereta.take_damage(damage_tabrakan * GameManager.current_difficulty.damage_multiplier)
-			AudioManager.putar_sfx(AudioManager.sfx_crash)
 			GameManager.terapkan_efek_ram(kekuatan_slow)
 		# Hancurkan obstacle
 			die()
@@ -42,4 +41,5 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()	
 
 func die():
+	AudioManager.putar_sfx(AudioManager.sfx_destroyed)
 	queue_free()

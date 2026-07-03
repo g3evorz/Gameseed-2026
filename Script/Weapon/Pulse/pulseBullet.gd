@@ -38,6 +38,7 @@ func fire(direction: Vector2 = Vector2.RIGHT, damage: float = 100.0) -> void:
 
 	match beam_type:
 		BeamType.FAST:
+			AudioManager.putar_sfx(AudioManager.player_laser)
 			if ray_cast.is_colliding():
 				var target = ray_cast.get_collider()
 				if target.has_method("take_damage"):
@@ -46,6 +47,7 @@ func fire(direction: Vector2 = Vector2.RIGHT, damage: float = 100.0) -> void:
 			queue_free()
 
 		BeamType.SUSTAINED:
+			AudioManager.putar_sfx(AudioManager.enemy_laser_launched)
 			body_entered.connect(_on_body_entered)
 			var elapsed: float = 0.0
 			while elapsed < beam_active_duration:

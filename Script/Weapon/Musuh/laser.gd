@@ -106,6 +106,7 @@ func _enter_state(new_state: State) -> void:
 
 	match current_state:
 		State.ENGAGING:
+			AudioManager.putar_sfx(AudioManager.enemy_laser_charged)
 			warning_indicator.hide()
 			satellite_body.show()
 

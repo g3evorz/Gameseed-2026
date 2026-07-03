@@ -201,6 +201,7 @@ func take_damage(jumlah_damage: int):
 		print("Kereta sedang Ghost Mode! Kebal damage.")
 		return
 		
+	AudioManager.putar_sfx(AudioManager.sfx_crash)
 	current_health -= jumlah_damage
 	
 	if current_health <= 0:
