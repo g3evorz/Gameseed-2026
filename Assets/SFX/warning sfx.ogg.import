@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://gfaybx4mwe6k"
+path="res://.godot/imported/warning sfx.ogg-801f7a58db4e4635f534705f9acbd62e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/SFX/warning sfx.ogg"
+dest_files=["res://.godot/imported/warning sfx.ogg-801f7a58db4e4635f534705f9acbd62e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
