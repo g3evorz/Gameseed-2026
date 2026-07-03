@@ -40,7 +40,6 @@ func _on_game_over():
 	coin_label.text = str(ScoreManager.dompet_koin)
 	
 	ui_game_over.show()
-	GameManager.trigger_game_over()
 
 # --- TOMBOL UI (hubungkan via Signal Inspector seperti sebelumnya) ---
 func _on_btn_restart_pressed():

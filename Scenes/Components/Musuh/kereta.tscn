@@ -40,15 +40,17 @@ texture_under = ExtResource("4_cacri")
 texture_progress = ExtResource("5_vk30c")
 
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer/HealthBar" unique_id=1950846510]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 14.372937
-offset_bottom = 17.372936
+offset_top = 16.282547
+offset_bottom = 30.282547
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_vk30c")
+theme_override_font_sizes/font_size = 15
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -65,10 +67,10 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginPowerUps" unique_id=551250946]
+[node name="IndikatorPowerUp" type="TextureRect" parent="CanvasLayer/MarginPowerUps" unique_id=551250946]
 layout_mode = 2
 texture = ExtResource("7_qqvdf")
 stretch_mode = 2
 script = ExtResource("8_2of52")
 
-[node name="TimerDurasi" type="Timer" parent="CanvasLayer/MarginPowerUps/TextureRect" unique_id=2016660752]
+[node name="TimerDurasi" type="Timer" parent="CanvasLayer/MarginPowerUps/IndikatorPowerUp" unique_id=2016660752]
