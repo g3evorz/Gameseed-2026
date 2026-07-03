@@ -9,6 +9,7 @@
 collision_layer = 16
 collision_mask = 4
 script = ExtResource("1_ng0jn")
+beam_active_duration = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1784169073]
 shape = SubResource("RectangleShape2D_5w2sr")

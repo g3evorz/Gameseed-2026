@@ -8,8 +8,10 @@
 [node name="LaserBeam" type="Area2D" unique_id=1702495695]
 collision_layer = 16
 script = ExtResource("1_f3ma1")
+beam_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=797123171]
+scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_2wrmy")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=541335986]
