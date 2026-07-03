@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://riiiy528twld" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetCincin.png" id="23_1fsbu"]
 [ext_resource type="Texture2D" uid="uid://dj3ca8oc3fbh1" path="res://Assets/Background Part/Planet & Star (Part by Part)/Stars.png" id="24_u20w3"]
 [ext_resource type="Texture2D" uid="uid://cc5adg57yx0w4" path="res://Assets/UI/Button-UI/HelpBTN.png" id="26_d3stl"]
+[ext_resource type="Texture2D" uid="uid://m1lhd4umrdnt" path="res://Assets/UI/Button-UI/Background Button.png" id="31_ieiow"]
 [ext_resource type="Texture2D" uid="uid://c5khmd4f8s64" path="res://Assets/UI/Button-UI/SliderMusic3.png" id="41_7cpcu"]
 [ext_resource type="FontFile" uid="uid://bnumkmoiqqk13" path="res://Assets/determination.ttf" id="41_bse0w"]
 [ext_resource type="Texture2D" uid="uid://diitew8e7q1d7" path="res://Assets/UI/Button-UI/marked checkbox.png" id="41_hc27c"]
@@ -323,11 +324,9 @@ texture = ExtResource("24_u20w3")
 script = ExtResource("8_mo2ge")
 
 [node name="ConfirmationPanel" parent="." unique_id=699353212 instance=ExtResource("3_b08y3")]
-visible = false
 layout_mode = 1
 
 [node name="SettingsPanel" type="Control" parent="." unique_id=426690044]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -335,7 +334,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="SettingsPanel" unique_id=350844861]
+[node name="ColorRect" type="NinePatchRect" parent="SettingsPanel" unique_id=236783526]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -349,7 +348,7 @@ offset_bottom = 646.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
-color = Color(0, 0, 0, 0.4745098)
+texture = ExtResource("31_ieiow")
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/ColorRect" unique_id=116522752]
 layout_mode = 1
@@ -358,7 +357,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 60
+theme_override_constants/margin_left = 70
 theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 50
@@ -372,6 +371,7 @@ layout_mode = 2
 theme_override_constants/separation = 1200
 
 [node name="MuteLabel" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1578302864]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("41_bse0w")
 theme_override_font_sizes/font_size = 50
@@ -387,6 +387,7 @@ layout_mode = 2
 theme_override_constants/separation = 1200
 
 [node name="Volume" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=983705103]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("41_bse0w")
 theme_override_font_sizes/font_size = 50
@@ -419,7 +420,6 @@ scale = Vector2(3, 3)
 texture_normal = ExtResource("47_onw8t")
 
 [node name="HelpPanel" type="Control" parent="." unique_id=668306926]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -427,7 +427,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="HelpPanel" unique_id=907583906]
+[node name="Panel" type="NinePatchRect" parent="HelpPanel" unique_id=1193853372]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -439,6 +439,7 @@ offset_bottom = 113.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
+texture = ExtResource("31_ieiow")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HelpPanel/Panel" unique_id=492062314]
 layout_mode = 1
@@ -453,6 +454,7 @@ grow_horizontal = 2
 theme_override_constants/separation = 80
 
 [node name="Label" type="Label" parent="HelpPanel/Panel/VBoxContainer" unique_id=1436482632]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("41_bse0w")
 theme_override_font_sizes/font_size = 60
@@ -461,6 +463,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="HelpPanel/Panel/VBoxContainer" unique_id=840005435]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("41_bse0w")
 theme_override_font_sizes/font_size = 60
@@ -471,6 +474,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Label3" type="Label" parent="HelpPanel/Panel/VBoxContainer" unique_id=1326479048]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("41_bse0w")
 theme_override_font_sizes/font_size = 60
@@ -481,6 +485,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Label4" type="Label" parent="HelpPanel/Panel/VBoxContainer" unique_id=1811971057]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("41_bse0w")
 theme_override_font_sizes/font_size = 60

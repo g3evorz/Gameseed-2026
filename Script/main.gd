@@ -7,6 +7,8 @@ extends Node2D
 @onready var coin_label = $CanvasLayer/GameOver/VBoxContainer/TotalCoin
 @onready var confirmation_panel = $CanvasLayer/ConfirmationPanel
 
+@onready var animasi_tutorial = $CanvasLayer/TutorialPanel/MarginTutorial/AnimationPlayer
+
 func _ready():
 	ui_game_over.hide()
 	ui_pause.hide()
@@ -19,6 +21,8 @@ func _ready():
 	GameManager.game_over_triggered.connect(_on_game_over)
 	
 	GameManager.mulai_game()
+	if ScoreManager.sudah_lihat_tutorial == false:
+		_tutorial_show()
 
 func _on_kereta_hancur():
 	GameManager.trigger_game_over()
@@ -32,10 +36,11 @@ func _on_game_resumed():
 func _on_game_over():
 	score_label.text = "Score: " + str(int(ScoreManager.current_score))
 	
-	# Menampilkan koin ronde ini DAN total saldo di dompet
-	coin_label.text = "Koin Didapat: " + str(ScoreManager.accumulated_coin_this_run) + " | Saldo: " + str(ScoreManager.dompet_koin)
+	# Ganti 'accumulated_coin_this_run' menjadi 'koin_didapat_run_ini'
+	coin_label.text = "Koin Didapat: " + str(ScoreManager.koin_didapat_run_ini) + " | Saldo: " + str(ScoreManager.dompet_koin)
 	
 	ui_game_over.show()
+	GameManager.trigger_game_over()
 
 # --- TOMBOL UI (hubungkan via Signal Inspector seperti sebelumnya) ---
 func _on_btn_restart_pressed():
@@ -65,3 +70,5 @@ func _play_animasi_kereta():
 	$Kereta/KumpulanGerbong/Gerbong3/Sprite2D.play("default")
 	$Kereta/KumpulanGerbong/Gerbong4/Sprite2D.play("default")
 	
+func _tutorial_show():
+	animasi_tutorial.play("tutorial")
