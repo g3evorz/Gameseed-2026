@@ -75,14 +75,17 @@ func _physics_process(delta):
 	if is_instance_valid(node_target):
 		var jarak_y = node_target.global_position.y - global_position.y
 		
-		if Input.is_action_just_pressed("ui_down"):
-			if is_on_floor():
-				# Jika di lantai: tembus platform One-Way
-				global_position.y += 2.0
-			else:
-				# Jika di udara: ikuti bantingan gravitasi kepala kereta
+		if jarak_y > 15.0 and is_on_floor():
+			# Target ada di bawah dan gerbong di lantai: tembus One-Way
+			global_position.y += 2.0
+		elif not is_on_floor():
+			# Deteksi jika target sedang jatuh cepat (opsional)
+			if node_target.velocity.y >= FAST_FALL_VELOCITY:
 				velocity.y = FAST_FALL_VELOCITY
-			
+		else:
+			if was_on_floor and velocity.y < 0: velocity.y = 0.0
+			velocity.y += gravity * delta
+				
 		if node_target.is_class("CharacterBody2D") and node_target.is_on_floor():
 			if is_on_floor():
 				velocity.y = clamp(jarak_y * kekakuan_rantai, -MAX_SPRING_VELOCITY, MAX_SPRING_VELOCITY)

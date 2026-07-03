@@ -51,8 +51,8 @@ func _physics_process(delta):
 		current_world_speed = move_toward(current_world_speed, MAX_SPEED, ACCELERATION * delta)
 		_evaluate_difficulty()
 		
-	if ACCELERATION > normal_acceleration and current_world_speed >= MAX_SPEED - 50.0:
-			ACCELERATION = normal_acceleration
+	#if ACCELERATION > normal_acceleration and current_world_speed >= MAX_SPEED - 50.0:
+			#ACCELERATION = normal_acceleration
 			
 
 func get_speed_ratio() -> float:
@@ -108,7 +108,7 @@ func terapkan_efek_ram(efek_slow_percent: float):
 
 func mulai_game():
 	status_sekarang = GameState.BERMAIN
-	current_world_speed = BASE_SPEED
+	current_world_speed = BASE_SPEED	
 	game_started.emit()
 
 # --- LOGIKA PAUSE ---

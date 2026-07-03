@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://csob4u7hn38eh" path="res://Assets/Player Train/Head/4.png" id="6_r8xe7"]
 [ext_resource type="Texture2D" uid="uid://desn503n3s6en" path="res://Assets/Player Train/Head/5.png" id="7_gl0qx"]
 [ext_resource type="Texture2D" uid="uid://rapsyddrxa8a" path="res://Assets/Player Train/Head/6.png" id="8_w4mw0"]
+[ext_resource type="Script" uid="uid://yuhi30cntbmh" path="res://Script/Configuration/InputBuffer.gd" id="10_nteqc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_404rq"]
 animations = [{
@@ -42,6 +43,9 @@ size = Vector2(84, 27)
 [node name="Kepala" type="CharacterBody2D" unique_id=1215859441]
 collision_mask = 2
 script = ExtResource("1_kiorl")
+
+[node name="InputBuffer" type="Node" parent="." unique_id=394610228]
+script = ExtResource("10_nteqc")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1503878241]
 position = Vector2(-129, 38)

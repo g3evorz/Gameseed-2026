@@ -211,7 +211,7 @@ texture = ExtResource("8_fevyy")
 
 [node name="ParallaxRel" type="Parallax2D" parent="Parallax" unique_id=1000762999]
 scale = Vector2(2, 2)
-scroll_offset = Vector2(0, 15)
+scroll_offset = Vector2(-1, 15)
 repeat_size = Vector2(2048, 0)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Parallax/ParallaxRel" unique_id=613038645]
@@ -230,7 +230,7 @@ scene_gerbong = ExtResource("3_kry3j")
 [node name="Kepala" parent="Kereta" index="0" unique_id=1780252134]
 position = Vector2(3, 2)
 
-[node name="Camera2D" parent="Kereta/Kepala" index="0" unique_id=1503878241]
+[node name="Camera2D" parent="Kereta/Kepala" index="1" unique_id=1503878241]
 position = Vector2(-110, -132.99998)
 zoom = Vector2(1.2, 1.2)
 default_zoom = Vector2(2, 2)

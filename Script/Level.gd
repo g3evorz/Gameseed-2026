@@ -8,7 +8,8 @@ func _ready() -> void:
 	trigger_all_spawners()
 
 func _process(delta: float) -> void:
-
+	if GameManager.is_hit_stopping:
+		return
 	position.x -= GameManager.current_world_speed * delta
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
