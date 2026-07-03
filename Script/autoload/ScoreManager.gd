@@ -19,6 +19,7 @@ var accumulated_coin_this_run: int = 0
 
 @export var SCORE_TO_COIN_RATIO: float = 0.05
 @export var SCORE_MULTIPLIER: float = 0.1 # Pengali skor dari jarak
+@export var LEVEL_MAKSIMUM : float = 10.0
 
 func _ready():	
 	load_game_data()
@@ -60,9 +61,9 @@ func beli_upgrade(harga: int, tipe_upgrade: String) -> bool:
 	if dompet_koin >= harga:
 		dompet_koin -= harga 
 		
-		if tipe_upgrade == "laser" and level_upgrade_laser <= 3:
+		if tipe_upgrade == "laser" and level_upgrade_laser <= LEVEL_MAKSIMUM:
 			level_upgrade_laser += 1
-		elif tipe_upgrade  == "defense" and level_upgrade_defense <= 3:
+		elif tipe_upgrade  == "defense" and level_upgrade_defense <= LEVEL_MAKSIMUM:
 			level_upgrade_defense += 1
 			
 		save_game_data() 
