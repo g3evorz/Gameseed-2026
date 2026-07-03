@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://bp8fuhdcd8wg7" path="res://Assets/Player Train/Tail/5.png" id="33_sx1pw"]
 [ext_resource type="Texture2D" uid="uid://3t451yupotal" path="res://Assets/Player Train/Tail/6.png" id="34_e788m"]
 [ext_resource type="Texture2D" uid="uid://ctam1de5x4ffm" path="res://Assets/Station/Background Station.png" id="35_hthnv"]
+[ext_resource type="Texture2D" uid="uid://kad36fpghehe" path="res://Assets/Station/Coin Terang.png" id="40_5ejxh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0i5va"]
 texture = ExtResource("8_vcn0l")
@@ -357,21 +358,31 @@ stretch_mode = 5
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -408.0
+offset_right = -174.0
+offset_bottom = 54.0
 grow_horizontal = 0
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 100
+scale = Vector2(1.7365365, 1.7365365)
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
 
 [node name="HBoxUang" type="HBoxContainer" parent="MarginUang" unique_id=1695399857]
 layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginUang/HBoxUang" unique_id=1513500342]
+layout_mode = 2
+texture = ExtResource("40_5ejxh")
+stretch_mode = 3
 
 [node name="LabelDompet" type="Label" parent="MarginUang/HBoxUang" unique_id=688523793]
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("16_8rjld")
-theme_override_font_sizes/font_size = 60
-text = "COINS :  "
+theme_override_font_sizes/font_size = 25
+text = "999"
+horizontal_alignment = 1
 
 [node name="MarginNavigate" type="MarginContainer" parent="." unique_id=98163976]
 offset_right = 100.0
