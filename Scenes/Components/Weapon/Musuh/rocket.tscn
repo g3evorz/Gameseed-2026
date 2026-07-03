@@ -12,7 +12,7 @@ collision_layer = 2
 script = ExtResource("1_v0csw")
 
 [node name="WarningSprite" type="Sprite2D" parent="." unique_id=1840057059]
-position = Vector2(-200, 0)
+position = Vector2(-180, 0)
 scale = Vector2(1.0081277, 1.0081277)
 texture = ExtResource("2_1ny4c")
 
