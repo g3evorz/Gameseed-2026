@@ -37,7 +37,7 @@ func _ready():
 # --- FUNGSI UPDATE TAMPILAN UI ---
 func update_semua_ui():
 	# Update Teks Dompet
-	label_dompet.text = "Saldo Koin: " + str(ScoreManager.dompet_koin)
+	label_dompet.text = str(ScoreManager.dompet_koin)
 	
 	# 1. Update UI Laser
 	var level_l = ScoreManager.level_upgrade_laser

@@ -40,6 +40,8 @@
 [ext_resource type="Texture2D" uid="uid://bpf63rycml4ag" path="res://Assets/Player Train/Tail/4.png" id="32_5ejxh"]
 [ext_resource type="Texture2D" uid="uid://bp8fuhdcd8wg7" path="res://Assets/Player Train/Tail/5.png" id="33_sx1pw"]
 [ext_resource type="Texture2D" uid="uid://3t451yupotal" path="res://Assets/Player Train/Tail/6.png" id="34_e788m"]
+[ext_resource type="Texture2D" uid="uid://ctam1de5x4ffm" path="res://Assets/Station/Background Station.png" id="35_hthnv"]
+[ext_resource type="Texture2D" uid="uid://kad36fpghehe" path="res://Assets/Station/Coin Terang.png" id="40_5ejxh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0i5va"]
 texture = ExtResource("8_vcn0l")
@@ -193,7 +195,7 @@ stretch_mode = 4
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1186416837]
 position = Vector2(11, -758.00006)
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAABACwAAAAAAAAAAAAJACwAAAAAAAAAAAANACwAAAAAAAAAAAAdACwAAAAAAAAAAAAhACwAAAAAAAAAAAAlACwAAAAAAAAAAAApACwAAAAAAAAAAAAtACwAAAAAAAAAAAAxACwAAAAAAAAAAAA1ACwAAAAAAAAAAAA5ACwAAAAAAAAAAAAFACwAAAAAAAAAAAAVACwAAAAAAAAAAAAZACwAAAAAAAAAAAARACwAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABACwAAAAAAAAAAAAJACwAAAAAAAAAAAANACwAAAAAAAAAAAAdACwAAAAAAAAAAAAhACwAAAAAAAAAAAAlACwAAAAAAAAAAAApACwAAAAAAAAAAAAtACwAAAAAAAAAAAAxACwAAAAAAAAAAAA1ACwAAAAAAAAAAAA5ACwAAAAAAAAAAAAFACwAAAAAAAAAAAAVACwAAAAAAAAAAAAZACwAAAAAAAAAAAARACwAAAAAAAAAAAA9ACwAAAAAAAAAAABBACwAAAAAAAAAAABFACwAAAAAAAAAAADx/ywAAAAAAAAAAAD1/ywAAAAAAAAAAAD5/ywAAAAAAAAAAAD9/ywAAAAAAAAAAABJACwAAAAAAAAAAABNACwAAAAAAAAAAABRACwAAAAAAAAAAABVACwAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_e1ntu")
 
 [node name="Bumi" type="TextureRect" parent="." unique_id=1449049369]
@@ -257,7 +259,7 @@ sprite_frames = SubResource("SpriteFrames_rxdui")
 position = Vector2(-328, 0)
 sprite_frames = SubResource("SpriteFrames_ltja7")
 
-[node name="Panel" type="Panel" parent="." unique_id=1918528123]
+[node name="Panel" type="TextureRect" parent="." unique_id=807384584]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -266,6 +268,7 @@ offset_top = -393.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
+texture = ExtResource("35_hthnv")
 
 [node name="MarginUpgrade" type="MarginContainer" parent="." unique_id=701692828]
 anchors_preset = 2
@@ -277,7 +280,7 @@ offset_bottom = -272.0
 grow_vertical = 0
 scale = Vector2(4, 4)
 theme_override_constants/margin_left = 40
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_bottom = 10
 
 [node name="HBoxUpgrade" type="HBoxContainer" parent="MarginUpgrade" unique_id=2082900917]
 layout_mode = 2
@@ -285,8 +288,10 @@ theme_override_constants/separation = 20
 
 [node name="ItemLaser" type="VBoxContainer" parent="MarginUpgrade/HBoxUpgrade" unique_id=1699840185]
 layout_mode = 2
+theme_override_constants/separation = 2
 
 [node name="Label" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=186144333]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("16_8rjld")
 theme_override_font_sizes/font_size = 12
@@ -301,6 +306,7 @@ texture = ExtResource("14_nptlx")
 stretch_mode = 5
 
 [node name="LabelPrice" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=314573826]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("16_8rjld")
 theme_override_font_sizes/font_size = 12
@@ -316,8 +322,10 @@ stretch_mode = 5
 
 [node name="ItemDefense" type="VBoxContainer" parent="MarginUpgrade/HBoxUpgrade" unique_id=21496006]
 layout_mode = 2
+theme_override_constants/separation = 2
 
 [node name="Label" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1584985600]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("16_8rjld")
 theme_override_font_sizes/font_size = 12
@@ -332,6 +340,7 @@ texture = ExtResource("16_5fq8u")
 stretch_mode = 5
 
 [node name="LabelPrice" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1448363954]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("16_8rjld")
 theme_override_font_sizes/font_size = 12
@@ -349,20 +358,31 @@ stretch_mode = 5
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -408.0
+offset_right = -174.0
+offset_bottom = 54.0
 grow_horizontal = 0
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 100
+scale = Vector2(1.7365365, 1.7365365)
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
 
 [node name="HBoxUang" type="HBoxContainer" parent="MarginUang" unique_id=1695399857]
 layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginUang/HBoxUang" unique_id=1513500342]
+layout_mode = 2
+texture = ExtResource("40_5ejxh")
+stretch_mode = 3
 
 [node name="LabelDompet" type="Label" parent="MarginUang/HBoxUang" unique_id=688523793]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("16_8rjld")
-theme_override_font_sizes/font_size = 60
-text = "COINS :  "
+theme_override_font_sizes/font_size = 25
+text = "999"
+horizontal_alignment = 1
 
 [node name="MarginNavigate" type="MarginContainer" parent="." unique_id=98163976]
 offset_right = 100.0
