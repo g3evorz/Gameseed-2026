@@ -4,7 +4,7 @@ extends Node2D
 @onready var ui_game_over = $CanvasLayer/GameOver
 @onready var ui_pause = $CanvasLayer/PauseMenu
 @onready var score_label = $CanvasLayer/GameOver/VBoxContainer/ScoreLabel
-@onready var coin_label = $CanvasLayer/GameOver/VBoxContainer/TotalCoin
+@onready var coin_label = $CanvasLayer/GameOver/VBoxContainer/HBoxContainer/TotalCoin
 @onready var confirmation_panel = $CanvasLayer/ConfirmationPanel
 
 @onready var animasi_tutorial = $CanvasLayer/TutorialPanel/MarginTutorial/AnimationPlayer
@@ -37,7 +37,7 @@ func _on_game_over():
 	score_label.text = "Score: " + str(int(ScoreManager.current_score))
 	
 	# Ganti 'accumulated_coin_this_run' menjadi 'koin_didapat_run_ini'
-	coin_label.text = "Koin Didapat: " + str(ScoreManager.koin_didapat_run_ini) + " | Saldo: " + str(ScoreManager.dompet_koin)
+	coin_label.text = str(ScoreManager.dompet_koin)
 	
 	ui_game_over.show()
 	GameManager.trigger_game_over()
@@ -72,3 +72,8 @@ func _play_animasi_kereta():
 	
 func _tutorial_show():
 	animasi_tutorial.play("tutorial")
+	
+	ScoreManager.sudah_lihat_tutorial = true
+	
+	# Wajib disimpan saat itu juga!
+	ScoreManager.save_game_data()

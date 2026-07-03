@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://c7g31rlev0qv1" path="res://Assets/UI/Button-UI/retry-btn.png" id="21_gt3je"]
 [ext_resource type="Texture2D" uid="uid://dfidbdgp06qyg" path="res://Assets/UI/Button-UI/home-btn(1).png" id="22_3pmx8"]
 [ext_resource type="Texture2D" uid="uid://m1lhd4umrdnt" path="res://Assets/UI/Button-UI/Background Button.png" id="23_6vcvc"]
+[ext_resource type="Texture2D" uid="uid://kad36fpghehe" path="res://Assets/Station/Coin Terang.png" id="28_kltya"]
 [ext_resource type="Texture2D" uid="uid://lyh10e8cw0q5" path="res://Assets/SwipeUpDown/Light/Hands/Hand3.png" id="30_7k868"]
 [ext_resource type="Texture2D" uid="uid://km1lw0iwo6s3" path="res://Assets/SwipeUpDown/Light/Crosses And Resizers/Vertical_Resize.png" id="31_hpc6h"]
 
@@ -334,7 +335,6 @@ action_mode = 0
 texture_normal = ExtResource("22_3pmx8")
 
 [node name="GameOver" type="Control" parent="CanvasLayer" unique_id=134540017]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -376,22 +376,37 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
+offset_left = -220.0
 offset_top = -200.0
-offset_right = 150.0
+offset_right = 80.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.4450997, 1.4450997)
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=1575947529]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("20_u50mg")
 theme_override_font_sizes/font_size = 40
+text = "Score "
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TotalCoin" type="Label" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=2118115816]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameOver/VBoxContainer" unique_id=119122973]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameOver/VBoxContainer/HBoxContainer" unique_id=1362016407]
+layout_mode = 2
+texture = ExtResource("28_kltya")
+stretch_mode = 3
+
+[node name="TotalCoin" type="Label" parent="CanvasLayer/GameOver/VBoxContainer/HBoxContainer" unique_id=2118115816]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("20_u50mg")
 theme_override_font_sizes/font_size = 40
+text = "999"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameOver" unique_id=2008643272]
 layout_mode = 1
