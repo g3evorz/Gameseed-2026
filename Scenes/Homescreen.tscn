@@ -368,14 +368,14 @@ theme_override_constants/separation = 40
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer" unique_id=976005815]
 layout_mode = 2
-theme_override_constants/separation = 1200
+theme_override_constants/separation = 1400
 
 [node name="MuteLabel" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1578302864]
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("41_bse0w")
 theme_override_font_sizes/font_size = 50
-text = "MUTE AUDIO "
+text = "MUTE "
 
 [node name="Mute" type="CheckBox" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=292162702]
 layout_mode = 2
@@ -384,16 +384,38 @@ theme_override_icons/unchecked = ExtResource("42_c0cds")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer" unique_id=1501142483]
 layout_mode = 2
-theme_override_constants/separation = 1200
+theme_override_constants/separation = 1000
 
 [node name="Volume" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=983705103]
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("41_bse0w")
 theme_override_font_sizes/font_size = 50
-text = "VOLUME"
+text = "MASTER VOLUME"
 
 [node name="VolumeSlider" type="HSlider" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1292663245]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("41_7cpcu")
+theme_override_icons/grabber_highlight = ExtResource("41_7cpcu")
+theme_override_styles/slider = SubResource("StyleBoxTexture_5bbo0")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_nqof3")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer" unique_id=1600187906]
+layout_mode = 2
+theme_override_constants/separation = 1090
+
+[node name="SFXVolume" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1383690855]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("41_bse0w")
+theme_override_font_sizes/font_size = 50
+text = "SFX VOLUME"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=2093085885]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("41_7cpcu")
@@ -420,6 +442,7 @@ scale = Vector2(3, 3)
 texture_normal = ExtResource("47_onw8t")
 
 [node name="HelpPanel" type="Control" parent="." unique_id=668306926]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -514,5 +537,6 @@ texture_normal = ExtResource("47_onw8t")
 [connection signal="konfirmasi_ya" from="ConfirmationPanel" to="." method="_on_confirmation_panel_konfirmasi_ya"]
 [connection signal="toggled" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Mute" to="." method="_on_mute_toggled"]
 [connection signal="value_changed" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
 [connection signal="pressed" from="SettingsPanel/ColorRect/BackSettings" to="." method="_on_back_settings_pressed"]
 [connection signal="pressed" from="HelpPanel/Panel/BackHelp" to="." method="_on_back_help_pressed"]

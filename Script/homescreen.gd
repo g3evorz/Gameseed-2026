@@ -69,3 +69,8 @@ func _on_button_help_pressed() -> void:
 func _on_back_help_pressed() -> void:
 	AudioManager.putar_sfx(AudioManager.sfx_klik)
 	help_panel.hide()
+
+
+func _on_sfx_volume_slider_value_changed(value: float) -> void:
+	AudioManager.putar_sfx(AudioManager.sfx_klik)
+	AudioManager.set_sfx_volume(value)

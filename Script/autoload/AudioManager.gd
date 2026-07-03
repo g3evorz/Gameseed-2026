@@ -5,6 +5,7 @@ var master_bus_index: int
 var sfx_bus_index: int
 
 var current_volume: float = 1.0
+var sfx_volume: float = 1.0
 var is_muted: bool = false
 
 # --- PEMUTAR MUSIK (BGM) ---
@@ -65,6 +66,11 @@ func set_volume(nilai: float):
 	current_volume = nilai
 	terapkan_pengaturan()
 	save_audio_settings()
+	
+func set_sfx_volume(nilai: float):
+	sfx_volume = nilai
+	terapkan_pengaturan()
+	save_audio_settings()
 
 # Dipanggil oleh UI CheckButton (Mute)
 func set_mute(kondisi: bool):
@@ -79,7 +85,9 @@ func terapkan_pengaturan():
 	
 	# Godot menggunakan hitungan Decibel (dB), fungsi linear_to_db akan mengonversi skala 0.0 - 1.0 menjadi dB dengan akurat
 	AudioServer.set_bus_volume_db(master_bus_index, linear_to_db(current_volume))
-
+	
+	# SFX Volume
+	AudioServer.set_bus_volume_db(sfx_bus_index, linear_to_db(sfx_volume))
 
 # --- SISTEM PENYIMPANAN SINKRONOUS ---
 func save_audio_settings():
