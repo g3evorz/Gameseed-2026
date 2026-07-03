@@ -22,5 +22,6 @@ func _on_btn_ya_pressed():
 
 # Fungsi internal saat tombol Tidak ditekan
 func _on_btn_tidak_pressed():
+	AudioManager.putar_sfx(AudioManager.sfx_klik)
 	visible = false
 	konfirmasi_tidak.emit() # Pancarkan sinyal Tidak
