@@ -122,12 +122,6 @@ func _spawn_temporary(obstacle_data: ObstacleData, player: Node2D, cam: Camera2D
 	
 	var inaccuracy = current_difficulty.targeting_inaccuracy
 	
-	print("Screen Center : ", screen_center_y)
-	print("Camera top : ", camera_top)
-	print("Camera bottom : ", camera_bottom)
-	print("Minimum Y spawn : ", min_track_y)
-	print("Maksimum Y spawn : ", max_track_y)
-	
 	if not _track_has_room(min_track_y, max_track_y):
 		return
 

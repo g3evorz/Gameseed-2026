@@ -104,9 +104,6 @@ func _enter_state(new_state: State) -> void:
 	current_state = new_state
 	_time_passed = 0.0 # Reset waktu untuk memastikan sinkronisasi tiap pergantian state
 
-	print("Position : ", 	_start_position)
-	print("Target : ", _target_position)
-
 	match current_state:
 		State.ENGAGING:
 			warning_indicator.hide()
