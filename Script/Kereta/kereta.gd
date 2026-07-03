@@ -6,6 +6,11 @@ extends Node2D
 
 @onready var health_bar = $CanvasLayer/MarginContainer/HealthBar
 @onready var label_hp_angka = $CanvasLayer/MarginContainer/HealthBar/Label # Sesuaikan path ini!
+@onready var indikator_power_up = $CanvasLayer/MarginPowerUps/IndikatorPowerUp
+
+var ghost_icon = preload("res://Assets/Power Up/Ghost Mode.png")
+var gerbong_icon = preload("res://Assets/Power Up/Heal.png")
+var laser_icon = preload("res://Assets/Power Up/Dual Laser.png")
 
 @export var JARAK_PIKSEL_ANTAR_GERBONG = 200.0 
 @export var KEKAKUAN_DASAR = 15.0 
@@ -144,6 +149,9 @@ func ghost_mode(durasi: float):
 	is_invincible = true
 	timer_invincible = durasi
 	print("Mode Hantu Aktif selama ", durasi, " detik! Pindah ke Layer 4")
+	
+	if indikator_power_up:
+		indikator_power_up.aktifkan_ikon(durasi, ghost_icon)
 	
 	# 1. Atur Kepala Kereta
 	if is_instance_valid(kepala_kereta):

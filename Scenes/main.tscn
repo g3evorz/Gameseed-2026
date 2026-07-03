@@ -438,17 +438,20 @@ texture_normal = ExtResource("22_3pmx8")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -279.0
-offset_right = -28.429688
+offset_left = -413.0
+offset_right = -162.42969
 offset_bottom = 145.0
 grow_horizontal = 0
 scale = Vector2(1.636039, 1.636039)
-theme_override_constants/margin_left = 60
 theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 0
+theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 0
 
-[node name="PauseButton" type="TextureButton" parent="CanvasLayer/MarginContainer" unique_id=820578102]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=1128533476]
+layout_mode = 2
+alignment = 2
+
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=820578102]
 layout_mode = 2
 texture_normal = ExtResource("20_pdsj5")
 
@@ -512,7 +515,7 @@ expand_mode = 1
 [connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/Exit" to="." method="_on_btn_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOver/HBoxContainer/Retry" to="." method="_on_btn_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameOver/HBoxContainer/Exit" to="." method="_on_btn_quit_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="konfirmasi_ya" from="CanvasLayer/ConfirmationPanel" to="." method="_on_confirmation_panel_konfirmasi_ya"]
 
 [editable path="Kereta"]
