@@ -20,6 +20,7 @@ func take_damage(damage_amount: int):
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		var kereta = body.get_parent() # Mengambil node KeretaManager
+		
 		# --- CEK GHOST MODE DI SINI ---
 		if kereta and "is_invincible" in kereta and kereta.is_invincible:
 			print("Kereta transparan menembus rintangan!")
@@ -29,10 +30,9 @@ func _on_body_entered(body):
 		# Jika Ghost Mode mati, jalankan tabrakan normal
 		if kereta and kereta.has_method("take_damage"):
 			kereta.take_damage(damage_tabrakan * GameManager.current_difficulty.damage_multiplier)
-		
-		GameManager.terapkan_efek_ram(kekuatan_slow)
+			GameManager.terapkan_efek_ram(kekuatan_slow)
 		# Hancurkan obstacle
-		die()
+			die()
 
 # DESTROY OBJECT
 
@@ -41,4 +41,5 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()	
 
 func die():
+	AudioManager.putar_sfx(AudioManager.sfx_destroyed)
 	queue_free()

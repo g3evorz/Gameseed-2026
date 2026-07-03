@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2434knylnpe6"]
 
 [ext_resource type="Script" uid="uid://lf3x2jbh43df" path="res://Script/Weapon/Pulse/pulseBullet.gd" id="1_ng0jn"]
-[ext_resource type="Texture2D" uid="uid://bjqmutlvg887t" path="res://Assets/Laser/Warped shooting fx files/Assets/Pixelart/charged/sprites/charged5.png" id="2_voauv"]
+[ext_resource type="Texture2D" uid="uid://sjy2tfl3n17q" path="res://Assets/Player Train/Weapon/Pulse Bullet/Main.png" id="2_ng0jn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5w2sr"]
 
@@ -9,6 +9,7 @@
 collision_layer = 16
 collision_mask = 4
 script = ExtResource("1_ng0jn")
+beam_active_duration = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1784169073]
 shape = SubResource("RectangleShape2D_5w2sr")
@@ -18,4 +19,8 @@ target_position = Vector2(2000, 0)
 collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=165877115]
-texture = ExtResource("2_voauv")
+position = Vector2(0, -1)
+texture = ExtResource("2_ng0jn")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -8,6 +8,7 @@
 [node name="Node2D" type="Area2D" unique_id=1037329452]
 scale = Vector2(5.947415, 5.947415)
 collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_ajccb")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=9474301]

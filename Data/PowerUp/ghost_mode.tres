@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource("1_getb3")
+type = 1
 obstacle_scene = ExtResource("1_0dp0g")
+spawn_weight = 0.4
 metadata/_custom_type_script = "uid://brhx3skaebmcy"

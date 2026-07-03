@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://duwx2ou7tmpmi"
+path="res://.godot/imported/prolog music.ogg-a17074b87bb083df45d32f3816d73315.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/prolog music.ogg"
+dest_files=["res://.godot/imported/prolog music.ogg-a17074b87bb083df45d32f3816d73315.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

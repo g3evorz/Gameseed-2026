@@ -1,26 +1,31 @@
 [gd_scene format=3 uid="uid://beu1amvuojaxt"]
 
-[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_7cxqh"]
 [ext_resource type="Script" uid="uid://bfs673vj815m8" path="res://Script/Weapon/Musuh/rocket.gd" id="1_v0csw"]
+[ext_resource type="Texture2D" uid="uid://b81mk2s6h07e7" path="res://Assets/Enemy Train/Weapon/Rocket/Warning.png" id="2_1ny4c"]
+[ext_resource type="Texture2D" uid="uid://ljc5g3sijjfi" path="res://Assets/Enemy Train/Weapon/Rocket/Rocket.png" id="3_1ny4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0csw"]
+size = Vector2(2.5006943, 4.824729)
 
 [node name="Rocket" type="Area2D" unique_id=139320472]
 collision_layer = 2
 script = ExtResource("1_v0csw")
 
 [node name="WarningSprite" type="Sprite2D" parent="." unique_id=1840057059]
-texture = ExtResource("1_7cxqh")
-offset = Vector2(-300, 0)
+position = Vector2(-180, 0)
+scale = Vector2(1.0081277, 1.0081277)
+texture = ExtResource("2_1ny4c")
 
 [node name="RocketSprite" type="Sprite2D" parent="." unique_id=2034819980]
-position = Vector2(179.19989, 0.25501633)
-scale = Vector2(2.7999983, 0.62898463)
-texture = ExtResource("1_7cxqh")
+scale = Vector2(2.3291438, 2.280131)
+texture = ExtResource("3_1ny4c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066472482]
-position = Vector2(179.19989, 0.2550163)
-scale = Vector2(15.84438, 3.108983)
+scale = Vector2(18.451921, 3.5444443)
 shape = SubResource("RectangleShape2D_v0csw")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1288769367]
+position = Vector2(83, 2)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -2,10 +2,14 @@ class_name ObstacleData
 extends Resource
 
 # Enum lama (Biarkan utuh untuk keperluan Level Spawner)
-enum ObstacleType { SMALL, BIG, ROCKET }
+enum ObstacleType { SMALL, BIG }
 
 # Enum BARU (Khusus untuk mengatur perilaku Enemy Spawner)
 enum SpawnBehavior { LEVEL_ONLY, DYNAMIC_TEMPORARY, DYNAMIC_PERMANENT }
+ 
+enum SpawnType { OBSTACLE, POWER_UP }
+ 
+@export var type: SpawnType = SpawnType.OBSTACLE
 
 # Variabel yang sudah ada
 @export var obstacle_scene: PackedScene

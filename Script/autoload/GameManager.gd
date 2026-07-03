@@ -1,16 +1,16 @@
 extends Node
 
 # Kecepatan Platform
-@export var BASE_SPEED: float = 500.0
-@export var MAX_SPEED: float = 3000.0	
-@export var ACCELERATION: float = 13.0
+@export var BASE_SPEED: float = 300.0
+@export var MAX_SPEED: float = 1000.0
+@export var ACCELERATION: float = 10.0
 
 @export var difficulty_phases: Array[DifficultyConfig] = []
 @export var weight_multipliers: Dictionary = {}
 
 # Hit and Stop 
 @export var HIT_STOP_DURATION: float = 0.8  # Durasi game freeze (dalam detik)
-@export var RECOVERY_ACCELERATION: float = 500.0
+@export var RECOVERY_ACCELERATION: float = 300.0
 @export var RAM_COOLDOWN: float = 0.95      
 
 var is_hit_stopping: bool = false
@@ -31,6 +31,7 @@ signal game_paused
 signal game_resumed
 signal game_over_triggered
 signal difficulty_increased(new_config: DifficultyConfig)
+signal power_up_diaktifkan(durasi: float, tekstur_ikon: Texture2D)
 
 func _ready():
 	current_world_speed = BASE_SPEED
@@ -51,8 +52,8 @@ func _physics_process(delta):
 		current_world_speed = move_toward(current_world_speed, MAX_SPEED, ACCELERATION * delta)
 		_evaluate_difficulty()
 		
-	if ACCELERATION > normal_acceleration and current_world_speed >= MAX_SPEED - 50.0:
-			ACCELERATION = normal_acceleration
+	#if ACCELERATION > normal_acceleration and current_world_speed >= MAX_SPEED - 50.0:
+			#ACCELERATION = normal_acceleration
 			
 
 func get_speed_ratio() -> float:
@@ -77,7 +78,6 @@ func _evaluate_difficulty():
 			if current_difficulty != phase:
 				current_difficulty = phase
 				difficulty_increased.emit(current_difficulty)
-				print("Difficulty Upgraded at ratio: ", current_ratio)
 			break
 
 func terapkan_efek_ram(efek_slow_percent: float):
@@ -109,7 +109,7 @@ func terapkan_efek_ram(efek_slow_percent: float):
 
 func mulai_game():
 	status_sekarang = GameState.BERMAIN
-	current_world_speed = BASE_SPEED
+	current_world_speed = BASE_SPEED	
 	game_started.emit()
 
 # --- LOGIKA PAUSE ---
@@ -132,6 +132,7 @@ func trigger_game_over():
 	if status_sekarang == GameState.GAME_OVER:
 		return
 	status_sekarang = GameState.GAME_OVER
+	get_tree().paused = true
 	ScoreManager.finalize_score_and_save()
 	game_over_triggered.emit()
 

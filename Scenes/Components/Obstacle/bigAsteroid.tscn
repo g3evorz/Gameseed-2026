@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dcoj4jkya8od8"]
 
 [ext_resource type="Script" uid="uid://cbmv173i77ke0" path="res://Script/obstacle.gd" id="1_6rx0e"]
-[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="2_0lqes"]
+[ext_resource type="Texture2D" uid="uid://dsr5odyjsvsek" path="res://Assets/Background Part/Meteorite (Part by Part)/Meteor Besar.png" id="2_0lqes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlq78"]
 
@@ -14,6 +14,8 @@ script = ExtResource("1_6rx0e")
 position = Vector2(-0.100000024, 0.19999981)
 scale = Vector2(0.21424063, 0.19697517)
 texture = ExtResource("2_0lqes")
+region_enabled = true
+region_rect = Rect2(862.33655, 261.83618, 161.66345, 164.27203)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1518009490]
 shape = SubResource("RectangleShape2D_hlq78")

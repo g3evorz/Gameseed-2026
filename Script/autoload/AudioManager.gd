@@ -5,6 +5,7 @@ var master_bus_index: int
 var sfx_bus_index: int
 
 var current_volume: float = 1.0
+var sfx_volume: float = 1.0
 var is_muted: bool = false
 
 # --- PEMUTAR MUSIK (BGM) ---
@@ -14,15 +15,26 @@ var bgm_player: AudioStreamPlayer
 var musik_homescreen = preload("res://Assets/Music/train_mainmenu FIX SEMENTARA.ogg") 
 var musik_upgrade = preload("res://Assets/Music/upgrade stasion.ogg")
 var musik_play = preload("res://Assets/Music/main theme latest.ogg")
+var musik_prolog = preload("res://Assets/Music/prolog music.ogg")
 
 # PATH SFX
 var sfx_klik = preload("res://Assets/SFX/select button sfx/blipSelect (1).wav")
 var sfx_upgrade = preload("res://Assets/SFX/click.wav")
+
+# INGAME OBJECT SFX
 var sfx_power_up_pick = preload("res://Assets/SFX/power up/powerUp.wav")
 var sfx_crash = preload("res://Assets/SFX/train crash/crash with obstacle (2).wav")
+var sfx_destroyed = preload("res://Assets/SFX/Explosion/explosion (2).wav")
 
+# WEAPON SFX
+var enemy_laser_charged = preload("res://Assets/SFX/Laser shoot/enemy laserShoot-charged.wav")
+var enemy_laser_launched = preload("res://Assets/SFX/Laser shoot/enemy laserShoot 2.wav")
+var enemy_rocket_warning = preload("res://Assets/SFX/warning sfx.ogg")	
+var enemy_rocket_launched = preload("res://Assets/SFX/Explosion/explosion (6).wav")
+var player_laser = preload("res://Assets/SFX/Laser shoot/laserShoot (3).wav")
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	master_bus_index = AudioServer.get_bus_index("Master")
 	sfx_bus_index = AudioServer.get_bus_index("SFX")
 	# 1. SETUP BGM PLAYER (Hanya dibuat sekali)
@@ -63,6 +75,11 @@ func set_volume(nilai: float):
 	current_volume = nilai
 	terapkan_pengaturan()
 	save_audio_settings()
+	
+func set_sfx_volume(nilai: float):
+	sfx_volume = nilai
+	terapkan_pengaturan()
+	save_audio_settings()
 
 # Dipanggil oleh UI CheckButton (Mute)
 func set_mute(kondisi: bool):
@@ -77,7 +94,9 @@ func terapkan_pengaturan():
 	
 	# Godot menggunakan hitungan Decibel (dB), fungsi linear_to_db akan mengonversi skala 0.0 - 1.0 menjadi dB dengan akurat
 	AudioServer.set_bus_volume_db(master_bus_index, linear_to_db(current_volume))
-
+	
+	# SFX Volume
+	AudioServer.set_bus_volume_db(sfx_bus_index, linear_to_db(sfx_volume))
 
 # --- SISTEM PENYIMPANAN SINKRONOUS ---
 func save_audio_settings():

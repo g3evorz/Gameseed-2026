@@ -39,6 +39,7 @@ project/assembly_name="GAMESEED-2026"
 
 Player=""
 Enemy=""
+GroundReference=""
 
 [input]
 

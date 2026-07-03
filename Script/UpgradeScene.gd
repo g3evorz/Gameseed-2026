@@ -37,7 +37,7 @@ func _ready():
 # --- FUNGSI UPDATE TAMPILAN UI ---
 func update_semua_ui():
 	# Update Teks Dompet
-	label_dompet.text = "Saldo Koin: " + str(ScoreManager.dompet_koin)
+	label_dompet.text = str(ScoreManager.dompet_koin)
 	
 	# 1. Update UI Laser
 	var level_l = ScoreManager.level_upgrade_laser
@@ -61,14 +61,14 @@ func hitung_harga(dasar: int, kelipatan: int, level_saat_ini: int) -> int:
 # --- FUNGSI KLIK TOMBOL BELI (Hubungkan via Inspector ke masing-masing Button) ---
 
 func _on_btn_beli_laser_pressed():
-	if ScoreManager.level_upgrade_laser <= 3:
+	if ScoreManager.level_upgrade_laser <= ScoreManager.LEVEL_MAKSIMUM:
 		AudioManager.putar_sfx(AudioManager.sfx_upgrade)
 		var harga = hitung_harga(harga_dasar_laser, kelipatan_harga_laser, ScoreManager.level_upgrade_laser)
 		if ScoreManager.beli_upgrade(harga, "laser"):
 			update_semua_ui()
 
 func _on_btn_beli_defense_pressed():
-	if ScoreManager.level_upgrade_defense <= 3:
+	if ScoreManager.level_upgrade_defense <= ScoreManager.LEVEL_MAKSIMUM:
 		AudioManager.putar_sfx(AudioManager.sfx_upgrade)
 		var harga = hitung_harga(harga_dasar_defense, kelipatan_harga_defense, ScoreManager.level_upgrade_defense)
 		if ScoreManager.beli_upgrade(harga, "defense"):

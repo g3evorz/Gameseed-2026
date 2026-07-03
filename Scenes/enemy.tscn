@@ -1,8 +1,42 @@
 [gd_scene format=3 uid="uid://cn6jf1k6pe6l8"]
 
 [ext_resource type="Script" uid="uid://bn3fkdkf46ee7" path="res://Script/enemy.gd" id="1_1f0kj"]
-[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_hghv2"]
+[ext_resource type="Texture2D" uid="uid://3b2hbm5vskbw" path="res://Assets/Enemy Train/Head/1.png" id="2_auwsv"]
+[ext_resource type="Texture2D" uid="uid://cvxgtfuu0kopn" path="res://Assets/Enemy Train/Head/2.png" id="3_8uf12"]
 [ext_resource type="PackedScene" uid="uid://dbkh6apanukm8" path="res://Scenes/Components/Musuh/gerbong_musuh.tscn" id="3_afpow"]
+[ext_resource type="Texture2D" uid="uid://ipudtr06vrxc" path="res://Assets/Enemy Train/Head/3.png" id="4_po0sg"]
+[ext_resource type="Texture2D" uid="uid://dwsc6utcp77a1" path="res://Assets/Enemy Train/Head/4.png" id="5_haro7"]
+[ext_resource type="Texture2D" uid="uid://o38gx3eomdll" path="res://Assets/Enemy Train/Head/5.png" id="6_56vhr"]
+[ext_resource type="Texture2D" uid="uid://hlfexk8b7hvj" path="res://Assets/Enemy Train/Head/6.png" id="7_ta2yt"]
+[ext_resource type="PackedScene" uid="uid://cekf0hkf3g5p8" path="res://Scenes/Components/Musuh/gerbong_musuh_2.tscn" id="9_8uf12"]
+[ext_resource type="PackedScene" uid="uid://davk4fm5202o" path="res://Scenes/Components/Musuh/gerbong_musuh_3.tscn" id="10_haro7"]
+[ext_resource type="PackedScene" uid="uid://boumun8kfpmi1" path="res://Scenes/Components/Musuh/gerbong_musuh_4.tscn" id="11_56vhr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4x7e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_auwsv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8uf12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_po0sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_haro7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_56vhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ta2yt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="Node2D" unique_id=233523717]
 script = ExtResource("1_1f0kj")
@@ -11,23 +45,27 @@ script = ExtResource("1_1f0kj")
 
 [node name="VisualWrapper" type="Node2D" parent="Kepala" unique_id=1739382607]
 
-[node name="Sprite2D" type="Sprite2D" parent="Kepala/VisualWrapper" unique_id=254567006]
-position = Vector2(-129, 38)
-scale = Vector2(2.0234377, 0.59375)
-texture = ExtResource("1_hghv2")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Kepala/VisualWrapper" unique_id=1793177405]
+position = Vector2(-128, 97)
+sprite_frames = SubResource("SpriteFrames_m4x7e")
 centered = false
 offset = Vector2(0, -126)
 
 [node name="Kumpulan Gerbong" type="Node2D" parent="." unique_id=3761946]
 
 [node name="Gerbong_musuh" parent="Kumpulan Gerbong" unique_id=801158437 instance=ExtResource("3_afpow")]
-position = Vector2(-278, 0)
+position = Vector2(-189, 4)
 
-[node name="Gerbong_musuh2" parent="Kumpulan Gerbong" unique_id=1694006447 instance=ExtResource("3_afpow")]
-position = Vector2(-556, 0)
+[node name="Sprite2D" parent="Kumpulan Gerbong/Gerbong_musuh" index="0" unique_id=1794841442]
+frame_progress = 0.9466124
 
-[node name="Gerbong_musuh3" parent="Kumpulan Gerbong" unique_id=361256157 instance=ExtResource("3_afpow")]
-position = Vector2(-834, 0)
+[node name="Gerbong_musuh2" parent="Kumpulan Gerbong" unique_id=669495298 instance=ExtResource("9_8uf12")]
+position = Vector2(-312, 5)
 
-[node name="Gerbong_musuh4" parent="Kumpulan Gerbong" unique_id=783311124 instance=ExtResource("3_afpow")]
-position = Vector2(-1112, 0)
+[node name="Gerbong_musuh3" parent="Kumpulan Gerbong" unique_id=820446500 instance=ExtResource("10_haro7")]
+position = Vector2(-430, 4)
+
+[node name="Gerbong_musuh4" parent="Kumpulan Gerbong" unique_id=1591166798 instance=ExtResource("11_56vhr")]
+position = Vector2(-548, 5)
+
+[editable path="Kumpulan Gerbong/Gerbong_musuh"]

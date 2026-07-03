@@ -1,29 +1,97 @@
-[gd_scene format=3 uid="uid://cekjkxc2vo48a"]
+[gd_scene format=4 uid="uid://cekjkxc2vo48a"]
 
 [ext_resource type="Script" uid="uid://bbu4urqab8mo1" path="res://Script/Level.gd" id="1_4ahh4"]
 [ext_resource type="PackedScene" uid="uid://ciej1ht535fuo" path="res://Scenes/Components/Obstacle/platform.tscn" id="2_dl55b"]
 [ext_resource type="PackedScene" uid="uid://dfoomfadjrnm4" path="res://Scenes/Components/obstacleSpawner.tscn" id="3_osqx1"]
 [ext_resource type="Script" uid="uid://brhx3skaebmcy" path="res://Script/Configuration/ObstacleData.gd" id="4_sy7oa"]
-[ext_resource type="Resource" uid="uid://dl6ffbqtc5qiu" path="res://Script/Data/PowerUp/gerbong_replenish.tres" id="5_md4x4"]
-[ext_resource type="Resource" uid="uid://dvw3jmwvw8fn" path="res://Script/Data/PowerUp/ghost_mode.tres" id="6_1hf40"]
-[ext_resource type="Resource" uid="uid://bnp2sd3chdb2q" path="res://Script/Data/PowerUp/laserPowerups.tres" id="7_13yca"]
-[ext_resource type="Resource" uid="uid://bw6wnloibyrcs" path="res://Script/Data/Obstacle/big_asteroid.tres" id="8_8dmpc"]
-[ext_resource type="Resource" uid="uid://b3eb6mfvn044l" path="res://Script/Data/Obstacle/small_asteroid.tres" id="9_anjjd"]
+[ext_resource type="Resource" uid="uid://dl6ffbqtc5qiu" path="res://Data/PowerUp/gerbong_replenish.tres" id="5_md4x4"]
+[ext_resource type="Resource" uid="uid://dvw3jmwvw8fn" path="res://Data/PowerUp/ghost_mode.tres" id="6_1hf40"]
+[ext_resource type="Resource" uid="uid://bnp2sd3chdb2q" path="res://Data/PowerUp/laserPowerups.tres" id="7_13yca"]
+[ext_resource type="Resource" uid="uid://bw6wnloibyrcs" path="res://Data/Obstacle/big_asteroid.tres" id="8_8dmpc"]
+[ext_resource type="Resource" uid="uid://b3eb6mfvn044l" path="res://Data/Obstacle/small_asteroid.tres" id="9_anjjd"]
+[ext_resource type="Texture2D" uid="uid://cp1p3smhg47j4" path="res://Assets/Rail/Normal/Straight + Boost/RailBoost-sheet.png" id="10_dl55b"]
+[ext_resource type="Texture2D" uid="uid://d4c56h0atdp6q" path="res://Assets/Rail/Normal/Left.png" id="11_md4x4"]
+[ext_resource type="Texture2D" uid="uid://cjup7udg20gst" path="res://Assets/Rail/Normal/Right.png" id="12_1hf40"]
+[ext_resource type="Texture2D" uid="uid://dmypkkkbxvkfo" path="res://Assets/Rail/Normal/Broken Right/BrokenRight-sheet.png" id="13_1hf40"]
+[ext_resource type="Texture2D" uid="uid://bjtmsaqgckcpc" path="res://Assets/Rail/Normal/Straight.png" id="13_13yca"]
+[ext_resource type="Texture2D" uid="uid://by13ndvd1erp0" path="res://Assets/Rail/Normal/Broken Left/BrokenLeft-sheet.png" id="14_13yca"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_osqx1"]
+texture = ExtResource("10_dl55b")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_columns = 4
+0:0/animation_speed = 4.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dmpc"]
+texture = ExtResource("11_md4x4")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_anjjd"]
+texture = ExtResource("12_1hf40")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ocbj8"]
+texture = ExtResource("13_13yca")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r8neg"]
+texture = ExtResource("13_1hf40")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_columns = 5
+0:0/animation_speed = 5.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rcyh2"]
+texture = ExtResource("14_13yca")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_columns = 5
+0:0/animation_speed = 5.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_sy7oa"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 11
+sources/0 = SubResource("TileSetAtlasSource_osqx1")
+sources/1 = SubResource("TileSetAtlasSource_8dmpc")
+sources/2 = SubResource("TileSetAtlasSource_anjjd")
+sources/3 = SubResource("TileSetAtlasSource_ocbj8")
+sources/4 = SubResource("TileSetAtlasSource_r8neg")
+sources/5 = SubResource("TileSetAtlasSource_rcyh2")
 
 [node name="BasicLandscapes" type="Node2D" unique_id=799622499]
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_4ahh4")
 
 [node name="platform" parent="." unique_id=2120483876 instance=ExtResource("2_dl55b")]
-position = Vector2(1200, -321)
-scale = Vector2(5, 0.751)
+position = Vector2(1304.9999, -622.49994)
+scale = Vector2(4.283414, 1.8744874)
 
-[node name="platform3" parent="." unique_id=832513540 instance=ExtResource("2_dl55b")]
-position = Vector2(3629, -698.99994)
-scale = Vector2(4, 0.766)
+[node name="platform3" parent="." unique_id=1358631442 instance=ExtResource("2_dl55b")]
+position = Vector2(3560, -622.49994)
+scale = Vector2(4.283414, 1.8744874)
 
-[node name="platform4" parent="." unique_id=1608372259 instance=ExtResource("2_dl55b")]
-position = Vector2(1289, -664)
-scale = Vector2(4, 0.766)
+[node name="platform2" parent="." unique_id=797523830 instance=ExtResource("2_dl55b")]
+position = Vector2(1155, -369.99997)
+scale = Vector2(4.847847, 1.8845792)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=60705751]
 position = Vector2(4841, -331)
@@ -31,76 +99,68 @@ position = Vector2(4841, -331)
 [node name="Spawners" type="Node2D" parent="." unique_id=386448179]
 
 [node name="ObstacleSpawner" parent="Spawners" unique_id=837773415 instance=ExtResource("3_osqx1")]
-position = Vector2(1805, -413)
+position = Vector2(1805, -472.5)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("8_8dmpc"), ExtResource("9_anjjd")])
 
 [node name="ObstacleSpawner2" parent="Spawners" unique_id=1764472550 instance=ExtResource("3_osqx1")]
-position = Vector2(4008, -775)
+position = Vector2(4008, -722.5)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("8_8dmpc"), ExtResource("9_anjjd")])
-spawn_chance = 0.8
 
 [node name="ObstacleSpawner7" parent="Spawners" unique_id=1990665921 instance=ExtResource("3_osqx1")]
 position = Vector2(2769, -45)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("5_md4x4"), ExtResource("6_1hf40"), ExtResource("7_13yca")])
-spawn_chance = 0.5
 
 [node name="ObstacleSpawner8" parent="Spawners" unique_id=1775246808 instance=ExtResource("3_osqx1")]
 position = Vector2(3821, -45)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("8_8dmpc")])
-spawn_chance = 1.0
 
 [node name="ObstacleSpawner9" parent="Spawners" unique_id=1976000251 instance=ExtResource("3_osqx1")]
 position = Vector2(4110, -45)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("6_1hf40")])
-spawn_chance = 0.2
 
 [node name="ObstacleSpawner15" parent="Spawners" unique_id=467859041 instance=ExtResource("3_osqx1")]
 position = Vector2(1035, -35)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("8_8dmpc"), ExtResource("9_anjjd"), ExtResource("5_md4x4"), ExtResource("7_13yca")])
-spawn_chance = 0.8
 
 [node name="ObstacleSpawner16" parent="Spawners" unique_id=1042374601 instance=ExtResource("3_osqx1")]
 position = Vector2(1279, -35)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("9_anjjd"), ExtResource("5_md4x4"), ExtResource("7_13yca")])
-spawn_chance = 0.4
 
 [node name="ObstacleSpawner17" parent="Spawners" unique_id=353602083 instance=ExtResource("3_osqx1")]
 position = Vector2(1568, -35)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("9_anjjd"), ExtResource("5_md4x4"), ExtResource("7_13yca")])
-spawn_chance = 0.4
 
 [node name="ObstacleSpawner10" parent="Spawners" unique_id=1803498278 instance=ExtResource("3_osqx1")]
-position = Vector2(969, -765)
+position = Vector2(1057.5, -715)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("8_8dmpc"), ExtResource("9_anjjd"), ExtResource("5_md4x4"), ExtResource("6_1hf40"), ExtResource("7_13yca")])
-spawn_chance = 0.5
 
 [node name="ObstacleSpawner11" parent="Spawners" unique_id=64424452 instance=ExtResource("3_osqx1")]
-position = Vector2(1213, -765)
+position = Vector2(1301.5, -715)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("9_anjjd"), ExtResource("6_1hf40"), ExtResource("7_13yca")])
-spawn_chance = 0.5
 
 [node name="ObstacleSpawner12" parent="Spawners" unique_id=382322877 instance=ExtResource("3_osqx1")]
-position = Vector2(1502, -765)
+position = Vector2(1590.5, -715)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("8_8dmpc"), ExtResource("6_1hf40")])
-spawn_chance = 0.2
 
 [node name="ObstacleSpawner18" parent="Spawners" unique_id=1474597324 instance=ExtResource("3_osqx1")]
-position = Vector2(3062, -775)
+position = Vector2(3062, -722.5)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("9_anjjd"), ExtResource("5_md4x4"), ExtResource("6_1hf40")])
-spawn_chance = 0.5
 
 [node name="ObstacleSpawner19" parent="Spawners" unique_id=42609866 instance=ExtResource("3_osqx1")]
-position = Vector2(3351, -775)
+position = Vector2(3351, -722.5)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("9_anjjd"), ExtResource("5_md4x4"), ExtResource("6_1hf40"), ExtResource("7_13yca")])
-spawn_chance = 0.5
 
 [node name="ObstacleSpawner13" parent="Spawners" unique_id=1902928466 instance=ExtResource("3_osqx1")]
-position = Vector2(632, -403)
+position = Vector2(632, -462.5)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("8_8dmpc")])
-spawn_chance = 1.0
 
 [node name="ObstacleSpawner14" parent="Spawners" unique_id=1076657512 instance=ExtResource("3_osqx1")]
-position = Vector2(876, -403)
+position = Vector2(876, -462.5)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("8_8dmpc"), ExtResource("5_md4x4")])
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=395957947]
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAABAP7/AAAAAAAAAAAHAP7/AAAAAAAAAAAIAP7/AgAAAAAAAAAAAP7/AQAAAAAAAAACAP7/AwAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AwAAAAAAAAAFAP7/AAAAAAAAAAAGAP7/AwAAAAAAAAACAP3/AAAAAAAAAAAHAP3/AAAAAAAAAAABAP3/AQAAAAAAAAAIAP3/BAAAAAAAAAADAP3/AwAAAAAAAAAEAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAP3/AwAAAAAAAAALAP3/AAAAAAAAAAAMAP3/AwAAAAAAAAANAP3/AAAAAAAAAAAOAP3/AAAAAAAAAAAPAP3/AwAAAAAAAAAQAP3/AAAAAAAAAAARAP3/AgAAAAAAAAAKAP3/BQAAAAAAAAA=")
+tile_set = SubResource("TileSet_sy7oa")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

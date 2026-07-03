@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 		State.ENGAGING:
 			_time_passed += delta
 			#warning_indicator.modulate.a = 0.5 + (sin(_time_passed * telegraph_speed) * 0.5) # EFEK NGEBLINK
- 
+
 			var anchored_x: float = _get_anchored_x()
  
 			if _is_moving and engaging_duration > 0:
@@ -106,6 +106,7 @@ func _enter_state(new_state: State) -> void:
 
 	match current_state:
 		State.ENGAGING:
+			AudioManager.putar_sfx(AudioManager.enemy_laser_charged)
 			warning_indicator.hide()
 			satellite_body.show()
 

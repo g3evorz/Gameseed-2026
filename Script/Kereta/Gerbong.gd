@@ -23,6 +23,8 @@ var timer_imunitas = 0.0
 @export var BATAS_MINIMUM_COUPLER = 12.5
 @export var LEBAR_ASLI_GAMBAR_HIDROLIK = 110.0 
 
+@export var MAX_HP : float = 200.0
+
 # BATAS EKSTREM GERBONG HANCUR
 @export var BATAS_HANCUR = 1500.0
 @export var BATAS_EKSTRIM_X = 200.0 
@@ -73,14 +75,17 @@ func _physics_process(delta):
 	if is_instance_valid(node_target):
 		var jarak_y = node_target.global_position.y - global_position.y
 		
-		if Input.is_action_just_pressed("ui_down"):
-			if is_on_floor():
-				# Jika di lantai: tembus platform One-Way
-				global_position.y += 2.0
-			else:
-				# Jika di udara: ikuti bantingan gravitasi kepala kereta
+		if jarak_y > 15.0 and is_on_floor():
+			# Target ada di bawah dan gerbong di lantai: tembus One-Way
+			global_position.y += 2.0
+		elif not is_on_floor():
+			# Deteksi jika target sedang jatuh cepat (opsional)
+			if node_target.velocity.y >= FAST_FALL_VELOCITY:
 				velocity.y = FAST_FALL_VELOCITY
-			
+		else:
+			if was_on_floor and velocity.y < 0: velocity.y = 0.0
+			velocity.y += gravity * delta
+				
 		if node_target.is_class("CharacterBody2D") and node_target.is_on_floor():
 			if is_on_floor():
 				velocity.y = clamp(jarak_y * kekakuan_rantai, -MAX_SPRING_VELOCITY, MAX_SPRING_VELOCITY)
@@ -191,6 +196,18 @@ func _physics_process(delta):
 				putus_sambungan()
 			if global_position.y - node_target.global_position.y > BATAS_EKSTRIM_Y:
 				putus_sambungan()
+
+func take_damage(jumlah_damage: int):
+	if GameManager.status_sekarang != GameManager.GameState.BERMAIN:
+		return
+		
+	var current_health = MAX_HP
+	
+	current_health -= jumlah_damage
+	
+	if current_health <= 0:
+		current_health = 0 
+		hancur()
 
 func hancur():
 	queue_free()

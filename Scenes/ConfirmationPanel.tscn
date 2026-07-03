@@ -2,15 +2,9 @@
 
 [ext_resource type="Script" uid="uid://hd1yrmuw0sb" path="res://Script/ConfirmationPanel.gd" id="1_264qt"]
 [ext_resource type="FontFile" uid="uid://bnumkmoiqqk13" path="res://Assets/determination.ttf" id="2_qgbfg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgbfg"]
-bg_color = Color(0.08627451, 0.08235294, 0.35686275, 0.4392157)
-border_width_left = 15
-border_width_top = 15
-border_width_right = 15
-border_width_bottom = 15
-border_color = Color(0.61960787, 0.6039216, 0.3882353, 0.57254905)
-corner_detail = 20
+[ext_resource type="Texture2D" uid="uid://m1lhd4umrdnt" path="res://Assets/UI/Button-UI/Background Button.png" id="2_uquxi"]
+[ext_resource type="Texture2D" uid="uid://cshp83tr8f66x" path="res://Assets/UI/Button-UI/Yes.png" id="3_h3qsm"]
+[ext_resource type="Texture2D" uid="uid://p73vofqxx1be" path="res://Assets/UI/Button-UI/no.png" id="4_44gch"]
 
 [node name="ConfirmationPanel" type="Control" unique_id=699353212]
 layout_mode = 3
@@ -30,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.6509804)
 
-[node name="Panel" type="Panel" parent="." unique_id=991245367]
+[node name="Panel" type="NinePatchRect" parent="." unique_id=381153621]
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 1
 anchors_preset = 8
@@ -38,13 +32,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qgbfg")
+texture = ExtResource("2_uquxi")
 
 [node name="Label" type="Label" parent="Panel" unique_id=1778702188]
 layout_mode = 1
@@ -63,31 +57,25 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1683987534]
-custom_minimum_size = Vector2(500, 100)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = -114.0
-offset_right = 515.0
-offset_bottom = -14.0
+offset_left = 32.0
+offset_top = -100.0
+offset_right = 368.0
 grow_vertical = 0
+scale = Vector2(2.1523294, 2.1523294)
 theme_override_constants/separation = 70
 
-[node name="ButtonYes" type="Button" parent="Panel/HBoxContainer" unique_id=2004237647]
-custom_minimum_size = Vector2(200, 0)
+[node name="ButtonYes" type="TextureButton" parent="Panel/HBoxContainer" unique_id=576757900]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_qgbfg")
-theme_override_font_sizes/font_size = 30
-text = "YES"
+texture_normal = ExtResource("3_h3qsm")
 
-[node name="ButtonNo" type="Button" parent="Panel/HBoxContainer" unique_id=1562933833]
+[node name="ButtonNo" type="TextureButton" parent="Panel/HBoxContainer" unique_id=1572262280]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_qgbfg")
-theme_override_font_sizes/font_size = 30
-text = "NO"
+texture_normal = ExtResource("4_44gch")
 
 [connection signal="pressed" from="Panel/HBoxContainer/ButtonYes" to="." method="_on_btn_ya_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/ButtonNo" to="." method="_on_btn_tidak_pressed"]

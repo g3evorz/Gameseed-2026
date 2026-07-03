@@ -29,6 +29,9 @@
 [ext_resource type="Texture2D" uid="uid://nekhsarcqn7s" path="res://Assets/Background Part/Planet & Star (Part by Part)/Matahari.png" id="22_s4yk4"]
 [ext_resource type="Texture2D" uid="uid://riiiy528twld" path="res://Assets/Background Part/Planet & Star (Part by Part)/PlanetCincin.png" id="23_1fsbu"]
 [ext_resource type="Texture2D" uid="uid://dj3ca8oc3fbh1" path="res://Assets/Background Part/Planet & Star (Part by Part)/Stars.png" id="24_u20w3"]
+[ext_resource type="Texture2D" uid="uid://cc5adg57yx0w4" path="res://Assets/UI/Button-UI/HelpBTN.png" id="26_d3stl"]
+[ext_resource type="Texture2D" uid="uid://de8mqoe420d05" path="res://Assets/Background Part/Grafiti.png" id="30_lr6my"]
+[ext_resource type="Texture2D" uid="uid://m1lhd4umrdnt" path="res://Assets/UI/Button-UI/Background Button.png" id="31_ieiow"]
 [ext_resource type="Texture2D" uid="uid://c5khmd4f8s64" path="res://Assets/UI/Button-UI/SliderMusic3.png" id="41_7cpcu"]
 [ext_resource type="FontFile" uid="uid://bnumkmoiqqk13" path="res://Assets/determination.ttf" id="41_bse0w"]
 [ext_resource type="Texture2D" uid="uid://diitew8e7q1d7" path="res://Assets/UI/Button-UI/marked checkbox.png" id="41_hc27c"]
@@ -245,6 +248,7 @@ offset_bottom = 58.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(3.5, 3.5)
+theme_override_constants/margin_right = 60
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginButton" unique_id=2052434342]
 layout_mode = 2
@@ -265,6 +269,15 @@ layout_mode = 2
 texture_normal = ExtResource("13_sw8df")
 stretch_mode = 5
 
+[node name="ButtonHelp" type="TextureButton" parent="TextureRect" unique_id=545306379]
+layout_mode = 1
+offset_top = 44.0
+offset_right = 190.6218
+offset_bottom = 122.20381
+scale = Vector2(1.7006836, 1.7006836)
+texture_normal = ExtResource("26_d3stl")
+stretch_mode = 5
+
 [node name="MarginJudul" type="MarginContainer" parent="TextureRect" unique_id=255807367]
 layout_mode = 1
 anchors_preset = 1
@@ -278,19 +291,19 @@ theme_override_constants/margin_right = 100
 
 [node name="Matahari" type="TextureRect" parent="TextureRect" unique_id=252379423]
 layout_mode = 0
-offset_left = 1600.0
-offset_top = 23.0
-offset_right = 1882.0
-offset_bottom = 305.0
+offset_left = 749.0
+offset_top = -122.0
+offset_right = 1031.0
+offset_bottom = 160.0
 texture = ExtResource("22_s4yk4")
 script = ExtResource("8_mo2ge")
 
 [node name="PlanetCincin" type="TextureRect" parent="TextureRect" unique_id=1267275915]
 layout_mode = 0
-offset_left = 1195.0
-offset_top = 219.0
-offset_right = 1451.0
-offset_bottom = 475.0
+offset_left = 959.0
+offset_top = 327.0
+offset_right = 1215.0
+offset_bottom = 583.0
 texture = ExtResource("23_1fsbu")
 script = ExtResource("8_mo2ge")
 
@@ -312,6 +325,15 @@ offset_bottom = 995.0
 texture = ExtResource("24_u20w3")
 script = ExtResource("8_mo2ge")
 
+[node name="Grafiti" type="TextureRect" parent="TextureRect" unique_id=1930986923]
+layout_mode = 0
+offset_left = 1213.0
+offset_top = 86.99999
+offset_right = 2213.0
+offset_bottom = 487.0
+scale = Vector2(0.70881087, 0.70881087)
+texture = ExtResource("30_lr6my")
+
 [node name="ConfirmationPanel" parent="." unique_id=699353212 instance=ExtResource("3_b08y3")]
 visible = false
 layout_mode = 1
@@ -325,7 +347,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="SettingsPanel" unique_id=350844861]
+[node name="ColorRect" type="NinePatchRect" parent="SettingsPanel" unique_id=236783526]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -339,7 +361,7 @@ offset_bottom = 646.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
-color = Color(0, 0, 0, 0.4745098)
+texture = ExtResource("31_ieiow")
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/ColorRect" unique_id=116522752]
 layout_mode = 1
@@ -348,7 +370,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 60
+theme_override_constants/margin_left = 70
 theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 50
@@ -359,13 +381,14 @@ theme_override_constants/separation = 40
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer" unique_id=976005815]
 layout_mode = 2
-theme_override_constants/separation = 1200
+theme_override_constants/separation = 1400
 
 [node name="MuteLabel" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1578302864]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("41_bse0w")
 theme_override_font_sizes/font_size = 50
-text = "MUTE AUDIO "
+text = "MUTE "
 
 [node name="Mute" type="CheckBox" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=292162702]
 layout_mode = 2
@@ -374,15 +397,38 @@ theme_override_icons/unchecked = ExtResource("42_c0cds")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer" unique_id=1501142483]
 layout_mode = 2
-theme_override_constants/separation = 1200
+theme_override_constants/separation = 1000
 
 [node name="Volume" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=983705103]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("41_bse0w")
 theme_override_font_sizes/font_size = 50
-text = "VOLUME"
+text = "MASTER VOLUME"
 
 [node name="VolumeSlider" type="HSlider" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1292663245]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("41_7cpcu")
+theme_override_icons/grabber_highlight = ExtResource("41_7cpcu")
+theme_override_styles/slider = SubResource("StyleBoxTexture_5bbo0")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_nqof3")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer" unique_id=1600187906]
+layout_mode = 2
+theme_override_constants/separation = 1090
+
+[node name="SFXVolume" type="Label" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1383690855]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("41_bse0w")
+theme_override_font_sizes/font_size = 50
+text = "SFX VOLUME"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=2093085885]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("41_7cpcu")
@@ -408,10 +454,102 @@ grow_vertical = 0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("47_onw8t")
 
+[node name="HelpPanel" type="Control" parent="." unique_id=668306926]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="NinePatchRect" parent="HelpPanel" unique_id=1193853372]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 174.99998
+offset_top = 112.99999
+offset_right = 175.0
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("31_ieiow")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HelpPanel/Panel" unique_id=492062314]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -182.5
+offset_top = 76.25
+offset_right = 182.5
+offset_bottom = 156.25
+grow_horizontal = 2
+theme_override_constants/separation = 80
+
+[node name="Label" type="Label" parent="HelpPanel/Panel/VBoxContainer" unique_id=1436482632]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("41_bse0w")
+theme_override_font_sizes/font_size = 60
+text = "HOW TO PLAY "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HelpPanel/Panel/VBoxContainer" unique_id=840005435]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("41_bse0w")
+theme_override_font_sizes/font_size = 60
+text = "SWIPE UP AND DOWN TO NAVIGATE
+BETWEEN RAIL"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label3" type="Label" parent="HelpPanel/Panel/VBoxContainer" unique_id=1326479048]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("41_bse0w")
+theme_override_font_sizes/font_size = 60
+text = "avoid obstacles and pick up
+power up on your way"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label4" type="Label" parent="HelpPanel/Panel/VBoxContainer" unique_id=1811971057]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("41_bse0w")
+theme_override_font_sizes/font_size = 60
+text = "beware of enemy rockets 
+and railgun"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="BackHelp" type="TextureButton" parent="HelpPanel/Panel" unique_id=155861641]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 51.25002
+offset_top = -161.0
+offset_right = 351.25003
+grow_vertical = 0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("47_onw8t")
+
 [connection signal="pressed" from="TextureRect/MarginButton/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="TextureRect/MarginButton/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="TextureRect/MarginButton/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="pressed" from="TextureRect/ButtonHelp" to="." method="_on_button_help_pressed"]
 [connection signal="konfirmasi_ya" from="ConfirmationPanel" to="." method="_on_confirmation_panel_konfirmasi_ya"]
 [connection signal="toggled" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Mute" to="." method="_on_mute_toggled"]
 [connection signal="value_changed" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="SettingsPanel/ColorRect/MarginContainer/VBoxContainer/HBoxContainer3/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
 [connection signal="pressed" from="SettingsPanel/ColorRect/BackSettings" to="." method="_on_back_settings_pressed"]
+[connection signal="pressed" from="HelpPanel/Panel/BackHelp" to="." method="_on_back_help_pressed"]

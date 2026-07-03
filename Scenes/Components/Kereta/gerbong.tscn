@@ -1,37 +1,68 @@
 [gd_scene format=3 uid="uid://dcnle0rgkvqcg"]
 
-[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_fp0vm"]
-[ext_resource type="Script" uid="uid://cegc38w50tqyn" path="res://Script/Kereta/gerbong.gd" id="1_ibxl1"]
+[ext_resource type="Script" uid="uid://bomgx43m4wmow" path="res://Script/Kereta/Gerbong.gd" id="1_ibxl1"]
+[ext_resource type="Texture2D" uid="uid://bf67mttdextrm" path="res://Assets/Player Train/Gerbong + Pintu/1.png" id="2_no8vl"]
 [ext_resource type="PackedScene" uid="uid://8nceytgwwcui" path="res://Scenes/Components/Kereta/coupler.tscn" id="3_2jg16"]
+[ext_resource type="Texture2D" uid="uid://qickhgglbgfj" path="res://Assets/Player Train/Gerbong + Pintu/2.png" id="3_m131a"]
+[ext_resource type="Texture2D" uid="uid://qfcrgl05bpc7" path="res://Assets/Player Train/Gerbong + Pintu/3.png" id="4_jauq1"]
+[ext_resource type="Texture2D" uid="uid://33sj3fpwbpta" path="res://Assets/Player Train/Gerbong + Pintu/4.png" id="5_osfb4"]
+[ext_resource type="Texture2D" uid="uid://ddp8khnrwxw8b" path="res://Assets/Player Train/Gerbong + Pintu/5.png" id="6_upwsl"]
+[ext_resource type="Texture2D" uid="uid://cwt1g13c5cas2" path="res://Assets/Player Train/Gerbong + Pintu/6.png" id="7_b7swk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ejass"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_no8vl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m131a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jauq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_osfb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_upwsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_b7swk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibxl1"]
-size = Vector2(261, 77)
+size = Vector2(109.21847, 33.01319)
 
 [node name="Gerbong" type="CharacterBody2D" unique_id=1560058412 groups=["Player"]]
 collision_mask = 2
 script = ExtResource("1_ibxl1")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=370657303]
-position = Vector2(-129, 38)
-scale = Vector2(2.0234377, 0.59375)
-texture = ExtResource("1_fp0vm")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1717422759]
+position = Vector2(-65, 95)
+sprite_frames = SubResource("SpriteFrames_ejass")
 centered = false
 offset = Vector2(0, -126)
 
 [node name="TitikSambungBelakang" type="Marker2D" parent="Sprite2D" unique_id=1053118839]
-position = Vector2(-0.78084564, -64.00001)
+position = Vector2(7, -84)
 scale = Vector2(0.49420846, 1.6842107)
 
 [node name="TitikSambungDepan" type="Marker2D" parent="Sprite2D" unique_id=1794014442]
-position = Vector2(128.2, -64)
+position = Vector2(118.000015, -84)
 scale = Vector2(0.49420846, 1.6842107)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1533080487]
+position = Vector2(-2.4999995, -2.5)
 scale = Vector2(0.83319235, 0.8178548)
 shape = SubResource("RectangleShape2D_ibxl1")
 
 [node name="Coupler" parent="." unique_id=164977633 instance=ExtResource("3_2jg16")]
-position = Vector2(130, 0)
+position = Vector2(45, 10)
 scale = Vector2(1.0087036, 1)
 
 [node name="Gerbong" type="Node2D" parent="." unique_id=2090834745]

@@ -3,12 +3,15 @@ extends Node2D
 @onready var kepala_kereta = $Kepala
 @onready var sprite_kepala = $Kepala/Sprite2D
 @onready var kumpulan_gerbong = $KumpulanGerbong
-@onready var label_jumlah_gerbong = $CanvasLayer/MarginContainer/LabelJumlahGerbong
 
 @onready var health_bar = $CanvasLayer/MarginContainer/HealthBar
 @onready var label_hp_angka = $CanvasLayer/MarginContainer/HealthBar/Label # Sesuaikan path ini!
 
-@export var JARAK_PIKSEL_ANTAR_GERBONG = 350.0 
+var ghost_icon = preload("res://Assets/Power Up/Ghost Mode.png")
+var gerbong_icon = preload("res://Assets/Power Up/Heal.png")
+var laser_icon = preload("res://Assets/Power Up/Dual Laser.png")
+
+@export var JARAK_PIKSEL_ANTAR_GERBONG = 200.0 
 @export var KEKAKUAN_DASAR = 15.0 
 @export var FAKTOR_AWAL = 0.95 
 @export var FAKTOR_PELURUHAN = 0.8
@@ -33,7 +36,6 @@ var timer_invincible: float = 0.0
 func _ready():
 	add_to_group("Kereta")
 	GameManager.game_over_triggered.connect(_eksekusi_kematian_kereta)
-
 	var daftar_wadah = kumpulan_gerbong.get_children()
 	for i in range(daftar_wadah.size()):
 		var gerbong = daftar_wadah[i]
@@ -126,8 +128,7 @@ func _physics_process(delta):
 	
 	jumlah_gerbong_sebelumnya = jumlah_aktif
 		
-	if label_jumlah_gerbong:
-		label_jumlah_gerbong.text = "HP: " + str(current_health) + " | Gerbong: " + str(jumlah_aktif)
+		
 
 func update_ui_kesehatan():
 	if is_instance_valid(health_bar):
@@ -147,6 +148,7 @@ func ghost_mode(durasi: float):
 	is_invincible = true
 	timer_invincible = durasi
 	print("Mode Hantu Aktif selama ", durasi, " detik! Pindah ke Layer 4")
+	
 	
 	# 1. Atur Kepala Kereta
 	if is_instance_valid(kepala_kereta):
@@ -199,6 +201,7 @@ func take_damage(jumlah_damage: int):
 		print("Kereta sedang Ghost Mode! Kebal damage.")
 		return
 		
+	AudioManager.putar_sfx(AudioManager.sfx_crash)
 	current_health -= jumlah_damage
 	
 	if current_health <= 0:

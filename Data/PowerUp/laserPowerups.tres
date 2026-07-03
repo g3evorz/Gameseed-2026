@@ -6,4 +6,5 @@
 [resource]
 script = ExtResource("1_lao5l")
 obstacle_scene = ExtResource("1_k4nlu")
+spawn_weight = 1.2
 metadata/_custom_type_script = "uid://brhx3skaebmcy"

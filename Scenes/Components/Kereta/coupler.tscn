@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://8nceytgwwcui"]
 
-[ext_resource type="Texture2D" uid="uid://c7b1a0a2yu4by" path="res://icon.svg" id="1_5kep0"]
+[ext_resource type="Texture2D" uid="uid://cyt4cf1fdjht0" path="res://Assets/Player Train/coupler .png" id="1_5kep0"]
 
 [node name="Coupler" type="Node2D" unique_id=164977633]
 

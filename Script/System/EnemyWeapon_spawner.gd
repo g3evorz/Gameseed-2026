@@ -111,16 +111,16 @@ func _spawn_temporary(obstacle_data: ObstacleData, player: Node2D, cam: Camera2D
 	var visible_rect_size = cam.get_viewport_rect().size / cam.zoom
 	var camera_top = screen_center_y - (visible_rect_size.y / 2.0)
 	var camera_bottom = screen_center_y + (visible_rect_size.y / 2.0)
-	#	I Also confused about the min and max track_y, this all happend because godot "weird" coordinate system
-	var min_track_y = camera_top + vertical_spawn_margin_max
-	var max_track_y = camera_bottom - vertical_spawn_margin_min
-	var inaccuracy = current_difficulty.targeting_inaccuracy
 	
-	print("Screen Center : ", screen_center_y)
-	print("Camera top : ", camera_top)
-	print("Camera bottom : ", camera_bottom)
-	print("Minimum Y spawn : ", min_track_y)
-	print("Maksimum Y spawn : ", max_track_y)
+	# I Also confused about the min and max track_y, this all happend because godot "weird" coordinate system
+	var min_track_y = camera_top + vertical_spawn_margin_max
+	var dynamic_ground_y = _get_dynamic_ground_y()
+	
+	# Bandingkan batas bawah kamera dengan lantai, ambil yang posisinya lebih tinggi
+	var lowest_valid_y = min(camera_bottom, dynamic_ground_y)
+	var max_track_y = lowest_valid_y - vertical_spawn_margin_min
+	
+	var inaccuracy = current_difficulty.targeting_inaccuracy
 	
 	if not _track_has_room(min_track_y, max_track_y):
 		return
@@ -156,7 +156,7 @@ func _spawn_temporary(obstacle_data: ObstacleData, player: Node2D, cam: Camera2D
 		)
 
 	elif instance.has_method("setup_dynamic_laser"):
-		var candidate_y = _find_largest_gap_center(min_track_y, max_track_y)
+		var candidate_y = randf_range(min_track_y, max_track_y)
 		var target_y = _finalize_target_y(candidate_y, min_track_y, max_track_y, travel_time)
 
 		var start_y: float
@@ -251,6 +251,37 @@ func _find_largest_gap_center(min_track_y: float, max_track_y: float) -> float:
 	var gap = _largest_gap(bounds)
 	return clamp((gap.start + gap.end) / 2.0, min_track_y, max_track_y)
 	
+
+# Maybe needed it later
+
+#func _find_random_in_largest_gap(min_track_y: float, max_track_y: float) -> float:
+	#var bounds = _get_sorted_zone_bounds(min_track_y, max_track_y)
+	#var gap = _largest_gap(bounds)
+#
+	## Beri bantalan (padding) agar posisi acak tidak terlalu menempel ke tepi batas
+	#var padding = forbidden_zone_radius * 0.8
+	#var safe_start = gap.start + padding
+	#var safe_end = gap.end - padding
+#
+	## Jika celah yang tersisa ternyata cukup sempit, kembalikan ke nilai tengah saja
+	#if safe_start >= safe_end:
+		#return (gap.start + gap.end) / 2.0
+#
+	## Pilih titik secara acak di dalam celah aman tersebut
+	#return randf_range(safe_start, safe_end)
+
+func _get_dynamic_ground_y() -> float:
+	# Cari node penanda yang sudah kita masukkan ke grup
+	var ground_node = get_tree().get_first_node_in_group("GroundReference") as Marker2D
+	
+	if ground_node != null:
+		return ground_node.global_position.y
+		
+	# Fallback aman jika kamu lupa menaruh node-nya di scene
+	push_warning("GroundReference tidak ditemukan! Menggunakan batas bawah kamera.")
+	var cam = get_viewport().get_camera_2d()
+	return cam.get_screen_center_position().y + (cam.get_viewport_rect().size.y / 2.0 / cam.zoom.y)
+
 func _finalize_target_y(candidate_y: float, min_track_y: float, max_track_y: float, extra_travel_time: float) -> float:
 	var resolved = _resolve_safe_target_y(candidate_y, min_track_y, max_track_y)
 	if resolved == null:

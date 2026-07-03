@@ -8,6 +8,7 @@ extends Resource
 @export_group("Object Spawn Rates")
 ## Peluang musuh memutuskan untuk menjatuhkan rintangan saat sinyal obstacle_dropped diterima (0.0 - 1.0).
 @export_range(0.0, 1.0) var spawn_chance: float = 0.5
+@export_range(0.0, 1.0) var power_up_chance: float = 0.5
 
 @export_group("Level Spawn Interval")
 

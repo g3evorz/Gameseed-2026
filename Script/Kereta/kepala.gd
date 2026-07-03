@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # --- Konfigurasi Pergerakan ---
-@export var JUMP_VELOCITY = -1000.0
+@export var JUMP_VELOCITY = -670.0
 
 var is_dead: bool = false
 
@@ -13,10 +13,13 @@ var is_dead: bool = false
 
 @onready var sprite = $Sprite2D
 @onready var gun = $Sprite2D/PulseBody
+@onready var input_buffer = $InputBuffer
+
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	
 	# Membaca level upgrade mesin dari autoload. 
 	# Misal: Tiap 1 level menambah Base Speed dan Max Speed sebesar 50
 	pass
@@ -25,25 +28,36 @@ func _physics_process(delta):
 	if GameManager.is_hit_stopping:
 		return
 		
-	# 1. Terapkan Gravitasi
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		
 	if is_dead:
 		move_and_slide()
 		return
-
+		
 	# 2. Fitur Lompat & Turun
-	if Input.is_action_just_pressed("ui_up") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("ui_up"):
+		input_buffer.set_buffer("ui_up")
 		
 	if Input.is_action_just_pressed("ui_down"):
 		if is_on_floor():
-			global_position.y += 2.0
+			input_buffer.set_buffer("ui_down")
 		else:
-			# Jika di udara: Bantingan instan ke bawah (Fast-Fall)
 			velocity.y = FAST_FALL_VELOCITY
+			
+	
+	# --- EKSEKUSI AKSI ---
+	# Lompat
+	
+	if input_buffer.is_buffered("ui_up") and is_on_floor()  :
+		velocity.y = JUMP_VELOCITY
+		input_buffer.consume("ui_up") # Hapus buffer setelah melompat
 
-	# 3. Gerakan Otomatis ke Depan Gradually
+	# Turun
+	if input_buffer.is_buffered("ui_down") and is_on_floor():
+		global_position.y += 2.0
+		input_buffer.consume("ui_down") # Hapus buffer setelah tembus lantai
+	
 
 	# 4. Efek Tilting Parabola Berdasarkan Kecepatan Vertikal
 	var target_rotation = 0.0
@@ -73,7 +87,13 @@ func _physics_process(delta):
 
 	# 5. Eksekusi pergerakan fisika
 	move_and_slide()
-	
+
+func take_damage(jumlah_damage: int):
+	if GameManager.status_sekarang != GameManager.GameState.BERMAIN:
+		return
+		
+	get_parent().take_damage(jumlah_damage)
+
 # Fungsi untuk menghentikan laju kereta saat Game Over
 func mati():
 	is_dead = true
