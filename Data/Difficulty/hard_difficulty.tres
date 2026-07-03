@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_agvgg")
 activation_speed_ratio = 0.8
-spawn_chance = 0.919
+spawn_chance = 0.75
 power_up_chance = 0.15
 spawn_interval = 3.0
 health_multiplier = 5.5

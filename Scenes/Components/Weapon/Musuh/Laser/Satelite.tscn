@@ -9,8 +9,9 @@ script = ExtResource("1_jf0rq")
 bullet_scene = ExtResource("2_qlvml")
 
 [node name="SatelliteSprite" type="Sprite2D" parent="." unique_id=136255791]
-position = Vector2(-24, 0)
+position = Vector2(-8.000001, -4.6185278e-14)
 rotation = -1.5707964
+scale = Vector2(1.8641503, 1.8641503)
 texture = ExtResource("1_hjxpo")
 offset = Vector2(1, 0)
 
@@ -21,4 +22,4 @@ position = Vector2(-43, 0)
 position = Vector2(-43, 0)
 points = PackedVector2Array(-3000, 0, 0, 0)
 width = 4.0
-default_color = Color(0.26666668, 0, 0, 1)
+default_color = Color(1, 0.36778843, 0.3002167, 1)
