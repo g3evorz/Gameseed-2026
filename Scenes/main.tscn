@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://70puepcgsjlx" path="res://Scenes/Levels/basicLandscapes.tscn" id="6_6bp64"]
 [ext_resource type="Script" uid="uid://bwcjximrcwbwg" path="res://Script/bg_controller.gd" id="6_hibaj"]
 [ext_resource type="PackedScene" uid="uid://c7qnoqxs7j6wd" path="res://Scenes/Levels/level_1.tscn" id="7_344ge"]
+[ext_resource type="Texture2D" uid="uid://bsl7sky5carmi" path="res://Assets/Background Part/Background.png" id="7_kltya"]
 [ext_resource type="Texture2D" uid="uid://bsi4lhrfybfhg" path="res://Assets/Background Part/Planet-Star.png" id="8_fevyy"]
 [ext_resource type="PackedScene" uid="uid://dxf8keb5h1lo2" path="res://Scenes/Levels/level_2.tscn" id="8_hptm8"]
 [ext_resource type="PackedScene" uid="uid://cekjkxc2vo48a" path="res://Scenes/Levels/level_3.tscn" id="9_d1ilt"]
@@ -21,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://cc3e16ytbmvg8" path="res://Assets/Rail/Hologram/Straight.png" id="11_6vcvc"]
 [ext_resource type="PackedScene" uid="uid://badj5pnsv3mrf" path="res://Scenes/ConfirmationPanel.tscn" id="12_6iyac"]
 [ext_resource type="Texture2D" uid="uid://bjtmsaqgckcpc" path="res://Assets/Rail/Normal/Straight.png" id="12_7k868"]
-[ext_resource type="Texture2D" uid="uid://dadelgefpdwtq" path="res://Assets/Background Part/Background-Menu/Start-bg-utama.png" id="17_b3802"]
 [ext_resource type="Texture2D" uid="uid://bqwv0j54db2ek" path="res://Assets/Background Part/Background-Menu/Start-bg.png" id="18_fevyy"]
 [ext_resource type="Texture2D" uid="uid://7tdl3yab8cbd" path="res://Assets/UI/Button-UI/Resume-btn.png" id="20_ee4r6"]
 [ext_resource type="Texture2D" uid="uid://dqtigwmmtm505" path="res://Assets/UI/Button-UI/PauseBTN.png" id="20_pdsj5"]
@@ -183,12 +183,12 @@ script = ExtResource("6_hibaj")
 [node name="ParallaxGalaxy" type="Parallax2D" parent="Parallax" unique_id=1313303119]
 scale = Vector2(2, 2)
 scroll_scale = Vector2(0.1, 0.1)
-scroll_offset = Vector2(0, 458.99997)
-repeat_size = Vector2(2048, 0)
+scroll_offset = Vector2(0, 476)
+repeat_size = Vector2(1024, 0)
+repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/ParallaxGalaxy" unique_id=768409368]
-scale = Vector2(2, 2)
-texture = ExtResource("17_b3802")
+texture = ExtResource("7_kltya")
 
 [node name="ParallaxStars" type="Parallax2D" parent="Parallax" unique_id=1659890443]
 scroll_scale = Vector2(0.2, 0.2)
@@ -221,7 +221,7 @@ tile_set = SubResource("TileSet_u50mg")
 
 [node name="Enemy" parent="." unique_id=811008233 groups=["Enemy"] instance=ExtResource("2_21xkr")]
 position = Vector2(-29.99997, -136.00002)
-scale = Vector2(1.25, 1.25)
+scale = Vector2(1.5114977, 1.5114977)
 
 [node name="Kereta" parent="." unique_id=1640051749 instance=ExtResource("1_bo1nx")]
 position = Vector2(0, -30)

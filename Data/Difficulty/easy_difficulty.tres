@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_0s2i5")
-spawn_chance = 0.25
+spawn_chance = 0.3
 power_up_chance = 0.4
 health_multiplier = 1.0
 damage_multiplier = 1.0

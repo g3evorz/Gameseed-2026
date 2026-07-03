@@ -123,7 +123,7 @@ position = Vector2(1035, -35)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("8_8dmpc"), ExtResource("9_anjjd"), ExtResource("5_md4x4"), ExtResource("7_13yca")])
 
 [node name="ObstacleSpawner16" parent="Spawners" unique_id=1042374601 instance=ExtResource("3_osqx1")]
-position = Vector2(1279, -35)
+position = Vector2(780, -477.49997)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("9_anjjd"), ExtResource("5_md4x4"), ExtResource("7_13yca")])
 
 [node name="ObstacleSpawner17" parent="Spawners" unique_id=353602083 instance=ExtResource("3_osqx1")]
@@ -133,10 +133,6 @@ possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("9_anjjd"), ExtR
 [node name="ObstacleSpawner10" parent="Spawners" unique_id=1803498278 instance=ExtResource("3_osqx1")]
 position = Vector2(1057.5, -715)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("8_8dmpc"), ExtResource("9_anjjd"), ExtResource("5_md4x4"), ExtResource("6_1hf40"), ExtResource("7_13yca")])
-
-[node name="ObstacleSpawner11" parent="Spawners" unique_id=64424452 instance=ExtResource("3_osqx1")]
-position = Vector2(1301.5, -715)
-possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("9_anjjd"), ExtResource("6_1hf40"), ExtResource("7_13yca")])
 
 [node name="ObstacleSpawner12" parent="Spawners" unique_id=382322877 instance=ExtResource("3_osqx1")]
 position = Vector2(1590.5, -715)
@@ -149,14 +145,6 @@ possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("9_anjjd"), ExtR
 [node name="ObstacleSpawner19" parent="Spawners" unique_id=42609866 instance=ExtResource("3_osqx1")]
 position = Vector2(3351, -722.5)
 possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("9_anjjd"), ExtResource("5_md4x4"), ExtResource("6_1hf40"), ExtResource("7_13yca")])
-
-[node name="ObstacleSpawner13" parent="Spawners" unique_id=1902928466 instance=ExtResource("3_osqx1")]
-position = Vector2(632, -462.5)
-possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("8_8dmpc")])
-
-[node name="ObstacleSpawner14" parent="Spawners" unique_id=1076657512 instance=ExtResource("3_osqx1")]
-position = Vector2(876, -462.5)
-possible_obstacles = Array[ExtResource("4_sy7oa")]([ExtResource("8_8dmpc"), ExtResource("5_md4x4")])
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=395957947]
 scale = Vector2(4, 4)

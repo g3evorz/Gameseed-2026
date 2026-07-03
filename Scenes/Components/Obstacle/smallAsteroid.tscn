@@ -11,12 +11,13 @@ collision_layer = 6
 script = ExtResource("1_j403j")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1060150501]
-scale = Vector2(0.35248658, 0.35248658)
+scale = Vector2(0.5314942, 0.5314942)
 texture = ExtResource("2_itqd3")
 region_enabled = true
 region_rect = Rect2(31.39441, 379.47873, 112.73572, 87.84604)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1518009490]
+scale = Vector2(1.3775758, 1.3775758)
 shape = SubResource("RectangleShape2D_hlq78")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

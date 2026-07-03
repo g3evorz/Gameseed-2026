@@ -9,6 +9,8 @@ extends Node2D
 
 @onready var animasi_tutorial = $CanvasLayer/TutorialPanel/MarginTutorial/AnimationPlayer
 
+var daftar_variasi_gerbong: Array = ["pintu", "gerbong", "pintu", "tail"]
+
 func _ready():
 	ui_game_over.hide()
 	ui_pause.hide()
@@ -63,11 +65,29 @@ func _on_resume_pressed() -> void:
 	GameManager.toggle_pause()
 	
 func _play_animasi_kereta():
-	$Kereta/Kepala/Sprite2D.play("default")
-	$Kereta/KumpulanGerbong/Gerbong1/Sprite2D.play("default")
-	$Kereta/KumpulanGerbong/Gerbong2/Sprite2D.play("default")
-	$Kereta/KumpulanGerbong/Gerbong3/Sprite2D.play("default")
-	$Kereta/KumpulanGerbong/Gerbong4/Sprite2D.play("default")
+	# Kepala kereta tetap menggunakan animasi default
+	$Kereta/Kepala/Sprite2D.play("default") 
+	
+	# Daftar node gerbong Anda
+	var daftar_gerbong = [
+		$Kereta/KumpulanGerbong/Gerbong1/Sprite2D,
+		$Kereta/KumpulanGerbong/Gerbong2/Sprite2D,
+		$Kereta/KumpulanGerbong/Gerbong3/Sprite2D,
+		$Kereta/KumpulanGerbong/Gerbong4/Sprite2D
+	]
+	
+	# Menggunakan loop dengan angka (i) dari 0 sampai jumlah gerbong
+	for i in range(daftar_gerbong.size()):
+		var sprite_gerbong = daftar_gerbong[i]
+		
+		# Menggunakan Modulo (%) agar urutan kembali ke awal 
+		# jika jumlah gerbong lebih banyak dari variasi animasi Anda.
+		# Contoh: Gerbong ke-4 akan kembali mendapat "tipe_kargo"
+		var indeks_animasi = i % daftar_variasi_gerbong.size()
+		var animasi_pasti = daftar_variasi_gerbong[indeks_animasi]
+		
+		# Putar animasi sesuai urutannya
+		sprite_gerbong.play(animasi_pasti)
 	
 func _tutorial_show():
 	animasi_tutorial.play("tutorial")

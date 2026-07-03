@@ -3,9 +3,11 @@ extends Node
 const SAVE_PATH = "user://audio_settings.cfg"
 var master_bus_index: int
 var sfx_bus_index: int
+var musik_bus_index: int # [BARU] Indeks bus musik
 
-var current_volume: float = 1.0
-var sfx_volume: float = 1.0
+var current_volume: float = 1.0 # Ini Master Volume
+var sfx_volume: float = 1.0     # Ini SFX Volume
+var musik_volume: float = 1.0   # [BARU] Ini Music Volume
 var is_muted: bool = false
 
 # --- PEMUTAR MUSIK (BGM) ---
@@ -35,12 +37,14 @@ var player_laser = preload("res://Assets/SFX/Laser shoot/laserShoot (3).wav")
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	master_bus_index = AudioServer.get_bus_index("Master")
 	sfx_bus_index = AudioServer.get_bus_index("SFX")
-	# 1. SETUP BGM PLAYER (Hanya dibuat sekali)
+	musik_bus_index = AudioServer.get_bus_index("Music") # [BARU] Ambil index bus Music
+	
+	# 1. SETUP BGM PLAYER
 	bgm_player = AudioStreamPlayer.new()
-	bgm_player.bus = "Master"
-	# Penting: Jangan hubungkan sinyal 'finished' ke BGM player
+	bgm_player.bus = "Music" # [UBAH] Arahkan ke bus Music, bukan Master
 	add_child(bgm_player)
 	
 	load_audio_settings()
@@ -81,6 +85,11 @@ func set_sfx_volume(nilai: float):
 	terapkan_pengaturan()
 	save_audio_settings()
 
+func set_music_volume(nilai: float):
+	musik_volume = nilai
+	terapkan_pengaturan()
+	save_audio_settings()
+	
 # Dipanggil oleh UI CheckButton (Mute)
 func set_mute(kondisi: bool):
 	is_muted = kondisi
@@ -97,11 +106,16 @@ func terapkan_pengaturan():
 	
 	# SFX Volume
 	AudioServer.set_bus_volume_db(sfx_bus_index, linear_to_db(sfx_volume))
+	
+	# Music Volume
+	AudioServer.set_bus_volume_db(musik_bus_index, linear_to_db(musik_volume))
 
 # --- SISTEM PENYIMPANAN SINKRONOUS ---
 func save_audio_settings():
 	var config = ConfigFile.new()
-	config.set_value("Audio", "volume", current_volume)
+	config.set_value("Audio", "volume", current_volume) # Ini Master
+	config.set_value("Audio", "sfx_volume", sfx_volume)
+	config.set_value("Audio", "musik_volume", musik_volume) # [BARU]
 	config.set_value("Audio", "mute", is_muted)
 	config.save(SAVE_PATH)
 
@@ -109,7 +123,11 @@ func load_audio_settings():
 	var config = ConfigFile.new()
 	if config.load(SAVE_PATH) == OK:
 		current_volume = config.get_value("Audio", "volume", 1.0)
+		sfx_volume = config.get_value("Audio", "sfx_volume", 1.0)
+		musik_volume = config.get_value("Audio", "musik_volume", 1.0) # [BARU]
 		is_muted = config.get_value("Audio", "mute", false)
 	else:
 		current_volume = 1.0
+		sfx_volume = 1.0
+		musik_volume = 1.0 # [BARU]
 		is_muted = false

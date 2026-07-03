@@ -11,6 +11,7 @@ var ghost_icon = preload("res://Assets/Power Up/Ghost Mode.png")
 var gerbong_icon = preload("res://Assets/Power Up/Heal.png")
 var laser_icon = preload("res://Assets/Power Up/Dual Laser.png")
 
+
 @export var JARAK_PIKSEL_ANTAR_GERBONG = 200.0 
 @export var KEKAKUAN_DASAR = 15.0 
 @export var FAKTOR_AWAL = 0.95 

@@ -7,24 +7,24 @@ extends CanvasLayer
 # Struktur data cerita Anda
 var halaman_cerita = [
 	{
-		"gambar": preload("res://Assets/Scene/Scene - 1.png"), # Ganti dengan path gambar asli Anda
-		"teks": "The story begins you tries to make a quick profit, but the stock market crashes instead. All of your savings are completely wiped out, Your tablet screen only shows a plummeting chart along with a massive red number indicating their heavy financial loss."
+		"gambar": preload("res://Assets/Scene/Scene - 1.png"), 
+		"teks": "You tried to make a quick profit. Instead, the market crashed. One plummeting chart on a tablet, and all your savings were completely wiped out."
 	},
 	{
 		"gambar": preload("res://Assets/Scene/Scene - 2.png"),
-		"teks": "Desperate and completely out of money, You visits a massive loan corporation. You stand in front of the giant building doors, hoping to find an instant solution to save your ruined financial situation.."
+		"teks": "Desperate and broke, you stood before the giant doors of a massive loan corporation. You needed a miracle to save your ruined finances."
 	},
 	{
 		"gambar": preload("res://Assets/Scene/Scene - 3.png"),
-		"teks": "Inside the building, You meets with a company representative and agrees to a shady deal. You successfully secure a cash loan, but with a heavy condition: you must put up their beloved antique train as collateral if you fail to repay the debt."
+		"teks": "A shady deal was made. You got the cash, but it came with a heavy price. If you failed to pay them back, they would take your beloved antique train."
 	},
 	{
 		"gambar": preload("res://Assets/Scene/Scene - 4.png"),
-		"teks": "Instead of using the money wisely, You gambles it all back on the Crypto market. Along with a few other people, you stare anxiously at a TV screen. Your hopes are completely crushed when the digital coin chart, which initially went up a little, suddenly plummets and loses all of its value."
+		"teks": "But you didn't use the money wisely. You gambled it all on crypto. You watched the monitor in horror as the coin briefly spiked... before crashing to zero."
 	},
 	{
 		"gambar": preload("res://Assets/Scene/Scene - 5.png"),
-		"teks": "Now, the debt collector is coming to repossess the train. Unwilling to lose your one and only prized asset, You sneaks into the station quietly. You fire up the train's engine and immediately blast off into space to escape the debt collector's pursuit."
+		"teks": "Now, the Debt Collector is coming. Unwilling to lose your only prized asset, you sneak into the station. It's time to fire up the engines and blast off into space!"
 	}
 ]
 
