@@ -6,77 +6,82 @@ extends Area2D
 
 const SPRITE_NATIVE_WIDTH = 32.0
 
-@export var beam_active_duration: float = 0.1   
-@export var damage_tick_rate: float = 0.1 # Interval waktu damage diberikan (contoh: 0.1 detik)
-@export var kekuatan_slow: float = 0.7 
+enum BeamType {
+	FAST,   # raycast sekali, damage instan, langsung queue_free — untuk senjata cepat
+	SUSTAINED  # area overlap, damage berkelanjutan, aktif selama fire_duration — untuk choke point
+}
 
-var _current_damage: float = 0.0
-var _dir_multiplier: float = 1.0
-var _tick_timer: float = 0.0
-var _is_firing: bool = false
+@export var beam_type: BeamType = BeamType.FAST
+@export var beam_active_duration: float = 0.5
+@export var damage_tick_interval: float = 0.1
 
-func _ready() -> void:
-	# Matikan process agar tidak menguras performa sebelum fire() dipanggil
-	set_physics_process(false)
-	
-	# Lakukan duplikasi shape satu kali saja di awal 
-	if collision_shape.shape:
-		collision_shape.shape = collision_shape.shape.duplicate() as RectangleShape2D
+var _damage: float = 0.0
+var _dir_multiplier: float = -1.0
 
-func fire(direction: Vector2, damage: float) -> void:
-	_current_damage = damage
+func fire(direction: Vector2 = Vector2.RIGHT, damage: float = 100.0) -> void:
+	_damage = damage
 	_dir_multiplier = sign(direction.x) if direction.x != 0.0 else 1.0
-	
+
 	var max_range = abs(ray_cast.target_position.x)
 	ray_cast.target_position.x = max_range * _dir_multiplier
-	ray_cast.collide_with_areas = true
-	
-	_is_firing = true
-	_tick_timer = damage_tick_rate # Di-set penuh agar damage pertama langsung berefek
-	
-	# Nyalakan loop physics process
-	set_physics_process(true)
-	
-	# Hancurkan peluru setelah durasi habis
-	await get_tree().create_timer(beam_active_duration).timeout
-	queue_free()
-
-func _physics_process(delta: float) -> void:
-	if not _is_firing:
-		return
-		
-	_tick_timer += delta
-	
-	# Update raycast secara manual tiap physics frame
 	ray_cast.force_raycast_update()
-	
-	var max_range = abs(ray_cast.target_position.x)
-	var beam_length: float = max_range
-	var hit_target = null
-	
+
+	# Hitung beam_length di sini — sama untuk FAST maupun SUSTAINED
+	var beam_length: float
 	if ray_cast.is_colliding():
-		var collision_point = ray_cast.get_collision_point()
-		beam_length = global_position.distance_to(collision_point)
-		hit_target = ray_cast.get_collider()
-	
-	# 1. Update Skala Visual
+		beam_length = global_position.distance_to(ray_cast.get_collision_point())
+	else:
+		beam_length = max_range
+
+	# Apply visual SEBELUM branching — keduanya butuh ini
+	_apply_visual(beam_length)
+
+	match beam_type:
+		BeamType.FAST:
+			if ray_cast.is_colliding():
+				var target = ray_cast.get_collider()
+				if target.has_method("take_damage"):
+					target.take_damage(damage)
+			await get_tree().create_timer(beam_active_duration).timeout
+			queue_free()
+
+		BeamType.SUSTAINED:
+			body_entered.connect(_on_body_entered)
+			var elapsed: float = 0.0
+			while elapsed < beam_active_duration:
+				await get_tree().create_timer(damage_tick_interval).timeout
+				elapsed += damage_tick_interval
+				_tick_damage_inside()
+			queue_free()
+
+# Dipanggil LANGSUNG saat player pertama kali menyentuh beam — tidak ada delay
+func _on_body_entered(body: Node) -> void:
+	if body.has_method("take_damage"):
+		body.take_damage(_damage)
+
+func _on_area_entered(area: Node) -> void:
+	if area.has_method("take_damage"):
+		area.take_damage(_damage)
+
+# Dipanggil tiap tick untuk player yang SUDAH BERADA di dalam beam
+func _tick_damage_inside() -> void:
+	for body in get_overlapping_bodies():
+		if body.has_method("take_damage"):
+			body.take_damage(_damage)
+	for area in get_overlapping_areas():
+		if area.has_method("take_damage"):
+			area.take_damage(_damage)
+
+func _apply_visual(beam_length: float) -> void:
 	var required_scale_x = beam_length / SPRITE_NATIVE_WIDTH
 	sprite.scale.x = required_scale_x
 	sprite.position.x = (beam_length / 2.0) * _dir_multiplier
-	
-	# 2. Update Collision Shape Size secara dinamis
-	var shape = collision_shape.shape as RectangleShape2D
+
+	var shape = collision_shape.shape.duplicate() as RectangleShape2D
 	if shape:
-		shape.size.x = beam_length 
-		collision_shape.position.x = (beam_length / 2.0) * _dir_multiplier 
-	
-	# 3. Handle Damage (Sistem Tick)
-	if _tick_timer >= damage_tick_rate:
-		_tick_timer -= damage_tick_rate # Kurangi timer, jangan reset ke 0 agar tidak meleset
-		
-		if hit_target:
-			if hit_target.has_method("take_damage"):
-				hit_target.take_damage(_current_damage)
-			elif hit_target.is_in_group("Player") and hit_target.has_method("take_damage"):
-				hit_target.get_parent().take_damage(_current_damage)
-				GameManager.terapkan_efek_ram(kekuatan_slow)
+		shape.size.x = beam_length
+		collision_shape.position.x = (beam_length / 2.0) * _dir_multiplier
+		collision_shape.shape = shape
+		force_update_transform()
+	else:
+		print("ERROR: Bentuk collision bukan RectangleShape2D!")

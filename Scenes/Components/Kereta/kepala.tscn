@@ -46,6 +46,7 @@ script = ExtResource("1_kiorl")
 
 [node name="InputBuffer" type="Node" parent="." unique_id=394610228]
 script = ExtResource("10_nteqc")
+default_buffer_time = 0.08
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1503878241]
 position = Vector2(-129, 38)

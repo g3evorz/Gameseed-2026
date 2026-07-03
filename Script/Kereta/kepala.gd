@@ -40,9 +40,9 @@ func _physics_process(delta):
 		input_buffer.set_buffer("ui_up")
 		
 	if Input.is_action_just_pressed("ui_down"):
-		input_buffer.set_buffer("ui_down")
-		
-		if not is_on_floor():
+		if is_on_floor():
+			input_buffer.set_buffer("ui_down")
+		else:
 			velocity.y = FAST_FALL_VELOCITY
 			
 	

@@ -5,7 +5,7 @@ extends Camera2D
 @export var max_lag_offset_x: float = 300.0
 
 @export_group("Dynamic Zoom")
-@export var default_zoom: Vector2 = Vector2(1.5, 1.5)
+@export var default_zoom: Vector2 = Vector2(1.35, 1.35)
 @export var max_fast_zoom: Vector2 = Vector2(1.2, 1.2)
 
 @export_group("Smoothing Dynamics")
