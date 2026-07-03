@@ -230,6 +230,9 @@ scene_gerbong = ExtResource("3_kry3j")
 [node name="Kepala" parent="Kereta" index="0" unique_id=1780252134]
 position = Vector2(3, 2)
 
+[node name="InputBuffer" parent="Kereta/Kepala" index="0" unique_id=394610228]
+default_buffer_time = 0.15
+
 [node name="Camera2D" parent="Kereta/Kepala" index="1" unique_id=1503878241]
 position = Vector2(-110, -132.99998)
 zoom = Vector2(1.2, 1.2)
