@@ -1,16 +1,51 @@
 [gd_scene format=3 uid="uid://dcnle0rgkvqcg"]
 
 [ext_resource type="Script" uid="uid://bomgx43m4wmow" path="res://Script/Kereta/Gerbong.gd" id="1_ibxl1"]
+[ext_resource type="Texture2D" uid="uid://shucujg0qkxu" path="res://Assets/Player Train/Gerbong/1.png" id="2_mgu5f"]
 [ext_resource type="Texture2D" uid="uid://bf67mttdextrm" path="res://Assets/Player Train/Gerbong + Pintu/1.png" id="2_no8vl"]
 [ext_resource type="PackedScene" uid="uid://8nceytgwwcui" path="res://Scenes/Components/Kereta/coupler.tscn" id="3_2jg16"]
 [ext_resource type="Texture2D" uid="uid://qickhgglbgfj" path="res://Assets/Player Train/Gerbong + Pintu/2.png" id="3_m131a"]
+[ext_resource type="Texture2D" uid="uid://b5aiesji7kt8s" path="res://Assets/Player Train/Gerbong/2.png" id="3_xkipu"]
 [ext_resource type="Texture2D" uid="uid://qfcrgl05bpc7" path="res://Assets/Player Train/Gerbong + Pintu/3.png" id="4_jauq1"]
+[ext_resource type="Texture2D" uid="uid://bk5omsfcfrvvv" path="res://Assets/Player Train/Gerbong/3.png" id="4_srq8v"]
+[ext_resource type="Texture2D" uid="uid://dv3moe3ucna7w" path="res://Assets/Player Train/Gerbong/4.png" id="5_ihg6s"]
 [ext_resource type="Texture2D" uid="uid://33sj3fpwbpta" path="res://Assets/Player Train/Gerbong + Pintu/4.png" id="5_osfb4"]
+[ext_resource type="Texture2D" uid="uid://hq10glq7eifx" path="res://Assets/Player Train/Gerbong/5.png" id="6_7o3k0"]
 [ext_resource type="Texture2D" uid="uid://ddp8khnrwxw8b" path="res://Assets/Player Train/Gerbong + Pintu/5.png" id="6_upwsl"]
 [ext_resource type="Texture2D" uid="uid://cwt1g13c5cas2" path="res://Assets/Player Train/Gerbong + Pintu/6.png" id="7_b7swk"]
+[ext_resource type="Texture2D" uid="uid://0s2x50m4s6on" path="res://Assets/Player Train/Gerbong/6.png" id="7_s3wq1"]
+[ext_resource type="Texture2D" uid="uid://dcbaant0r41ce" path="res://Assets/Player Train/Tail/1.png" id="14_vkohf"]
+[ext_resource type="Texture2D" uid="uid://wyobya062pgb" path="res://Assets/Player Train/Tail/2.png" id="15_d8jt6"]
+[ext_resource type="Texture2D" uid="uid://djwrdcuc40xuo" path="res://Assets/Player Train/Tail/3.png" id="16_fjk3j"]
+[ext_resource type="Texture2D" uid="uid://bpf63rycml4ag" path="res://Assets/Player Train/Tail/4.png" id="17_o02fk"]
+[ext_resource type="Texture2D" uid="uid://bp8fuhdcd8wg7" path="res://Assets/Player Train/Tail/5.png" id="18_dhxb6"]
+[ext_resource type="Texture2D" uid="uid://3t451yupotal" path="res://Assets/Player Train/Tail/6.png" id="19_76uin"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ejass"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mgu5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xkipu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_srq8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ihg6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7o3k0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_s3wq1")
+}],
+"loop": true,
+"name": &"gerbong",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_no8vl")
@@ -31,8 +66,31 @@ animations = [{
 "texture": ExtResource("7_b7swk")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"pintu",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_vkohf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_d8jt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fjk3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_o02fk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dhxb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_76uin")
+}],
+"loop": true,
+"name": &"tail",
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibxl1"]
@@ -45,6 +103,7 @@ script = ExtResource("1_ibxl1")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1717422759]
 position = Vector2(-65, 95)
 sprite_frames = SubResource("SpriteFrames_ejass")
+animation = &"gerbong"
 centered = false
 offset = Vector2(0, -126)
 
