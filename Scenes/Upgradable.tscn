@@ -292,6 +292,7 @@ theme_override_constants/separation = 2
 
 [node name="Label" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=186144333]
 texture_filter = 1
+texture_repeat = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("16_8rjld")
 theme_override_font_sizes/font_size = 12
@@ -307,6 +308,7 @@ stretch_mode = 5
 
 [node name="LabelPrice" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemLaser" unique_id=314573826]
 texture_filter = 1
+texture_repeat = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("16_8rjld")
 theme_override_font_sizes/font_size = 12
@@ -326,6 +328,7 @@ theme_override_constants/separation = 2
 
 [node name="Label" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1584985600]
 texture_filter = 1
+texture_repeat = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("16_8rjld")
 theme_override_font_sizes/font_size = 12
@@ -341,6 +344,7 @@ stretch_mode = 5
 
 [node name="LabelPrice" type="Label" parent="MarginUpgrade/HBoxUpgrade/ItemDefense" unique_id=1448363954]
 texture_filter = 1
+texture_repeat = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("16_8rjld")
 theme_override_font_sizes/font_size = 12
